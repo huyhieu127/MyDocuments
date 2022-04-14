@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="8dp"
+    android:foreground="?selectableItemBackgroundBorderless"
+    android:orientation="vertical"
+    android:outlineSpotShadowColor="@color/purple_700"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp"
+    tools:targetApi="p">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:minLines="1"
+        android:paddingHorizontal="16dp"
+        android:textColor="@color/purple_200"
+        tools:text="Title" />
+
+</androidx.cardview.widget.CardView>
