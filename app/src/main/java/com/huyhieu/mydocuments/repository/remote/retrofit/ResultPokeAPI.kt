@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments.repository.remote.retrofit
 
 
 data class ResultPokeAPI<out T>(
+    val index: Int = 0,
     val statusPokeAPI: StatusPokeAPI,
     val response: T?,
     val message: String = "",
@@ -18,8 +19,9 @@ data class ResultPokeAPI<out T>(
 
 
     companion object {
-        fun <T> success(response: T): ResultPokeAPI<T> {
+        fun <T> success(index: Int = 0,response: T): ResultPokeAPI<T> {
             return ResultPokeAPI(
+                index = index,
                 StatusPokeAPI.SUCCESS,
                 response,
                 ""
@@ -27,11 +29,13 @@ data class ResultPokeAPI<out T>(
         }
 
         fun <T> error(
+            index: Int = 0,
             message: String = "",
             error: String? = null,
             response: T? = null
         ): ResultPokeAPI<T> {
             return ResultPokeAPI(
+                index = index,
                 StatusPokeAPI.ERROR,
                 response,
                 message,
@@ -39,22 +43,27 @@ data class ResultPokeAPI<out T>(
             )
         }
 
-        fun <T> network(): ResultPokeAPI<T> {
+        fun <T> network(
+            index: Int = 0
+        ): ResultPokeAPI<T> {
             return ResultPokeAPI(
+                index = index,
                 StatusPokeAPI.NETWORK,
                 null, ""
             )
         }
 
-        fun <T> loading(): ResultPokeAPI<T> {
+        fun <T> loading(index: Int = 0): ResultPokeAPI<T> {
             return ResultPokeAPI(
+                index = index,
                 StatusPokeAPI.LOADING,
                 null,
                 ""
             )
         }
-        fun <T> complete(): ResultPokeAPI<T> {
+        fun <T> complete(index: Int = 0): ResultPokeAPI<T> {
             return ResultPokeAPI(
+                index = index,
                 StatusPokeAPI.COMPLETE,
                 null,
                 ""

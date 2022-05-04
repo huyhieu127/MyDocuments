@@ -63,15 +63,15 @@ open class RemoteDataSource {
                 if (response.isSuccessful) {
                     val body = response.body()
                     return if (body != null) {
-                        ResultPokeAPI.success(body)
+                        ResultPokeAPI.success(response = body)
                     } else {
-                        ResultPokeAPI.error("Empty data!")
+                        ResultPokeAPI.error(message = "Empty data!")
                     }
                 }
-                return ResultPokeAPI.error("${response.code()} ${response.message()}")
+                return ResultPokeAPI.error(message = "${response.code()} ${response.message()}")
             } else return ResultPokeAPI.network()
         } catch (e: Exception) {
-            return ResultPokeAPI.error("${e.message}")
+            return ResultPokeAPI.error(message = "${e.message}")
         }
     }
 

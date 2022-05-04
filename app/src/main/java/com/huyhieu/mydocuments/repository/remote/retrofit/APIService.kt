@@ -1,5 +1,6 @@
 package com.huyhieu.mydocuments.repository.remote.retrofit
 
+import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.models.pokemon.PokemonUrlForm
 import retrofit2.Response
 import retrofit2.http.*
@@ -8,7 +9,7 @@ interface APIService {
 
     companion object {
         val url: String
-            get() = "https://pokeapi.co/api/v2/"
+            get() = BuildConfig.SERVER_URL
     }
 
     @GET("pokemon")

@@ -3,6 +3,8 @@ package com.huyhieu.mydocuments.ui.activities.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
+import androidx.lifecycle.viewModelScope
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.others.enums.MenuType
@@ -11,6 +13,7 @@ import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
 import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -52,23 +55,35 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun addEvents(savedInstanceState1: Bundle?) {
-        viewModel.getPokemons().observe(this) {
-            when (it.statusPokeAPI) {
-                LOADING -> logDebug("LOADING")
-                COMPLETE -> logDebug("COMPLETE")
-                NETWORK -> logDebug("NETWORK")
-                ERROR -> logDebug("ERROR: ${it.message}")
-                SUCCESS -> logDebug(
-                    "SUCCESS count: ${it.response?.count} data1: ${
-                        it.response?.results?.get(
-                            0
-                        )?.name
-                    }"
-                )
-            }
-        }
+        callAPI()
     }
 
     override fun onClick(p0: View?) {
+    }
+
+    private fun callAPI() {
+        val name = "API"
+        viewModel.getPokemons().observe(this@MainActivity) {
+            when (it.statusPokeAPI) {
+                LOADING -> {
+                    logDebug("$name - LOADING")
+                    mBinding.progressBar.isVisible = true
+                }
+                COMPLETE -> {
+                    logDebug("$name - COMPLETE")
+                    mBinding.progressBar.isVisible = false
+                    mBinding.rcvMenu.isVisible = true
+                }
+                NETWORK -> logDebug("$name - NETWORK")
+                ERROR -> logDebug("$name - ERROR: ${it.message}")
+                SUCCESS -> logDebug(
+                    "$name<${it.index}> - SUCCESS: ${
+                        it.response?.results?.get(
+                            0
+                        )?.name
+                    }, size: ${it.response?.results?.size}"
+                )
+            }
+        }
     }
 }

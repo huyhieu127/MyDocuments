@@ -7,42 +7,51 @@ import androidx.lifecycle.map
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResponseData
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultAPI
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI
-import kotlinx.coroutines.Dispatchers
+import com.huyhieu.mydocuments.utils.logDebug
+import kotlinx.coroutines.*
 import retrofit2.Response
 import javax.inject.Inject
 
 class LiveDataMapper @Inject constructor() : Repository() {
 
-    fun <T> mapToLiveDataPokeAPI(remoteAPI: suspend () -> Response<T>):
+    fun <T> mapToLiveDataPokeAPI(vararg remoteAPI: suspend () -> Response<T>):
             LiveData<ResultPokeAPI<T>> = liveData(Dispatchers.IO) {
-        //Get result form Data Source
-        val networkCall: suspend () -> ResultPokeAPI<T> = { getPokeAPI { remoteAPI() } }
-
-        //Init live data
-        val data: MutableLiveData<Result<T>> = MutableLiveData()
-        data.value
         //state loading
+        val startTime = System.currentTimeMillis()
         emit(ResultPokeAPI.loading())
 
-        //Call api
-        val result = networkCall.invoke()
-        when (result.statusPokeAPI) {
-            ResultPokeAPI.StatusPokeAPI.NETWORK -> {
-                emit(ResultPokeAPI.network<T>())
-            }
+        //Get result form Data Source
+        coroutineScope {
+            //Call api
+            launch(Dispatchers.IO) {
+                remoteAPI.forEachIndexed { index, api ->
+                    val callAPI = async {
+                        val networkCall: suspend () -> ResultPokeAPI<T> = { getDataPokeAPI { api() } }
+                        val resultAPI = networkCall.invoke()
+                        when (resultAPI.statusPokeAPI) {
+                            ResultPokeAPI.StatusPokeAPI.NETWORK -> {
+                                emit(ResultPokeAPI.network<T>(index))
+                            }
 
-            ResultPokeAPI.StatusPokeAPI.SUCCESS -> {
-                emit(ResultPokeAPI.success(result.response!!))
-            }
+                            ResultPokeAPI.StatusPokeAPI.SUCCESS -> {
+                                emit(ResultPokeAPI.success(index, resultAPI.response!!))
+                            }
 
-            ResultPokeAPI.StatusPokeAPI.ERROR -> {
-                emit(ResultPokeAPI.error(result.message, result.error))
-            }
-            else -> {
+                            ResultPokeAPI.StatusPokeAPI.ERROR -> {
+                                emit(ResultPokeAPI.error(index, resultAPI.message, resultAPI.error))
+                            }
+                            else -> {
 
+                            }
+                        }
+                        logDebug("Time<$index>: ${System.currentTimeMillis() - startTime}")
+                    }
+                    callAPI.start()
+                }
             }
         }
         emit(ResultPokeAPI.complete<T>())
+        logDebug("Total time: ${System.currentTimeMillis() - startTime}")
     }
 
     fun <T> mapToLiveDataFromResult(remoteAPI: suspend () -> Response<ResponseData<T>>):

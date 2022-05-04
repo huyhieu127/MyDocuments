@@ -6,7 +6,7 @@ import retrofit2.Response
 
 open class Repository : RemoteDataSource() {
 
-    protected suspend fun <T> getDataPokeAPI(remoteAPI: suspend () -> Response<ResponseData<T>>) =
+    protected suspend fun <T> getDataPokeAPI(remoteAPI: suspend () -> Response<T>) =
         getPokeAPI { remoteAPI() }
 
     protected suspend fun <T> getDataFromRemote(remoteAPI: suspend () -> Response<ResponseData<T>>) =
