@@ -11,7 +11,7 @@ import com.huyhieu.mydocuments.others.enums.MenuType
 class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var lstData: MutableList<MenuForm>? = null
-    var itemClick: ((type: MenuType) -> Unit)? = null
+    var itemClick: ((type: MenuForm) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
     fun fillData(lstData: MutableList<MenuForm>) {
@@ -39,7 +39,7 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             lstData?.get(layoutPosition)?.let { item ->
                 binding.apply {
                     root.setOnClickListener {
-                        itemClick?.invoke(item.type)
+                        itemClick?.invoke(item)
                     }
                     tvTitle.text = item.name
                 }

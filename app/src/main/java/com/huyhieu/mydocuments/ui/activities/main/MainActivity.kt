@@ -1,19 +1,27 @@
 package com.huyhieu.mydocuments.ui.activities.main
 
+import android.Manifest
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothManager
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
-import androidx.lifecycle.viewModelScope
-import com.huyhieu.mydocuments.databinding.ActivityMainBinding
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import com.huyhieu.mydocuments.base.BaseActivity
+import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.others.enums.MenuType
-import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI.StatusPokeAPI.*
+import com.huyhieu.mydocuments.ui.activities.multipleapi.MultipleAPIActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
 import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -34,13 +42,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         viewModel.adapterMenu.apply {
             fillData(viewModel.lstMenus)
-            itemClick = { type ->
-                when (type) {
-                    MenuType.LoadMore -> {
-                        showToastShort("LoadMore")
+            itemClick = { menuForm ->
+                when (menuForm.type) {
+                    MenuType.MultipleAPI -> {
+                        startActivity(Intent(this@MainActivity, MultipleAPIActivity::class.java))
                     }
-                    MenuType.SignInSocial -> {
-                        showToastShort("SignInSocial")
+                    MenuType.Bluetooth -> {
+                        showToastShort("Bluetooth")
                     }
                     MenuType.Notification -> {
                         startActivity(Intent(this@MainActivity, NotificationActivity::class.java))
@@ -55,35 +63,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun addEvents(savedInstanceState1: Bundle?) {
-        callAPI()
     }
 
     override fun onClick(p0: View?) {
-    }
-
-    private fun callAPI() {
-        val name = "API"
-        viewModel.getPokemons().observe(this@MainActivity) {
-            when (it.statusPokeAPI) {
-                LOADING -> {
-                    logDebug("$name - LOADING")
-                    mBinding.progressBar.isVisible = true
-                }
-                COMPLETE -> {
-                    logDebug("$name - COMPLETE")
-                    mBinding.progressBar.isVisible = false
-                    mBinding.rcvMenu.isVisible = true
-                }
-                NETWORK -> logDebug("$name - NETWORK")
-                ERROR -> logDebug("$name - ERROR: ${it.message}")
-                SUCCESS -> logDebug(
-                    "$name<${it.index}> - SUCCESS: ${
-                        it.response?.results?.get(
-                            0
-                        )?.name
-                    }, size: ${it.response?.results?.size}"
-                )
-            }
-        }
     }
 }
