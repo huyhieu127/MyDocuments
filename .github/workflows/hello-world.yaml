@@ -11,6 +11,7 @@ on:
       - '!develop/**'
 jobs:
   say-hi:
-    runs-on: macos-latest
+    #runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo Xin chao!
