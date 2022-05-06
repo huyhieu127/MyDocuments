@@ -55,7 +55,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         startActivity(Intent(this@MainActivity, NotificationActivity::class.java))
                     }
                     MenuType.More -> {
-                        showToastShort("More")
                         MyDialog.getInstance().show(supportFragmentManager, null)
                     }
                 }
