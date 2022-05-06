@@ -12,4 +12,5 @@ on:
 jobs:
   say-hi:
     runs-on: macos-latest
-    steps: echo Xin chao!
+    steps:
+      - run: echo Xin chao!
