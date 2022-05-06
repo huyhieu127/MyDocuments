@@ -35,6 +35,7 @@ class BluetoothActivity : BaseActivity<ActivityBluetoothBinding>() {
     }
 
     override fun addEvents(savedInstanceState1: Bundle?) {
+        registerReceiver(receiver, IntentFilter(BluetoothDevice.ACTION_FOUND))
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -66,7 +67,6 @@ class BluetoothActivity : BaseActivity<ActivityBluetoothBinding>() {
                 }
 
                 bluetoothAdapter?.startDiscovery()
-                registerReceiver(receiver, IntentFilter(BluetoothDevice.ACTION_FOUND))
             }
         }
     }

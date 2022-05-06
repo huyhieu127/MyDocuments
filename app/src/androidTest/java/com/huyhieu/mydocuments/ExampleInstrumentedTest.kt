@@ -1,12 +1,16 @@
 package com.huyhieu.mydocuments
 
-import androidx.test.platform.app.InstrumentationRegistry
+import android.R
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
+import tools.fastlane.screengrab.Screengrab
 
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -20,5 +24,14 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.huyhieu.mydocuments", appContext.packageName)
+    }
+
+    @Test
+    fun testTakeScreenshot() {
+        Screengrab.screenshot("before_button_click")
+
+        // Your custom onView...
+        onView(withId(com.huyhieu.mydocuments.R.id.floatingActionButton)).perform(click())
+        Screengrab.screenshot("after_button_click")
     }
 }

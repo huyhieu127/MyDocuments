@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.others.enums.MenuType
+import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.multipleapi.MultipleAPIActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
@@ -48,7 +49,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         startActivity(Intent(this@MainActivity, MultipleAPIActivity::class.java))
                     }
                     MenuType.Bluetooth -> {
-                        showToastShort("Bluetooth")
+                        startActivity(Intent(this@MainActivity, BluetoothActivity::class.java))
                     }
                     MenuType.Notification -> {
                         startActivity(Intent(this@MainActivity, NotificationActivity::class.java))

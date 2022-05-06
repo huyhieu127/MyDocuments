@@ -1,0 +1,15 @@
+name: My workflow
+on:
+  push:
+    paths:
+      - '!README.md'
+      - '!build/**'
+      - '**.kt'
+    branches:
+      - 'master'
+      - 'release/**'
+      - '!develop/**'
+jobs:
+  say-hi:
+    runs-on: macos-latest
+    steps: echo Xin chao!
