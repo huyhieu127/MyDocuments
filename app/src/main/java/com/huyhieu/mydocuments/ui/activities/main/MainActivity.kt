@@ -63,7 +63,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun addEvents(savedInstanceState1: Bundle?) {
-        logDebug("Test push Event Github action")
+        logDebug("Test push Event Github action!")
     }
 
     override fun onClick(p0: View?) {
