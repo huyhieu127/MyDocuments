@@ -1,4 +1,4 @@
-name: My workflow
+name: My Workflows
 on:
   push:
     paths:
