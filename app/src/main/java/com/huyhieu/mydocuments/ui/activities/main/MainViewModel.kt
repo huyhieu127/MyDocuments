@@ -16,6 +16,7 @@ data class MainViewModel @Inject constructor(
         MenuForm(name = "Call multiple API", type = MenuType.MultipleAPI),
         MenuForm(name = "Bluetooth", type = MenuType.Bluetooth),
         MenuForm(name = "Notification Firebase", type = MenuType.Notification),
+        MenuForm(name = "Steps", type = MenuType.Steps),
         MenuForm(name = "More", type = MenuType.More)
     )
 }

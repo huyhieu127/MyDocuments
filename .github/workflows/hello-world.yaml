@@ -14,4 +14,4 @@ jobs:
     #runs-on: macos-latest
     runs-on: ubuntu-latest
     steps:
-      - run: echo Xin chao!
+      - run: echo CI/CD co ban!

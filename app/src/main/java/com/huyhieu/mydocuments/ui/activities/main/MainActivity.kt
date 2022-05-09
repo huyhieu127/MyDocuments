@@ -20,6 +20,7 @@ import com.huyhieu.mydocuments.others.enums.MenuType
 import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.multipleapi.MultipleAPIActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
+import com.huyhieu.mydocuments.ui.activities.steps.StepsActivity
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
 import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,6 +54,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     }
                     MenuType.Notification -> {
                         startActivity(Intent(this@MainActivity, NotificationActivity::class.java))
+                    }
+                    MenuType.Steps -> {
+                        startActivity(Intent(this@MainActivity, StepsActivity::class.java))
                     }
                     MenuType.More -> {
                         MyDialog.getInstance().show(supportFragmentManager, null)
