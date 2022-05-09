@@ -32,6 +32,9 @@ class Steps4Fragment : BaseFragment<FragmentSteps4Binding>() {
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {
+        mBinding.btnFinish.setOnClickListener {
+            mActivity?.finish()
+        }
     }
 
     override fun onClick(v: View?) {

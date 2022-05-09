@@ -21,8 +21,9 @@
             android:id="@+id/cv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:cardBackgroundColor="@color/purple_200"
+            app:cardBackgroundColor="#313700B3"
             app:cardCornerRadius="4dp"
+            app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +34,7 @@
             android:layout_height="match_parent"
             app:cardBackgroundColor="@color/purple_700"
             app:cardCornerRadius="4dp"
+            app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.0"
