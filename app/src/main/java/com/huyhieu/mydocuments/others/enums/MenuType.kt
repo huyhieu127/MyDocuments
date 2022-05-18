@@ -5,5 +5,6 @@ sealed class MenuType {
     object Bluetooth : MenuType()
     object Notification : MenuType()
     object Steps : MenuType()
-    object More : MenuType()
+    object DialogFragment : MenuType()
+    object StartFlutter : MenuType()
 }

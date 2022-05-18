@@ -22,6 +22,9 @@ android {
     }
 
     buildTypes {
+        profile {
+            initWith debug
+        }
         debug{
             buildConfigField "String", "SERVER_URL", '"https://pokeapi.co/api/v2/"'
         }
@@ -45,6 +48,11 @@ android {
 }
 
 dependencies {
+
+    //Add module Flutter
+    debugImplementation 'com.huyhieu.testmoduleflutter.test_module_flutter:flutter_debug:1.0'
+    profileImplementation 'com.huyhieu.testmoduleflutter.test_module_flutter:flutter_profile:1.0'
+    releaseImplementation 'com.huyhieu.testmoduleflutter.test_module_flutter:flutter_release:1.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

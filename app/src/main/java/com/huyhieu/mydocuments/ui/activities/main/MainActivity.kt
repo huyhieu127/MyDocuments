@@ -1,19 +1,8 @@
 package com.huyhieu.mydocuments.ui.activities.main
 
-import android.Manifest
-import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothManager
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.others.enums.MenuType
@@ -21,9 +10,9 @@ import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.multipleapi.MultipleAPIActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.ui.activities.steps.StepsActivity
-import com.huyhieu.mydocuments.utils.extensions.showToastShort
 import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
+import io.flutter.embedding.android.FlutterActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -58,8 +47,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     MenuType.Steps -> {
                         startActivity(Intent(this@MainActivity, StepsActivity::class.java))
                     }
-                    MenuType.More -> {
+                    MenuType.DialogFragment -> {
                         MyDialog.getInstance().show(supportFragmentManager, null)
+                    }
+                    MenuType.StartFlutter -> {
+                        //startActivity(FlutterActivity.withNewEngine().initialRoute("/main").build(this@MainActivity))
+                        startActivity(FlutterActivity.withCachedEngine("my_engine_id").build(this@MainActivity))
                     }
                 }
             }

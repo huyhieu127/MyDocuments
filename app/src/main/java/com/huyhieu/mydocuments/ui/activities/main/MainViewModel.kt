@@ -17,6 +17,7 @@ data class MainViewModel @Inject constructor(
         MenuForm(name = "Bluetooth", type = MenuType.Bluetooth),
         MenuForm(name = "Notification Firebase", type = MenuType.Notification),
         MenuForm(name = "Steps", type = MenuType.Steps),
-        MenuForm(name = "More", type = MenuType.More)
+        MenuForm(name = "Show dialog Fragment", type = MenuType.DialogFragment),
+        MenuForm(name = "Start Flutter", type = MenuType.StartFlutter)
     )
 }
