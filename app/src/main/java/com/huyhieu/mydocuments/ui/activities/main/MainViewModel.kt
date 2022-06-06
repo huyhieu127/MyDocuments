@@ -13,6 +13,7 @@ data class MainViewModel @Inject constructor(
 ) : ViewModel() {
     val adapterMenu by lazy { MenuAdapter() }
     var lstMenus = mutableListOf(
+        MenuForm(name = "Mobile FFmpeg Kit", type = MenuType.FFmpegKit),
         MenuForm(name = "Call multiple API", type = MenuType.MultipleAPI),
         MenuForm(name = "Bluetooth", type = MenuType.Bluetooth),
         MenuForm(name = "Notification Firebase", type = MenuType.Notification),

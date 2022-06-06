@@ -14,7 +14,7 @@ android {
     defaultConfig {
         applicationId "com.huyhieu.mydocuments"
         minSdk 21
-        targetSdk 32
+        targetSdk 28
         versionCode 1
         versionName "1.0"
 
@@ -88,4 +88,7 @@ dependencies {
 
     //Fastlane: Screenshot
     androidTestImplementation 'tools.fastlane:screengrab:2.1.1'
+
+    //FFmpeg Kit
+    implementation 'com.arthenica:ffmpeg-kit-full-gpl:4.5.1-1.LTS'
 }

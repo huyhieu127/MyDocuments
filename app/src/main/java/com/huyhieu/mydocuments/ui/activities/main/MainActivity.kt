@@ -18,6 +18,7 @@ import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.others.enums.MenuType
 import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
+import com.huyhieu.mydocuments.ui.activities.ffmmpegkit.FFmpegKitActivity
 import com.huyhieu.mydocuments.ui.activities.multipleapi.MultipleAPIActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.ui.activities.steps.StepsActivity
@@ -46,6 +47,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             fillData(viewModel.lstMenus)
             itemClick = { menuForm ->
                 when (menuForm.type) {
+                    MenuType.FFmpegKit -> {
+                        startActivity(Intent(this@MainActivity, FFmpegKitActivity::class.java))
+                    }
                     MenuType.MultipleAPI -> {
                         startActivity(Intent(this@MainActivity, MultipleAPIActivity::class.java))
                     }

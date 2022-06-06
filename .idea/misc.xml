@@ -3,16 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../../layout/custom_preview.xml" value="0.35833333333333334" />
-        <entry key="app/src/main/res/layout/activity_bluetooth.xml" value="0.33177083333333335" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
-        <entry key="app/src/main/res/layout/activity_multiple_apiactivity.xml" value="0.33177083333333335" />
-        <entry key="app/src/main/res/layout/activity_steps.xml" value="0.33177083333333335" />
-        <entry key="app/src/main/res/layout/fragment_steps1.xml" value="0.3591485507246377" />
-        <entry key="app/src/main/res/layout/fragment_steps2.xml" value="0.33177083333333335" />
-        <entry key="app/src/main/res/layout/fragment_steps3.xml" value="0.33177083333333335" />
-        <entry key="app/src/main/res/layout/fragment_steps4.xml" value="0.33177083333333335" />
-        <entry key="app/src/main/res/layout/layout_item_loading.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/drawable/bg_switch_thumb.xml" value="0.195" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/drawable/bg_switch_track.xml" value="0.2065" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/layout/activity_ffmpeg_kit.xml" value="0.176" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/layout/activity_multiple_apiactivity.xml" value="0.1" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/layout/activity_notification.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/layout/fragment_blank1.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/layout/fragment_blank2.xml" value="0.22826086956521738" />
       </map>
     </option>
   </component>
