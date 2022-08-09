@@ -7,7 +7,7 @@ import com.huyhieu.mydocuments.repository.LiveDataMapper
 import com.huyhieu.mydocuments.repository.remote.retrofit.APIService
 import javax.inject.Inject
 
-data class MainViewModel @Inject constructor(
+data class HomeViewModel @Inject constructor(
     private val mapper: LiveDataMapper,
     private val apiService: APIService
 ) : ViewModel() {

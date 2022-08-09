@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
+
+    <fragment
+        android:id="@+id/stepsFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.steps.StepsFragment"
+        android:label="fragment_steps"
+        tools:layout="@layout/fragment_steps" />
+    <action
+        android:id="@+id/action_global_stepsFragment"
+        app:destination="@id/stepsFragment" />
+
+    <fragment
+        android:id="@+id/multipleAPIFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.MultipleAPIFragment"
+        android:label="fragment_multiple_api"
+        tools:layout="@layout/fragment_multiple_api" />
+
+    <action
+        android:id="@+id/action_global_multipleAPIFragment"
+        app:destination="@id/multipleAPIFragment" />
+</navigation>

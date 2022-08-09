@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.fragments.steps
+package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
 import android.view.LayoutInflater
