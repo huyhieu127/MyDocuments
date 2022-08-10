@@ -32,8 +32,7 @@ class Steps2Fragment : BaseFragment<FragmentSteps2Binding>() {
             }
     }
 
-    override fun initializeBinding(inflater: LayoutInflater, container: ViewGroup?) =
-        FragmentSteps2Binding.inflate(layoutInflater)
+    override fun initializeBinding() = FragmentSteps2Binding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(requireActivity())[StepsViewModel::class.java]

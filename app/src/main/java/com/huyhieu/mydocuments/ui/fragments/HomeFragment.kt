@@ -24,10 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     @Inject
     lateinit var viewModel: HomeViewModel
 
-    override fun initializeBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = FragmentHomeBinding.inflate(layoutInflater)
+    override fun initializeBinding() = FragmentHomeBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState: Bundle?) {
         initListMenu()

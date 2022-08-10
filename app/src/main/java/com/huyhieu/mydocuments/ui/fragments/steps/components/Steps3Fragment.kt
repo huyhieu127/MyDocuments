@@ -1,9 +1,7 @@
 package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.huyhieu.mydocuments.base.BaseFragment
@@ -32,8 +30,7 @@ class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
             }
     }
 
-    override fun initializeBinding(inflater: LayoutInflater, container: ViewGroup?) =
-        FragmentSteps3Binding.inflate(layoutInflater)
+    override fun initializeBinding() = FragmentSteps3Binding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(requireActivity())[StepsViewModel::class.java]
