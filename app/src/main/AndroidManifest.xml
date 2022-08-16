@@ -32,9 +32,6 @@
             android:name=".ui.activities.steps.StepsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.multipleapi.MultipleAPIActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.bluetooth.BluetoothActivity"
             android:exported="false" />
         <activity

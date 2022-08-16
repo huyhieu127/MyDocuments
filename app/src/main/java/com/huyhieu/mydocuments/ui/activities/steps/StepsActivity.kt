@@ -3,9 +3,6 @@ package com.huyhieu.mydocuments.ui.activities.steps
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
-import android.view.animation.BounceInterpolator
-import android.view.animation.CycleInterpolator
-import android.view.animation.DecelerateInterpolator
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.ViewModelProvider
 import androidx.transition.ChangeBounds
@@ -22,12 +19,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class StepsActivity : BaseActivity<ActivityStepsBinding>() {
 
     //@Inject
-    lateinit var viewModel: StepsViewModel
+    lateinit var viewModel: StepsVM
 
     override fun initializeBinding() = ActivityStepsBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState1: Bundle?) {
-        viewModel = ViewModelProvider(this)[StepsViewModel::class.java]
+        viewModel = ViewModelProvider(this)[StepsVM::class.java]
     }
 
     override fun addEvents(savedInstanceState1: Bundle?) {

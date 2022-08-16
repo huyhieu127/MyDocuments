@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.activities.main
+package com.huyhieu.mydocuments.ui.fragments.home.components
 
 import android.os.Bundle
 import android.view.LayoutInflater

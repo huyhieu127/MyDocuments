@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
-class StepsViewModel @Inject constructor() : ViewModel() {
+class StepsVM @Inject constructor() : ViewModel() {
     val ldStep = MutableLiveData<Int>()
 
     init {

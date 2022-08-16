@@ -6,9 +6,25 @@ import android.util.Log
 const val TAG_LOG = ">>>>>>>>>>>"
 
 fun logError(str: String? = "") {
-    Log.e(TAG_LOG, "MSG: $str")
+    try {
+        Log.e(TAG_LOG, "MSG: $str")
+    }catch (ex: Exception){
+
+    }
 }
 
 fun logDebug(str: String? = "") {
-    Log.d(TAG_LOG, "MSG: $str")
+    try {
+        Log.d(TAG_LOG, "MSG: $str")
+    }catch (ex: Exception){
+
+    }
+}
+
+fun logInfo(str: String? = "") {
+    try {
+        Log.i(TAG_LOG, "MSG: $str")
+    }catch (ex: Exception){
+
+    }
 }

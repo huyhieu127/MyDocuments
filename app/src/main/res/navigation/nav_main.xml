@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.HomeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <action
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/multipleAPIFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.MultipleAPIFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.multipleapi.MultipleApiFragment"
         android:label="fragment_multiple_api"
         tools:layout="@layout/fragment_multiple_api" />
 

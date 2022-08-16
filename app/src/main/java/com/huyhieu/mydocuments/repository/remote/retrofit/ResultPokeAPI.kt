@@ -2,7 +2,7 @@ package com.huyhieu.mydocuments.repository.remote.retrofit
 
 
 data class ResultPokeAPI<out T>(
-    val index: Int = 0,
+    val apiKey: String = "",
     val statusPokeAPI: StatusPokeAPI,
     val response: T?,
     val message: String = "",
@@ -19,9 +19,9 @@ data class ResultPokeAPI<out T>(
 
 
     companion object {
-        fun <T> success(index: Int = 0,response: T): ResultPokeAPI<T> {
+        fun <T> success(apiKey: String = "", response: T): ResultPokeAPI<T> {
             return ResultPokeAPI(
-                index = index,
+                apiKey = apiKey,
                 StatusPokeAPI.SUCCESS,
                 response,
                 ""
@@ -29,13 +29,13 @@ data class ResultPokeAPI<out T>(
         }
 
         fun <T> error(
-            index: Int = 0,
+            apiKey: String = "",
             message: String = "",
             error: String? = null,
             response: T? = null
         ): ResultPokeAPI<T> {
             return ResultPokeAPI(
-                index = index,
+                apiKey = apiKey,
                 StatusPokeAPI.ERROR,
                 response,
                 message,
@@ -44,26 +44,27 @@ data class ResultPokeAPI<out T>(
         }
 
         fun <T> network(
-            index: Int = 0
+            apiKey: String = ""
         ): ResultPokeAPI<T> {
             return ResultPokeAPI(
-                index = index,
+                apiKey = apiKey,
                 StatusPokeAPI.NETWORK,
                 null, ""
             )
         }
 
-        fun <T> loading(index: Int = 0): ResultPokeAPI<T> {
+        fun <T> loading(apiKey: String = ""): ResultPokeAPI<T> {
             return ResultPokeAPI(
-                index = index,
+                apiKey = apiKey,
                 StatusPokeAPI.LOADING,
                 null,
                 ""
             )
         }
-        fun <T> complete(index: Int = 0): ResultPokeAPI<T> {
+
+        fun <T> complete(apiKey: String = ""): ResultPokeAPI<T> {
             return ResultPokeAPI(
-                index = index,
+                apiKey = apiKey,
                 StatusPokeAPI.COMPLETE,
                 null,
                 ""

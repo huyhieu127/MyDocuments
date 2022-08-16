@@ -1,17 +1,14 @@
 package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps1Binding
-import com.huyhieu.mydocuments.ui.activities.steps.StepsViewModel
+import com.huyhieu.mydocuments.ui.activities.steps.StepsVM
+import com.huyhieu.mydocuments.utils.extensions.navigate
 import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -19,7 +16,7 @@ private const val ARG_PARAM2 = "param2"
 @AndroidEntryPoint
 class Steps1Fragment : BaseFragment<FragmentSteps1Binding>() {
 
-    lateinit var viewModel: StepsViewModel
+    lateinit var viewModel: StepsVM
 
     private var param1: String? = null
     private var param2: String? = null
@@ -38,7 +35,7 @@ class Steps1Fragment : BaseFragment<FragmentSteps1Binding>() {
     override fun initializeBinding() = FragmentSteps1Binding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(requireActivity())[StepsViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[StepsVM::class.java]
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {
@@ -48,7 +45,7 @@ class Steps1Fragment : BaseFragment<FragmentSteps1Binding>() {
         mBinding.btnNext.setOnClickListener {
             viewModel.ldStep.value = 2
             val action = Steps1FragmentDirections.actionSteps1FragmentToSteps2Fragment()
-            view?.findNavController()?.navigate(action)
+            view?.navigate(action)
         }
     }
 

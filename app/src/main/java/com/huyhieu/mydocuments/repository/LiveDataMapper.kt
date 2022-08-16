@@ -14,44 +14,57 @@ import javax.inject.Inject
 
 class LiveDataMapper @Inject constructor() : Repository() {
 
-    fun <T> mapToLiveDataPokeAPI(vararg remoteAPI: suspend () -> Response<T>):
+    fun <T> mapToLiveDataPokeAPI(vararg api: Pair<String, suspend () -> Response<T>>):
             LiveData<ResultPokeAPI<T>> = liveData(Dispatchers.IO) {
         //state loading
         val startTime = System.currentTimeMillis()
         emit(ResultPokeAPI.loading())
-
         //Get result form Data Source
         coroutineScope {
             //Call api
             launch(Dispatchers.IO) {
-                remoteAPI.forEachIndexed { index, api ->
+                var isNoInternet = false
+                api.forEach { api ->
                     val callAPI = async {
-                        val networkCall: suspend () -> ResultPokeAPI<T> = { getDataPokeAPI { api() } }
+                        val networkCall: suspend () -> ResultPokeAPI<T> =
+                            { getDataPokeAPI { api.second() } }
+
                         val resultAPI = networkCall.invoke()
                         when (resultAPI.statusPokeAPI) {
                             ResultPokeAPI.StatusPokeAPI.NETWORK -> {
-                                emit(ResultPokeAPI.network<T>(index))
+                                /*if (!isNoInternet) {
+                                    isNoInternet = true
+                                }*/
+                                emit(ResultPokeAPI.network(api.first))
+                                throw CancellationException("No internet")
                             }
 
                             ResultPokeAPI.StatusPokeAPI.SUCCESS -> {
-                                emit(ResultPokeAPI.success(index, resultAPI.response!!))
+                                emit(ResultPokeAPI.success(api.first, resultAPI.response!!))
+                                logDebug("API - Success [${api.first}]")
                             }
 
                             ResultPokeAPI.StatusPokeAPI.ERROR -> {
-                                emit(ResultPokeAPI.error(index, resultAPI.message, resultAPI.error))
+                                emit(
+                                    ResultPokeAPI.error(
+                                        api.first,
+                                        resultAPI.message,
+                                        resultAPI.error
+                                    )
+                                )
                             }
                             else -> {
 
                             }
                         }
-                        logDebug("Time<$index>: ${System.currentTimeMillis() - startTime}")
                     }
                     callAPI.start()
+                    logDebug("API - Calling [${api.first}]")
                 }
             }
         }
-        emit(ResultPokeAPI.complete<T>())
-        logDebug("Total time: ${System.currentTimeMillis() - startTime}")
+        emit(ResultPokeAPI.complete())
+        logDebug("API - Finish!!!")
     }
 
     fun <T> mapToLiveDataFromResult(remoteAPI: suspend () -> Response<ResponseData<T>>):

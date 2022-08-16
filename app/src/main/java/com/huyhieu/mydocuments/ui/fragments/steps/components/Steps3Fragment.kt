@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps3Binding
-import com.huyhieu.mydocuments.ui.activities.steps.StepsViewModel
+import com.huyhieu.mydocuments.ui.activities.steps.StepsVM
 import com.huyhieu.mydocuments.utils.logDebug
 
 private const val ARG_PARAM1 = "param1"
@@ -14,7 +14,7 @@ private const val ARG_PARAM2 = "param2"
 
 class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
 
-    lateinit var viewModel: StepsViewModel
+    lateinit var viewModel: StepsVM
 
     private var param1: String? = null
     private var param2: String? = null
@@ -33,7 +33,7 @@ class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
     override fun initializeBinding() = FragmentSteps3Binding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(requireActivity())[StepsViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[StepsVM::class.java]
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {

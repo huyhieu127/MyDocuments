@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.activities.main
+package com.huyhieu.mydocuments.ui.fragments.home.components
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.huyhieu.mydocuments.databinding.LayoutItemMenuBinding
 import com.huyhieu.mydocuments.models.MenuForm
-import com.huyhieu.mydocuments.others.enums.MenuType
+import com.huyhieu.mydocuments.utils.extensions.setOnClickMyListener
 
 class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -38,7 +38,7 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bindViewHolder() {
             lstData?.get(layoutPosition)?.let { item ->
                 binding.apply {
-                    root.setOnClickListener {
+                    root.setOnClickMyListener {
                         itemClick?.invoke(item)
                     }
                     tvTitle.text = item.name

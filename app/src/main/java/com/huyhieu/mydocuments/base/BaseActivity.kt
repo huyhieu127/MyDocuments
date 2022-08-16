@@ -52,9 +52,4 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
         function: ((resultData: Any?) -> Unit)? = null
     ) {
     }
-
-
-    override fun onBackPressed() {
-        finish()
-    }
 }

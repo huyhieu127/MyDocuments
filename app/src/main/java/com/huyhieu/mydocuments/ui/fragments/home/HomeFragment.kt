@@ -1,20 +1,19 @@
-package com.huyhieu.mydocuments.ui.fragments
+package com.huyhieu.mydocuments.ui.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.others.enums.MenuType
 import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.ffmmpegkit.FFmpegKitActivity
-import com.huyhieu.mydocuments.ui.activities.main.HomeViewModel
-import com.huyhieu.mydocuments.ui.activities.main.MyDialog
-import com.huyhieu.mydocuments.ui.activities.multipleapi.MultipleAPIActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.ui.activities.steps.StepsActivity
+import com.huyhieu.mydocuments.ui.fragments.home.components.HomeVM
+import com.huyhieu.mydocuments.ui.fragments.home.components.MyDialog
+import com.huyhieu.mydocuments.ui.fragments.multipleapi.MultipleApiFragmentDirections
+import com.huyhieu.mydocuments.utils.extensions.navigate
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,7 +21,7 @@ import javax.inject.Inject
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     @Inject
-    lateinit var viewModel: HomeViewModel
+    lateinit var viewModel: HomeVM
 
     override fun initializeBinding() = FragmentHomeBinding.inflate(layoutInflater)
 
@@ -31,6 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {
+        callAPI("")
     }
 
     override fun onClick(v: View?) {
@@ -49,7 +49,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         startActivity(Intent(mActivity, FFmpegKitActivity::class.java))
                     }
                     MenuType.MultipleAPI -> {
-                        startActivity(Intent(mActivity, MultipleAPIActivity::class.java))
+                        val navDirections =
+                            MultipleApiFragmentDirections.actionGlobalMultipleAPIFragment()
+                        view?.navigate(navDirections)
                     }
                     MenuType.Bluetooth -> {
                         startActivity(Intent(mActivity, BluetoothActivity::class.java))
