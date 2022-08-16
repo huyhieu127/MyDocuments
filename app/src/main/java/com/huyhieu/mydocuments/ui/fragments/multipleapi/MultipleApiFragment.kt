@@ -10,7 +10,7 @@ import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-@AndroidEntryPoint
+
 class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
 
     @Inject

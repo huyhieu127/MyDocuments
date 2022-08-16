@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/motionCardFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -32,4 +32,12 @@
     <action
         android:id="@+id/action_global_multipleAPIFragment"
         app:destination="@id/multipleAPIFragment" />
+    <fragment
+        android:id="@+id/motionCardFragment"
+        android:name="com.huyhieu.mydocuments.MotionCardFragment"
+        android:label="fragment_motion_card"
+        tools:layout="@layout/fragment_motion_card" />
+    <action
+        android:id="@+id/action_global_motionCardFragment"
+        app:destination="@id/motionCardFragment" />
 </navigation>

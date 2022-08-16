@@ -12,7 +12,7 @@ import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.ui.activities.steps.StepsActivity
 import com.huyhieu.mydocuments.ui.fragments.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.home.components.MyDialog
-import com.huyhieu.mydocuments.ui.fragments.multipleapi.MultipleApiFragmentDirections
+import com.huyhieu.mydocuments.utils.extensions.MainDirections
 import com.huyhieu.mydocuments.utils.extensions.navigate
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -45,13 +45,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             fillData(viewModel.lstMenus)
             itemClick = { menuForm ->
                 when (menuForm.type) {
+                    MenuType.MotionCard -> {
+                        view?.navigate(MainDirections.toMotionCard)
+                    }
                     MenuType.FFmpegKit -> {
                         startActivity(Intent(mActivity, FFmpegKitActivity::class.java))
                     }
                     MenuType.MultipleAPI -> {
-                        val navDirections =
-                            MultipleApiFragmentDirections.actionGlobalMultipleAPIFragment()
-                        view?.navigate(navDirections)
+                        view?.navigate(MainDirections.toMultipleAPI)
                     }
                     MenuType.Bluetooth -> {
                         startActivity(Intent(mActivity, BluetoothActivity::class.java))

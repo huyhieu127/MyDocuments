@@ -13,6 +13,7 @@ data class HomeVM @Inject constructor(
 ) : ViewModel() {
     val adapterMenu by lazy { MenuAdapter() }
     var lstMenus = mutableListOf(
+        MenuForm(name = "Motion Card", type = MenuType.MotionCard),
         MenuForm(name = "Mobile FFmpeg Kit", type = MenuType.FFmpegKit),
         MenuForm(name = "Call multiple API", type = MenuType.MultipleAPI),
         MenuForm(name = "Bluetooth", type = MenuType.Bluetooth),
