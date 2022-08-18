@@ -45,6 +45,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             fillData(viewModel.lstMenus)
             itemClick = { menuForm ->
                 when (menuForm.type) {
+                    MenuType.Guide -> {
+                        view?.navigate(MainDirections.toGuide)
+                    }
                     MenuType.MotionCard -> {
                         view?.navigate(MainDirections.toMotionCard)
                     }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/motionCardFragment">
+    app:startDestination="@id/guideFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -40,4 +40,12 @@
     <action
         android:id="@+id/action_global_motionCardFragment"
         app:destination="@id/motionCardFragment" />
+    <fragment
+        android:id="@+id/guideFragment"
+        android:name="com.huyhieu.mydocuments.ui.GuideFragment"
+        android:label="fragment_guide"
+        tools:layout="@layout/fragment_guide" />
+    <action
+        android:id="@+id/action_global_guideFragment"
+        app:destination="@id/guideFragment" />
 </navigation>
