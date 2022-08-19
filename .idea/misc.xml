@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/drawable/bg_switch_thumb.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/bg_switch_track.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/ic_baseline_file_copy_24.xml" value="0.321" />
+        <entry key="app/src/main/res/drawable/ic_qr_code_top_left.xml" value="0.321" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_multiple_apiactivity.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_steps.xml" value="0.35625" />
@@ -23,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_motion_card.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_multiple_api.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_qr_code.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/fragment_steps.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_steps1.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/fragment_steps2.xml" value="0.3182291666666667" />

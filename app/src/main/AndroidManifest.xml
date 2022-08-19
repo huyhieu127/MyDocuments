@@ -16,6 +16,7 @@
     <!-- Allows changing locales -->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
         tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".App"
@@ -27,9 +28,6 @@
         android:theme="@style/Theme.MyDocuments">
         <activity
             android:name=".ui.activities.ffmmpegkit.FFmpegKitActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activities.steps.StepsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.bluetooth.BluetoothActivity"
@@ -46,6 +44,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="barcode" />
     </application>
 
 </manifest>
