@@ -9,10 +9,9 @@ import com.huyhieu.mydocuments.others.enums.MenuType
 import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.ffmmpegkit.FFmpegKitActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
-import com.huyhieu.mydocuments.ui.activities.steps.StepsActivity
 import com.huyhieu.mydocuments.ui.fragments.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.home.components.MyDialog
-import com.huyhieu.mydocuments.utils.extensions.MainDirections
+import com.huyhieu.mydocuments.utils.directions.MainDirections
 import com.huyhieu.mydocuments.utils.extensions.navigate
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -46,16 +45,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             itemClick = { menuForm ->
                 when (menuForm.type) {
                     MenuType.Guide -> {
-                        view?.navigate(MainDirections.toGuide)
+                        mActivity?.navigate(MainDirections.toGuide)
                     }
                     MenuType.MotionCard -> {
-                        view?.navigate(MainDirections.toMotionCard)
+                        mActivity?.navigate(MainDirections.toMotionCard)
                     }
                     MenuType.FFmpegKit -> {
                         startActivity(Intent(mActivity, FFmpegKitActivity::class.java))
                     }
                     MenuType.MultipleAPI -> {
-                        view?.navigate(MainDirections.toMultipleAPI)
+                        mActivity?.navigate(MainDirections.toMultipleAPI)
                     }
                     MenuType.Bluetooth -> {
                         startActivity(Intent(mActivity, BluetoothActivity::class.java))
@@ -64,7 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         startActivity(Intent(mActivity, NotificationActivity::class.java))
                     }
                     MenuType.Steps -> {
-                        startActivity(Intent(mActivity, StepsActivity::class.java))
+                        mActivity?.navigate(MainDirections.toSteps)
                     }
                     MenuType.More -> {
                         mActivity?.supportFragmentManager?.let {

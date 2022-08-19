@@ -9,32 +9,35 @@
         android:id="@+id/steps1Fragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.steps.components.Steps1Fragment"
         android:label="Steps1Fragment"
-        tools:layout="@layout/fragment_steps1">
-        <action
-            android:id="@+id/action_steps1Fragment_to_steps2Fragment"
-            app:destination="@id/steps2Fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_steps1" />
+    <action
+        android:id="@+id/action_global_steps1Fragment"
+        app:destination="@id/steps1Fragment" />
+
     <fragment
         android:id="@+id/steps2Fragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.steps.components.Steps2Fragment"
         android:label="Steps2Fragment"
-        tools:layout="@layout/fragment_steps2">
-        <action
-            android:id="@+id/action_steps2Fragment_to_steps3Fragment"
-            app:destination="@id/steps3Fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_steps2" />
+    <action
+        android:id="@+id/action_global_steps2Fragment"
+        app:destination="@id/steps2Fragment" />
+
     <fragment
         android:id="@+id/steps3Fragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.steps.components.Steps3Fragment"
         android:label="Steps3Fragment"
-        tools:layout="@layout/fragment_steps3">
-        <action
-            android:id="@+id/action_steps3Fragment_to_steps4Fragment"
-            app:destination="@id/steps4Fragment" />
-    </fragment>
+        tools:layout="@layout/fragment_steps3" />
+    <action
+        android:id="@+id/action_global_steps3Fragment"
+        app:destination="@id/steps3Fragment" />
+
     <fragment
         android:id="@+id/steps4Fragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.steps.components.Steps4Fragment"
         android:label="Steps4Fragment"
         tools:layout="@layout/fragment_steps4" />
+    <action
+        android:id="@+id/action_global_steps4Fragment"
+        app:destination="@id/steps4Fragment" />
 </navigation>

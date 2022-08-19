@@ -2,19 +2,23 @@ package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps3Binding
-import com.huyhieu.mydocuments.ui.activities.steps.StepsVM
-import com.huyhieu.mydocuments.utils.logDebug
+import com.huyhieu.mydocuments.ui.fragments.steps.StepsVM
+import com.huyhieu.mydocuments.utils.directions.StepDirections
+import com.huyhieu.mydocuments.utils.extensions.navigate
+import com.huyhieu.mydocuments.utils.extensions.popBackStack
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+@AndroidEntryPoint
 class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
 
-    lateinit var viewModel: StepsVM
+    @Inject
+    lateinit var stepsVM: StepsVM
 
     private var param1: String? = null
     private var param2: String? = null
@@ -33,20 +37,18 @@ class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
     override fun initializeBinding() = FragmentSteps3Binding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(requireActivity())[StepsVM::class.java]
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {
-        viewModel.ldStep.observe(viewLifecycleOwner) {
-            logDebug("S3: $it")
-        }
         mBinding.btnNext.setOnClickListener {
-            viewModel.ldStep.value = 4
-            val action = Steps3FragmentDirections.actionSteps3FragmentToSteps4Fragment()
-            view?.findNavController()?.navigate(action)
+            stepsVM.setStep(4)
         }
     }
 
     override fun onClick(v: View?) {
+    }
+
+    override fun onBackPressedFragment() {
+        mActivity?.popBackStack()
     }
 }

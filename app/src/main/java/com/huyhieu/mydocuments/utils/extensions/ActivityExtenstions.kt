@@ -12,9 +12,11 @@ import android.graphics.Point
 import android.net.Uri
 import android.os.Build
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.view.WindowMetrics
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -71,6 +73,25 @@ fun Activity?.setDarkColorStatusBar(isDark: Boolean = true) {
                     statusBarColor = Color.BLACK
                 }
             }
+        }
+    }
+}
+
+fun Activity?.setTransparentStatusBar(
+    isTransparent: Boolean = true,
+    @ColorRes idColor: Int = android.R.color.white
+) {
+    this ?: return
+    when (isTransparent) {
+        true -> {
+            val w: Window = window
+            w.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+            w.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+        }
+        false -> {
+            val w: Window = window
+            w.statusBarColor = ContextCompat.getColor(this, idColor)
+            w.navigationBarColor = ContextCompat.getColor(this, idColor)
         }
     }
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/guideFragment">
+    app:startDestination="@id/stepsFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -34,7 +34,7 @@
         app:destination="@id/multipleAPIFragment" />
     <fragment
         android:id="@+id/motionCardFragment"
-        android:name="com.huyhieu.mydocuments.MotionCardFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.MotionCardFragment"
         android:label="fragment_motion_card"
         tools:layout="@layout/fragment_motion_card" />
     <action
@@ -42,7 +42,7 @@
         app:destination="@id/motionCardFragment" />
     <fragment
         android:id="@+id/guideFragment"
-        android:name="com.huyhieu.mydocuments.ui.GuideFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.GuideFragment"
         android:label="fragment_guide"
         tools:layout="@layout/fragment_guide" />
     <action

@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui
+package com.huyhieu.mydocuments.ui.fragments
 
 import android.os.Bundle
 import android.view.View

@@ -37,11 +37,14 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
         getDataFormIntent()
         addControls(savedInstanceState)
         addEvents(savedInstanceState)
+        onLiveData()
     }
 
     open fun getDataFormIntent() {
 
     }
+
+    open fun onLiveData(){}
 
     /**
      * @apiKey : Key of API

@@ -6,10 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps4Binding
+import com.huyhieu.mydocuments.utils.extensions.popBackStack
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+@AndroidEntryPoint
 class Steps4Fragment : BaseFragment<FragmentSteps4Binding>() {
     private var param1: String? = null
     private var param2: String? = null
@@ -37,5 +40,9 @@ class Steps4Fragment : BaseFragment<FragmentSteps4Binding>() {
     }
 
     override fun onClick(v: View?) {
+    }
+
+    override fun onBackPressedFragment() {
+        mActivity?.popBackStack()
     }
 }

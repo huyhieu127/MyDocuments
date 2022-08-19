@@ -1,14 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StepsFragment">
+    android:id="@+id/motionSteps"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#232051"
+    android:fitsSystemWindows="true"
+    app:layoutDescription="@xml/fragment_steps_scene">
 
-    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <View
+        android:id="@+id/vStep1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#6DFFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep1"
+        app:layout_constraintEnd_toEndOf="@id/tvStep1"
+        app:layout_constraintStart_toStartOf="@id/tvStep1"
+        app:layout_constraintTop_toTopOf="@id/tvStep1" />
+
+    <View
+        android:id="@+id/vStep2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#6DFFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep2"
+        app:layout_constraintEnd_toEndOf="@id/tvStep2"
+        app:layout_constraintStart_toStartOf="@id/tvStep2"
+        app:layout_constraintTop_toTopOf="@id/tvStep2" />
+
+    <View
+        android:id="@+id/vStep3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#6DFFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep3"
+        app:layout_constraintEnd_toEndOf="@id/tvStep3"
+        app:layout_constraintStart_toStartOf="@id/tvStep3"
+        app:layout_constraintTop_toTopOf="@id/tvStep3" />
+
+    <View
+        android:id="@+id/vStep4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#6DFFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep4"
+        app:layout_constraintEnd_toEndOf="@id/tvStep4"
+        app:layout_constraintStart_toStartOf="@id/tvStep4"
+        app:layout_constraintTop_toTopOf="@id/tvStep4" />
+
+    <View
+        android:id="@+id/vAnim"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#FCB717"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep1"
+        app:layout_constraintEnd_toEndOf="@id/tvStep1"
+        app:layout_constraintStart_toStartOf="@id/tvStep1"
+        app:layout_constraintTop_toTopOf="@id/tvStep1" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvStep1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:alpha="0.5"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/tvStep2"
+        app:layout_constraintStart_toStartOf="@id/gStart"
+        app:layout_constraintTop_toTopOf="@id/gTop" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvStep2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:alpha="0.5"
+        android:gravity="center"
+        android:text="2"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep1"
+        app:layout_constraintEnd_toStartOf="@id/tvStep3"
+        app:layout_constraintStart_toEndOf="@+id/tvStep1"
+        app:layout_constraintTop_toTopOf="@id/tvStep1" />
+
+    <TextView
+        android:id="@+id/tvStep3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:alpha="0.5"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep1"
+        app:layout_constraintEnd_toStartOf="@id/tvStep4"
+        app:layout_constraintStart_toEndOf="@+id/tvStep2"
+        app:layout_constraintTop_toTopOf="@id/tvStep1" />
+
+    <TextView
+        android:id="@+id/tvStep4"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:alpha="0.5"
+        android:gravity="center"
+        android:text="4"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvStep1"
+        app:layout_constraintEnd_toEndOf="@id/gEnd"
+        app:layout_constraintStart_toEndOf="@+id/tvStep3"
+        app:layout_constraintTop_toTopOf="@id/tvStep1" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navHostSteps"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStep1"
+        app:navGraph="@navigation/nav_steps" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

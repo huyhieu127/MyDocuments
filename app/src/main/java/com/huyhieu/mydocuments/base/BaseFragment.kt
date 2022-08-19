@@ -5,10 +5,14 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptionsBuilder
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.mydocuments.utils.extensions.hideKeyboard
-import dagger.hilt.android.AndroidEntryPoint
 
 abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener {
 
@@ -66,13 +70,25 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         addControls(savedInstanceState)
         addEvents(savedInstanceState)
+        onLiveData(savedInstanceState)
     }
+
+    open fun onLiveData(savedInstanceState: Bundle?) {}
 
     open fun callAPI(
         apiKey: String,
         param: Any? = null,
         function: ((resultData: Any?) -> Unit)? = null
     ) {
+    }
+
+    fun childNavigate(
+        navHostFragment: NavHostFragment,
+        directions: NavDirections,
+        navOptionBuilder: (NavOptionsBuilder.() -> Unit)? = null
+    ) {
+        val navOpt = navOptionBuilder?.let { navOptions { it() } }
+        navHostFragment.navController.navigate(directions, navOpt)
     }
 
     open fun onBackPressedFragment() {

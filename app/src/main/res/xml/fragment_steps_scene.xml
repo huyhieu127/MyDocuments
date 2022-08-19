@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/s1">
+        <!--<Constraint android:id="@id/vAnim"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvStep1"
+            app:layout_constraintEnd_toEndOf="@id/tvStep1"
+            app:layout_constraintStart_toStartOf="@id/tvStep1"
+            app:layout_constraintTop_toTopOf="@id/tvStep1"/>-->
+        <Constraint android:id="@id/vAnim"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s2">
+        <Constraint android:id="@id/vAnim"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvStep2"
+            app:layout_constraintEnd_toEndOf="@id/tvStep2"
+            app:layout_constraintStart_toStartOf="@id/tvStep2"
+            app:layout_constraintTop_toTopOf="@id/tvStep2"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s3">
+        <Constraint android:id="@id/vAnim"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvStep3"
+            app:layout_constraintEnd_toEndOf="@id/tvStep3"
+            app:layout_constraintStart_toStartOf="@id/tvStep3"
+            app:layout_constraintTop_toTopOf="@id/tvStep3"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s4">
+        <Constraint android:id="@id/vAnim"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvStep4"
+            app:layout_constraintEnd_toEndOf="@id/tvStep4"
+            app:layout_constraintStart_toStartOf="@id/tvStep4"
+            app:layout_constraintTop_toTopOf="@id/tvStep4"/>
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetStart="@+id/s1"
+        app:constraintSetEnd="@id/s2"
+        app:duration="300"/>
+    <Transition
+        app:constraintSetStart="@id/s2"
+        app:constraintSetEnd="@id/s3"
+        app:duration="300"/>
+    <Transition
+        app:constraintSetStart="@id/s3"
+        app:constraintSetEnd="@id/s4"
+        app:duration="300"/>
+</MotionScene>
