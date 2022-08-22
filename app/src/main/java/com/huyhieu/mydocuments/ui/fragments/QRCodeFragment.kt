@@ -2,36 +2,26 @@ package com.huyhieu.mydocuments.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
 import com.huyhieu.mydocuments.utils.commons.BarcodeScanner
-import com.huyhieu.mydocuments.utils.launchPermission
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
+import com.huyhieu.mydocuments.utils.commons.HoleRectangle
+import com.huyhieu.mydocuments.utils.extensions.showToastShort
 
 
 class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
-    private lateinit var cameraExecutor: ExecutorService
     private var barcode: BarcodeScanner? = null
-    private var requestPermission = launchPermission(
-        onGranted = {
-
-        },
-        onDinned = {
-            barcode?.showDialogRequest()
-        }
-    )
-
-
     override fun initializeBinding() = FragmentQrCodeBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState: Bundle?) {
-        cameraExecutor = Executors.newSingleThreadExecutor()
-        mActivity?.let {
-            barcode = BarcodeScanner(it, viewLifecycleOwner, mBinding.previewView, cameraExecutor) {
-                requestPermission.launch(arrayOf(BarcodeScanner.PERMISSION_CAMERA))
-            }
-
+        mBinding.hvQRCode.holeRectangle = HoleRectangle(
+            mBinding.vContent,
+            radius = resources.getDimension(R.dimen.radius),
+            padding = 0F
+        )
+        barcode = BarcodeScanner(this, mBinding.previewView) {
+            mActivity?.showToastShort(it.toString())
         }
     }
 
@@ -43,7 +33,7 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        cameraExecutor.shutdown()
+        barcode?.shutdown()
     }
 
 }
