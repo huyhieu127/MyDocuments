@@ -1,14 +1,9 @@
 package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps1Binding
-import com.huyhieu.mydocuments.ui.activities.main.MainVM
-import com.huyhieu.mydocuments.ui.fragments.steps.StepsFragment
 import com.huyhieu.mydocuments.ui.fragments.steps.StepsVM
-import com.huyhieu.mydocuments.utils.directions.StepDirections
-import com.huyhieu.mydocuments.utils.extensions.navigate
 import com.huyhieu.mydocuments.utils.extensions.popBackStack
 import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,10 +41,6 @@ class Steps1Fragment : BaseFragment<FragmentSteps1Binding>() {
         mBinding.btnNext.setOnClickListener {
             stepsVM.setStep(2)
         }
-    }
-
-    override fun onClick(v: View?) {
-
     }
 
     override fun onDestroyView() {

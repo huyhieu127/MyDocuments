@@ -1,11 +1,9 @@
 package com.huyhieu.mydocuments.ui.fragments
 
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentGuideBinding
 import com.huyhieu.mydocuments.utils.commons.HoleCircle
-import com.huyhieu.mydocuments.utils.commons.HoleRectangle
 
 class GuideFragment : BaseFragment<FragmentGuideBinding>() {
     override fun initializeBinding() = FragmentGuideBinding.inflate(layoutInflater)
@@ -16,8 +14,5 @@ class GuideFragment : BaseFragment<FragmentGuideBinding>() {
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {
-    }
-
-    override fun onClick(v: View?) {
     }
 }

@@ -2,7 +2,6 @@ package com.huyhieu.mydocuments.ui.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.others.enums.MenuType
@@ -30,9 +29,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun addEvents(savedInstanceState: Bundle?) {
         callAPI("")
-    }
-
-    override fun onClick(v: View?) {
     }
 
     private fun initListMenu() {

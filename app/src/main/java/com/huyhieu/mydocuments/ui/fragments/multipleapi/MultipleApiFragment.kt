@@ -1,13 +1,11 @@
 package com.huyhieu.mydocuments.ui.fragments.multipleapi
 
 import android.os.Bundle
-import android.view.View
 import androidx.core.view.isVisible
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMultipleApiBinding
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI
 import com.huyhieu.mydocuments.utils.logDebug
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
@@ -23,9 +21,6 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
 
     override fun addEvents(savedInstanceState: Bundle?) {
         callAPI("")
-    }
-
-    override fun onClick(v: View?) {
     }
 
     override fun callAPI(apiKey: String, param: Any?, function: ((resultData: Any?) -> Unit)?) {

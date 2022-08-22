@@ -1,12 +1,9 @@
 package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps3Binding
 import com.huyhieu.mydocuments.ui.fragments.steps.StepsVM
-import com.huyhieu.mydocuments.utils.directions.StepDirections
-import com.huyhieu.mydocuments.utils.extensions.navigate
 import com.huyhieu.mydocuments.utils.extensions.popBackStack
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -43,9 +40,6 @@ class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
         mBinding.btnNext.setOnClickListener {
             stepsVM.setStep(4)
         }
-    }
-
-    override fun onClick(v: View?) {
     }
 
     override fun onBackPressedFragment() {

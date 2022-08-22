@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.steps
 
 import android.os.Bundle
-import android.view.View
 import androidx.navigation.NavOptions
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
@@ -25,9 +24,6 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {
-    }
-
-    override fun onClick(v: View?) {
     }
 
     override fun onLiveData(savedInstanceState: Bundle?) {

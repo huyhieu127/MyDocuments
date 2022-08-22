@@ -5,7 +5,6 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptionsBuilder
@@ -44,6 +43,15 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
         val view = mBinding.root
         initViewParent(view)
         return view
+    }
+
+    final override fun onClick(v: View?) {
+        v ?: return
+        mBinding.onClickViewBinding(v)
+    }
+
+    open fun T.onClickViewBinding(v: View) {
+
     }
 
     private fun initViewParent(rootView: View?) {

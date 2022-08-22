@@ -1,9 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps4Binding
 import com.huyhieu.mydocuments.utils.extensions.popBackStack
@@ -38,10 +35,6 @@ class Steps4Fragment : BaseFragment<FragmentSteps4Binding>() {
             mActivity?.finish()
         }
     }
-
-    override fun onClick(v: View?) {
-    }
-
     override fun onBackPressedFragment() {
         mActivity?.popBackStack()
     }

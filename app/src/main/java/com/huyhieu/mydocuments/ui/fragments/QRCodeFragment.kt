@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments
 
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
@@ -25,9 +24,6 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
     }
 
     override fun addEvents(savedInstanceState: Bundle?) {
-    }
-
-    override fun onClick(v: View?) {
     }
 
     override fun onDestroyView() {
