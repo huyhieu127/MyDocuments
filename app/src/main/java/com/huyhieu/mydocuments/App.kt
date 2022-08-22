@@ -14,6 +14,7 @@ class App : MultiDexApplication() {
         fun getInstance(): App {
             return instance as App
         }
+        val app by lazy { getInstance() }
     }
 
     val sharedPref by lazy { SharedPreferencesManager(this) }
