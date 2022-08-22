@@ -20,22 +20,22 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
 
     override fun initializeBinding() = FragmentStepsBinding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentStepsBinding.addControls(savedInstanceState: Bundle?) {
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentStepsBinding.addEvents(savedInstanceState: Bundle?) {
     }
 
-    override fun onLiveData(savedInstanceState: Bundle?) {
-        stepsVM.stepsLiveData.observe(this) {
+    override fun FragmentStepsBinding.onLiveData(savedInstanceState: Bundle?) {
+        stepsVM.stepsLiveData.observe(this@StepsFragment) {
             when (it) {
                 1 -> {
-                    mBinding.motionSteps.setTransitionTo(R.id.s1, R.id.s1)
+                    motionSteps.setTransitionTo(R.id.s1, R.id.s1)
                     mActivity?.navigate(StepDirections.toStep1)
                 }
                 2 -> {
-                    mBinding.motionSteps.setTransitionTo(R.id.s1, R.id.s2)
-                    mBinding.navHostSteps.childNavigate(
+                    motionSteps.setTransitionTo(R.id.s1, R.id.s2)
+                    navHostSteps.childNavigate(
                         StepDirections.toStep2,
                         NavOptions.Builder().apply {
                             setLaunchSingleTop(true)
@@ -46,8 +46,8 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
                     )
                 }
                 3 -> {
-                    mBinding.motionSteps.setTransitionTo(R.id.s2, R.id.s3)
-                    mBinding.navHostSteps.childNavigate(
+                    motionSteps.setTransitionTo(R.id.s2, R.id.s3)
+                    navHostSteps.childNavigate(
                         StepDirections.toStep3,
                         NavOptions.Builder().apply {
                             setLaunchSingleTop(true)
@@ -58,8 +58,8 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
                     )
                 }
                 4 -> {
-                    mBinding.motionSteps.setTransitionTo(R.id.s3, R.id.s4)
-                    mBinding.navHostSteps.childNavigate(
+                    motionSteps.setTransitionTo(R.id.s3, R.id.s4)
+                    navHostSteps.childNavigate(
                         StepDirections.toStep4,
                         NavOptions.Builder().apply {
                             setLaunchSingleTop(true)

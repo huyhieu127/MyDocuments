@@ -27,14 +27,15 @@ class Steps4Fragment : BaseFragment<FragmentSteps4Binding>() {
 
     override fun initializeBinding() = FragmentSteps4Binding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentSteps4Binding.addControls(savedInstanceState: Bundle?) {
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
-        mBinding.btnFinish.setOnClickListener {
+    override fun FragmentSteps4Binding.addEvents(savedInstanceState: Bundle?) {
+        btnFinish.setOnClickListener {
             mActivity?.finish()
         }
     }
+
     override fun onBackPressedFragment() {
         mActivity?.popBackStack()
     }

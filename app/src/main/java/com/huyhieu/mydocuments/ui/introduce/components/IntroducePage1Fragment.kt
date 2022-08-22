@@ -7,9 +7,9 @@ import com.huyhieu.mydocuments.databinding.FragmentIntroducePage1Binding
 class IntroducePage1Fragment : BaseFragment<FragmentIntroducePage1Binding>() {
     override fun initializeBinding() = FragmentIntroducePage1Binding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentIntroducePage1Binding.addControls(savedInstanceState: Bundle?) {
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentIntroducePage1Binding.addEvents(savedInstanceState: Bundle?) {
     }
 }

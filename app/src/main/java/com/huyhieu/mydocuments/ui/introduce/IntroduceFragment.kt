@@ -21,10 +21,10 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
 
     override fun initializeBinding() = FragmentIntroduceBinding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentIntroduceBinding.addControls(savedInstanceState: Bundle?) {
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentIntroduceBinding.addEvents(savedInstanceState: Bundle?) {
         mBinding.apply {
             layouts = intArrayOf(
                 R.layout.fragment_introduce_page1,
@@ -55,25 +55,23 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
         }
     }
 
-    private fun fillText(position: Int) {
-        with(mBinding) {
-            when (position) {
-                0 -> {
-                    tvName.text = "This is Name"
-                    tvTitle.text = "This is Title"
-                    tvDescribe.text = "This is Describe This is Describe"
-                }
-                1 -> {
-                    tvName.text = "This is Name 1"
-                    tvTitle.text = "This is Title 1"
-                    tvDescribe.text =
-                        "This is Describe This is Describe This is Describe This is Describe 1"
-                }
-                2 -> {
-                    tvName.text = "This is Name 2"
-                    tvTitle.text = "This is Title 2"
-                    tvDescribe.text = "This is Describe This is Describe2"
-                }
+    private fun FragmentIntroduceBinding.fillText(position: Int) {
+        when (position) {
+            0 -> {
+                tvName.text = "This is Name"
+                tvTitle.text = "This is Title"
+                tvDescribe.text = "This is Describe This is Describe"
+            }
+            1 -> {
+                tvName.text = "This is Name 1"
+                tvTitle.text = "This is Title 1"
+                tvDescribe.text =
+                    "This is Describe This is Describe This is Describe This is Describe 1"
+            }
+            2 -> {
+                tvName.text = "This is Name 2"
+                tvTitle.text = "This is Title 2"
+                tvDescribe.text = "This is Describe This is Describe2"
             }
         }
     }

@@ -12,18 +12,18 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
     private var barcode: BarcodeScanner? = null
     override fun initializeBinding() = FragmentQrCodeBinding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
-        mBinding.hvQRCode.holeRectangle = HoleRectangle(
-            mBinding.viewScan,
+    override fun FragmentQrCodeBinding.addControls(savedInstanceState: Bundle?) {
+        hvQRCode.holeRectangle = HoleRectangle(
+            viewScan,
             radius = resources.getDimension(R.dimen.radius),
             padding = 0F
         )
-        barcode = BarcodeScanner(this, mBinding.previewView, mBinding.viewScan) {
-            mBinding.tvResult.text = it?.rawValue ?: ""
+        barcode = BarcodeScanner(this@QRCodeFragment, previewView, viewScan) {
+            tvResult.text = it?.rawValue ?: ""
         }
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentQrCodeBinding.addEvents(savedInstanceState: Bundle?) {
     }
 
     override fun onDestroyView() {

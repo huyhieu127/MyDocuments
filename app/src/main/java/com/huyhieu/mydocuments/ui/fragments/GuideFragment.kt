@@ -8,11 +8,11 @@ import com.huyhieu.mydocuments.utils.commons.HoleCircle
 class GuideFragment : BaseFragment<FragmentGuideBinding>() {
     override fun initializeBinding() = FragmentGuideBinding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
-        mBinding.hvFrame.holeCircle = HoleCircle(mBinding.button)
+    override fun FragmentGuideBinding.addControls(savedInstanceState: Bundle?) {
+        hvFrame.holeCircle = HoleCircle(mBinding.button)
         //mBinding.hvFrame.holeRectangle = HoleRectangle(mBinding.button)
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentGuideBinding.addEvents(savedInstanceState: Bundle?) {
     }
 }

@@ -33,11 +33,11 @@ class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
 
     override fun initializeBinding() = FragmentSteps3Binding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentSteps3Binding.addControls(savedInstanceState: Bundle?) {
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
-        mBinding.btnNext.setOnClickListener {
+    override fun FragmentSteps3Binding.addEvents(savedInstanceState: Bundle?) {
+        btnNext.setOnClickListener {
             stepsVM.setStep(4)
         }
     }

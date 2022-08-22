@@ -32,8 +32,8 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
      */
     abstract fun initializeBinding(): T
 
-    abstract fun addControls(savedInstanceState: Bundle?)
-    abstract fun addEvents(savedInstanceState: Bundle?)
+    abstract fun T.addControls(savedInstanceState: Bundle?)
+    abstract fun T.addEvents(savedInstanceState: Bundle?)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,14 +76,14 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        addControls(savedInstanceState)
-        addEvents(savedInstanceState)
-        onLiveData(savedInstanceState)
+        mBinding.addControls(savedInstanceState)
+        mBinding.addEvents(savedInstanceState)
+        mBinding.onLiveData(savedInstanceState)
     }
 
-    open fun onLiveData(savedInstanceState: Bundle?) {}
+    open fun T.onLiveData(savedInstanceState: Bundle?) {}
 
-    open fun callAPI(
+    open fun T.callAPI(
         apiKey: String,
         param: Any? = null,
         function: ((resultData: Any?) -> Unit)? = null

@@ -11,10 +11,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class MotionCardFragment : BaseFragment<FragmentMotionCardBinding>() {
     override fun initializeBinding() = FragmentMotionCardBinding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentMotionCardBinding.addControls(savedInstanceState: Bundle?) {
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentMotionCardBinding.addEvents(savedInstanceState: Bundle?) {
         mBinding.motionCard.setTransitionTo(R.id.startCard, R.id.endCard)
     }
 }

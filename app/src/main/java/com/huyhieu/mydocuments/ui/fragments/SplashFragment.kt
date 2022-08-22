@@ -13,11 +13,11 @@ import kotlinx.coroutines.launch
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     override fun initializeBinding() = FragmentSplashBinding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentSplashBinding.addControls(savedInstanceState: Bundle?) {
         mActivity?.setDarkColorStatusBar(true)
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentSplashBinding.addEvents(savedInstanceState: Bundle?) {
         lifecycleScope.launch {
             delay(2000)
             mActivity?.navigate(MainDirections.toIntroduce)

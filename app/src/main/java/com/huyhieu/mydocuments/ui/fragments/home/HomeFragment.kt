@@ -23,16 +23,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun initializeBinding() = FragmentHomeBinding.inflate(layoutInflater)
 
-    override fun addControls(savedInstanceState: Bundle?) {
+    override fun FragmentHomeBinding.addControls(savedInstanceState: Bundle?) {
         initListMenu()
     }
 
-    override fun addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentHomeBinding.addEvents(savedInstanceState: Bundle?) {
         callAPI("")
     }
 
-    private fun initListMenu() {
-        mBinding.rcvMenu.apply {
+    private fun FragmentHomeBinding.initListMenu() {
+        rcvMenu.apply {
             setHasFixedSize(true)
             adapter = viewModel.adapterMenu
         }
