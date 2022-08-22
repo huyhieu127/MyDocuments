@@ -7,7 +7,6 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
 import com.huyhieu.mydocuments.utils.commons.BarcodeScanner
 import com.huyhieu.mydocuments.utils.commons.HoleRectangle
-import com.huyhieu.mydocuments.utils.extensions.showToastShort
 
 
 class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
@@ -16,12 +15,12 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
 
     override fun addControls(savedInstanceState: Bundle?) {
         mBinding.hvQRCode.holeRectangle = HoleRectangle(
-            mBinding.vContent,
+            mBinding.viewScan,
             radius = resources.getDimension(R.dimen.radius),
             padding = 0F
         )
-        barcode = BarcodeScanner(this, mBinding.previewView) {
-            mActivity?.showToastShort(it.toString())
+        barcode = BarcodeScanner(this, mBinding.previewView, mBinding.viewScan) {
+            mBinding.tvResult.text = it?.rawValue ?: ""
         }
     }
 
