@@ -2,11 +2,10 @@ package com.huyhieu.mydocuments.utils.extensions
 
 import android.app.Activity
 import android.view.View
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.*
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.utils.logDebug
 

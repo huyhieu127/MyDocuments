@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isInvisible
 import androidx.navigation.NavOptions
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -33,8 +32,8 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
             )
 
             vpIntroduce.adapter = myViewPagerAdapter
+            vpIntroduce.offscreenPageLimit = 2
             dotsIndicator.attachTo(vpIntroduce)
-
             vpIntroduce.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrolled(
                     position: Int,
@@ -45,7 +44,8 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
 
                 override fun onPageSelected(position: Int) {
                     fillText(position)
-                    btnNext.isInvisible = position != layouts!!.size - 1
+                    //btnNext.isInvisible = position != layouts!!.size - 1
+                    btnNext.isEnabled = position == layouts!!.size - 1
                 }
 
                 override fun onPageScrollStateChanged(state: Int) {}

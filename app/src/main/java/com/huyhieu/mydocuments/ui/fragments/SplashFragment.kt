@@ -1,11 +1,10 @@
 package com.huyhieu.mydocuments.ui.fragments
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSplashBinding
-import com.huyhieu.mydocuments.utils.directions.MainDirections
-import com.huyhieu.mydocuments.utils.extensions.navigate
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -18,10 +17,22 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     override fun FragmentSplashBinding.addEvents(savedInstanceState: Bundle?) {
-        lifecycleScope.launch {
-            delay(2000)
-            mActivity?.navigate(MainDirections.toIntroduce)
-        }
+        btnNext.setOnClickListener(this@SplashFragment)
     }
 
+    override fun FragmentSplashBinding.onClickViewBinding(v: View) {
+        when (v.id) {
+            btnNext.id -> {
+                lifecycleScope.launch {
+                    delay(2000)
+                    btnNext.isEnabled = false
+                    delay(2000)
+                    btnNext.setLoading(true)
+                    delay(2000)
+                    btnNext.isEnabled = true
+                    //mActivity?.navigate(MainDirections.toIntroduce)
+                }
+            }
+        }
+    }
 }

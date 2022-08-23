@@ -11,7 +11,10 @@ import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
+import com.huyhieu.mydocuments.utils.commons.UButtonView
+import com.huyhieu.mydocuments.utils.extensions.getNameById
 import com.huyhieu.mydocuments.utils.extensions.hideKeyboard
+import com.huyhieu.mydocuments.utils.logDebug
 
 abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener {
 
@@ -45,13 +48,10 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
         return view
     }
 
-    final override fun onClick(v: View?) {
-        v ?: return
-        mBinding.onClickViewBinding(v)
-    }
-
-    open fun T.onClickViewBinding(v: View) {
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        mBinding.addControls(savedInstanceState)
+        mBinding.addEvents(savedInstanceState)
+        mBinding.onLiveData(savedInstanceState)
     }
 
     private fun initViewParent(rootView: View?) {
@@ -59,6 +59,50 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
         handleBackDevice(rootView)
     }
 
+    open fun T.onLiveData(savedInstanceState: Bundle?) {}
+
+    open fun T.callAPI(
+        apiKey: String,
+        param: Any? = null,
+        function: ((resultData: Any?) -> Unit)? = null
+    ) {
+    }
+
+    /************************ Navigate **************************/
+    fun childNavigate(
+        navHostFragment: NavHostFragment,
+        directions: NavDirections,
+        navOptionBuilder: (NavOptionsBuilder.() -> Unit)? = null
+    ) {
+        val navOpt = navOptionBuilder?.let { navOptions { it() } }
+        navHostFragment.navController.navigate(directions, navOpt)
+    }
+
+    /************************ Handle click **************************/
+    private val currentTime: Long
+        get() = System.currentTimeMillis()
+    private var time = 0L
+    private val delayClick = 1000L
+
+    final override fun onClick(v: View?) {
+        v ?: return
+        if (currentTime - time > delayClick) {
+            time = currentTime
+            logDebug("setOnClickMyListener: Pass - ${v.getNameById(id)}")
+            if (v is UButtonView) {
+                v.setLoading(true)
+            }
+            mBinding.onClickViewBinding(v)
+        } else {
+            logDebug("setOnClickMyListener: Skip - ${v.getNameById(id)}")
+        }
+    }
+
+    open fun T.onClickViewBinding(v: View) {
+
+    }
+
+    /******************* Handle keyboard back device *******************/
     private fun handleBackDevice(rootView: View?) {
         rootView?.apply {
             isFocusableInTouchMode = true
@@ -75,29 +119,6 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mBinding.addControls(savedInstanceState)
-        mBinding.addEvents(savedInstanceState)
-        mBinding.onLiveData(savedInstanceState)
-    }
-
-    open fun T.onLiveData(savedInstanceState: Bundle?) {}
-
-    open fun T.callAPI(
-        apiKey: String,
-        param: Any? = null,
-        function: ((resultData: Any?) -> Unit)? = null
-    ) {
-    }
-
-    fun childNavigate(
-        navHostFragment: NavHostFragment,
-        directions: NavDirections,
-        navOptionBuilder: (NavOptionsBuilder.() -> Unit)? = null
-    ) {
-        val navOpt = navOptionBuilder?.let { navOptions { it() } }
-        navHostFragment.navController.navigate(directions, navOpt)
-    }
 
     open fun onBackPressedFragment() {
         mActivity?.onBackPressed()

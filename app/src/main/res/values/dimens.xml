@@ -2,4 +2,8 @@
 <resources>
     <dimen name="radius">8dp</dimen>
     <dimen name="hole_padding">8dp</dimen>
+
+    <dimen name="btn_text_radius">10dp</dimen>
+    <dimen name="btn_icon_radius">16dp</dimen>
+    <dimen name="btn_elevation">4dp</dimen>
 </resources>

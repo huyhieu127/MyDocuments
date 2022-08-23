@@ -123,7 +123,7 @@ class BarcodeScanner(
         override fun analyze(imageProxy: ImageProxy) {
             val img = imageProxy.image
             if (img != null) {
-                val bitmap = imageProxy.image!!.toBitmap()
+                //val bitmap = imageProxy.image!!.toBitmap()
                 val inputImage =
                     InputImage.fromMediaImage(img, imageProxy.imageInfo.rotationDegrees)
 
