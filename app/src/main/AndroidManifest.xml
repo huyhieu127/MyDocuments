@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.huyhieu.mydocuments">
 
+    <!--Bluetooth-->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <!--Network-->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Allows unlocking your device and activating its screen so UI tests can succeed -->
@@ -16,7 +18,9 @@
     <!-- Allows changing locales -->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
         tools:ignore="ProtectedPermissions" />
+    <!--Camera-->
     <uses-permission android:name="android.permission.CAMERA" />
+
 
     <application
         android:name=".App"

@@ -22,6 +22,7 @@
         <entry key="app/src/main/res/layout/activity_steps.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_guide.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_intent_system.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_introduce.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/fragment_introduce_page1.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/fragment_introduce_page2.xml" value="0.3265625" />

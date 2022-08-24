@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.fragments.IntentSystemFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/lnContent"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:animateLayoutChanges="false"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.huyhieu.mydocuments.utils.commons.UButtonView
+                android:id="@+id/btnCallSupport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                app:uButtonName="Call support team" />
+
+            <com.huyhieu.mydocuments.utils.commons.UButtonView
+                android:id="@+id/btnCaptureView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:animationCache="false"
+                app:uButtonName="Capture view" />
+
+            <com.huyhieu.mydocuments.utils.commons.UButtonView
+                android:id="@+id/btnShare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:animationCache="false"
+                app:uButtonName="Share now!" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPicture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        android:background="@color/black"
+        android:padding="1dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h, 9:18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

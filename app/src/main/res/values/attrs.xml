@@ -12,5 +12,6 @@
             <enum name="ripple" value="1" />
         </attr>
         <attr name="uEnabled" format="boolean" />
+        <attr name="uEnableLoading" format="boolean" />
     </declare-styleable>
 </resources>

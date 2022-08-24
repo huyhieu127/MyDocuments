@@ -37,6 +37,7 @@ class UButtonView @JvmOverloads constructor(
     private var elevationValue = 0F
 
     private var isEffectAlpha = false
+    private var isEnableLoading = true
     private var isLoading = false
 
     companion object {
@@ -54,13 +55,21 @@ class UButtonView @JvmOverloads constructor(
             val isEnable = getBoolean(R.styleable.UButtonView_uEnabled, true)
             this@UButtonView.isEnabled = isEnable
 
-            bgColor =
+            val isEnableLoading = getBoolean(R.styleable.UButtonView_uEnableLoading, true)
+            this@UButtonView.isEnableLoading = isEnableLoading
+
+            val bgColor =
                 getColor(R.styleable.UButtonView_uBackground, context.color(R.color.colorPrimary))
-            elevationValue = getDimension(
+            this@UButtonView.bgColor = bgColor
+
+            val elevation = getDimension(
                 R.styleable.UButtonView_uElevation,
                 context.dimen(R.dimen.btn_elevation)
             )
-            radiusValue = getDimension(R.styleable.UButtonView_uRadius, 0F)
+            this@UButtonView.elevationValue = elevation
+
+            val radius = getDimension(R.styleable.UButtonView_uRadius, 0F)
+            this@UButtonView.radiusValue = radius
 
             val name = getString(R.styleable.UButtonView_uButtonName)
             setText(name)
@@ -71,7 +80,7 @@ class UButtonView @JvmOverloads constructor(
             val effect = getInteger(R.styleable.UButtonView_uEffectClick, EFFECT_CLICK_ALPHA)
             setEffectClick(effect)
         }
-        setLoading(false)
+        hideLoading()
 
     }
 
@@ -132,11 +141,10 @@ class UButtonView @JvmOverloads constructor(
     override fun setEnabled(enabled: Boolean) {
         super.setEnabled(enabled)
         alpha = if (enabled) {
-            clearState()
             setUIParent()
             1F
         } else {
-            setLoading(false)
+            hideLoading()
             0.7F
         }
     }
@@ -158,27 +166,41 @@ class UButtonView @JvmOverloads constructor(
     }
 
     fun setLoading(isShow: Boolean = false) {
-        isLoading = isShow
-        with(binding) {
-            when {
-                isShow -> {
-                    imgIcon.isVisible = false
-                    tvName.isVisible = false
-                    imgLoading.isVisible = true
-                }
-                else -> {
-                    imgIcon.isVisible = contentType == CONTENT_TYPE_ICON
-                    tvName.isVisible = contentType == CONTENT_TYPE_TEXT
-
-
-                    imgLoading.isVisible = false
-                }
-            }
+        if (isShow) {
+            showLoading()
+        } else {
+            hideLoading()
         }
-        setUIParent()
     }
 
-    private fun clearState() {
-        //isLoading = false
+    fun showLoading() {
+        with(binding) {
+            if (isEnableLoading) {
+                isLoading = true
+
+                imgIcon.isVisible = false
+                tvName.isVisible = false
+                imgLoading.isVisible = true
+
+                setUIParent()
+            }
+        }
+    }
+
+    fun hideLoading() {
+        with(binding) {
+            isLoading = false
+
+            imgIcon.isVisible = contentType == CONTENT_TYPE_ICON
+            tvName.isVisible = contentType == CONTENT_TYPE_TEXT
+
+            imgLoading.isVisible = false
+            setUIParent()
+        }
+    }
+
+    fun setOnClickListenerCustom(isEnableLoading: Boolean = true, listener: OnClickListener?) {
+        this.isEnableLoading = isEnableLoading
+        setOnClickListener(listener)
     }
 }

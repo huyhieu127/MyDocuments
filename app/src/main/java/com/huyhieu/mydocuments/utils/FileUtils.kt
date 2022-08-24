@@ -1,6 +1,8 @@
 package com.huyhieu.mydocuments.utils
 
+import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.media.ThumbnailUtils
 import android.net.Uri
@@ -10,7 +12,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Size
 import androidx.annotation.RequiresPermission
-import com.huyhieu.mydocuments.App.Companion.app
+import com.huyhieu.mydocuments.App.Companion.ins
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +23,7 @@ import java.util.zip.ZipInputStream
 
 val packageDir: File
     get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-        app.getExternalFilesDir(null)!!
+        ins.getExternalFilesDir(null)!!
     } else {
         @Suppress("DEPRECATION")
         Environment.getExternalStorageDirectory()
@@ -37,7 +39,7 @@ fun Closeable.safeClose() {
 fun readAssets(filename: String): String? {
     return try {
         val sb = StringBuilder()
-        BufferedReader(InputStreamReader(app.assets.open(filename))).useLines { lines ->
+        BufferedReader(InputStreamReader(ins.assets.open(filename))).useLines { lines ->
             lines.forEach {
                 sb.append(it)
             }
@@ -52,7 +54,7 @@ fun open(file: File) {
     try {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive")
-        app.startActivity(Intent.createChooser(intent, ""))
+        ins.startActivity(Intent.createChooser(intent, ""))
     } catch (e: Exception) {
     }
 }
@@ -61,7 +63,7 @@ fun copyFile(fileName: String) {
     var inputStream: InputStream? = null
     var fos: FileOutputStream? = null
     try {
-        inputStream = app.assets.open(fileName)
+        inputStream = ins.assets.open(fileName)
         fos = FileOutputStream("${packageDir.absolutePath}/$fileName")
         val buffer = ByteArray(1024)
         var read: Int = inputStream.read(buffer)
@@ -221,6 +223,24 @@ fun CoroutineScope.unzip(
             logError(e.message)
         }
         this.launch(Dispatchers.IO, CoroutineStart.DEFAULT, onCompleted)
+    }
+}
+
+fun Context?.getRealPathFromURI(contentUri: Uri?): String? {
+    this ?: return null
+    contentUri ?: return null
+    var cursor: Cursor? = null
+    return try {
+        val proj = arrayOf(MediaStore.Images.Media.DATA)
+        cursor = contentResolver.query(contentUri, proj, null, null, null)
+
+        cursor ?: return null
+
+        val columnIndex: Int = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor.moveToFirst()
+        cursor.getString(columnIndex)
+    } finally {
+        cursor?.close()
     }
 }
 

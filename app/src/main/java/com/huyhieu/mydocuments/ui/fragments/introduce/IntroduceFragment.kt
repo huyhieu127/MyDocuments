@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.introduce
+package com.huyhieu.mydocuments.ui.fragments.introduce
 
 import android.content.Context
 import android.os.Bundle

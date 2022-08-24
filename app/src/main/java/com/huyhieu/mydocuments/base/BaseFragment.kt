@@ -12,9 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.mydocuments.utils.commons.UButtonView
-import com.huyhieu.mydocuments.utils.extensions.getNameById
 import com.huyhieu.mydocuments.utils.extensions.hideKeyboard
-import com.huyhieu.mydocuments.utils.logDebug
 
 abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener {
 
@@ -88,13 +86,10 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
         v ?: return
         if (currentTime - time > delayClick) {
             time = currentTime
-            logDebug("setOnClickMyListener: Pass - ${v.getNameById(id)}")
             if (v is UButtonView) {
-                v.setLoading(true)
+                v.showLoading()
             }
             mBinding.onClickViewBinding(v)
-        } else {
-            logDebug("setOnClickMyListener: Skip - ${v.getNameById(id)}")
         }
     }
 
