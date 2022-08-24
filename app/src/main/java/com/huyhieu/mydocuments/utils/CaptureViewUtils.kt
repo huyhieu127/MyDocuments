@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
-import androidx.core.net.toUri
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -74,7 +73,8 @@ fun Context?.savePictureByBitmap(
             // Opening an outputStream with the Uri that we got
             imageUri?.let {
                 fos = resolver.openOutputStream(it)
-                uriFile = this.getRealPathFromURI(it)?.toUri() ?: it
+                uriFile = imageUri
+                //uriFile = this.getRealPathFromURI(it)?.toUri() ?: it
             }
         }
     } else {
