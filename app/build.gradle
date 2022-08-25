@@ -6,6 +6,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -105,4 +106,9 @@ dependencies {
 
     //Lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
+
+    //Map
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'com.google.maps.android:android-maps-utils:2.4.0'
 }

@@ -9,7 +9,8 @@ import androidx.annotation.Dimension
 import androidx.cardview.widget.CardView
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
-import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.databinding.WidgetUButtonBinding
 import com.huyhieu.mydocuments.utils.extensions.color
@@ -22,7 +23,7 @@ class UButtonView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr), LifecycleObserver {
+) : CardView(context, attrs, defStyleAttr), DefaultLifecycleObserver {
     private var binding = WidgetUButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
     private var contentType = 0
@@ -202,5 +203,10 @@ class UButtonView @JvmOverloads constructor(
     fun setOnClickListenerCustom(isEnableLoading: Boolean = true, listener: OnClickListener?) {
         this.isEnableLoading = isEnableLoading
         setOnClickListener(listener)
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        hideLoading()
+        super.onDestroy(owner)
     }
 }

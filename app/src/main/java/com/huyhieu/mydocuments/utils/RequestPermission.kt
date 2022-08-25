@@ -27,7 +27,7 @@ fun Fragment.requestPermissions(
     }
 
 // util method
-fun Context.hasPermissions(context: Context, vararg permissions: String): Boolean =
+fun Context.hasPermissions(vararg permissions: String): Boolean =
     permissions.all {
-        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+        ActivityCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
     }

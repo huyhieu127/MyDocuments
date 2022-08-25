@@ -9,6 +9,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.Point
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.view.View
@@ -21,6 +22,12 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
+
+fun Activity?.isGps(): Boolean {
+    this ?: return false
+    val manager = getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+    return manager?.isProviderEnabled(LocationManager.GPS_PROVIDER) ?: false
+}
 
 fun Activity.isAppRunning(packageName: String): Boolean {
     val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager

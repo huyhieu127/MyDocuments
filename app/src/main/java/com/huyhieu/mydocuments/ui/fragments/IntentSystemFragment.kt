@@ -31,7 +31,7 @@ class IntentSystemFragment : BaseFragment<FragmentIntentSystemBinding>() {
         onGranted = {
             mBinding.capture()
         }, onDined = {
-            logDebug("Dined!")
+            logDebug("Dined! - WRITE_EXTERNAL_STORAGE or READ_EXTERNAL_STORAGE")
         })
 
     private fun callRequestPermission() {

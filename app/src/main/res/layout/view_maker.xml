@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/vRectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_marker" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLogoMarker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="4dp"
+        android:layout_margin="3dp"
+        android:background="@drawable/bg_corner_4"
+        app:layout_constraintDimensionRatio="h,1:0.9"
+        app:layout_constraintEnd_toEndOf="@id/vRectangle"
+        app:layout_constraintStart_toStartOf="@id/vRectangle"
+        app:layout_constraintTop_toTopOf="@id/vRectangle" />
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="-10dp"
+        android:alpha="0.3"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
