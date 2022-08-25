@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.utils
+package com.huyhieu.mydocuments.utils.commons
 
 import android.content.Context
 import android.view.LayoutInflater
