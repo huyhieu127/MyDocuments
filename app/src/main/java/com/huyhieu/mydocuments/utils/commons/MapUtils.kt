@@ -47,6 +47,7 @@ class MapUtils(private val fragment: Fragment) {
     private var lastLocation: Location? = null
     private var locationDest: Location? = null
     private lateinit var context: Context
+    private var latLngBounds = LatLngBounds.Builder()
 
     private val requestPermission = fragment.requestPermissions(
         onGranted = {
@@ -75,6 +76,7 @@ class MapUtils(private val fragment: Fragment) {
         }
     }
 
+    @SuppressLint("MissingPermission")
     fun bindGoogleMap(googleMap: GoogleMap) {
         this.googleMap = googleMap
         setScrollMap()
@@ -125,7 +127,7 @@ class MapUtils(private val fragment: Fragment) {
                 logDebug("Title: ${marker.title}\nTag: ${marker.tag}\nLatLng: ${marker.position.latitude} ~ ${marker.position.longitude}")
                 val latLng = LatLng(marker.position.latitude, marker.position.longitude)
                 cameraToLatLngAnimate(latLng)
-                true
+                false
             }
         }
     }
@@ -172,11 +174,17 @@ class MapUtils(private val fragment: Fragment) {
                         val lat = location.latitude
                         val lng = location.longitude
                         val latLng = LatLng(lat, lng)
-                        addNewMarker(latLng, tag = "current", title = "Your location")
-                        location.calculateDistanceValid(locationDest = lastLocation) {
-                            cameraToLatLng(latLng)
-                        }
-                        cameraToLatLngAnimate(latLng)
+                        addNewMarker(
+                            latLng,
+                            tag = "current",
+                            title = "Your location",
+                            icon = R.drawable.img_android_logo
+                        )
+//                        location.calculateDistanceValid(locationDest = lastLocation) {
+//                            cameraToLatLng(latLng)
+//                        }
+                        //cameraToLatLngAnimate(latLng)
+                        cameraLatLngBoundsAnimate()
                     }
 
                 }
@@ -187,13 +195,23 @@ class MapUtils(private val fragment: Fragment) {
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
     }
 
+    private fun cameraLatLngBoundsAnimate(padding: Int = 100) {
+        try {
+            googleMap.animateCamera(
+                CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), padding)
+            )
+        } catch (ex: Exception) {
+
+        }
+    }
+
     private fun cameraToLatLng(latLng: LatLng, zoom: Float = CAMERA_ZOOM) {
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
     }
 
-    private fun addNewMarker(
+    fun addNewMarker(
         latLng: LatLng,
-        @DrawableRes icon: Int = R.drawable.ic_baseline_file_copy_24,
+        @DrawableRes icon: Int = R.drawable.img_google_play,
         tag: String? = null,
         title: String? = null
     ) {
@@ -208,6 +226,7 @@ class MapUtils(private val fragment: Fragment) {
             }
             val marker = googleMap.addMarker(markerOptions.await())
             marker?.tag = tag
+            latLngBounds.include(latLng)
         }
     }
 

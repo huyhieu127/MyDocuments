@@ -5,6 +5,7 @@ import androidx.core.view.isVisible
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMapBinding
@@ -38,6 +39,9 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap) {
         mapUtils?.bindGoogleMap(googleMap)
+        mapUtils?.addNewMarker(LatLng(10.802702, 106.647505))
+        mapUtils?.addNewMarker(LatLng(10.802702, 106.680000))
+        mapUtils?.addNewMarker(LatLng(10.850002, 106.660000))
     }
 }
 
