@@ -9,7 +9,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMapBinding
-import com.huyhieu.mydocuments.utils.commons.MapUtils
+import com.huyhieu.mydocuments.utils.MapUtils
 import com.huyhieu.mydocuments.utils.extensions.isGooglePlayServicesAvailable
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 

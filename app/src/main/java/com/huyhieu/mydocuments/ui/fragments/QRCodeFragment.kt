@@ -1,15 +1,27 @@
 package com.huyhieu.mydocuments.ui.fragments
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
+import android.view.View
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
-import com.huyhieu.mydocuments.utils.commons.BarcodeScanner
+import com.huyhieu.mydocuments.utils.BarcodeUtils
 import com.huyhieu.mydocuments.utils.commons.HoleRectangle
+import com.huyhieu.mydocuments.utils.requestActivityResult
 
 
 class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
-    private var barcode: BarcodeScanner? = null
+    private var barcode: BarcodeUtils? = null
+    private var chooseImageLauncher = requestActivityResult {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val uri = it.data?.data
+            barcode?.scanUri(uri)
+        }
+    }
+
     override fun initializeBinding() = FragmentQrCodeBinding.inflate(layoutInflater)
 
     override fun FragmentQrCodeBinding.addControls(savedInstanceState: Bundle?) {
@@ -18,12 +30,29 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
             radius = resources.getDimension(R.dimen.radius),
             padding = 0F
         )
-        barcode = BarcodeScanner(this@QRCodeFragment, previewView, viewScan) {
-            tvResult.text = it?.rawValue ?: ""
+        barcode = BarcodeUtils(this@QRCodeFragment, previewView, BarcodeUtils.BarcodeType.QR_CODE) {
+            tvResult.text = it ?: ""
         }
     }
 
     override fun FragmentQrCodeBinding.addEvents(savedInstanceState: Bundle?) {
+        imgGallery.setOnClickListener(this@QRCodeFragment)
+    }
+
+    override fun FragmentQrCodeBinding.onClickViewBinding(v: View) {
+        when (v.id) {
+            imgGallery.id -> {
+                showIntentChoosePicture()
+            }
+        }
+    }
+
+    private fun showIntentChoosePicture() {
+        Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI).apply {
+            type = "image/*"
+        }.run {
+            chooseImageLauncher.launch(Intent.createChooser(this, "Chọn hình ảnh chứa QR Code"))
+        }
     }
 
     override fun onDestroyView() {

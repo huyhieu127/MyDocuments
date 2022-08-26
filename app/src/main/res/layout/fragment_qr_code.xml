@@ -76,10 +76,25 @@
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
         android:textColor="@color/white"
-        tools:text="abc"
+        app:layout_constraintBottom_toTopOf="@+id/imgGallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewScan"
+        tools:text="abc" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgGallery"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:padding="14dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="#7EFFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewScan" />
+        app:srcCompat="@drawable/ic_baseline_photo_library_24"
+        app:tint="@color/white"
+        tools:text="abc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

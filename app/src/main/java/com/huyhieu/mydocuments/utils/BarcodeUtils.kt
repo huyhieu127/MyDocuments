@@ -1,10 +1,11 @@
-package com.huyhieu.mydocuments.utils.commons
+package com.huyhieu.mydocuments.utils
 
 import android.Manifest
 import android.annotation.SuppressLint
 import android.graphics.*
+import android.graphics.Bitmap.CompressFormat
 import android.media.Image
-import android.view.View
+import android.net.Uri
 import androidx.activity.result.ActivityResultLauncher
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
@@ -19,17 +20,24 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
-import com.huyhieu.mydocuments.utils.requestPermissions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class BarcodeScanner(
+
+class BarcodeUtils(
     private val fragment: Fragment,
     private val previewView: PreviewView,
-    private val viewScan: View,
-    private val onResult: (Barcode?) -> Unit
+    typeScan: BarcodeType,
+    private val onResult: (String?) -> Unit
 ) {
+    enum class BarcodeType {
+        QR_CODE,
+        FACE_DETECT
+    }
 
     private val cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
 
@@ -43,12 +51,30 @@ class BarcodeScanner(
             })
     }
 
+
+    // Process image searching for barcodes
+    private var options: BarcodeScannerOptions? = null
+
     companion object {
         var PERMISSION_CAMERA = Manifest.permission.CAMERA
     }
 
 
     init {
+        options = when (typeScan) {
+            BarcodeType.QR_CODE -> {
+                BarcodeScannerOptions.Builder()
+                    //.setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+                    .build()
+            }
+            BarcodeType.FACE_DETECT -> {
+                BarcodeScannerOptions.Builder()
+                    .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+                    /*.setBarcodeFormats(Barcode.TYPE_URL)*/
+                    .build()
+            }
+            else -> null
+        }
         requestPermissionsLauncher.launch(arrayOf(PERMISSION_CAMERA))
     }
 
@@ -61,6 +87,7 @@ class BarcodeScanner(
         }, ContextCompat.getMainExecutor(fragment.requireContext()))
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun bindPreview(cameraProvider: ProcessCameraProvider?) {
         cameraProvider ?: return
         // Preview
@@ -76,7 +103,7 @@ class BarcodeScanner(
             .build()
             .also {
                 it.setAnalyzer(
-                    cameraExecutor, QrCodeAnalyzer(viewScan, onResult)
+                    cameraExecutor, QrCodeAnalyzer()
                 )
             }
 
@@ -92,6 +119,7 @@ class BarcodeScanner(
                 preview,
                 imageAnalyzer
             )
+
         } catch (exc: Exception) {
             exc.printStackTrace()
         }
@@ -117,7 +145,57 @@ class BarcodeScanner(
         cameraExecutor.shutdown()
     }
 
-    private class QrCodeAnalyzer(val viewScan: View, val onResult: (Barcode?) -> Unit) : ImageAnalysis.Analyzer {
+    fun scanImage(inputImage: InputImage, onComplete: (() -> Unit)? = null) {
+        options?.let { options ->
+            val scanner = BarcodeScanning.getClient(options)
+            scanner.process(inputImage)
+                .addOnSuccessListener { barcodes ->
+                    if (barcodes.isNotEmpty()) {
+                        for (barcode in barcodes) {
+                            // Handle received barcodes...
+                            when (barcode.format) {
+                                Barcode.FORMAT_QR_CODE -> {
+                                }
+                            }
+                            onResult.invoke(barcode.rawValue)
+                        }
+                    } else {
+                        onResult.invoke("Not found QR Code!")
+                    }
+                }
+                .addOnFailureListener { ex ->
+                    val error = ex.message
+                    logDebug(error)
+                }
+                .addOnCompleteListener {
+                    onComplete?.invoke()
+                }
+        }
+    }
+
+    fun scanUri(uri: Uri?) {
+        uri ?: return
+        try {
+            val image = InputImage.fromFilePath(fragment.requireContext(), uri)
+            CoroutineScope(Dispatchers.IO).launch {
+                onResult.invoke("Scanning...")
+                scanImage(image)
+            }
+        } catch (ex: Exception) {
+            logDebug(ex.message)
+        }
+    }
+
+    fun Uri.toBitmap(): Bitmap {
+        val bitmap = BitmapFactory.decodeStream(
+            this@BarcodeUtils.fragment.requireContext().contentResolver.openInputStream(this)
+        )
+        val blob = ByteArrayOutputStream()
+        bitmap.compress(CompressFormat.PNG, 100, blob)
+        return bitmap
+    }
+
+    private inner class QrCodeAnalyzer : ImageAnalysis.Analyzer {
 
         @SuppressLint("UnsafeOptInUsageError")
         override fun analyze(imageProxy: ImageProxy) {
@@ -127,35 +205,11 @@ class BarcodeScanner(
                 val inputImage =
                     InputImage.fromMediaImage(img, imageProxy.imageInfo.rotationDegrees)
 
-                // Process image searching for barcodes
-                val options = BarcodeScannerOptions.Builder()
-                    .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
-                    /*.setBarcodeFormats(Barcode.TYPE_URL)*/
-                    .build()
+                //Scan
+                /*scanImage(inputImage) {
+                    imageProxy.close()
+                }*/
 
-                val scanner = BarcodeScanning.getClient(options)
-                scanner.process(inputImage)
-                    .addOnSuccessListener { barcodes ->
-                        if (barcodes.isNotEmpty()) {
-                            for (barcode in barcodes) {
-                                // Handle received barcodes...
-                                when (barcode.format) {
-                                    Barcode.FORMAT_QR_CODE -> {
-                                    }
-                                }
-                                onResult.invoke(barcode)
-                            }
-                        } else {
-                            onResult.invoke(null)
-                        }
-                    }
-                    .addOnFailureListener {
-                        val ex = it.message
-                        //onResult.invoke("Error: $ex")
-                    }
-                    .addOnSuccessListener {
-                        imageProxy.close()
-                    }
             }
         }
 
@@ -178,10 +232,7 @@ class BarcodeScanner(
             val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
             val matrix = Matrix()
             matrix.postRotate(90F)
-            val bitmapRotated = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-            return bitmapRotated
+            return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
         }
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.utils.commons
+package com.huyhieu.mydocuments.utils
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -22,11 +22,9 @@ import com.google.android.gms.tasks.OnTokenCanceledListener
 import com.google.maps.android.ui.IconGenerator
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.utils.commons.UMarkerView
 import com.huyhieu.mydocuments.utils.extensions.drawable
 import com.huyhieu.mydocuments.utils.extensions.isGps
-import com.huyhieu.mydocuments.utils.logDebug
-import com.huyhieu.mydocuments.utils.requestActivityResult
-import com.huyhieu.mydocuments.utils.requestPermissions
 import kotlinx.coroutines.*
 
 class MapUtils(private val fragment: Fragment) {

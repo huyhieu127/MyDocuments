@@ -6,6 +6,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStaticMapBinding
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 
+//Enable google map static in gg cloud
 class StaticMapFragment : BaseFragment<FragmentStaticMapBinding>() {
     private var locationUrl =
         "https://maps.googleapis.com/maps/api/staticmap" +
@@ -47,5 +48,4 @@ class StaticMapFragment : BaseFragment<FragmentStaticMapBinding>() {
             .append("&style=$style")
             .append("&key=$key").toString()
     }
-
 }

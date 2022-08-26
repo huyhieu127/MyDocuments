@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/staticMapFragment">
+    app:startDestination="@id/QRCodeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -52,6 +52,9 @@
         android:id="@+id/QRCodeFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.QRCodeFragment"
         android:label="QRCodeFragment" />
+    <action
+        android:id="@+id/action_global_QRCodeFragment2"
+        app:destination="@id/QRCodeFragment" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.SplashFragment"
