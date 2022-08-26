@@ -41,7 +41,7 @@ class MapUtils(private val fragment: Fragment) {
         const val CAMERA_ZOOM = 16F
     }
 
-    private lateinit var googleMap: GoogleMap
+    var googleMap: GoogleMap? = null
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lastLocation: Location? = null
@@ -79,12 +79,18 @@ class MapUtils(private val fragment: Fragment) {
     @SuppressLint("MissingPermission")
     fun bindGoogleMap(googleMap: GoogleMap) {
         this.googleMap = googleMap
+        this.googleMap?.configMap()
         setScrollMap()
         setMarkerClick()
     }
 
+    private fun GoogleMap?.configMap() {
+        this ?: return
+        mapType = GoogleMap.MAP_TYPE_TERRAIN
+    }
+
     private fun setScrollMap(onCameraStop: ((cameraPosition: CameraPosition) -> Unit)? = null) {
-        googleMap.apply {
+        googleMap?.apply {
             var jobGetCameraPositionIdle: Job? = null
 
             this.setOnCameraIdleListener {
@@ -122,7 +128,7 @@ class MapUtils(private val fragment: Fragment) {
 
     @SuppressLint("PotentialBehaviorOverride")
     private fun setMarkerClick() {
-        googleMap.apply {
+        googleMap?.apply {
             setOnMarkerClickListener { marker ->
                 logDebug("Title: ${marker.title}\nTag: ${marker.tag}\nLatLng: ${marker.position.latitude} ~ ${marker.position.longitude}")
                 val latLng = LatLng(marker.position.latitude, marker.position.longitude)
@@ -192,12 +198,12 @@ class MapUtils(private val fragment: Fragment) {
     }
 
     private fun cameraToLatLngAnimate(latLng: LatLng, zoom: Float = CAMERA_ZOOM) {
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
+        googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
     }
 
     private fun cameraLatLngBoundsAnimate(padding: Int = 100) {
         try {
-            googleMap.animateCamera(
+            googleMap?.animateCamera(
                 CameraUpdateFactory.newLatLngBounds(latLngBounds.build(), padding)
             )
         } catch (ex: Exception) {
@@ -206,7 +212,7 @@ class MapUtils(private val fragment: Fragment) {
     }
 
     private fun cameraToLatLng(latLng: LatLng, zoom: Float = CAMERA_ZOOM) {
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
+        googleMap?.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom))
     }
 
     fun addNewMarker(
@@ -224,7 +230,7 @@ class MapUtils(private val fragment: Fragment) {
                     .title(title)
                     .anchor(0.5F, 0.85F)
             }
-            val marker = googleMap.addMarker(markerOptions.await())
+            val marker = googleMap?.addMarker(markerOptions.await())
             marker?.tag = tag
             latLngBounds.include(latLng)
         }

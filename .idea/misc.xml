@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/layout/fragment_multiple_api.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_qr_code.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.3265625" />
+        <entry key="app/src/main/res/layout/fragment_static_map.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/fragment_steps.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_steps1.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/fragment_steps2.xml" value="0.3182291666666667" />

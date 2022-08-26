@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/mapFragment">
+    app:startDestination="@id/staticMapFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -81,4 +81,12 @@
     <action
         android:id="@+id/action_global_mapFragment"
         app:destination="@id/mapFragment" />
+    <fragment
+        android:id="@+id/staticMapFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.StaticMapFragment"
+        android:label="fragment_static_map"
+        tools:layout="@layout/fragment_static_map" />
+    <action
+        android:id="@+id/action_global_staticMapFragment"
+        app:destination="@id/staticMapFragment" />
 </navigation>
