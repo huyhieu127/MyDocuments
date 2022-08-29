@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:animateLayoutChanges="true"
@@ -9,40 +8,6 @@
     android:backgroundTint="@color/colorAccent"
     app:layout_constraintBottom_toBottomOf="parent">
 
-    <View
-        android:id="@+id/tabScan"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tabHome"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:alpha="0.1"
-        tools:background="@drawable/bg_corner_18" />
-
-    <View
-        android:id="@+id/tabHome"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:alpha="0.1"
-        tools:background="@drawable/bg_corner_18" />
-
-    <View
-        android:id="@+id/tabProfile"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@id/tabHome"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:alpha="0.1"
-        tools:background="@drawable/bg_corner_18" />
 
     <View
         android:id="@+id/tabSelected"
@@ -51,17 +16,17 @@
         android:background="@drawable/bg_corner_18"
         android:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/tabHome"
-        app:layout_constraintStart_toStartOf="@id/tabHome"
+        app:layout_constraintEnd_toEndOf="@id/imgTabHome"
+        app:layout_constraintStart_toStartOf="@id/imgTabHome"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgScan"
+        android:id="@+id/imgTabScan"
         android:layout_width="?actionBarSize"
         android:layout_height="?actionBarSize"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tabHome"
+        app:layout_constraintEnd_toStartOf="@+id/imgTabHome"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -69,7 +34,7 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgHome"
+        android:id="@+id/imgTabHome"
         android:layout_width="?actionBarSize"
         android:layout_height="?actionBarSize"
         android:padding="12dp"
@@ -81,14 +46,14 @@
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgProfile"
+        android:id="@+id/imgTabProfile"
         android:layout_width="?actionBarSize"
         android:layout_height="?actionBarSize"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@id/tabHome"
+        app:layout_constraintStart_toEndOf="@id/imgTabHome"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_profile" />
 

@@ -1,14 +1,20 @@
 package com.huyhieu.mydocuments.utils.commons
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.transition.ChangeBounds
+import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.databinding.WidgetUNavigationBottomViewBinding
-import com.huyhieu.mydocuments.utils.extensions.showToastShort
 
 
 enum class UTab {
@@ -21,64 +27,89 @@ class UNavigationBottomView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), View.OnClickListener {
+) : FrameLayout(context, attrs, defStyleAttr) {
     private val binding =
         WidgetUNavigationBottomViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         with(binding) {
-            tabScan.setOnClickListener(this@UNavigationBottomView)
-            tabHome.setOnClickListener(this@UNavigationBottomView)
-            tabProfile.setOnClickListener(this@UNavigationBottomView)
+            imgTabScan.setOnTouchEvent()
+            imgTabHome.setOnTouchEvent()
+            imgTabProfile.setOnTouchEvent()
         }
         setTabSelected(UTab.TAB_HOME)
     }
 
-    override fun onClick(v: View?) {
-        with(binding) {
-            when (v?.id) {
-                tabScan.id -> {
-                    setTabSelected(UTab.TAB_SCAN) {
-                        context.showToastShort("Scan")
-                    }
-                }
-                tabHome.id -> {
-                    setTabSelected(UTab.TAB_HOME) {
-                        context.showToastShort("Home")
-                    }
-                }
-                tabProfile.id -> {
-                    setTabSelected(UTab.TAB_PROFILE) {
-                        context.showToastShort("Profile")
-                    }
-                }
-            }
-        }
-    }
-
+    @SuppressLint("Recycle")
     fun setTabSelected(tab: UTab, onSelected: (() -> Unit)? = null) {
         with(binding) {
-            imgScan.isSelected = tab == UTab.TAB_SCAN
-            imgHome.isSelected = tab == UTab.TAB_HOME
-            imgProfile.isSelected = tab == UTab.TAB_PROFILE
-
-            val lp = tabSelected.layoutParams as ConstraintLayout.LayoutParams
             when (tab) {
                 UTab.TAB_SCAN -> {
-                    lp.startToStart = R.id.tabScan
-                    lp.endToEnd = R.id.tabScan
+                    //imgScan.startAnimation(anim)
+                    setTransaction(imgTabScan.id)
                 }
                 UTab.TAB_HOME -> {
-                    lp.startToStart = R.id.tabHome
-                    lp.endToEnd = R.id.tabHome
+                    //imgHome.startAnimation(anim)
+                    setTransaction(imgTabHome.id)
                 }
                 UTab.TAB_PROFILE -> {
-                    lp.startToStart = R.id.tabProfile
-                    lp.endToEnd = R.id.tabProfile
+                    //imgProfile.startAnimation(anim)
+                    setTransaction(imgTabProfile.id)
                 }
             }
-            tabSelected.layoutParams = lp
+            imgTabScan.isSelected = tab == UTab.TAB_SCAN
+            imgTabHome.isSelected = tab == UTab.TAB_HOME
+            imgTabProfile.isSelected = tab == UTab.TAB_PROFILE
         }
         onSelected?.invoke()
     }
+
+    private fun setTransaction(idTab: Int) {
+        with(binding) {
+            val constraintSet = ConstraintSet()
+            constraintSet.clone(root)
+            constraintSet.connect(tabSelected.id, ConstraintSet.START, idTab, ConstraintSet.START)
+            constraintSet.connect(tabSelected.id, ConstraintSet.END, idTab, ConstraintSet.END)
+            val transition = ChangeBounds()
+            transition.interpolator = AccelerateDecelerateInterpolator()
+            transition.duration = 250
+            TransitionManager.beginDelayedTransition(root, transition)
+            constraintSet.applyTo(root)
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun View.setOnTouchEvent() {
+        val animIn: Animation =
+            AnimationUtils.loadAnimation(context, R.anim.anim_scale_bounce_zoom_in)
+        val animOut: Animation =
+            AnimationUtils.loadAnimation(context, R.anim.anim_scale_bounce_zoom_out)
+        this.setOnTouchListener { view, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    view.startAnimation(animIn)
+                    return@setOnTouchListener true
+                }
+                MotionEvent.ACTION_UP -> {
+                    view.startAnimation(animOut)
+                    with(binding) {
+                        when (view.id) {
+                            imgTabScan.id -> {
+                                setTabSelected(UTab.TAB_SCAN)
+                            }
+                            imgTabHome.id -> {
+                                setTabSelected(UTab.TAB_HOME)
+                            }
+                            imgTabProfile.id -> {
+                                setTabSelected(UTab.TAB_PROFILE)
+                            }
+                        }
+                    }
+                }
+            }
+            return@setOnTouchListener this.onTouchEvent(event)
+        }
+    }
 }
+
+
