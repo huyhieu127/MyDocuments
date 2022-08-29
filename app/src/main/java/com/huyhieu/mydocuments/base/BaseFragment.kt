@@ -5,6 +5,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptionsBuilder
@@ -12,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.mydocuments.utils.commons.UButtonView
+import com.huyhieu.mydocuments.utils.commons.UTab
 import com.huyhieu.mydocuments.utils.extensions.hideKeyboard
 
 abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener {
@@ -117,5 +119,17 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
 
     open fun onBackPressedFragment() {
         mActivity?.onBackPressed()
+    }
+
+    open fun setTabNavigationBottom(tab: UTab) {
+        mActivity?.setTabNavigationBottom(tab)
+    }
+
+    open fun showNavigationBottom() {
+        mActivity?.showNavigationBottom()
+    }
+
+    open fun hideNavigationBottom(@ColorRes idColor: Int = android.R.color.transparent) {
+        mActivity?.hideNavigationBottom(idColor)
     }
 }

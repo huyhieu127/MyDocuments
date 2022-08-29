@@ -84,15 +84,21 @@ fun Activity?.setTransparentStatusBar(
     when (isTransparent) {
         true -> {
             val w: Window = window
-            w.statusBarColor = ContextCompat.getColor(this, android.R.color.transparent)
-            w.navigationBarColor = ContextCompat.getColor(this, android.R.color.transparent)
+            w.statusBarColor = color(android.R.color.transparent)
+            this.setNavigationBarColor(android.R.color.transparent)
         }
         false -> {
             val w: Window = window
-            w.statusBarColor = ContextCompat.getColor(this, idColor)
-            w.navigationBarColor = ContextCompat.getColor(this, idColor)
+            w.statusBarColor = color(idColor)
+            this.setNavigationBarColor(idColor)
         }
     }
+}
+
+fun Activity?.setNavigationBarColor(@ColorRes idColor: Int = android.R.color.white) {
+    this ?: return
+    val w: Window = window
+    w.navigationBarColor = color(idColor)
 }
 
 fun Activity?.setFullScreen() {

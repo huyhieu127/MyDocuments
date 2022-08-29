@@ -10,8 +10,10 @@ import com.huyhieu.mydocuments.ui.activities.ffmmpegkit.FFmpegKitActivity
 import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.ui.fragments.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.home.components.MyDialog
+import com.huyhieu.mydocuments.utils.commons.UTab
 import com.huyhieu.mydocuments.utils.directions.MainDirections
 import com.huyhieu.mydocuments.utils.extensions.navigate
+import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -24,6 +26,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun initializeBinding() = FragmentHomeBinding.inflate(layoutInflater)
 
     override fun FragmentHomeBinding.addControls(savedInstanceState: Bundle?) {
+        mActivity?.setDarkColorStatusBar()
+        showNavigationBottom()
         initListMenu()
     }
 
@@ -59,6 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         startActivity(Intent(mActivity, NotificationActivity::class.java))
                     }
                     MenuType.Steps -> {
+                        setTabNavigationBottom(UTab.TAB_PROFILE)
                         mActivity?.navigate(MainDirections.toSteps)
                     }
                     MenuType.More -> {

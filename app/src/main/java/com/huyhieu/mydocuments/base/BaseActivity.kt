@@ -2,10 +2,12 @@ package com.huyhieu.mydocuments.base
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.mydocuments.R
+import com.huyhieu.mydocuments.utils.commons.UTab
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 
 abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClickListener {
@@ -55,4 +57,10 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
         function: ((resultData: Any?) -> Unit)? = null
     ) {
     }
+
+    open fun setTabNavigationBottom(tab: UTab) {}
+
+    open fun showNavigationBottom() {}
+
+    open fun hideNavigationBottom(@ColorRes idColor: Int = android.R.color.transparent) {}
 }

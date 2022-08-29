@@ -13,8 +13,11 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.databinding.WidgetUNavigationBottomViewBinding
+import com.huyhieu.mydocuments.utils.setAnimation
 
 
 enum class UTab {
@@ -31,6 +34,10 @@ class UNavigationBottomView @JvmOverloads constructor(
     private val binding =
         WidgetUNavigationBottomViewBinding.inflate(LayoutInflater.from(context), this, true)
 
+    private val durationTransaction = 250L
+
+    var tabSelectedListener: ((tab: UTab) -> Unit)? = null
+
     init {
         with(binding) {
             imgTabScan.setOnTouchEvent()
@@ -41,30 +48,30 @@ class UNavigationBottomView @JvmOverloads constructor(
     }
 
     @SuppressLint("Recycle")
-    fun setTabSelected(tab: UTab, onSelected: (() -> Unit)? = null) {
+    fun setTabSelected(tab: UTab) {
         with(binding) {
             when (tab) {
                 UTab.TAB_SCAN -> {
                     //imgScan.startAnimation(anim)
-                    setTransaction(imgTabScan.id)
+                    setTabTransaction(imgTabScan.id)
                 }
                 UTab.TAB_HOME -> {
                     //imgHome.startAnimation(anim)
-                    setTransaction(imgTabHome.id)
+                    setTabTransaction(imgTabHome.id)
                 }
                 UTab.TAB_PROFILE -> {
                     //imgProfile.startAnimation(anim)
-                    setTransaction(imgTabProfile.id)
+                    setTabTransaction(imgTabProfile.id)
                 }
             }
             imgTabScan.isSelected = tab == UTab.TAB_SCAN
             imgTabHome.isSelected = tab == UTab.TAB_HOME
             imgTabProfile.isSelected = tab == UTab.TAB_PROFILE
         }
-        onSelected?.invoke()
+        tabSelectedListener?.invoke(tab)
     }
 
-    private fun setTransaction(idTab: Int) {
+    private fun setTabTransaction(idTab: Int) {
         with(binding) {
             val constraintSet = ConstraintSet()
             constraintSet.clone(root)
@@ -72,7 +79,7 @@ class UNavigationBottomView @JvmOverloads constructor(
             constraintSet.connect(tabSelected.id, ConstraintSet.END, idTab, ConstraintSet.END)
             val transition = ChangeBounds()
             transition.interpolator = AccelerateDecelerateInterpolator()
-            transition.duration = 250
+            transition.duration = durationTransaction
             TransitionManager.beginDelayedTransition(root, transition)
             constraintSet.applyTo(root)
         }
@@ -107,7 +114,26 @@ class UNavigationBottomView @JvmOverloads constructor(
                     }
                 }
             }
-            return@setOnTouchListener this.onTouchEvent(event)
+            return@setOnTouchListener false
+        }
+    }
+
+    override fun setVisibility(visibility: Int) {
+        when (visibility) {
+            View.VISIBLE -> {
+                if (!isVisible) {
+                    super.setVisibility(visibility)
+                    this.setAnimation(R.anim.anim_slide_up)
+                }
+            }
+            View.GONE -> {
+                if (!isGone) {
+                    this.setAnimation(R.anim.anim_slide_down) {
+                        super.setVisibility(visibility)
+                    }
+                }
+            }
+            else -> super.setVisibility(visibility)
         }
     }
 }

@@ -12,6 +12,7 @@ class MotionCardFragment : BaseFragment<FragmentMotionCardBinding>() {
     override fun initializeBinding() = FragmentMotionCardBinding.inflate(layoutInflater)
 
     override fun FragmentMotionCardBinding.addControls(savedInstanceState: Bundle?) {
+        hideNavigationBottom()
     }
 
     override fun FragmentMotionCardBinding.addEvents(savedInstanceState: Bundle?) {

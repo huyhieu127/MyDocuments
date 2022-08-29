@@ -5,12 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
 import com.huyhieu.mydocuments.utils.BarcodeUtils
 import com.huyhieu.mydocuments.utils.commons.HoleRectangle
 import com.huyhieu.mydocuments.utils.requestActivityResult
+import kotlinx.coroutines.launch
 
 
 class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
@@ -25,13 +27,17 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
     override fun initializeBinding() = FragmentQrCodeBinding.inflate(layoutInflater)
 
     override fun FragmentQrCodeBinding.addControls(savedInstanceState: Bundle?) {
-        hvQRCode.holeRectangle = HoleRectangle(
-            viewScan,
-            radius = resources.getDimension(R.dimen.radius),
-            padding = 0F
-        )
-        barcode = BarcodeUtils(this@QRCodeFragment, previewView, BarcodeUtils.BarcodeType.QR_CODE) {
-            tvResult.text = it ?: ""
+        showNavigationBottom()
+        lifecycleScope.launch {
+            hvQRCode.holeRectangle = HoleRectangle(
+                viewScan,
+                radius = resources.getDimension(R.dimen.radius),
+                padding = 0F
+            )
+            barcode =
+                BarcodeUtils(this@QRCodeFragment, previewView, BarcodeUtils.BarcodeType.QR_CODE) {
+                    tvResult.text = it ?: ""
+                }
         }
     }
 
