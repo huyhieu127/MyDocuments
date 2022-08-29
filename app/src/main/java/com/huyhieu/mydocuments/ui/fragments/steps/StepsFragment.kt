@@ -9,8 +9,8 @@ import com.huyhieu.mydocuments.databinding.FragmentStepsBinding
 import com.huyhieu.mydocuments.utils.directions.StepDirections
 import com.huyhieu.mydocuments.utils.extensions.childNavigate
 import com.huyhieu.mydocuments.utils.extensions.navigate
+import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.extensions.setTransitionTo
-import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,7 +24,7 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
     override fun initializeBinding() = FragmentStepsBinding.inflate(layoutInflater)
 
     override fun FragmentStepsBinding.addControls(savedInstanceState: Bundle?) {
-        logDebug("OnCreate")
+        mActivity?.setDarkColorStatusBar(false)
     }
 
     override fun FragmentStepsBinding.addEvents(savedInstanceState: Bundle?) {

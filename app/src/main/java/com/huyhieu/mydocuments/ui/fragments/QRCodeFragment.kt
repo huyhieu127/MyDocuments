@@ -11,6 +11,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
 import com.huyhieu.mydocuments.utils.BarcodeUtils
 import com.huyhieu.mydocuments.utils.commons.HoleRectangle
+import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.requestActivityResult
 import kotlinx.coroutines.launch
 
@@ -27,6 +28,7 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
     override fun initializeBinding() = FragmentQrCodeBinding.inflate(layoutInflater)
 
     override fun FragmentQrCodeBinding.addControls(savedInstanceState: Bundle?) {
+        mActivity?.setDarkColorStatusBar(false)
         showNavigationBottom()
         lifecycleScope.launch {
             hvQRCode.holeRectangle = HoleRectangle(
