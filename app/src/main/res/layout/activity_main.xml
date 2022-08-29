@@ -18,4 +18,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_main" />
 
+    <com.huyhieu.mydocuments.utils.commons.UNavigationBottomView
+        android:id="@+id/navTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
