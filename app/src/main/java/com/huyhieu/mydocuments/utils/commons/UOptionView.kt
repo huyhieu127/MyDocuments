@@ -62,9 +62,9 @@ class UOptionView @JvmOverloads constructor(
             imgArrowRight.isVisible = icon != null
             if (icon != null) {
                 imgArrowRight.setImageDrawable(icon)
-                if (tintArrowRight != 0) {
-                    imgArrowRight.tintVector(tintArrowRight)
-                }
+            }
+            if (tintArrowRight != 0) {
+                imgArrowRight.tintVector(tintArrowRight)
             }
         }
     }
@@ -79,9 +79,9 @@ class UOptionView @JvmOverloads constructor(
             imgIcon.isVisible = icon != null
             if (icon != null) {
                 imgIcon.setImageDrawable(icon)
-                if (tintIcon != 0) {
-                    imgIcon.tintVector(tintIcon)
-                }
+            }
+            if (tintIcon != 0) {
+                imgIcon.tintVector(tintIcon)
             }
             if (bgIcon != null) {
                 vBgIcon.background = bgIcon
@@ -95,9 +95,9 @@ class UOptionView @JvmOverloads constructor(
             tvTitle.isVisible = !title.isNullOrEmpty()
             if (!title.isNullOrEmpty()) {
                 tvTitle.text = title
-                if (idColor != 0) {
-                    tvTitle.setTextColor(idColor)
-                }
+            }
+            if (idColor != 0) {
+                tvTitle.setTextColor(idColor)
             }
         }
     }
@@ -114,9 +114,9 @@ class UOptionView @JvmOverloads constructor(
 
             if (!hasContent) {
                 tvContent.text = content
-                if (idColor != 0) {
-                    tvContent.setTextColor(idColor)
-                }
+            }
+            if (idColor != 0) {
+                tvContent.setTextColor(idColor)
             }
         }
     }
@@ -126,9 +126,9 @@ class UOptionView @JvmOverloads constructor(
             tvValue.isVisible = !value.isNullOrEmpty()
             if (!value.isNullOrEmpty()) {
                 tvValue.text = value
-                if (idColor != 0) {
-                    tvValue.setTextColor(idColor)
-                }
+            }
+            if (idColor != 0) {
+                tvValue.setTextColor(idColor)
             }
         }
     }
@@ -142,12 +142,12 @@ class UOptionView @JvmOverloads constructor(
             tvValueFill.isVisible = !value.isNullOrEmpty()
             if (!value.isNullOrEmpty()) {
                 tvValueFill.text = value
-                if (idColor != 0) {
-                    tvValueFill.setTextColor(idColor)
-                }
-                if (colorStateList != null) {
-                    tvValueFill.backgroundTint(colorStateList)
-                }
+            }
+            if (idColor != 0) {
+                tvValueFill.setTextColor(idColor)
+            }
+            if (colorStateList != null) {
+                tvValueFill.backgroundTint(colorStateList)
             }
         }
     }

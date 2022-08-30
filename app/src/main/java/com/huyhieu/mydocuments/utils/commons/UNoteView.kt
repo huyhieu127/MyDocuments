@@ -76,9 +76,9 @@ class UNoteView @JvmOverloads constructor(
             imgIcon.isVisible = icon != null
             if (icon != null) {
                 imgIcon.setImageDrawable(icon)
-                if (tintIcon != 0) {
-                    imgIcon.tintVector(tintIcon)
-                }
+            }
+            if (tintIcon != 0) {
+                imgIcon.tintVector(tintIcon)
             }
             if (bgIcon != null) {
                 imgIcon.background = bgIcon
@@ -92,9 +92,9 @@ class UNoteView @JvmOverloads constructor(
             tvTitle.isVisible = !title.isNullOrEmpty()
             if (!title.isNullOrEmpty()) {
                 tvTitle.text = title
-                if (idColor != 0) {
-                    tvTitle.setTextColor(idColor)
-                }
+            }
+            if (idColor != 0) {
+                tvTitle.setTextColor(idColor)
             }
         }
     }
@@ -111,9 +111,9 @@ class UNoteView @JvmOverloads constructor(
 
             if (!hasContent) {
                 tvContent.text = content
-                if (idColor != 0) {
-                    tvContent.setTextColor(idColor)
-                }
+            }
+            if (idColor != 0) {
+                tvContent.setTextColor(idColor)
             }
         }
     }
@@ -123,9 +123,9 @@ class UNoteView @JvmOverloads constructor(
             tvSeeMore.isVisible = !value.isNullOrEmpty()
             if (!value.isNullOrEmpty()) {
                 tvSeeMore.text = value
-                if (idColor != 0) {
-                    tvSeeMore.setTextColor(idColor)
-                }
+            }
+            if (idColor != 0) {
+                tvSeeMore.setTextColor(idColor)
             }
         }
     }

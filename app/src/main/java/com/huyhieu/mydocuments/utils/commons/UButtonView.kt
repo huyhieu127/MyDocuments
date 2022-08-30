@@ -90,9 +90,9 @@ class UButtonView @JvmOverloads constructor(
             if (!name.isNullOrEmpty()) {
                 contentType = CONTENT_TYPE_TEXT
                 tvName.text = name
-                if (radiusValue == 0F) {
-                    radiusValue = context.dimen(R.dimen.btn_text_radius)
-                }
+            }
+            if (radiusValue == 0F) {
+                radiusValue = context.dimen(R.dimen.btn_text_radius)
             }
         }
     }
@@ -101,12 +101,12 @@ class UButtonView @JvmOverloads constructor(
         with(binding) {
             if (name.isNullOrEmpty()) {
                 contentType = CONTENT_TYPE_ICON
-                if (drawable != null) {
-                    imgIcon.setImageDrawable(drawable)
-                }
-                if (radiusValue == 0F) {
-                    radiusValue = context.dimen(R.dimen.btn_icon_radius)
-                }
+            }
+            if (drawable != null) {
+                imgIcon.setImageDrawable(drawable)
+            }
+            if (radiusValue == 0F) {
+                radiusValue = context.dimen(R.dimen.btn_icon_radius)
             }
         }
     }

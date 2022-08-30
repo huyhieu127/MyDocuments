@@ -1,6 +1,7 @@
 package com.huyhieu.mydocuments.utils.commons
 
 import android.content.Context
+import android.text.SpannableString
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
@@ -9,6 +10,7 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.databinding.WidgetUCheckboxBinding
+import com.huyhieu.mydocuments.utils.setSpannableHyperText
 
 class UCheckBox @JvmOverloads constructor(
     context: Context,
@@ -46,16 +48,21 @@ class UCheckBox @JvmOverloads constructor(
 
     }
 
-    fun setTextContent(content: String?, @ColorInt idColor: Int = 0) {
+    fun setTextContent(content: Any?, @ColorInt idColor: Int = 0) {
         with(binding) {
-            val hasContent = content.isNullOrEmpty()
+            val hasContent = content.toString().isEmpty()
             tvContent.isVisible = !hasContent
             //Clear margin title
             if (!hasContent) {
-                tvContent.text = content
-                if (idColor != 0) {
-                    tvContent.setTextColor(idColor)
+                if (content is SpannableString) {
+                    tvContent.setSpannableHyperText(content)
                 }
+                if (content is String) {
+                    tvContent.text = content
+                }
+            }
+            if (idColor != 0) {
+                tvContent.setTextColor(idColor)
             }
         }
     }

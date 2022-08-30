@@ -6,6 +6,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
+import com.huyhieu.mydocuments.utils.toHyperText
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     override fun initializeBinding() = FragmentProfileBinding.inflate(layoutInflater)
@@ -20,8 +21,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         noteSelfSetupLoan.setOnClickListener(this@ProfileFragment)
         noteSelfSetupLoan.tvSeeMore.setOnClickListener(this@ProfileFragment)
 
+        val text =
+            "Bằng việc đăng ký tài khoản, bạn đồng ý với Điều khoản sử dụng và Chính sách bảo mật của chúng tôi."
+        val terms = "Điều khoản sử dụng"
+        val policy = "Chính sách bảo mật"
+        val spTermAndPolicy = text.toHyperText(terms) {
+            //Do something
+            context.showToastShort("Term: ${ckb.isChecked}")
+        }.toHyperText(policy) {
+            //Do something
+            context.showToastShort("Policy: ${ckb.isChecked}")
+        }
+        ckb.setTextContent(spTermAndPolicy)
         ckb.checkBoxListener = {
-            context.showToastShort("$it ~ ${ckb.isChecked}")
+            context.showToastShort("State: $it")
         }
     }
 
