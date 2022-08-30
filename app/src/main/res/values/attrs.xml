@@ -56,4 +56,11 @@
         <attr name="noteBgColor" format="color" />
         <attr name="noteBgDrawable" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="UCheckBox">
+        <attr name="ckbChecked" format="boolean" />
+
+        <attr name="ckbContent" format="string" />
+        <attr name="ckbContentColor" format="color" />
+    </declare-styleable>
 </resources>

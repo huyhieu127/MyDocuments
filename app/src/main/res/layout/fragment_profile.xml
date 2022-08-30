@@ -19,10 +19,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.huyhieu.mydocuments.utils.commons.UCheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
             <com.huyhieu.mydocuments.utils.commons.UNoteView
                 android:id="@+id/noteSelfSetupLoan"
                 android:layout_width="match_parent"
@@ -47,18 +43,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
-                app:noteBgColorIcon="@color/colorPrimary"
-                app:noteBgDrawable="@drawable/bg_outline_corner_12"
                 app:noteContent="Mức cho vay sẽ tự động kích hoạt sau khi nhận được tháng lương đầu tiên"
-                app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
 
             <com.huyhieu.mydocuments.utils.commons.UNoteView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
+                app:noteBgColorIcon="@color/colorPrimary"
+                app:noteBgDrawable="@drawable/bg_outline_corner_12"
                 app:noteContent="Mức cho vay sẽ tự động kích hoạt sau khi nhận được tháng lương đầu tiên"
+                app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
+
+            <com.huyhieu.mydocuments.utils.commons.UCheckBox
+                android:id="@+id/ckb"
+                android:layout_width="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:ckbContent="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempor lectus dis enim id at ipsum sit sem."
+                app:ckbContentColor="@color/colorSecondary"
+                android:layout_height="wrap_content" />
 
 
             <com.huyhieu.mydocuments.utils.commons.UOptionView

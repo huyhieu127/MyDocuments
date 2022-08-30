@@ -9,4 +9,5 @@
 
     <dimen name="padding_bounds_map">100dp</dimen>
     <dimen name="margin_bottom_title_option_view">3dp</dimen>
+    <dimen name="margin_bottom_title_note_view">8dp</dimen>
 </resources>

@@ -19,6 +19,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         optInformation.setOnClickListener(this@ProfileFragment)
         noteSelfSetupLoan.setOnClickListener(this@ProfileFragment)
         noteSelfSetupLoan.tvSeeMore.setOnClickListener(this@ProfileFragment)
+
+        ckb.checkBoxListener = {
+            context.showToastShort("$it ~ ${ckb.isChecked}")
+        }
     }
 
     override fun FragmentProfileBinding.onClickViewBinding(v: View) {

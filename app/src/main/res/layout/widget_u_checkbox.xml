@@ -8,12 +8,17 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgIcon"
+        android:focusable="?selectableItemBackgroundBorderless"
+        android:padding="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_checkbox" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvContent"
+        android:padding="4dp"
+        android:textColor="@color/colorGrayscaleGray"
+        android:textSize="12sp"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempor lectus dis enim id at ipsum sit sem."
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -105,7 +105,7 @@ class UNoteView @JvmOverloads constructor(
             tvContent.isVisible = !hasContent
             //Clear margin title
             val lp = tvTitle.layoutParams as ConstraintLayout.LayoutParams
-            val marginBottom = context.dimen(R.dimen.margin_bottom_title_option_view)
+            val marginBottom = context.dimen(R.dimen.margin_bottom_title_note_view)
             lp.bottomMargin = if (!hasContent) marginBottom.toInt() else 0
             tvTitle.layoutParams = lp
 
@@ -138,13 +138,11 @@ class UNoteView @JvmOverloads constructor(
                     when (event.action) {
                         MotionEvent.ACTION_DOWN -> {
                             tvSeeMore.alpha = 0.5F
-                        }
-                        MotionEvent.ACTION_UP -> {
-                            tvSeeMore.alpha = 1F
-                            //seeMoreOnClick?.invoke()
+                            return@setOnTouchListener false
                         }
                     }
                 }
+                tvSeeMore.alpha = 1F
                 return@setOnTouchListener false
             }
         }
@@ -152,7 +150,7 @@ class UNoteView @JvmOverloads constructor(
 
 
     override fun setPressed(pressed: Boolean) {
-        alpha = if (pressed) 0.5F else 1F
+        alpha = if (pressed) 0.75F else 1F
         super.setPressed(pressed)
     }
 }
