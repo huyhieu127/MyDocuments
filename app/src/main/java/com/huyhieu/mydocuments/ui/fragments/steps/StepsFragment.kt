@@ -31,8 +31,8 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
     }
 
     override fun FragmentStepsBinding.onLiveData(savedInstanceState: Bundle?) {
-        stepsVM.stepsLiveData.observe(this@StepsFragment) {
-            lifecycleScope.launch {
+        lifecycleScope.launch {
+            stepsVM.stepsLiveData.observe(this@StepsFragment) {
                 when (it) {
                     1 -> {
                         motionSteps.setTransitionTo(R.id.s1, R.id.s1)

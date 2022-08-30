@@ -41,7 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                         this@MainActivity.navigate(MainDirections.toScan)
                     }
                     UTab.TAB_HOME -> {
-                        this@MainActivity.navigate(MainDirections.toHome)
+                        this@MainActivity.navigate(MainDirections.toProfile)
                     }
                     UTab.TAB_PROFILE -> {
                         this@MainActivity.navigate(MainDirections.toSteps)

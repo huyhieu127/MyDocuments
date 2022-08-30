@@ -11,4 +11,5 @@
     <color name="colorAccent">#232051</color>
     <color name="colorAccent_95">#F2232051</color>
     <color name="disable">#D1D5DC</color>
+    <color name="colorGray">#E9E9EE</color>
 </resources>

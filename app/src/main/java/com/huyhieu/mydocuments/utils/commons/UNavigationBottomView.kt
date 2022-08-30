@@ -16,8 +16,11 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.databinding.WidgetUNavigationBottomViewBinding
+import com.huyhieu.mydocuments.databinding.WidgetUNavigationBottomBinding
 import com.huyhieu.mydocuments.utils.setAnimation
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 enum class UTab {
@@ -32,7 +35,7 @@ class UNavigationBottomView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
     private val binding =
-        WidgetUNavigationBottomViewBinding.inflate(LayoutInflater.from(context), this, true)
+        WidgetUNavigationBottomBinding.inflate(LayoutInflater.from(context), this, true)
 
     private val durationTransaction = 250L
 
@@ -40,9 +43,11 @@ class UNavigationBottomView @JvmOverloads constructor(
 
     init {
         with(binding) {
-            imgTabScan.setOnTouchEvent()
-            imgTabHome.setOnTouchEvent()
-            imgTabProfile.setOnTouchEvent()
+            CoroutineScope(Dispatchers.IO).launch {
+                imgTabScan.setOnTouchEvent()
+                imgTabHome.setOnTouchEvent()
+                imgTabProfile.setOnTouchEvent()
+            }
         }
         setTabSelected(UTab.TAB_HOME)
     }

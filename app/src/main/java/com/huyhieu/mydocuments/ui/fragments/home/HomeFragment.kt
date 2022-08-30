@@ -28,6 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun FragmentHomeBinding.addControls(savedInstanceState: Bundle?) {
         mActivity?.setDarkColorStatusBar()
         showNavigationBottom()
+        setTabNavigationBottom(UTab.TAB_HOME)
         initListMenu()
     }
 
@@ -63,7 +64,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         startActivity(Intent(mActivity, NotificationActivity::class.java))
                     }
                     MenuType.Steps -> {
-                        setTabNavigationBottom(UTab.TAB_PROFILE)
                         mActivity?.navigate(MainDirections.toSteps)
                     }
                     MenuType.More -> {

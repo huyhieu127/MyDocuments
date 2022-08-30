@@ -68,10 +68,7 @@ class BarcodeUtils(
                     .build()
             }
             BarcodeType.FACE_DETECT -> {
-                BarcodeScannerOptions.Builder()
-                    .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
-                    /*.setBarcodeFormats(Barcode.TYPE_URL)*/
-                    .build()
+                null
             }
             else -> null
         }

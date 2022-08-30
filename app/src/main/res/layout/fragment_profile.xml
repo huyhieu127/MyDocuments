@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.fragments.ProfileFragment">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="24dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <com.huyhieu.mydocuments.utils.commons.UOptionView
+            android:id="@+id/optInformation"
+            style="@style/OptSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="14dp"
+            app:optContent="Thông tin cá nhân"
+            app:optSrcIcon="@drawable/ic_profile_selected" />
+
+        <com.huyhieu.mydocuments.utils.commons.UOptionView
+            android:id="@+id/optListOfBeneficiaries"
+            style="@style/OptListOfBeneficiaries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="14dp"
+            app:optContent="958/63/9 Lạc Long Quân, P.8, Tân Bình,
+Hồ Chí Minh"
+            app:optSrcIcon="@drawable/ic_scan_default"
+            app:optTitle="Địa chỉ nơi ở hiện tại" />
+
+        <com.huyhieu.mydocuments.utils.commons.UOptionView
+            android:id="@+id/optChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="14dp"
+            app:optBgColorIcon="@color/colorPrimary"
+            app:optContent="Nguyễn Văn A"
+            app:optSrcIcon="@drawable/ic_profile_selected"
+            app:optTintIcon="@color/white"
+            app:optTitle="Top-up"
+            app:optValue="+25,000,000" />
+
+        <com.huyhieu.mydocuments.utils.commons.UOptionView
+            android:id="@+id/optCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="14dp"
+            app:optBgDrawableIcon="@drawable/bg_outline_corner_12"
+            app:optContent="195,000"
+            app:optSrcIcon="@drawable/img_android_logo"
+            app:optTitle="Thẻ 200k"
+            app:optValueFill="Giảm 6%" />
+
+        <com.huyhieu.mydocuments.utils.commons.UOptionView
+            android:id="@+id/optAboutUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="14dp"
+            app:optSrcArrowRight="@drawable/ic_arrow_right"
+            app:optSrcIcon="@drawable/img_google_play"
+            app:optTitle="Phiên bản mới nhất"
+            app:optValue="1.0.1" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

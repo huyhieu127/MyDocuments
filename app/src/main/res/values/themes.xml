@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.MyDocuments" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -15,5 +15,16 @@
         <!--<item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>-->
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="OptSettings">
+        <item name="optSrcArrowRight">@drawable/ic_arrow_right</item>
+        <item name="optTintIcon">@color/colorAccent</item>
+        <item name="optBgColorIcon">@color/colorGray</item>
+    </style>
+
+    <style name="OptListOfBeneficiaries">
+        <item name="optTintIcon">@color/white</item>
+        <item name="optBgColorIcon">@color/colorAccent</item>
     </style>
 </resources>

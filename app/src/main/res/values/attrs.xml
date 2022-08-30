@@ -14,4 +14,27 @@
         <attr name="uEnabled" format="boolean" />
         <attr name="uEnableLoading" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="UOptionView">
+        <attr name="optTitle" format="string" />
+        <attr name="optTitleColor" format="color" />
+
+        <attr name="optContent" format="string" />
+        <attr name="optContentColor" format="color" />
+
+        <attr name="optValueFill" format="string" />
+        <attr name="optValueFillColor" format="color" />
+        <attr name="optValueFillBgColor" format="color" />
+
+        <attr name="optValue" format="string" />
+        <attr name="optValueColor" format="color" />
+
+        <attr name="optSrcIcon" format="reference" />
+        <attr name="optTintIcon" format="color" />
+        <attr name="optBgColorIcon" format="color" />
+        <attr name="optBgDrawableIcon" format="reference" />
+
+        <attr name="optSrcArrowRight" format="reference" />
+        <attr name="optTintArrowRight" format="color" />
+    </declare-styleable>
 </resources>
