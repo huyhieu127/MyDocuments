@@ -17,12 +17,20 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     override fun FragmentProfileBinding.addEvents(savedInstanceState: Bundle?) {
         optInformation.setOnClickListener(this@ProfileFragment)
+        noteSelfSetupLoan.setOnClickListener(this@ProfileFragment)
+        noteSelfSetupLoan.tvSeeMore.setOnClickListener(this@ProfileFragment)
     }
 
     override fun FragmentProfileBinding.onClickViewBinding(v: View) {
         when (v.id) {
             optInformation.id -> {
                 mActivity.showToastShort("Thông tin cá nhân")
+            }
+            noteSelfSetupLoan.id -> {
+                mActivity.showToastShort("Khoản vay tự thiết lập")
+            }
+            noteSelfSetupLoan.tvSeeMore.id -> {
+                mActivity.showToastShort("Tìm hiểu thêm")
             }
         }
     }

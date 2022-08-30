@@ -157,7 +157,7 @@ class UButtonView @JvmOverloads constructor(
         this.setCardBackgroundColor(
             when {
                 isLoading -> context.color(android.R.color.transparent)
-                !isEnabled -> context.color(R.color.disable)
+                !isEnabled -> context.color(R.color.colorGrayscaleDisable)
                 else -> bgColor
             }
         )

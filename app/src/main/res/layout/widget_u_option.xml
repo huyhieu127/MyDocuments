@@ -13,7 +13,7 @@
         android:background="@drawable/bg_corner_12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:backgroundTint="@color/colorGray" />
+        tools:backgroundTint="@color/colorSecondaryLight" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgIcon"
@@ -45,7 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorSecondary"
         android:textSize="15sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -61,7 +61,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorSecondary"
         android:textSize="15sp"
         android:textStyle="bold"
         android:visibility="gone"

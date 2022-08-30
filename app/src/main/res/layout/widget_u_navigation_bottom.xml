@@ -5,7 +5,7 @@
     android:layout_height="90dp"
     android:animateLayoutChanges="true"
     android:background="@drawable/bg_corner_top"
-    android:backgroundTint="@color/colorAccent"
+    android:backgroundTint="@color/colorSecondary"
     app:layout_constraintBottom_toBottomOf="parent">
 
 

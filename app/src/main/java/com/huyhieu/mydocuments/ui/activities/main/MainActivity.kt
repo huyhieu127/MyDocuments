@@ -65,7 +65,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun showNavigationBottom() {
         mBinding.navTab.isVisible = true
-        setNavigationBarColor(R.color.colorAccent_95)
+        setNavigationBarColor(R.color.colorSecondary_95)
     }
 
     override fun hideNavigationBottom(@ColorRes idColor: Int) {

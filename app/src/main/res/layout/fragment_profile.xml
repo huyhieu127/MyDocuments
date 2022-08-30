@@ -7,67 +7,114 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.fragments.ProfileFragment">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="24dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:clipToPadding="false"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="114dp">
 
-        <com.huyhieu.mydocuments.utils.commons.UOptionView
-            android:id="@+id/optInformation"
-            style="@style/OptSettings"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="14dp"
-            app:optContent="Thông tin cá nhân"
-            app:optSrcIcon="@drawable/ic_profile_selected" />
+            android:orientation="vertical">
 
-        <com.huyhieu.mydocuments.utils.commons.UOptionView
-            android:id="@+id/optListOfBeneficiaries"
-            style="@style/OptListOfBeneficiaries"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="14dp"
-            app:optContent="958/63/9 Lạc Long Quân, P.8, Tân Bình,
+            <com.huyhieu.mydocuments.utils.commons.UCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.huyhieu.mydocuments.utils.commons.UNoteView
+                android:id="@+id/noteSelfSetupLoan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:noteBgColorIcon="@color/colorPrimary"
+                app:noteContent="Chủ động thiết lập các khoản vay trả góp phù hợp tài chính: xe máy, điện thoại,..."
+                app:noteSeeMore="Tìm hiểu thêm"
+                app:noteSrcIcon="@drawable/ic_home_selected"
+                app:noteTitle="Khoản vay tự thiết lập" />
+
+            <com.huyhieu.mydocuments.utils.commons.UNoteView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:noteBgColorIcon="@color/colorPrimary"
+                app:noteContent="Mức cho vay sẽ tự động kích hoạt sau khi nhận được tháng lương đầu tiên"
+                app:noteSrcIcon="@drawable/ic_home_selected"
+                app:noteTitle="Thời gian kích hoạt hạn mức" />
+
+            <com.huyhieu.mydocuments.utils.commons.UNoteView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:noteBgColorIcon="@color/colorPrimary"
+                app:noteBgDrawable="@drawable/bg_outline_corner_12"
+                app:noteContent="Mức cho vay sẽ tự động kích hoạt sau khi nhận được tháng lương đầu tiên"
+                app:noteSrcIcon="@drawable/ic_home_selected"
+                app:noteTitle="Thời gian kích hoạt hạn mức" />
+
+            <com.huyhieu.mydocuments.utils.commons.UNoteView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:noteContent="Mức cho vay sẽ tự động kích hoạt sau khi nhận được tháng lương đầu tiên"
+                app:noteTitle="Thời gian kích hoạt hạn mức" />
+
+
+            <com.huyhieu.mydocuments.utils.commons.UOptionView
+                android:id="@+id/optInformation"
+                style="@style/OptSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:optContent="Thông tin cá nhân"
+                app:optSrcIcon="@drawable/ic_profile_selected" />
+
+            <com.huyhieu.mydocuments.utils.commons.UOptionView
+                android:id="@+id/optListOfBeneficiaries"
+                style="@style/OptListOfBeneficiaries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:optContent="958/63/9 Lạc Long Quân, P.8, Tân Bình,
 Hồ Chí Minh"
-            app:optSrcIcon="@drawable/ic_scan_default"
-            app:optTitle="Địa chỉ nơi ở hiện tại" />
+                app:optSrcIcon="@drawable/ic_scan_default"
+                app:optTitle="Địa chỉ nơi ở hiện tại" />
 
-        <com.huyhieu.mydocuments.utils.commons.UOptionView
-            android:id="@+id/optChangePassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="14dp"
-            app:optBgColorIcon="@color/colorPrimary"
-            app:optContent="Nguyễn Văn A"
-            app:optSrcIcon="@drawable/ic_profile_selected"
-            app:optTintIcon="@color/white"
-            app:optTitle="Top-up"
-            app:optValue="+25,000,000" />
+            <com.huyhieu.mydocuments.utils.commons.UOptionView
+                android:id="@+id/optChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:optBgColorIcon="@color/colorPrimary"
+                app:optContent="Nguyễn Văn A"
+                app:optSrcIcon="@drawable/ic_profile_selected"
+                app:optTintIcon="@color/white"
+                app:optTitle="Top-up"
+                app:optValue="+25,000,000" />
 
-        <com.huyhieu.mydocuments.utils.commons.UOptionView
-            android:id="@+id/optCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="14dp"
-            app:optBgDrawableIcon="@drawable/bg_outline_corner_12"
-            app:optContent="195,000"
-            app:optSrcIcon="@drawable/img_android_logo"
-            app:optTitle="Thẻ 200k"
-            app:optValueFill="Giảm 6%" />
+            <com.huyhieu.mydocuments.utils.commons.UOptionView
+                android:id="@+id/optCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:optBgDrawableIcon="@drawable/bg_outline_corner_12"
+                app:optContent="195,000"
+                app:optSrcIcon="@drawable/img_android_logo"
+                app:optTitle="Thẻ 200k"
+                app:optValueFill="Giảm 6%" />
 
-        <com.huyhieu.mydocuments.utils.commons.UOptionView
-            android:id="@+id/optAboutUs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="14dp"
-            app:optSrcArrowRight="@drawable/ic_arrow_right"
-            app:optSrcIcon="@drawable/img_google_play"
-            app:optTitle="Phiên bản mới nhất"
-            app:optValue="1.0.1" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <com.huyhieu.mydocuments.utils.commons.UOptionView
+                android:id="@+id/optAboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="14dp"
+                app:optSrcArrowRight="@drawable/ic_arrow_right"
+                app:optSrcIcon="@drawable/img_google_play"
+                app:optTitle="Phiên bản mới nhất"
+                app:optValue="1.0.1" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

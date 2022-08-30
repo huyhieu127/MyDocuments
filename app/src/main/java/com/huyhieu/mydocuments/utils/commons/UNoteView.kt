@@ -1,71 +1,68 @@
 package com.huyhieu.mydocuments.utils.commons
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.widget.FrameLayout
 import androidx.annotation.ColorInt
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.databinding.WidgetUOptionBinding
+import com.huyhieu.mydocuments.databinding.WidgetUNoteBinding
 import com.huyhieu.mydocuments.utils.extensions.backgroundTint
 import com.huyhieu.mydocuments.utils.extensions.dimen
 import com.huyhieu.mydocuments.utils.extensions.tintVector
 
-class UOptionView @JvmOverloads constructor(
+class UNoteView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
-    private val binding =
-        WidgetUOptionBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = WidgetUNoteBinding.inflate(LayoutInflater.from(context), this, true)
+
+    val tvSeeMore get() = binding.tvSeeMore
 
     init {
-        context.withStyledAttributes(attrs, R.styleable.UOptionView) {
-            val title = getString(R.styleable.UOptionView_optTitle)
-            val titleColor = getColor(R.styleable.UOptionView_optTitleColor, 0)
+        context.withStyledAttributes(attrs, R.styleable.UNoteView) {
+            val title = getString(R.styleable.UNoteView_noteTitle)
+            val titleColor = getColor(R.styleable.UNoteView_noteTitleColor, 0)
             setTextTitle(title, titleColor)
 
-            val content = getString(R.styleable.UOptionView_optContent)
-            val contentColor = getColor(R.styleable.UOptionView_optContentColor, 0)
+            val content = getString(R.styleable.UNoteView_noteContent)
+            val contentColor = getColor(R.styleable.UNoteView_noteContentColor, 0)
             setTextContent(content, contentColor)
 
-            val value = getString(R.styleable.UOptionView_optValue)
-            val valueColor = getColor(R.styleable.UOptionView_optValueColor, 0)
-            setTextValue(value, valueColor)
+            val seeMore = getString(R.styleable.UNoteView_noteSeeMore)
+            val seeMoreColor = getColor(R.styleable.UNoteView_noteSeeMoreColor, 0)
+            setTextSeeMore(seeMore, seeMoreColor)
+            setGestureSeeMore()
 
-            val valueFillBgColor =
-                getColorStateList(R.styleable.UOptionView_optValueFillBgColor)
-            val valueFill = getString(R.styleable.UOptionView_optValueFill)
-            val valueFillColor = getColor(R.styleable.UOptionView_optValueFillColor, 0)
-            setTextValueFill(valueFill, valueFillColor, valueFillBgColor)
-
-
-            val icon = getDrawable(R.styleable.UOptionView_optSrcIcon)
-            val tintIcon = getColor(R.styleable.UOptionView_optTintIcon, 0)
-            val bgIcon = getDrawable(R.styleable.UOptionView_optBgDrawableIcon)
-            val bgIconColor = getColorStateList(R.styleable.UOptionView_optBgColorIcon)
+            val icon = getDrawable(R.styleable.UNoteView_noteSrcIcon)
+            val tintIcon = getColor(R.styleable.UNoteView_noteTintIcon, 0)
+            val bgIcon = getDrawable(R.styleable.UNoteView_noteBgDrawableIcon)
+            val bgIconColor = getColorStateList(R.styleable.UNoteView_noteBgColorIcon)
             setIcon(icon, tintIcon, bgIcon, bgIconColor)
 
-            val arrowRight = getDrawable(R.styleable.UOptionView_optSrcArrowRight)
-            val tintArrowRight = getColor(R.styleable.UOptionView_optTintArrowRight, 0)
-            setArrowRight(arrowRight, tintArrowRight)
+            val bg = getDrawable(R.styleable.UNoteView_noteBgDrawable)
+            val bgColor = getColorStateList(R.styleable.UNoteView_noteBgColor)
+            setRoot(bg, bgColor)
         }
     }
 
-    fun setArrowRight(icon: Drawable?, @ColorInt tintArrowRight: Int) {
+    fun setRoot(
+        bgIcon: Drawable?,
+        colorStateList: ColorStateList?
+    ) {
         with(binding) {
-            imgArrowRight.isVisible = icon != null
-            if (icon != null) {
-                imgArrowRight.setImageDrawable(icon)
-                if (tintArrowRight != 0) {
-                    imgArrowRight.tintVector(tintArrowRight)
-                }
+            if (bgIcon != null) {
+                root.background = bgIcon
             }
+            root.backgroundTint(colorStateList)
         }
     }
 
@@ -84,9 +81,9 @@ class UOptionView @JvmOverloads constructor(
                 }
             }
             if (bgIcon != null) {
-                vBgIcon.background = bgIcon
+                imgIcon.background = bgIcon
             }
-            vBgIcon.backgroundTint(colorStateList)
+            imgIcon.backgroundTint(colorStateList)
         }
     }
 
@@ -121,36 +118,38 @@ class UOptionView @JvmOverloads constructor(
         }
     }
 
-    fun setTextValue(value: String?, @ColorInt idColor: Int = 0) {
+    fun setTextSeeMore(value: String?, @ColorInt idColor: Int = 0) {
         with(binding) {
-            tvValue.isVisible = !value.isNullOrEmpty()
+            tvSeeMore.isVisible = !value.isNullOrEmpty()
             if (!value.isNullOrEmpty()) {
-                tvValue.text = value
+                tvSeeMore.text = value
                 if (idColor != 0) {
-                    tvValue.setTextColor(idColor)
+                    tvSeeMore.setTextColor(idColor)
                 }
             }
         }
     }
 
-    fun setTextValueFill(
-        value: String?,
-        @ColorInt idColor: Int = 0,
-        colorStateList: ColorStateList?
-    ) {
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setGestureSeeMore() {
         with(binding) {
-            tvValueFill.isVisible = !value.isNullOrEmpty()
-            if (!value.isNullOrEmpty()) {
-                tvValueFill.text = value
-                if (idColor != 0) {
-                    tvValueFill.setTextColor(idColor)
+            tvSeeMore.setOnTouchListener { view, event ->
+                if (tvSeeMore.hasOnClickListeners()) {
+                    when (event.action) {
+                        MotionEvent.ACTION_DOWN -> {
+                            tvSeeMore.alpha = 0.5F
+                        }
+                        MotionEvent.ACTION_UP -> {
+                            tvSeeMore.alpha = 1F
+                            //seeMoreOnClick?.invoke()
+                        }
+                    }
                 }
-                if (colorStateList != null) {
-                    tvValueFill.backgroundTint(colorStateList)
-                }
+                return@setOnTouchListener false
             }
         }
     }
+
 
     override fun setPressed(pressed: Boolean) {
         alpha = if (pressed) 0.5F else 1F

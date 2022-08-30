@@ -19,12 +19,12 @@
 
     <style name="OptSettings">
         <item name="optSrcArrowRight">@drawable/ic_arrow_right</item>
-        <item name="optTintIcon">@color/colorAccent</item>
-        <item name="optBgColorIcon">@color/colorGray</item>
+        <item name="optTintIcon">@color/colorSecondary</item>
+        <item name="optBgColorIcon">@color/colorSecondaryLight</item>
     </style>
 
     <style name="OptListOfBeneficiaries">
         <item name="optTintIcon">@color/white</item>
-        <item name="optBgColorIcon">@color/colorAccent</item>
+        <item name="optBgColorIcon">@color/colorSecondary</item>
     </style>
 </resources>

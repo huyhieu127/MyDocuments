@@ -37,4 +37,23 @@
         <attr name="optSrcArrowRight" format="reference" />
         <attr name="optTintArrowRight" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="UNoteView">
+        <attr name="noteTitle" format="string" />
+        <attr name="noteTitleColor" format="color" />
+
+        <attr name="noteContent" format="string" />
+        <attr name="noteContentColor" format="color" />
+
+        <attr name="noteSeeMore" format="string" />
+        <attr name="noteSeeMoreColor" format="color" />
+
+        <attr name="noteSrcIcon" format="reference" />
+        <attr name="noteTintIcon" format="color" />
+        <attr name="noteBgColorIcon" format="color" />
+        <attr name="noteBgDrawableIcon" format="reference" />
+
+        <attr name="noteBgColor" format="color" />
+        <attr name="noteBgDrawable" format="reference" />
+    </declare-styleable>
 </resources>
