@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
+import com.huyhieu.mydocuments.utils.dialog.ToastDialog
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
 import com.huyhieu.mydocuments.utils.toHyperText
@@ -26,16 +27,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         val terms = "Điều khoản sử dụng"
         val policy = "Chính sách bảo mật"
         val spTermAndPolicy = text.toHyperText(terms) {
-            //Do something
             context.showToastShort("Term: ${ckb.isChecked}")
         }.toHyperText(policy) {
-            //Do something
             context.showToastShort("Policy: ${ckb.isChecked}")
         }
         ckb.setTextContent(spTermAndPolicy)
         ckb.checkBoxListener = {
-            context.showToastShort("State: $it")
+            ToastDialog(mActivity!!).show()
         }
+        ToastDialog(mActivity!!).show()
     }
 
     override fun FragmentProfileBinding.onClickViewBinding(v: View) {

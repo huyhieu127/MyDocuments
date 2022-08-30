@@ -26,10 +26,12 @@
         <entry key="app/src/main/res/drawable/bg_corner_4.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/bg_corner_top.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/bg_outline_corner_12.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/bg_outline_green_mint_12.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/bg_switch_thumb.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/bg_switch_track.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_baseline_file_copy_24.xml" value="0.321" />
+        <entry key="app/src/main/res/drawable/ic_cancel.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_checkbox.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_marker.xml" value="0.329" />
@@ -40,6 +42,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_multiple_apiactivity.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_steps.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/dialog_toast.xml" value="0.78125" />
         <entry key="app/src/main/res/layout/fragment_guide.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_home2.xml" value="0.3265625" />
@@ -62,6 +65,7 @@
         <entry key="app/src/main/res/layout/fragment_steps4.xml" value="0.3182291666666667" />
         <entry key="app/src/main/res/layout/layout_item_menu.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/view_maker.xml" value="1.25" />
+        <entry key="app/src/main/res/layout/widget_toast_top.xml" value="0.3255208333333333" />
         <entry key="app/src/main/res/layout/widget_u_button.xml" value="0.33" />
         <entry key="app/src/main/res/layout/widget_u_checkbox.xml" value="0.3255208333333333" />
         <entry key="app/src/main/res/layout/widget_u_navigation_bottom.xml" value="0.3265625" />

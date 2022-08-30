@@ -17,6 +17,16 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!--Dialog-->
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+    <!--View-->
     <style name="OptSettings">
         <item name="optSrcArrowRight">@drawable/ic_arrow_right</item>
         <item name="optTintIcon">@color/colorSecondary</item>
@@ -27,4 +37,5 @@
         <item name="optTintIcon">@color/white</item>
         <item name="optBgColorIcon">@color/colorSecondary</item>
     </style>
+
 </resources>
