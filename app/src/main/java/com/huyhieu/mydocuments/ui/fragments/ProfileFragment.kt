@@ -2,12 +2,16 @@ package com.huyhieu.mydocuments.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
 import com.huyhieu.mydocuments.utils.dialog.ToastDialog
+import com.huyhieu.mydocuments.utils.dialog.ToastType
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
 import com.huyhieu.mydocuments.utils.toHyperText
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     override fun initializeBinding() = FragmentProfileBinding.inflate(layoutInflater)
@@ -28,14 +32,45 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         val policy = "Chính sách bảo mật"
         val spTermAndPolicy = text.toHyperText(terms) {
             context.showToastShort("Term: ${ckb.isChecked}")
+            ToastDialog(
+                type = ToastType.SUCCESS,
+                title = "Cài lại mật khẩu thành công",
+                content = "Bạn có thể đăng nhập bằng mật khẩu mới",
+            ).apply {
+                lifecycleScope.launch {
+                    show(this@ProfileFragment.childFragmentManager, "TOAST")
+                    delay(2000)
+                    dismiss()
+                }
+            }
         }.toHyperText(policy) {
             context.showToastShort("Policy: ${ckb.isChecked}")
+            ToastDialog(
+                type = ToastType.FAILED,
+                title = "Đã có lỗi xảy ra",
+                content = "Bạn vui lòng thử lại lần nữa",
+            ).apply {
+                lifecycleScope.launch {
+                    show(this@ProfileFragment.childFragmentManager, "TOAST")
+                    delay(2000)
+                    dismiss()
+                }
+            }
         }
         ckb.setTextContent(spTermAndPolicy)
         ckb.checkBoxListener = {
-            ToastDialog(mActivity!!).show()
+            ToastDialog(
+                type = ToastType.NORMAL,
+                title = "Chào mừng bạn đến với UBank",
+                content = "Bắt đầu trải nghiệm những điều kỳ diệu trong ngân hàng số dành riêng cho bạn.",
+            ).apply {
+                show(this@ProfileFragment.childFragmentManager, "TOAST")
+                lifecycleScope.launch {
+                    delay(2000)
+                    dismiss()
+                }
+            }
         }
-        ToastDialog(mActivity!!).show()
     }
 
     override fun FragmentProfileBinding.onClickViewBinding(v: View) {

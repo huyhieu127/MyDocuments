@@ -36,4 +36,11 @@ abstract class BaseDialog<T : ViewBinding>(context: Context, @StyleRes themeResI
             window.attributes = wlp
         }
     }
+
+    fun setTouchBehindDialog() {
+        window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+        )
+    }
 }

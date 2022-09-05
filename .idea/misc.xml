@@ -26,7 +26,10 @@
         <entry key="app/src/main/res/drawable/bg_corner_4.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/bg_corner_top.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/bg_outline_corner_12.xml" value="0.1895" />
+        <entry key="app/src/main/res/drawable/bg_outline_gray_white_corner_12.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/bg_outline_green_mint_12.xml" value="0.329" />
+        <entry key="app/src/main/res/drawable/bg_outline_green_mint_corner_12.xml" value="0.329" />
+        <entry key="app/src/main/res/drawable/bg_outline_red_light_corner_12.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/bg_switch_thumb.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/bg_switch_track.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/ic_arrow_right.xml" value="0.329" />
