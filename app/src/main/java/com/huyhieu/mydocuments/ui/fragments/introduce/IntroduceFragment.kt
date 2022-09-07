@@ -21,6 +21,7 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
     override fun initializeBinding() = FragmentIntroduceBinding.inflate(layoutInflater)
 
     override fun FragmentIntroduceBinding.addControls(savedInstanceState: Bundle?) {
+        hideNavigationBottom()
     }
 
     override fun FragmentIntroduceBinding.addEvents(savedInstanceState: Bundle?) {

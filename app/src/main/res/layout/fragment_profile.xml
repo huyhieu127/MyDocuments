@@ -17,7 +17,15 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorGreenMint"
             android:orientation="vertical">
+
+            <com.huyhieu.mydocuments.utils.commons.MySeekBar
+                android:layout_width="match_parent"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="1000dp"
+                android:secondaryProgress="100"
+                android:layout_height="wrap_content" />
 
             <com.huyhieu.mydocuments.utils.commons.UNoteView
                 android:id="@+id/noteSelfSetupLoan"

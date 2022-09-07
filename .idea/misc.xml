@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.3546875" />
         <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/drawable/bg_switch_thumb.xml" value="0.195" />
         <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/drawable/bg_switch_track.xml" value="0.2065" />
         <entry key="..\:/Users/idhuy/StudioProjects/MyDocuments/app/src/main/res/layout/activity_ffmpeg_kit.xml" value="0.176" />
@@ -37,11 +38,15 @@
         <entry key="app/src/main/res/drawable/ic_cancel.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_checkbox.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.329" />
+        <entry key="app/src/main/res/drawable/ic_line_gradient_gray.xml" value="0.329" />
+        <entry key="app/src/main/res/drawable/ic_line_gradient_green.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_marker.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_profile_selected.xml" value="0.329" />
         <entry key="app/src/main/res/drawable/ic_qr_code_top_left.xml" value="0.321" />
         <entry key="app/src/main/res/drawable/ic_scan.xml" value="0.329" />
+        <entry key="app/src/main/res/drawable/progress_seek_bar.xml" value="0.329" />
+        <entry key="app/src/main/res/drawable/thumb_seek_bar.xml" value="0.329" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_multiple_apiactivity.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_steps.xml" value="0.35625" />
