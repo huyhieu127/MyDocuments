@@ -63,4 +63,10 @@
         <attr name="ckbContent" format="string" />
         <attr name="ckbContentColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="UTagView">
+        <attr name="tagSrcIcon" format="reference" />
+        <attr name="tagTitle" format="string" />
+        <attr name="tagBackground" format="color" />
+    </declare-styleable>
 </resources>

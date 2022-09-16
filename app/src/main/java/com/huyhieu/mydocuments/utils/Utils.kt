@@ -1,8 +1,13 @@
 package com.huyhieu.mydocuments.utils
 
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import android.net.Uri
+
 
 fun Any?.isNull() = this == null
 
@@ -22,6 +27,14 @@ fun Activity?.shareMessage(msg: String = "") {
 
     val shareIntent = Intent.createChooser(sendIntent, null)
     startActivity(shareIntent)
+}
+
+fun Context?.copyText(text: String?) {
+    this ?: return
+    val clipboard: ClipboardManager? =
+        this.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager?
+    val clip = ClipData.newPlainText("label", text ?: "")
+    clipboard?.setPrimaryClip(clip)
 }
 
 fun Activity?.shareImage(uriToImage: Uri? = null, title: String = "") {

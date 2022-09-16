@@ -3,6 +3,7 @@ package com.huyhieu.mydocuments.ui.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
 import com.huyhieu.mydocuments.utils.dialog.ToastDialog
@@ -18,7 +19,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     override fun FragmentProfileBinding.addControls(savedInstanceState: Bundle?) {
         mActivity?.setDarkColorStatusBar()
-        showNavigationBottom()
+        //showNavigationBottom()
+        hideNavigationBottom(R.color.white)
     }
 
     override fun FragmentProfileBinding.addEvents(savedInstanceState: Bundle?) {

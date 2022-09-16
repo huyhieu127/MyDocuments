@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="24dp"
+    app:cardBackgroundColor="#FAF0D6"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img_usuper" />
+
+        <TextView
+            android:id="@+id/tvSurplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="24dp"
+            android:text="********"
+            android:textColor="@color/colorSecondary"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgEye"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="28dp"
+            android:padding="3dp"
+            app:layout_constraintStart_toEndOf="@id/tvSurplus"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_photo_library_24"
+            app:tint="@color/colorSecondary" />
+
+        <TextView
+            android:id="@+id/tvTitleSurplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Số dư"
+            android:textColor="@color/colorGrayscaleBlack"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tvSurplus"
+            app:layout_constraintTop_toBottomOf="@id/tvSurplus" />
+
+        <com.huyhieu.mydocuments.utils.commons.UTagView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@id/tvCardNumber"
+            app:layout_constraintStart_toStartOf="@id/tvSurplus"
+            app:tagSrcIcon="@drawable/ic_baseline_photo_library_24"
+            app:tagTitle="Cơ bản" />
+
+        <TextView
+            android:id="@+id/tvCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="0000 0000 1232 3221"
+            android:textColor="@color/colorSecondary"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvSurplus" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCopy"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvCardNumber"
+            app:layout_constraintStart_toEndOf="@id/tvCardNumber"
+            app:layout_constraintTop_toTopOf="@id/tvCardNumber"
+            app:srcCompat="@drawable/ic_baseline_file_copy_24"
+            app:tint="@color/colorGrayscaleBlack" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
