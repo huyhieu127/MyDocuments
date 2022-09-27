@@ -20,6 +20,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 
 fun Activity.isAppRunning(packageName: String): Boolean {
     val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
@@ -73,6 +74,22 @@ fun Activity?.setDarkColorStatusBar(isDark: Boolean = true) {
                 }
             }
         }
+    }
+}
+
+fun Activity?.setTransparentStatusBarNew(
+    isTransparent: Boolean = true,
+    colorStatusBar: Int = Color.WHITE
+) {
+    this ?: return
+    val window = this.window
+    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+    if (isTransparent) {
+        window.statusBarColor = Color.TRANSPARENT
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+    } else {
+        window.statusBarColor = colorStatusBar
+        WindowCompat.setDecorFitsSystemWindows(window, true)
     }
 }
 
