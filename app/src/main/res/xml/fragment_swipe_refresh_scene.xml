@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/vLoading"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:alpha="0"
+            app:layout_constraintBottom_toBottomOf="@id/tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint android:id="@+id/tvMain" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/vLoading"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:alpha="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv" />
+
+        <Constraint
+            android:id="@id/tvMain"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vLoading" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="250">
+        <OnSwipe
+            app:maxAcceleration="30"
+            app:dragDirection="dragDown"
+            app:touchAnchorId="@id/tvMain"
+            app:touchAnchorSide="top" />
+    </Transition>
+</MotionScene>

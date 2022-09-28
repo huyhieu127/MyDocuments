@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_swipe_refresh_scene"
+    tools:context=".ui.fragments.SwipeRefreshFragment">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:fitsSystemWindows="true"
+        android:background="#03A9F4"
+        android:gravity="center"
+        android:text="@string/hello_blank_fragment"
+        android:elevation="1dp"
+        android:textColor="#fff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/vLoading"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="#4CAF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv" />
+
+    <TextView
+        android:id="@+id/tvMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#E91E63"
+        android:gravity="center"
+        android:text="@string/hello_blank_fragment"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

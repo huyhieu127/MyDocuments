@@ -49,6 +49,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        hideNavigationBottom()
         mBinding.addControls(savedInstanceState)
         mBinding.addEvents(savedInstanceState)
         mBinding.onLiveData(savedInstanceState)
