@@ -2,49 +2,65 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ConstraintSet android:id="@+id/start">
+    <Transition
+        android:id="@+id/transRefresh"
+        app:constraintSetEnd="@id/refresh"
+        app:constraintSetStart="@+id/start"
+        app:duration="300">
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:maxAcceleration="90"
+            app:touchAnchorId="@id/rcv" />
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotation="540"
+                app:framePosition="0"
+                app:motionTarget="@+id/vLoading" />
+        </KeyFrameSet>
+    </Transition>
+
+    <Transition
+        android:id="@+id/transAnchor"
+        app:constraintSetEnd="@id/anchor"
+        app:constraintSetStart="@+id/start"
+        app:duration="300">
+        <OnSwipe
+            app:autoCompleteMode="spring"
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@id/rcv" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start" />
+
+    <!--Anchor-->
+    <ConstraintSet android:id="@+id/anchor">
         <Constraint
-            android:id="@+id/vLoading"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:alpha="0"
-            app:layout_constraintBottom_toBottomOf="@id/tv"
+            android:id="@+id/nstView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-54dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvTop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <Constraint android:id="@+id/tvMain" />
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/end">
+    <!--Refresh-->
+    <ConstraintSet android:id="@+id/refresh">
         <Constraint
-            android:id="@id/vLoading"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/vLoading"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="10dp"
-            android:alpha="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv" />
-
+            app:layout_constraintTop_toBottomOf="@id/tvTop" />
         <Constraint
-            android:id="@id/tvMain"
+            android:id="@+id/nstView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/vLoading" />
     </ConstraintSet>
-
-    <Transition
-        app:constraintSetEnd="@id/end"
-        app:constraintSetStart="@+id/start"
-        app:duration="250">
-        <OnSwipe
-            app:maxAcceleration="30"
-            app:dragDirection="dragDown"
-            app:touchAnchorId="@id/tvMain"
-            app:touchAnchorSide="top" />
-    </Transition>
 </MotionScene>
