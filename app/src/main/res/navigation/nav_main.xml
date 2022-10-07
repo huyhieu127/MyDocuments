@@ -3,16 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/cardsFragment">
+    app:startDestination="@id/navigationFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <action
-        android:id="@+id/action_global_homeFragment"
-        app:destination="@id/homeFragment" />
+        android:id="@+id/navigationFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.navigation.NavigationFragment"
+        android:label="NavigationFragment" />
 
     <fragment
         android:id="@+id/stepsFragment"
@@ -48,13 +44,6 @@
     <action
         android:id="@+id/action_global_guideFragment"
         app:destination="@id/guideFragment" />
-    <fragment
-        android:id="@+id/QRCodeFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.QRCodeFragment"
-        android:label="QRCodeFragment" />
-    <action
-        android:id="@+id/action_global_QRCodeFragment"
-        app:destination="@id/QRCodeFragment" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.SplashFragment"
@@ -92,14 +81,6 @@
     <action
         android:id="@+id/action_global_staticMapFragment"
         app:destination="@id/staticMapFragment" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-    <action
-        android:id="@+id/action_global_profileFragment"
-        app:destination="@id/profileFragment" />
     <fragment
         android:id="@+id/swipeRefreshFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.SwipeRefreshFragment"

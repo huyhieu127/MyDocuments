@@ -3,20 +3,11 @@ package com.huyhieu.mydocuments.utils.directions
 
 import com.huyhieu.mydocuments.ui.fragments.GuideFragmentDirections
 import com.huyhieu.mydocuments.ui.fragments.MotionCardFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.ProfileFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.QRCodeFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.home.HomeFragmentDirections
 import com.huyhieu.mydocuments.ui.fragments.introduce.IntroduceFragmentDirections
 import com.huyhieu.mydocuments.ui.fragments.multipleapi.MultipleApiFragmentDirections
 import com.huyhieu.mydocuments.ui.fragments.steps.StepsFragmentDirections
 
 object MainDirections {
-
-    val toProfile
-        get() = ProfileFragmentDirections.actionGlobalProfileFragment()
-
-    val toScan
-        get() = QRCodeFragmentDirections.actionGlobalQRCodeFragment()
 
     val toIntroduce
         get() = IntroduceFragmentDirections.actionGlobalIntroduceFragment()
@@ -33,7 +24,4 @@ object MainDirections {
     val toMultipleAPI
         get() =
             MultipleApiFragmentDirections.actionGlobalMultipleAPIFragment()
-
-    val toHome
-        get() = HomeFragmentDirections.actionGlobalHomeFragment()
 }

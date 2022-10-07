@@ -2,7 +2,6 @@ package com.huyhieu.mydocuments.base
 
 import android.os.Bundle
 import android.view.*
-import androidx.annotation.ColorRes
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavDirections
 import androidx.navigation.NavOptionsBuilder
@@ -11,7 +10,6 @@ import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.utils.commons.UButtonView
-import com.huyhieu.mydocuments.utils.commons.UTab
 import com.huyhieu.mydocuments.utils.extensions.hideKeyboard
 
 abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnClickListener {
@@ -141,17 +139,5 @@ abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnCl
 
     open fun onBackPressedFragment() {
         mActivity?.onBackPressed()
-    }
-
-    open fun setTabNavigationBottom(tab: UTab) {
-        mActivity?.setTabNavigationBottom(tab)
-    }
-
-    open fun showNavigationBottom() {
-        mActivity?.showNavigationBottom()
-    }
-
-    open fun hideNavigationBottom(@ColorRes idColor: Int = android.R.color.transparent) {
-        mActivity?.hideNavigationBottom(idColor)
     }
 }
