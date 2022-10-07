@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionSence xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Transition
+        app:constraintSetEnd="@id/stateExpand"
+        app:constraintSetStart="@id/stateDefault"
+        app:duration="300">
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:touchAnchorId="@+id/rcv" />
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotationX="-5"
+                android:scaleX="1.05"
+                android:scaleY="1.05"
+                app:framePosition="50"
+                app:motionTarget="@+id/tvCard1" />
+            <KeyAttribute
+                android:rotationX="-5"
+                android:scaleX="1.05"
+                android:scaleY="1.05"
+                app:framePosition="50"
+                app:motionTarget="@+id/tvCard2" />
+            <KeyAttribute
+                android:rotationX="-5"
+                android:scaleX="1.05"
+                android:scaleY="1.05"
+                app:framePosition="50"
+                app:motionTarget="@+id/tvCard3" />
+            <KeyAttribute
+                android:rotationX="-5"
+                android:scaleX="1.05"
+                android:scaleY="1.05"
+                app:framePosition="50"
+                app:motionTarget="@+id/tvCard4" />
+        </KeyFrameSet>
+    </Transition>
+
+    <!--Anim to menu-->
+    <Transition
+        app:constraintSetEnd="@id/stateMenuLeft"
+        app:constraintSetStart="@id/stateDefault"
+        app:duration="300">
+        <OnSwipe
+            app:dragDirection="dragRight"
+            app:touchAnchorId="@+id/rcv" />
+    </Transition>
+
+    <Transition
+        app:constraintSetEnd="@id/stateMenuLeft"
+        app:constraintSetStart="@id/stateExpand"
+        app:duration="300">
+        <OnSwipe
+            app:dragDirection="dragRight"
+            app:touchAnchorId="@+id/rcv" />
+    </Transition>
+
+    <!--Card click [4, 3]-->
+    <!--4-->
+    <Transition
+        app:constraintSetEnd="@id/stateClickCard4"
+        app:constraintSetStart="@id/stateDefault"
+        app:duration="300">
+        <OnClick app:targetId="@+id/tvCard4" />
+    </Transition>
+    <Transition
+        app:constraintSetEnd="@id/stateClickCard4"
+        app:constraintSetStart="@id/stateExpand"
+        app:duration="300">
+        <OnClick app:targetId="@+id/tvCard4" />
+    </Transition>
+    <!--3-->
+    <Transition
+        app:constraintSetEnd="@id/stateClickCard3"
+        app:constraintSetStart="@id/stateDefault"
+        app:duration="300">
+        <OnClick app:targetId="@+id/tvCard3" />
+    </Transition>
+    <Transition
+        app:constraintSetEnd="@id/stateClickCard3"
+        app:constraintSetStart="@id/stateExpand"
+        app:duration="300">
+        <OnClick app:targetId="@+id/tvCard3" />
+    </Transition>
+
+
+    <!--Default-->
+    <ConstraintSet android:id="@+id/stateDefault" />
+
+    <!--Expand-->
+    <ConstraintSet android:id="@+id/stateExpand">
+        <Constraint
+            android:id="@+id/tvCard1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="0">
+            <CustomAttribute
+                app:attributeName="elevation"
+                app:customDimension="0dp" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/tvCard2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="0.30">
+            <CustomAttribute
+                app:attributeName="elevation"
+                app:customDimension="0dp" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/tvCard3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="0.63">
+            <CustomAttribute
+                app:attributeName="elevation"
+                app:customDimension="0dp" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/tvCard4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="1">
+            <CustomAttribute
+                app:attributeName="elevation"
+                app:customDimension="0dp" />
+        </Constraint>
+    </ConstraintSet>
+
+    <!--Menu left-->
+    <ConstraintSet android:id="@+id/stateMenuLeft">
+        <!--Container-->
+        <Constraint
+            android:id="@+id/vLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+        <Constraint
+            android:id="@+id/vRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <!--Cards-->
+        <Constraint
+            android:id="@+id/tvCard1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:rotation="10"
+            android:translationX="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="0.1" />
+        <Constraint
+            android:id="@+id/tvCard2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:rotation="3"
+            android:translationX="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="0.35" />
+        <Constraint
+            android:id="@+id/tvCard3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:rotation="-3"
+            android:translationX="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="0.60" />
+        <Constraint
+            android:id="@+id/tvCard4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:rotation="-10"
+            android:translationX="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop"
+            app:layout_constraintVertical_bias="0.9" />
+        <Constraint
+            android:id="@+id/rcv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="parent" />
+    </ConstraintSet>
+
+    <!--Click card [4, 3]-->
+    <ConstraintSet android:id="@+id/stateClickCard4">
+        <Constraint
+            android:id="@+id/tvCard1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:alpha="0"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop" />
+        <Constraint
+            android:id="@+id/tvCard2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:alpha="0"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toTopOf="@+id/tvCard1" />
+        <Constraint
+            android:id="@+id/tvCard3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:alpha="0"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toTopOf="@+id/tvCard2" />
+        <Constraint
+            android:id="@+id/tvCard4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toTopOf="@+id/tvCard3" />
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/stateClickCard3">
+        <Constraint
+            android:id="@+id/tvCard1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="50dp"
+            android:alpha="0"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@+id/vTop" />
+        <Constraint
+            android:id="@+id/tvCard2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:alpha="0"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toTopOf="@+id/tvCard1" />
+        <Constraint
+            android:id="@+id/tvCard3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toTopOf="@+id/tvCard2">
+            <CustomAttribute
+                app:attributeName="elevation"
+                app:customDimension="1dp" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/tvCard4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:alpha="0"
+            app:layout_constraintDimensionRatio="h, 2:1.2"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toTopOf="@+id/tvCard3"></Constraint>
+        <Constraint
+            android:id="@+id/rcv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/vRight"
+            app:layout_constraintStart_toEndOf="@+id/vLeft"
+            app:layout_constraintTop_toBottomOf="@id/tvCard3" />
+    </ConstraintSet>
+</MotionSence>

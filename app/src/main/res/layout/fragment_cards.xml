@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/motion_cards_scene"
+    tools:context=".ui.fragments.SwipeRefreshFragment">
+
+    <FrameLayout
+        android:id="@+id/vTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8BC34A"
+        android:fitsSystemWindows="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:text="Motion cards"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tvCard1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:background="#00BCD4"
+        android:gravity="center"
+        android:text="Card 1"
+        app:layout_constraintDimensionRatio="h, 2:1.2"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toEndOf="@+id/vLeft"
+        app:layout_constraintTop_toBottomOf="@+id/vTop" />
+
+
+    <TextView
+        android:id="@+id/tvCard2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        android:background="#03A9F4"
+        android:gravity="center"
+        android:text="Card 2"
+        app:layout_constraintDimensionRatio="h, 2:1.2"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toEndOf="@+id/vLeft"
+        app:layout_constraintTop_toTopOf="@+id/tvCard1" />
+
+
+    <TextView
+        android:id="@+id/tvCard3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="#2196F3"
+        android:gravity="center"
+        android:text="Card 3"
+        app:layout_constraintDimensionRatio="h, 2:1.2"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toEndOf="@+id/vLeft"
+        app:layout_constraintTop_toTopOf="@+id/tvCard2" />
+
+
+    <TextView
+        android:id="@+id/tvCard4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:background="#3F51B5"
+        android:gravity="center"
+        android:text="Card 4"
+        app:layout_constraintDimensionRatio="h, 2:1.2"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toEndOf="@+id/vLeft"
+        app:layout_constraintTop_toTopOf="@+id/tvCard3" />
+
+
+    <View
+        android:id="@+id/rcv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:background="#673AB7"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toEndOf="@+id/vLeft"
+        app:layout_constraintTop_toBottomOf="@id/tvCard4" />
+
+    <!--<TextView
+        android:id="@+id/rcv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:background="#9C27B0"
+        android:gravity="center"
+        android:text="Recycler view"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toEndOf="@+id/vLeft"
+        app:layout_constraintTop_toBottomOf="@id/tvCard4" />-->
+
+    <View
+        android:id="@+id/vLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#E91E63"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <!--View fake-->
+    <View
+        android:id="@+id/vRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5"
+        tools:background="#33F44336" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

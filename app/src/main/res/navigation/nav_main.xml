@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/swipeRefreshFragment">
+    app:startDestination="@id/cardsFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -105,4 +105,8 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.SwipeRefreshFragment"
         android:label="fragment_swipe_refresh"
         tools:layout="@layout/fragment_swipe_refresh" />
+    <fragment
+        android:id="@+id/cardsFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.CardsFragment"
+        android:label="CardsFragment" />
 </navigation>

@@ -19,6 +19,9 @@ class SwipeRefreshFragment : BaseFragment<FragmentSwipeRefreshBinding>() {
     override fun FragmentSwipeRefreshBinding.addControls(savedInstanceState: Bundle?) {
         handleOnTouchView(nstView)
         handleOnTouchView(rcv)
+        lifecycleScope.launch {
+            delay(2000L)
+        }
     }
 
     override fun FragmentSwipeRefreshBinding.addEvents(savedInstanceState: Bundle?) {
