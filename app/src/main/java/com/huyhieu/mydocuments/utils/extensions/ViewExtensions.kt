@@ -1,35 +1,7 @@
 package com.huyhieu.mydocuments.utils.extensions
 
-import android.app.Activity
 import android.view.View
-import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.NavDirections
-import androidx.navigation.NavOptions
-import androidx.navigation.findNavController
-import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.utils.logDebug
-
-
-fun Activity?.navigate(
-    directions: NavDirections,
-    navOptions: NavOptions? = null
-) {
-    this ?: return
-    findNavController(R.id.navHostMain).navigate(directions, navOptions)
-}
-
-fun Activity?.popBackStack() {
-    this ?: return
-    findNavController(R.id.navHostMain).popBackStack()
-}
-
-fun FragmentContainerView?.childNavigate(
-    directions: NavDirections,
-    navOptions: NavOptions? = null
-){
-    this ?: return
-    findNavController().navigate(directions, navOptions)
-}
 
 fun View.setOnClickMyListener(delay: Long = 1000L, onClick: () -> Unit) {
     var time = System.currentTimeMillis()

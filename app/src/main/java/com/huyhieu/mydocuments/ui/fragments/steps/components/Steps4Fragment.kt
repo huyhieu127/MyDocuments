@@ -3,7 +3,7 @@ package com.huyhieu.mydocuments.ui.fragments.steps.components
 import android.os.Bundle
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps4Binding
-import com.huyhieu.mydocuments.utils.extensions.popBackStack
+import com.huyhieu.mydocuments.navigation.popBackStackTo
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val ARG_PARAM1 = "param1"
@@ -37,6 +37,6 @@ class Steps4Fragment : BaseFragment<FragmentSteps4Binding>() {
     }
 
     override fun onBackPressedFragment() {
-        mActivity?.popBackStack()
+        popBackStackTo()
     }
 }

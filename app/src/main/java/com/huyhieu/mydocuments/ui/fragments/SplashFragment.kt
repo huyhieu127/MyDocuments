@@ -6,7 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSplashBinding
 import com.huyhieu.mydocuments.navigation.directions.MainDirections
-import com.huyhieu.mydocuments.utils.extensions.navigate
+import com.huyhieu.mydocuments.navigation.navigate
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             btnNext.id -> {
                 lifecycleScope.launch {
                     delay(1000)
-                    mActivity?.navigate(MainDirections.toIntroduce)
+                    navigate(MainDirections.toIntroduce)
                 }
             }
         }

@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
+import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.MainDirections
+import com.huyhieu.mydocuments.navigation.navigate
 import com.huyhieu.mydocuments.others.enums.MenuType
 import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.ffmmpegkit.FFmpegKitActivity
@@ -12,7 +14,6 @@ import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.ui.fragments.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.home.components.MyDialog
 import com.huyhieu.mydocuments.utils.commons.UTab
-import com.huyhieu.mydocuments.utils.extensions.navigate
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -46,16 +47,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             itemClick = { menuForm ->
                 when (menuForm.type) {
                     MenuType.Guide -> {
-                        mActivity?.navigate(MainDirections.toGuide)
+                        navigate(MyNavHost.Main, MainDirections.toGuide)
                     }
                     MenuType.MotionCard -> {
-                        mActivity?.navigate(MainDirections.toMotionCard)
+                        navigate(MyNavHost.Main, MainDirections.toMotionCard)
                     }
                     MenuType.FFmpegKit -> {
                         startActivity(Intent(mActivity, FFmpegKitActivity::class.java))
                     }
                     MenuType.MultipleAPI -> {
-                        mActivity?.navigate(MainDirections.toMultipleAPI)
+                        navigate(MyNavHost.Main, MainDirections.toMultipleAPI)
                     }
                     MenuType.Bluetooth -> {
                         startActivity(Intent(mActivity, BluetoothActivity::class.java))
@@ -64,7 +65,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         startActivity(Intent(mActivity, NotificationActivity::class.java))
                     }
                     MenuType.Steps -> {
-                        mActivity?.navigate(MainDirections.toSteps)
+                        navigate(MyNavHost.Main, MainDirections.toSteps)
                     }
                     MenuType.More -> {
                         mActivity?.supportFragmentManager?.let {
