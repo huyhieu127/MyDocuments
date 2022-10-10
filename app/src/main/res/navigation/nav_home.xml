@@ -10,9 +10,27 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" />
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
+
     <fragment
-        android:id="@+id/QRCodeFragment"
+        android:id="@+id/qrCodeFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.QRCodeFragment"
         android:label="QRCodeFragment"
         tools:layout="@layout/fragment_qr_code" />
+    <action
+        android:id="@+id/action_global_qrCodeFragment"
+        app:destination="@id/qrCodeFragment" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@id/profileFragment" />
 </navigation>

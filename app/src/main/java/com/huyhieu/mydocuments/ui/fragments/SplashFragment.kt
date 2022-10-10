@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSplashBinding
-import com.huyhieu.mydocuments.utils.directions.MainDirections
+import com.huyhieu.mydocuments.navigation.directions.MainDirections
 import com.huyhieu.mydocuments.utils.extensions.navigate
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import kotlinx.coroutines.delay

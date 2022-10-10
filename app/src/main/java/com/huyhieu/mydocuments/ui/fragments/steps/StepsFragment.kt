@@ -6,7 +6,7 @@ import androidx.navigation.NavOptions
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStepsBinding
-import com.huyhieu.mydocuments.utils.directions.StepDirections
+import com.huyhieu.mydocuments.navigation.directions.StepDirections
 import com.huyhieu.mydocuments.utils.extensions.childNavigate
 import com.huyhieu.mydocuments.utils.extensions.navigate
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar

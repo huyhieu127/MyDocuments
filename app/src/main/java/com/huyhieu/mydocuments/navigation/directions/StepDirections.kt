@@ -1,6 +1,5 @@
-package com.huyhieu.mydocuments.utils.directions
+package com.huyhieu.mydocuments.navigation.directions
 
-import com.huyhieu.mydocuments.ui.fragments.GuideFragmentDirections
 import com.huyhieu.mydocuments.ui.fragments.steps.components.Steps1FragmentDirections
 
 object StepDirections {
