@@ -5,6 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStepsBinding
+import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.StepDirections
 import com.huyhieu.mydocuments.navigation.navigate
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
@@ -34,11 +35,11 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
                 when (it) {
                     1 -> {
                         motionSteps.setTransitionTo(R.id.s1, R.id.s1)
-                        navigate(StepDirections.toStep1)
+                        navigate(MyNavHost.Steps, StepDirections.toStep1)
                     }
                     2 -> {
                         motionSteps.setTransitionTo(R.id.s1, R.id.s2)
-                        navigate(StepDirections.toStep2) {
+                        navigate(MyNavHost.Steps, StepDirections.toStep2) {
                             setLaunchSingleTop(true)
                             setPopUpTo(StepDirections.toStep1.actionId, false)
                             setEnterAnim(R.anim.anim_enter_hrz)
@@ -47,7 +48,7 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
                     }
                     3 -> {
                         motionSteps.setTransitionTo(R.id.s2, R.id.s3)
-                        navigate(StepDirections.toStep3) {
+                        navigate(MyNavHost.Steps, StepDirections.toStep3) {
                             setLaunchSingleTop(true)
                             setPopUpTo(StepDirections.toStep1.actionId, false)
                             setEnterAnim(R.anim.anim_enter_hrz)
@@ -56,7 +57,7 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
                     }
                     4 -> {
                         motionSteps.setTransitionTo(R.id.s3, R.id.s4)
-                        navigate(StepDirections.toStep4) {
+                        navigate(MyNavHost.Steps, StepDirections.toStep4) {
                             setLaunchSingleTop(true)
                             setPopUpTo(StepDirections.toStep1.actionId, false)
                             setEnterAnim(R.anim.anim_enter_hrz)

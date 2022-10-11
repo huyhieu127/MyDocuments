@@ -15,7 +15,8 @@ import com.huyhieu.mydocuments.R
  * Navigation in fragment*/
 enum class MyNavHost(val navHostId: Int) {
     Main(R.id.navHostMain),
-    Home(R.id.navHostHome)
+    Home(R.id.navHostHome),
+    Steps(R.id.navHostSteps),
 }
 
 /**Navigate extensions*/

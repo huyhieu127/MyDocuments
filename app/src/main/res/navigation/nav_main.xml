@@ -8,7 +8,12 @@
     <fragment
         android:id="@+id/navigationFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.navigation.NavigationFragment"
+        tools:layout="@layout/fragment_navigation"
         android:label="NavigationFragment" />
+
+    <action
+        android:id="@+id/action_global_navigationFragment"
+        app:destination="@id/navigationFragment" />
 
     <fragment
         android:id="@+id/stepsFragment"

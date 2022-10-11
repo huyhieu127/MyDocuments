@@ -33,7 +33,7 @@ class UNavigationBottomView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr), View.OnClickListener {
     private val binding =
         WidgetUNavigationBottomBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -44,12 +44,19 @@ class UNavigationBottomView @JvmOverloads constructor(
     init {
         with(binding) {
             CoroutineScope(Dispatchers.IO).launch {
-                imgTabScan.setOnTouchEvent()
+                /*imgTabScan.setOnTouchEvent()
                 imgTabHome.setOnTouchEvent()
-                imgTabProfile.setOnTouchEvent()
+                imgTabProfile.setOnTouchEvent()*/
             }
+            setGesture()
         }
         setTabSelected(UTab.TAB_HOME)
+    }
+
+    private fun WidgetUNavigationBottomBinding.setGesture() {
+        imgTabScan.setOnClickListener(this@UNavigationBottomView)
+        imgTabHome.setOnClickListener(this@UNavigationBottomView)
+        imgTabProfile.setOnClickListener(this@UNavigationBottomView)
     }
 
     @SuppressLint("Recycle")
@@ -139,6 +146,22 @@ class UNavigationBottomView @JvmOverloads constructor(
                 }
             }
             else -> super.setVisibility(visibility)
+        }
+    }
+
+    override fun onClick(v: View?) {
+        with(binding) {
+            when (v?.id) {
+                imgTabScan.id -> {
+                    setTabSelected(UTab.TAB_SCAN)
+                }
+                imgTabHome.id -> {
+                    setTabSelected(UTab.TAB_HOME)
+                }
+                imgTabProfile.id -> {
+                    setTabSelected(UTab.TAB_PROFILE)
+                }
+            }
         }
     }
 }

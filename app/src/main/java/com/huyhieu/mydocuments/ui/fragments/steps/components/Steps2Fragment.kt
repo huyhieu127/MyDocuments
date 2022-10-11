@@ -1,8 +1,10 @@
 package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
+import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps2Binding
+import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.popBackStackTo
 import com.huyhieu.mydocuments.ui.fragments.steps.StepsVM
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,6 +45,6 @@ class Steps2Fragment : BaseFragment<FragmentSteps2Binding>() {
     }
 
     override fun onBackPressedFragment() {
-        popBackStackTo()
+        popBackStackTo(MyNavHost.Home, R.id.navigationFragment)
     }
 }
