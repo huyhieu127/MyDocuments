@@ -2,11 +2,15 @@ package com.huyhieu.mydocuments.ui.fragments.multipleapi
 
 import android.os.Bundle
 import androidx.core.view.isVisible
+import androidx.lifecycle.observe
+import androidx.lifecycle.viewModelScope
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMultipleApiBinding
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI
 import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -21,7 +25,21 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
     }
 
     override fun FragmentMultipleApiBinding.addEvents(savedInstanceState: Bundle?) {
-        callAPI("")
+        //callAPI("")
+        viewModel.fetchPokemonDetail()
+    }
+
+    override fun FragmentMultipleApiBinding.onLiveData(savedInstanceState: Bundle?) {
+        viewModel.viewModelScope.launch {
+            viewModel.resultAPI.collectLatest {
+                it ?: return@collectLatest
+                logDebug(it.statusAPI.toString())
+            }
+        }
+        /*viewModel.resultAPI.onEach {
+            it ?: return@onEach
+            logDebug(it.response?.data.toString())
+        }*/
     }
 
     override fun FragmentMultipleApiBinding.callAPI(

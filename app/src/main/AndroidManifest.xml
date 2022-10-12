@@ -48,6 +48,7 @@
             android:name=".ui.activities.notification.NotificationActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="fullSensor"
             android:name=".ui.activities.main.MainActivity"
             android:exported="true">
             <intent-filter>
