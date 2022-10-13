@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments
 
 import android.net.ConnectivityManager
 import androidx.multidex.MultiDexApplication
+import com.google.firebase.storage.FirebaseStorage
 import com.huyhieu.mydocuments.repository.local.SharedPreferencesManager
 import dagger.hilt.android.HiltAndroidApp
 
@@ -14,7 +15,9 @@ class App : MultiDexApplication() {
         fun getInstance(): App {
             return instance as App
         }
+
         val ins by lazy { getInstance() }
+        lateinit var fireStore: FirebaseStorage
     }
 
     val sharedPref by lazy { SharedPreferencesManager(this) }
@@ -22,6 +25,7 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        fireStore = FirebaseStorage.getInstance()
     }
 
     fun checkNetwork(): Boolean {
