@@ -30,8 +30,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun addEvents(savedInstanceState1: Bundle?) {
         val jsonRef = storageRef.child("jsons/profile.json")
-
-
         val str: String = ("{\"name\":\"Hieu\", \"bod\": 1997 }")
         val uploadTask = jsonRef.putBytes(str.toByteArray())
         uploadTask.addOnFailureListener {

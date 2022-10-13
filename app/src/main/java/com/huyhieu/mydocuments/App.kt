@@ -18,6 +18,7 @@ class App : MultiDexApplication() {
 
         val ins by lazy { getInstance() }
         lateinit var fireStore: FirebaseStorage
+        var heightStatusBar = 0
     }
 
     val sharedPref by lazy { SharedPreferencesManager(this) }
