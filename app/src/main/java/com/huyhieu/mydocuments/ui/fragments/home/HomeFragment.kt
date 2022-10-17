@@ -10,7 +10,6 @@ import com.huyhieu.mydocuments.navigation.navigate
 import com.huyhieu.mydocuments.others.enums.MenuType
 import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.ffmmpegkit.FFmpegKitActivity
-import com.huyhieu.mydocuments.ui.activities.notification.NotificationActivity
 import com.huyhieu.mydocuments.ui.fragments.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.home.components.MyDialog
 import com.huyhieu.mydocuments.utils.commons.UTab
@@ -60,9 +59,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     }
                     MenuType.Bluetooth -> {
                         startActivity(Intent(mActivity, BluetoothActivity::class.java))
-                    }
-                    MenuType.Notification -> {
-                        startActivity(Intent(mActivity, NotificationActivity::class.java))
                     }
                     MenuType.Steps -> {
                         navigate(MyNavHost.Main, MainDirections.toSteps)

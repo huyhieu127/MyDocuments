@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.fragments
+package com.huyhieu.mydocuments.ui.fragments.components
 
 import android.app.Activity
 import android.content.Intent

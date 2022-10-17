@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/qrCodeFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.QRCodeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.QRCodeFragment"
         android:label="QRCodeFragment"
         tools:layout="@layout/fragment_qr_code" />
     <action
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.ProfileFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 

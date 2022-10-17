@@ -35,7 +35,7 @@
         app:destination="@id/multipleAPIFragment" />
     <fragment
         android:id="@+id/motionCardFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.MotionCardFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.MotionCardFragment"
         android:label="fragment_motion_card"
         tools:layout="@layout/fragment_motion_card" />
     <action
@@ -43,7 +43,7 @@
         app:destination="@id/motionCardFragment" />
     <fragment
         android:id="@+id/guideFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.GuideFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.GuideFragment"
         android:label="fragment_guide"
         tools:layout="@layout/fragment_guide" />
     <action
@@ -51,7 +51,7 @@
         app:destination="@id/guideFragment" />
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.SplashFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" />
     <fragment
@@ -64,7 +64,7 @@
         app:destination="@id/introduceFragment" />
     <fragment
         android:id="@+id/intentSystemFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.IntentSystemFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.IntentSystemFragment"
         android:label="fragment_intent_system"
         tools:layout="@layout/fragment_intent_system" />
     <action
@@ -72,7 +72,7 @@
         app:destination="@id/intentSystemFragment" />
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.MapFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <action
@@ -80,7 +80,7 @@
         app:destination="@id/mapFragment" />
     <fragment
         android:id="@+id/staticMapFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.StaticMapFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.StaticMapFragment"
         android:label="fragment_static_map"
         tools:layout="@layout/fragment_static_map" />
     <action
@@ -88,11 +88,11 @@
         app:destination="@id/staticMapFragment" />
     <fragment
         android:id="@+id/swipeRefreshFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.SwipeRefreshFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.SwipeRefreshFragment"
         android:label="fragment_swipe_refresh"
         tools:layout="@layout/fragment_swipe_refresh" />
     <fragment
         android:id="@+id/cardsFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.CardsFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.CardsFragment"
         android:label="CardsFragment" />
 </navigation>

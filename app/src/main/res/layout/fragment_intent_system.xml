@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:fitsSystemWindows="true"
-    tools:context=".ui.fragments.IntentSystemFragment">
+    tools:context=".ui.fragments.components.IntentSystemFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested"

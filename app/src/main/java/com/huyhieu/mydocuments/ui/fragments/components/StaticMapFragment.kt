@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.fragments
+package com.huyhieu.mydocuments.ui.fragments.components
 
 import android.os.Bundle
 import com.bumptech.glide.Glide

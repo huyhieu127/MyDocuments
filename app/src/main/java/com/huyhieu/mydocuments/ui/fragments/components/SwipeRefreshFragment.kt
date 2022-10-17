@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.fragments
+package com.huyhieu.mydocuments.ui.fragments.components
 
 import android.annotation.SuppressLint
 import android.os.Bundle

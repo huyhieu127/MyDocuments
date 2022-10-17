@@ -35,13 +35,7 @@
         android:theme="@style/Theme.MyDocuments">
         <activity
             android:name=".ui.activities.bubblechat.BubbleChatActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <service
             android:enabled="true"
             android:name=".utils.commons.bubblechat.BubbleChatService" />
@@ -53,18 +47,17 @@
             android:name=".ui.activities.bluetooth.BluetoothActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.notification.NotificationActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.main.MainActivity"
             android:exported="true"
             android:screenOrientation="fullSensor">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
-        </activity> <!-- Scan barcode -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Scan barcode -->
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode" /> <!-- Map SDKs -->
