@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvToday"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center|start"
+            android:lineSpacingExtra="4dp"
+            android:text="Hôm nay,\nThứ 2, 17/10/2022"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDateSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Ngày 17/10/2022"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvToday" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPrvMonth"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bg_corner_10"
+            android:backgroundTint="#FAFAFA"
+            android:padding="10dp"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDateSelected"
+            app:layout_constraintEnd_toStartOf="@+id/tvMonth"
+            app:layout_constraintTop_toTopOf="@+id/tvDateSelected"
+            app:srcCompat="@drawable/ic_arrow_right"
+            app:tint="#2196F3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:text="Tháng 10"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/tvDateSelected"
+            app:layout_constraintEnd_toStartOf="@id/imgNextMonth"
+            app:layout_constraintTop_toTopOf="@+id/tvDateSelected" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgNextMonth"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_corner_10"
+            android:backgroundTint="#FAFAFA"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvDateSelected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvDateSelected"
+            app:srcCompat="@drawable/ic_arrow_right"
+            app:tint="#2196F3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSun"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="S"
+            android:textColor="#FF0000"
+            app:layout_constraintEnd_toStartOf="@id/tvMon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateSelected" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMon"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="M"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/tvTue"
+            app:layout_constraintStart_toEndOf="@id/tvSun"
+            app:layout_constraintTop_toTopOf="@+id/tvSun" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTue"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="T"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/tvWed"
+            app:layout_constraintStart_toEndOf="@id/tvMon"
+            app:layout_constraintTop_toTopOf="@+id/tvSun" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWed"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="W"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/tvThu"
+            app:layout_constraintStart_toEndOf="@id/tvTue"
+            app:layout_constraintTop_toTopOf="@+id/tvSun" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvThu"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="T"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/tvFri"
+            app:layout_constraintStart_toEndOf="@id/tvWed"
+            app:layout_constraintTop_toTopOf="@+id/tvSun" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFri"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="F"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/tvSat"
+            app:layout_constraintStart_toEndOf="@id/tvThu"
+            app:layout_constraintTop_toTopOf="@+id/tvSun" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSat"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="S"
+            android:textColor="#2196F3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvFri"
+            app:layout_constraintTop_toTopOf="@+id/tvSun" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#A3DADADA"
+            android:elevation="1dp"
+            android:translationZ="1dp"
+            app:layout_constraintTop_toBottomOf="@id/tvSat" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvMonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvSun"
+            tools:itemCount="1"
+            tools:listitem="@layout/widget_calendar_month_of_year" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

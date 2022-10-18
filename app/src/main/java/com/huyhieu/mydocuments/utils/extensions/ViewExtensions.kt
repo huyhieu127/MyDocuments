@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.utils.extensions
 
 import android.view.View
-import com.huyhieu.mydocuments.utils.logDebug
 
 fun View.setOnClickMyListener(delay: Long = 1000L, onClick: () -> Unit) {
     var time = System.currentTimeMillis()
@@ -9,7 +8,7 @@ fun View.setOnClickMyListener(delay: Long = 1000L, onClick: () -> Unit) {
         val currentTime = System.currentTimeMillis()
         if (currentTime - time > delay) {
             time = currentTime
-            logDebug("setOnClickMyListener: ${this.getNameById(id)}")
+            //logDebug("setOnClickMyListener: ${this.getNameById(id)}")
             onClick()
         }
     }

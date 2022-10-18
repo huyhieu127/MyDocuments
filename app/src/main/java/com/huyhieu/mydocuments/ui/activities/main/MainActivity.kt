@@ -7,9 +7,7 @@ import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.extensions.setTransparentStatusBar
-import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
-import org.json.JSONObject
 import javax.inject.Inject
 
 
@@ -29,7 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun addEvents(savedInstanceState1: Bundle?) {
-        val jsonRef = storageRef.child("jsons/profile.json")
+       /* val jsonRef = storageRef.child("jsons/profile.json")
         val str: String = ("{\"name\":\"Hieu\", \"bod\": 1997 }")
         val uploadTask = jsonRef.putBytes(str.toByteArray())
         uploadTask.addOnFailureListener {
@@ -45,7 +43,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }.addOnFailureListener { i ->
                 logDebug(i.message)
             }
-        }
+        }*/
 
     }
 

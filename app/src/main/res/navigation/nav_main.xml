@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/navigationFragment">
+    app:startDestination="@id/calendarFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -95,4 +95,9 @@
         android:id="@+id/cardsFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.components.CardsFragment"
         android:label="CardsFragment" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>
