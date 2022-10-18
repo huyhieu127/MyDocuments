@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/tvMonthPrev"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.0"
+            android:translationX="-70dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvMonth"
+            app:layout_constraintEnd_toEndOf="@id/tvMonth"
+            app:layout_constraintStart_toStartOf="@id/tvMonth"
+            app:layout_constraintTop_toTopOf="@+id/tvMonth"
+            tools:alpha="0.3" />
+        <Constraint
+            android:id="@+id/tvMonth"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imgNextMonth"
+            app:layout_constraintStart_toEndOf="@id/imgPrvMonth"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/tvMonthPrev"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="1"
+            android:translationX="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvMonth"
+            app:layout_constraintEnd_toEndOf="@id/tvMonth"
+            app:layout_constraintStart_toStartOf="@id/tvMonth"
+            app:layout_constraintTop_toTopOf="@+id/tvMonth" />
+        <Constraint
+            android:id="@+id/tvMonth"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            android:translationX="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imgNextMonth"
+            app:layout_constraintStart_toEndOf="@id/imgPrvMonth"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+    <Transition
+        android:id="@+id/transPrev"
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start" />
+</MotionScene>

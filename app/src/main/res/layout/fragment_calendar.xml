@@ -29,55 +29,85 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDateSelected"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#2403A9F4"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             android:text="Ngày 17/10/2022"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvToday" />
+            app:layout_constraintTop_toBottomOf="@+id/rcvMonth" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgPrvMonth"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/bg_corner_10"
-            android:backgroundTint="#FAFAFA"
-            android:padding="10dp"
-            android:rotation="180"
-            app:layout_constraintBottom_toBottomOf="@+id/tvDateSelected"
-            app:layout_constraintEnd_toStartOf="@+id/tvMonth"
-            app:layout_constraintTop_toTopOf="@+id/tvDateSelected"
-            app:srcCompat="@drawable/ic_arrow_right"
-            app:tint="#2196F3" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMonth"
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/motionMonth"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"
-            android:text="Tháng 10"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@id/tvDateSelected"
-            app:layout_constraintEnd_toStartOf="@id/imgNextMonth"
-            app:layout_constraintTop_toTopOf="@+id/tvDateSelected" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgNextMonth"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/bg_corner_10"
-            android:backgroundTint="#FAFAFA"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="@id/tvDateSelected"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layoutDescription="@xml/motion_month_calendar_scene"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvDateSelected"
-            app:srcCompat="@drawable/ic_arrow_right"
-            app:tint="#2196F3" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvToday">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPrvMonth"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_corner_10"
+                android:backgroundTint="#FAFAFA"
+                android:elevation="1dp"
+                android:padding="10dp"
+                android:rotation="180"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvMonth"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_right"
+                app:tint="#2196F3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMonthPrev"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0"
+                android:gravity="center"
+                android:text="Tháng 9/2022"
+                android:textColor="@color/black"
+                android:translationX="-50dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvMonth"
+                app:layout_constraintEnd_toEndOf="@id/tvMonth"
+                app:layout_constraintStart_toStartOf="@id/tvMonth"
+                app:layout_constraintTop_toTopOf="@+id/tvMonth"
+                tools:alpha="0.3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMonth"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:text="Tháng 10/2022"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imgNextMonth"
+                app:layout_constraintStart_toEndOf="@id/imgPrvMonth"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgNextMonth"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_corner_10"
+                android:backgroundTint="#FAFAFA"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvMonth"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_right"
+                app:tint="#2196F3" />
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSun"
@@ -89,7 +119,7 @@
             android:textColor="#FF0000"
             app:layout_constraintEnd_toStartOf="@id/tvMon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDateSelected" />
+            app:layout_constraintTop_toBottomOf="@+id/motionMonth" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvMon"

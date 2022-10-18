@@ -8,14 +8,19 @@ import com.huyhieu.mydocuments.databinding.WidgetCalendarMonthOfYearBinding
 import com.huyhieu.mydocuments.ui.fragments.calendar.DayForm
 import com.huyhieu.mydocuments.ui.fragments.calendar.MonthForm
 import com.huyhieu.mydocuments.utils.extensions.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var dayClick: ((DayForm) -> Unit)? = null
     var startDay = ""
     var endDay = ""
+    var posSelected = 0
 
     val cCurrent: Calendar = Calendar.getInstance()
     lateinit var cPrev: Calendar
@@ -73,9 +78,9 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     private fun calculateDays(calendar: Calendar): MutableList<DayForm> {
-        val lstDays = mutableListOf<DayForm>()
+        var lstDays = mutableListOf<DayForm>()
         CoroutineScope(Dispatchers.IO).launch {
-            supervisorScope {
+            lstDays = suspendCoroutine {
                 val dateCurrent = Calendar.getInstance().formatToString()
                 val numDayInMonth = calendar.getActualMaximum()
 
@@ -84,63 +89,72 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 val numDayInPrevMonth = (calendar.clone() as Calendar).getActualMaximum()
                 val endDayInPrevMonth = firstDayOfWeekInMonth - 2
                 val startDayOfPrevInCurrentMonth = numDayInPrevMonth - endDayInPrevMonth
-                (startDayOfPrevInCurrentMonth..numDayInPrevMonth).forEach {
-                    lstDays.add(DayForm("$it", isDayOfPrevMonth = true))
+                (startDayOfPrevInCurrentMonth..numDayInPrevMonth).forEach { day ->
+                    lstDays.add(DayForm("$day", isDayOfPrevMonth = true))
                 }
                 //Days of current month
-                (1..numDayInMonth).forEach {
+                (1..numDayInMonth).forEach { day ->
                     val cal = calendar.clone() as Calendar
-                    cal.setDay(it)
+                    cal.setDay(day)
                     val date = cal.formatToString()
-                    val dayForm = DayForm(it.toString(), date, isSelected = date == dateCurrent)
+                    val dayForm = DayForm(day.toString(), date, isSelected = date == dateCurrent)
                     lstDays.add(dayForm)
                 }
                 //Days of next month
-                (1..42 - lstDays.size).forEach {
-                    lstDays.add(DayForm("$it", isDayOfNextMonth = true))
+                (1..42 - lstDays.size).forEach { day ->
+                    lstDays.add(DayForm("$day", isDayOfNextMonth = true))
                 }
+                it.resume(lstDays)
             }
         }
         return lstDays
     }
 
     //Default lstMonths have 3 items
-    fun attachToRecyclerView(rcv: RecyclerView, onMonthChanged: ((MonthForm) -> Unit)? = null) {
+    fun attachToRecyclerView(
+        rcv: RecyclerView,
+        onMonthChanged: ((monthForm: MonthForm, percentPrev: Float, scrollDirection: Int) -> Unit)? = null
+    ) {
         if (startDay.isNotEmpty()) {
             rcv.scrollToPosition(1)
         }
         rcv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val lm = rcv.layoutManager as LinearLayoutManager
+                posSelected = lm.findFirstVisibleItemPosition()
+                val viewHolderCurrent =
+                    rcv.findViewHolderForAdapterPosition(posSelected) as MonthViewHolder
+                val percentPrevValue =
+                    1F - (-(viewHolderCurrent.itemView.x.toInt()) / rcv.width.toFloat())
+
+                val direction = if (dx > 0) {
+                    2
+                } else if (dx < 0) {
+                    1
+                } else {
+                    0
+                }
+                onMonthChanged?.invoke(lstMonths[posSelected], percentPrevValue, direction)
+            }
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
+                val lm = rcv.layoutManager as LinearLayoutManager
+                val posSelected = lm.findFirstVisibleItemPosition()
                 if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    //Dragging
-                } else if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    val lm = rcv.layoutManager as LinearLayoutManager
-                    val posCurrent = lm.findFirstVisibleItemPosition()
-                    onMonthChanged?.invoke(lstMonths[posCurrent])
-
-                    CoroutineScope(Dispatchers.IO).launch {
-                        if (posCurrent == 0) {
-                            cPrev.prevMonth()
-                            lstMonths.add(0, cPrev.createMonthFrom())
-                            withContext(Dispatchers.Main) {
-                                notifyItemInserted(0)
-                                rcv.context.showToastShort((cPrev.getMonth() + 1).toString())
-                            }
-                        } else {
-                            val posLast = lm.findLastVisibleItemPosition()
-                            if (posLast == lstMonths.size - 1) {
-                                cNext.nextMonth()
-                                lstMonths.add(cNext.createMonthFrom())
-                                withContext(Dispatchers.Main) {
-                                    notifyItemInserted(lstMonths.size)
-                                    rcv.context.showToastShort((cPrev.getMonth() + 1).toString())
-                                }
-                            }
+                    if (posSelected == 0) {
+                        cPrev.prevMonth()
+                        lstMonths.add(0, cPrev.createMonthFrom())
+                        notifyItemInserted(0)
+                    } else {
+                        val posLast = lm.findLastVisibleItemPosition()
+                        if (posLast == lstMonths.size - 1) {
+                            cNext.nextMonth()
+                            lstMonths.add(cNext.createMonthFrom())
+                            notifyItemInserted(lstMonths.size)
                         }
                     }
-
                 }
             }
         })
