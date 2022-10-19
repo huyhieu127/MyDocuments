@@ -10,4 +10,6 @@
     <dimen name="padding_bounds_map">100dp</dimen>
     <dimen name="margin_bottom_title_option_view">2dp</dimen>
     <dimen name="margin_bottom_title_note_view">8dp</dimen>
+    <dimen name="width_month_calendar">130dp</dimen>
+    <dimen name="width_month_calendar_minus">-130dp</dimen>
 </resources>

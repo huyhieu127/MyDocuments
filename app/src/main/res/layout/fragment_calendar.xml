@@ -35,9 +35,9 @@
             android:background="#2403A9F4"
             android:paddingHorizontal="20dp"
             android:paddingVertical="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
             android:text="Ngày 17/10/2022"
             android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rcvMonth" />
 
@@ -51,21 +51,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvToday">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgPrvMonth"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/bg_corner_10"
-                android:backgroundTint="#FAFAFA"
-                android:elevation="1dp"
-                android:padding="10dp"
-                android:rotation="180"
+            <View
+                android:id="@+id/viewCenter"
+                android:layout_width="@dimen/width_month_calendar"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tvMonth"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_arrow_right"
-                app:tint="#2196F3" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMonthPrev"
@@ -73,26 +66,43 @@
                 android:layout_height="0dp"
                 android:alpha="0"
                 android:gravity="center"
-                android:text="Tháng 9/2022"
+                android:maxLines="1"
+                android:translationX="@dimen/width_month_calendar_minus"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:textColor="@color/black"
-                android:translationX="-50dp"
-                app:layout_constraintBottom_toBottomOf="@id/tvMonth"
-                app:layout_constraintEnd_toEndOf="@id/tvMonth"
-                app:layout_constraintStart_toStartOf="@id/tvMonth"
-                app:layout_constraintTop_toTopOf="@+id/tvMonth"
-                tools:alpha="0.3" />
+                app:layout_constraintEnd_toEndOf="@id/viewCenter"
+                app:layout_constraintStart_toStartOf="@id/viewCenter"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:alpha="0.3"
+                tools:text="Tháng 09/2022" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvMonth"
-                android:layout_width="120dp"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:text="Tháng 10/2022"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="@id/viewCenter"
+                app:layout_constraintStart_toStartOf="@id/viewCenter"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/imgNextMonth"
-                app:layout_constraintStart_toEndOf="@id/imgPrvMonth"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Tháng 10/2022"
+                tools:transformPivotX="@dimen/width_month_calendar" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPrvMonth"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_corner_10"
+                android:backgroundTint="#FAFAFA"
+                android:padding="10dp"
+                android:rotation="180"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/viewCenter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_right"
+                app:tint="#2196F3" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imgNextMonth"
@@ -102,8 +112,7 @@
                 android:backgroundTint="#FAFAFA"
                 android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvMonth"
+                app:layout_constraintStart_toEndOf="@id/viewCenter"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_arrow_right"
                 app:tint="#2196F3" />

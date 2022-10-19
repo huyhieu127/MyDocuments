@@ -1,5 +1,6 @@
 package com.huyhieu.mydocuments.utils.extensions
 
+import com.huyhieu.mydocuments.ui.fragments.calendar.CalendarCst
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,6 +43,15 @@ fun Calendar.nextMonth(value: Int = 1) {
 
 fun Calendar.prevMonth(value: Int = 1) {
     setMonth(getMonth() - value)
+}
+
+fun Calendar.toDisplayMonth(): String {
+    return CalendarCst.DISPLAY_MONTH.format(
+        "${this.getMonth() + 1}/${this.getYear()}".padStart(
+            7,
+            '0'
+        )
+    )
 }
 
 /**

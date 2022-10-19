@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.huyhieu.mydocuments.databinding.WidgetCalendarMonthOfYearBinding
+import com.huyhieu.mydocuments.ui.fragments.calendar.CalendarCst
 import com.huyhieu.mydocuments.ui.fragments.calendar.DayForm
 import com.huyhieu.mydocuments.ui.fragments.calendar.MonthForm
 import com.huyhieu.mydocuments.utils.extensions.*
@@ -129,10 +130,13 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     1F - (-(viewHolderCurrent.itemView.x.toInt()) / rcv.width.toFloat())
 
                 val direction = if (dx > 0) {
+                    //RIGHT
                     2
                 } else if (dx < 0) {
+                    //LEFT
                     1
                 } else {
+                    //NOTHING
                     0
                 }
                 onMonthChanged?.invoke(lstMonths[posSelected], percentPrevValue, direction)
@@ -161,5 +165,5 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     private fun Calendar.createMonthFrom() =
-        MonthForm(this.formatToString("MM/yyyy"), this, calculateDays(this))
+        MonthForm(this.formatToString(CalendarCst.FORMAT_MONTH_DEFAULT), calculateDays(this))
 }
