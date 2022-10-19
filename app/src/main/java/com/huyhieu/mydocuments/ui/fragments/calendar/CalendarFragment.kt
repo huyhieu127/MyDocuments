@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
 import com.huyhieu.mydocuments.ui.fragments.calendar.adapters.MonthOfCalendarAdapter
+import com.huyhieu.mydocuments.utils.extensions.formatToString
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.logDebug
+import java.util.*
 
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
     private val monthAdapter = MonthOfCalendarAdapter()
@@ -15,6 +17,10 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
 
     override fun FragmentCalendarBinding.addControls(savedInstanceState: Bundle?) {
         mActivity?.setDarkColorStatusBar()
+
+        val cCurrent = Calendar.getInstance()
+        tvToday.text =
+            String.format(cCurrent.formatToString("EEEE,\n${CalendarCst.FORMAT_DATE_DEFAULT}"))
 
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(rcvMonth)

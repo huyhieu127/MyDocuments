@@ -12,9 +12,15 @@ fun Calendar.getDayOfWeek() = this[Calendar.DAY_OF_WEEK]
 
 fun Calendar.getActualMaximum() = this.getActualMaximum(Calendar.DAY_OF_MONTH)
 
-fun Calendar.getFirstDayOfWeekInMonth(): Int {
-    val cal = this.clone() as Calendar
+fun Calendar.getFirstDayOfWeekInMonth(isKeep: Boolean = true): Int {
+    val cal = if (isKeep) this else this.new()
     cal.setDay(1)
+    return cal.getDayOfWeek()
+}
+
+fun Calendar.getEndDayOfWeekInMonth(isKeep: Boolean = true): Int {
+    val cal = if (isKeep) this else this.new()
+    cal.setDay(getActualMaximum())
     return cal.getDayOfWeek()
 }
 
@@ -25,25 +31,32 @@ fun Calendar.getYear() = this[Calendar.YEAR]
 
 /**
  * Set values*/
-fun Calendar.setDay(day: Int) {
+fun Calendar.setDay(day: Int): Calendar {
     this.set(Calendar.DAY_OF_MONTH, day)
+    return this
 }
 
-fun Calendar.setMonth(month: Int) {
+fun Calendar.setMonth(month: Int): Calendar {
     this.set(Calendar.MONTH, month)
+    return this
 }
 
-fun Calendar.setYear(year: Int) {
+fun Calendar.setYear(year: Int): Calendar {
     this.set(Calendar.YEAR, year)
+    return this
 }
 
-fun Calendar.nextMonth(value: Int = 1) {
+fun Calendar.nextMonth(value: Int = 1): Calendar {
     setMonth(getMonth() + value)
+    return this
 }
 
-fun Calendar.prevMonth(value: Int = 1) {
+fun Calendar.prevMonth(value: Int = 1): Calendar {
     setMonth(getMonth() - value)
+    return this
 }
+
+fun Calendar.new() = (this.clone() as Calendar)
 
 fun Calendar.toDisplayMonth(): String {
     return CalendarCst.DISPLAY_MONTH.format(
@@ -56,12 +69,12 @@ fun Calendar.toDisplayMonth(): String {
 
 /**
  * Format*/
-fun Calendar.formatToString(pattern: String = "dd/MM/yyyy"): String {
+fun Calendar.formatToString(pattern: String = CalendarCst.FORMAT_DATE_DEFAULT): String {
     val sdf = SimpleDateFormat(pattern, Locale.getDefault())
     return sdf.format(this.time)
 }
 
-fun String.formatToCalendar(pattern: String = "dd/MM/yyyy"): Calendar {
+fun String.formatToCalendar(pattern: String = CalendarCst.FORMAT_DATE_DEFAULT): Calendar {
     val cal = Calendar.getInstance()
     val sdf = SimpleDateFormat(pattern, Locale.getDefault())
     cal.time = sdf.parse(this) as Date

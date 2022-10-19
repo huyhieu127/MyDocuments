@@ -21,14 +21,12 @@ class MonthForm(
     fun toCalendar() = month.formatToCalendar(CalendarCst.FORMAT_MONTH_DEFAULT)
 
     fun getNextMonth(value: Int = 1): String {
-        val c = toCalendar()
-        c.nextMonth(value)
+        val c = toCalendar().nextMonth(value)
         return c.toDisplayMonth()
     }
 
     fun getPrevMonth(value: Int = 1): String {
-        val c = toCalendar()
-        c.prevMonth(value)
+        val c = toCalendar().prevMonth(value)
         return c.toDisplayMonth()
     }
 }

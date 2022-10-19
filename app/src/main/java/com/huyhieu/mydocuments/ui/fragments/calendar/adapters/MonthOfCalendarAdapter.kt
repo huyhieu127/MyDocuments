@@ -66,10 +66,8 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         try {
             this.startDay = startDay
             this.endDay = endDay
-            cPrev = cCurrent.clone() as Calendar
-            cPrev.prevMonth()
-            cNext = cCurrent.clone() as Calendar
-            cNext.nextMonth()
+            cPrev = cCurrent.new().prevMonth()
+            cNext = cCurrent.new().nextMonth()
             lstMonths.add(cPrev.createMonthFrom())
             lstMonths.add(cCurrent.createMonthFrom())
             lstMonths.add(cNext.createMonthFrom())
@@ -86,17 +84,16 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 val numDayInMonth = calendar.getActualMaximum()
 
                 //Days of previous month
-                val firstDayOfWeekInMonth = calendar.getFirstDayOfWeekInMonth()
-                val numDayInPrevMonth = (calendar.clone() as Calendar).getActualMaximum()
-                val endDayInPrevMonth = firstDayOfWeekInMonth - 2
-                val startDayOfPrevInCurrentMonth = numDayInPrevMonth - endDayInPrevMonth
-                (startDayOfPrevInCurrentMonth..numDayInPrevMonth).forEach { day ->
+                val cPrev = calendar.new().prevMonth()
+                val numDayInPrevMonth = cPrev.getActualMaximum()
+                val dayOfWeekInPrevMonth = cPrev.getEndDayOfWeekInMonth() - 1
+                val startDayOfPrevMonthInCalendar = numDayInPrevMonth - dayOfWeekInPrevMonth
+                (startDayOfPrevMonthInCalendar..numDayInPrevMonth).forEach { day ->
                     lstDays.add(DayForm("$day", isDayOfPrevMonth = true))
                 }
                 //Days of current month
                 (1..numDayInMonth).forEach { day ->
-                    val cal = calendar.clone() as Calendar
-                    cal.setDay(day)
+                    val cal = calendar.new().setDay(day)
                     val date = cal.formatToString()
                     val dayForm = DayForm(day.toString(), date, isSelected = date == dateCurrent)
                     lstDays.add(dayForm)
