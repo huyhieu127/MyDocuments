@@ -10,7 +10,7 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.databinding.WidgetUCheckboxBinding
-import com.huyhieu.mydocuments.utils.setSpannableHyperText
+import com.huyhieu.mydocuments.utils.extensions.applySpannable
 
 class UCheckBox @JvmOverloads constructor(
     context: Context,
@@ -55,7 +55,7 @@ class UCheckBox @JvmOverloads constructor(
             //Clear margin title
             if (!hasContent) {
                 if (content is SpannableString) {
-                    tvContent.setSpannableHyperText(content)
+                    tvContent.applySpannable(content)
                 }
                 if (content is String) {
                     tvContent.text = content

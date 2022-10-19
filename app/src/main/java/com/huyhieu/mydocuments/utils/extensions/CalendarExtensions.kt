@@ -29,6 +29,18 @@ fun Calendar.getMonth() = this[Calendar.MONTH]
 
 fun Calendar.getYear() = this[Calendar.YEAR]
 
+fun Calendar.getDisplayDayOfWeek() = when (getDayOfWeek()) {
+    1 -> "CN"
+    2 -> "Thứ 2"
+    3 -> "Thứ 3"
+    4 -> "Thứ 4"
+    5 -> "Thứ 5"
+    6 -> "Thứ 6"
+    else -> {
+        "Thứ 7"
+    }
+}
+
 /**
  * Set values*/
 fun Calendar.setDay(day: Int): Calendar {
@@ -58,15 +70,6 @@ fun Calendar.prevMonth(value: Int = 1): Calendar {
 
 fun Calendar.new() = (this.clone() as Calendar)
 
-fun Calendar.toDisplayMonth(): String {
-    return CalendarCst.DISPLAY_MONTH.format(
-        "${this.getMonth() + 1}/${this.getYear()}".padStart(
-            7,
-            '0'
-        )
-    )
-}
-
 /**
  * Format*/
 fun Calendar.formatToString(pattern: String = CalendarCst.FORMAT_DATE_DEFAULT): String {
@@ -79,4 +82,13 @@ fun String.formatToCalendar(pattern: String = CalendarCst.FORMAT_DATE_DEFAULT): 
     val sdf = SimpleDateFormat(pattern, Locale.getDefault())
     cal.time = sdf.parse(this) as Date
     return cal
+}
+
+fun Calendar.toDisplayMonth(): String {
+    return CalendarCst.DISPLAY_MONTH.format(
+        "${this.getMonth() + 1}/${this.getYear()}".padStart(
+            7,
+            '0'
+        )
+    )
 }

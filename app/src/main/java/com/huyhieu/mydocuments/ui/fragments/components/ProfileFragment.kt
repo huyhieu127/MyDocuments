@@ -10,7 +10,7 @@ import com.huyhieu.mydocuments.utils.dialog.ToastDialog
 import com.huyhieu.mydocuments.utils.dialog.ToastType
 import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.utils.extensions.showToastShort
-import com.huyhieu.mydocuments.utils.toHyperText
+import com.huyhieu.mydocuments.utils.extensions.toSpannable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -32,7 +32,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             "Bằng việc đăng ký tài khoản, bạn đồng ý với Điều khoản sử dụng và Chính sách bảo mật của chúng tôi."
         val terms = "Điều khoản sử dụng"
         val policy = "Chính sách bảo mật"
-        val spTermAndPolicy = text.toHyperText(terms) {
+        val spTermAndPolicy = text.toSpannable(requireContext(), terms) {
             context.showToastShort("Term: ${ckb.isChecked}")
             ToastDialog(
                 type = ToastType.SUCCESS,
@@ -45,7 +45,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                     dismiss()
                 }
             }
-        }.toHyperText(policy) {
+        }.toSpannable(requireContext(), policy) {
             context.showToastShort("Policy: ${ckb.isChecked}")
             ToastDialog(
                 type = ToastType.FAILED,

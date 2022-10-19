@@ -13,10 +13,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.databinding.WidgetUButtonBinding
-import com.huyhieu.mydocuments.utils.extensions.color
-import com.huyhieu.mydocuments.utils.extensions.dimen
-import com.huyhieu.mydocuments.utils.extensions.drawable
-import com.huyhieu.mydocuments.utils.extensions.typedValue
+import com.huyhieu.mydocuments.utils.extensions.*
 
 
 class UButtonView @JvmOverloads constructor(

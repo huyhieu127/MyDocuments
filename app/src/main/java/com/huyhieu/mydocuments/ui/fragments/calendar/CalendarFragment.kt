@@ -2,11 +2,11 @@ package com.huyhieu.mydocuments.ui.fragments.calendar
 
 import android.os.Bundle
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
 import com.huyhieu.mydocuments.ui.fragments.calendar.adapters.MonthOfCalendarAdapter
-import com.huyhieu.mydocuments.utils.extensions.formatToString
-import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.utils.extensions.*
 import com.huyhieu.mydocuments.utils.logDebug
 import java.util.*
 
@@ -19,8 +19,16 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
         mActivity?.setDarkColorStatusBar()
 
         val cCurrent = Calendar.getInstance()
-        tvToday.text =
-            String.format(cCurrent.formatToString("EEEE,\n${CalendarCst.FORMAT_DATE_DEFAULT}"))
+        cCurrent.setDay(7)
+        val dayOfWeek = cCurrent.getDisplayDayOfWeek()
+        val date = cCurrent.formatToString(CalendarCst.FORMAT_DATE_DEFAULT)
+        val today = String.format("Hôm nay,\n%s, %s", dayOfWeek, date)
+
+        tvToday.setSpannable(
+            content = today,
+            subText = "Hôm nay,",
+            colorId = R.color.blue
+        )
 
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(rcvMonth)

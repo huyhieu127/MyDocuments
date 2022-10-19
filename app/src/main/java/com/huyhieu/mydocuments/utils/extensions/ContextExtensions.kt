@@ -3,6 +3,7 @@ package com.huyhieu.mydocuments.utils.extensions
 import android.content.Context
 import android.location.LocationManager
 import android.widget.Toast
+import androidx.viewbinding.ViewBinding
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 
@@ -29,3 +30,7 @@ fun Context?.showToastShort(msg: String?) {
     if (this == null) return
     Toast.makeText(this, msg.toString(), Toast.LENGTH_SHORT).show()
 }
+
+/*Get context in ViewBing*/
+val <T : ViewBinding> T.context: Context
+    get() = this.root.context

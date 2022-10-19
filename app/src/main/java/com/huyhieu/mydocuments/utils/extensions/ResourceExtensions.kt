@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 
 /**
  *  @param colorRes [ID resource]
@@ -27,7 +28,10 @@ fun Context.drawable(@DrawableRes drawableRes: Int) = ContextCompat.getDrawable(
 /**
  *  @param dimenRes [ID resource]
  * */
+
 fun Context.dimen(@DimenRes dimenRes: Int) = resources.getDimension(dimenRes)
+
+fun Context.dimenPx(@DimenRes dimenRes: Int) = resources.getDimensionPixelSize(dimenRes)
 
 /**
  *  @param attrRes [ID resource]
@@ -37,6 +41,11 @@ fun Context.typedValue(@AttrRes attrRes: Int): TypedValue {
     theme.resolveAttribute(attrRes, outValue, true)
     return outValue
 }
+
+/**
+ *  @param fontRes [ID resource]
+ * */
+fun Context.font(@FontRes fontRes: Int) = ResourcesCompat.getFont(this, fontRes)
 
 /**
  * @param colorRes [ID resource]*/
