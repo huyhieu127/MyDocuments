@@ -15,6 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
             android:gravity="center|start"
             android:lineSpacingExtra="4dp"
             android:text="Hôm nay,\nThứ 2, 17/10/2022"

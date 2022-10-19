@@ -18,15 +18,25 @@ import kotlin.coroutines.suspendCoroutine
 
 class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var dayClick: ((DayForm) -> Unit)? = null
-    var startDay = ""
-    var endDay = ""
-    var posSelected = 0
 
-    val cCurrent: Calendar = Calendar.getInstance()
+    @Suppress("MemberVisibilityCanBePrivate")
+    var minDay = ""
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    var maxDay = ""
+
+    private var timeMillisStart: Long = 0L
+    private var timeMillisEnd: Long = 0L
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    var daySelected = ""
+    lateinit var cSelected: Calendar
+
     lateinit var cPrev: Calendar
     lateinit var cNext: Calendar
 
+    var posSelected = 0
+    var dayClick: ((DayForm) -> Unit)? = null
     private val lstMonths = mutableListOf<MonthForm>()
 
     inner class MonthViewHolder(val binding: WidgetCalendarMonthOfYearBinding) :
@@ -62,14 +72,27 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int = lstMonths.size
 
-    fun setupMonths(startDay: String, endDay: String) {
+    fun setupMonths(daySelected: String = "", minDay: String = "", maxDay: String = "") {
         try {
-            this.startDay = startDay
-            this.endDay = endDay
-            cPrev = cCurrent.new().prevMonth()
-            cNext = cCurrent.new().nextMonth()
+            this.daySelected = daySelected
+            this.minDay = minDay
+            this.maxDay = maxDay
+
+            val cMin = minDay.formatToCalendar().setDay(1)
+            this.timeMillisStart = cMin.timeInMillis
+            val cMax = maxDay.formatToCalendar().setDay(1)
+            this.timeMillisEnd = cMax.timeInMillis
+
+            cSelected = if (daySelected.isNotEmpty()) {
+                daySelected.formatToCalendar()
+            } else {
+                Calendar.getInstance().clean(CalendarCst.FORMAT_MONTH_DEFAULT)
+            }
+
+            cPrev = cSelected.new().prevMonth()
+            cNext = cSelected.new().nextMonth()
             lstMonths.add(cPrev.createMonthFrom())
-            lstMonths.add(cCurrent.createMonthFrom())
+            lstMonths.add(cSelected.createMonthFrom())
             lstMonths.add(cNext.createMonthFrom())
         } catch (_: Exception) {
 
@@ -86,7 +109,7 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 //Days of previous month
                 val cPrev = calendar.new().prevMonth()
                 val numDayInPrevMonth = cPrev.getActualMaximum()
-                val dayOfWeekInPrevMonth = cPrev.getEndDayOfWeekInMonth() - 1
+                val dayOfWeekInPrevMonth = cPrev.getDayOfWeekInMonth(numDayInPrevMonth) - 1
                 val startDayOfPrevMonthInCalendar = numDayInPrevMonth - dayOfWeekInPrevMonth
                 (startDayOfPrevMonthInCalendar..numDayInPrevMonth).forEach { day ->
                     lstDays.add(DayForm("$day", isDayOfPrevMonth = true))
@@ -113,10 +136,11 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         rcv: RecyclerView,
         onMonthChanged: ((monthForm: MonthForm, percentPrev: Float, scrollDirection: Int) -> Unit)? = null
     ) {
-        if (startDay.isNotEmpty()) {
-            rcv.scrollToPosition(1)
-        }
+        rcv.scrollToPosition(1)
         rcv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            var isMinMonth = false
+            var isMaxMonth = false
+
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val lm = rcv.layoutManager as LinearLayoutManager
@@ -144,16 +168,20 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 val lm = rcv.layoutManager as LinearLayoutManager
                 val posSelected = lm.findFirstVisibleItemPosition()
                 if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    if (posSelected == 0) {
+                    if (posSelected == 0 && !isMinMonth) {
                         cPrev.prevMonth()
+                        isMinMonth = cPrev.timeInMillis == timeMillisStart
                         lstMonths.add(0, cPrev.createMonthFrom())
                         notifyItemInserted(0)
                     } else {
-                        val posLast = lm.findLastVisibleItemPosition()
-                        if (posLast == lstMonths.size - 1) {
-                            cNext.nextMonth()
-                            lstMonths.add(cNext.createMonthFrom())
-                            notifyItemInserted(lstMonths.size)
+                        if (!isMaxMonth) {
+                            val posLast = lm.findLastVisibleItemPosition()
+                            if (posLast == lstMonths.size - 1) {
+                                cNext.nextMonth()
+                                isMaxMonth = cNext.timeInMillis == timeMillisEnd
+                                lstMonths.add(cNext.createMonthFrom())
+                                notifyItemInserted(lstMonths.size)
+                            }
                         }
                     }
                 }

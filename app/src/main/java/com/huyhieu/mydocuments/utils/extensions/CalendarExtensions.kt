@@ -6,21 +6,14 @@ import java.util.*
 
 /**
  * Get values*/
-fun Calendar.getDayCurrent() = this[Calendar.DAY_OF_MONTH]
+fun Calendar.getDayOfMonth() = this[Calendar.DAY_OF_MONTH]
 
 fun Calendar.getDayOfWeek() = this[Calendar.DAY_OF_WEEK]
 
 fun Calendar.getActualMaximum() = this.getActualMaximum(Calendar.DAY_OF_MONTH)
 
-fun Calendar.getFirstDayOfWeekInMonth(isKeep: Boolean = true): Int {
-    val cal = if (isKeep) this else this.new()
-    cal.setDay(1)
-    return cal.getDayOfWeek()
-}
-
-fun Calendar.getEndDayOfWeekInMonth(isKeep: Boolean = true): Int {
-    val cal = if (isKeep) this else this.new()
-    cal.setDay(getActualMaximum())
+fun Calendar.getDayOfWeekInMonth(day: Int = 1, isKeep: Boolean = true): Int {
+    val cal = if (isKeep) this.setDay(day) else this.new(day)
     return cal.getDayOfWeek()
 }
 
@@ -43,32 +36,29 @@ fun Calendar.getDisplayDayOfWeek() = when (getDayOfWeek()) {
 
 /**
  * Set values*/
-fun Calendar.setDay(day: Int): Calendar {
-    this.set(Calendar.DAY_OF_MONTH, day)
-    return this
+fun Calendar.setDay(day: Int) = this.apply { set(Calendar.DAY_OF_MONTH, day) }
+
+fun Calendar.setMonth(month: Int) = this.apply { set(Calendar.MONTH, month) }
+
+fun Calendar.setYear(year: Int) = this.apply { set(Calendar.YEAR, year) }
+
+fun Calendar.nextMonth(value: Int = 1) = this.apply { setMonth(getMonth() + value) }
+
+fun Calendar.prevMonth(value: Int = 1) = this.apply { setMonth(getMonth() - value) }
+
+fun Calendar.new(day: Int = 1): Calendar {
+    val cNew = (this.clone() as Calendar)
+    cNew.setDay(day)
+    return cNew
 }
 
-fun Calendar.setMonth(month: Int): Calendar {
-    this.set(Calendar.MONTH, month)
-    return this
+fun Calendar.clean(
+    pattern: String = CalendarCst.FORMAT_DATE_DEFAULT,
+    patternTo: String = ""
+): Calendar {
+    val patternOutput = patternTo.ifEmpty { pattern }
+    return formatToString(pattern).formatToCalendar(patternOutput)
 }
-
-fun Calendar.setYear(year: Int): Calendar {
-    this.set(Calendar.YEAR, year)
-    return this
-}
-
-fun Calendar.nextMonth(value: Int = 1): Calendar {
-    setMonth(getMonth() + value)
-    return this
-}
-
-fun Calendar.prevMonth(value: Int = 1): Calendar {
-    setMonth(getMonth() - value)
-    return this
-}
-
-fun Calendar.new() = (this.clone() as Calendar)
 
 /**
  * Format*/
