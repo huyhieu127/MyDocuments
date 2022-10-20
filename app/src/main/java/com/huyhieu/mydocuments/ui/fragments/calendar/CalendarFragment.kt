@@ -6,10 +6,7 @@ import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
 import com.huyhieu.mydocuments.ui.fragments.calendar.adapters.MonthOfCalendarAdapter
-import com.huyhieu.mydocuments.utils.extensions.formatToString
-import com.huyhieu.mydocuments.utils.extensions.getDisplayDayOfWeek
-import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.utils.extensions.setSpannable
+import com.huyhieu.mydocuments.utils.extensions.*
 import com.huyhieu.mydocuments.utils.logDebug
 import java.util.*
 
@@ -37,7 +34,11 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
 
         rcvMonth.adapter = monthAdapter
         val start = System.currentTimeMillis()
-        monthAdapter.setupMonths("12/7/2022", "12/12/2022")
+        monthAdapter.setupMonths(
+            "19/11/2022",
+            "01/01/${cCurrent.getYear() - 10}",
+            "01/01/${cCurrent.getYear() + 10}"
+        )
         logDebug("Time open calendar = ${(System.currentTimeMillis() - start)}")
         monthAdapter.attachToRecyclerView(rcvMonth) { monthForm, percentPrev, scrollDirection ->
             motionMonth.progress = percentPrev

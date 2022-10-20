@@ -9,6 +9,7 @@ import com.huyhieu.mydocuments.ui.fragments.calendar.CalendarCst
 import com.huyhieu.mydocuments.ui.fragments.calendar.DayForm
 import com.huyhieu.mydocuments.ui.fragments.calendar.MonthForm
 import com.huyhieu.mydocuments.utils.extensions.*
+import com.huyhieu.mydocuments.utils.logError
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,8 +26,12 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     @Suppress("MemberVisibilityCanBePrivate")
     var maxDay = ""
 
+    private var timeMillisSelected: Long = 0L
     private var timeMillisStart: Long = 0L
     private var timeMillisEnd: Long = 0L
+
+    private var isMinMonth = false
+    private var isMaxMonth = false
 
     @Suppress("MemberVisibilityCanBePrivate")
     var daySelected = ""
@@ -78,24 +83,50 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             this.minDay = minDay
             this.maxDay = maxDay
 
-            val cMin = minDay.formatToCalendar().setDay(1)
-            this.timeMillisStart = cMin.timeInMillis
-            val cMax = maxDay.formatToCalendar().setDay(1)
-            this.timeMillisEnd = cMax.timeInMillis
+            if (minDay.isNotEmpty()) {
+                val cMin = minDay.formatToCalendar().setDay(1)
+                this.timeMillisStart = cMin.timeInMillis
+            }
+            if (maxDay.isNotEmpty()) {
+                val cMax = maxDay.formatToCalendar().setDay(1)
+                this.timeMillisEnd = cMax.timeInMillis
+            }
+
+            if (timeMillisStart > timeMillisEnd) {
+                throw IllegalStateException("minDay cannot be greater than maxDay")
+            }
 
             cSelected = if (daySelected.isNotEmpty()) {
-                daySelected.formatToCalendar()
+                daySelected.formatToCalendar().clean(CalendarCst.FORMAT_MONTH_DEFAULT)
             } else {
                 Calendar.getInstance().clean(CalendarCst.FORMAT_MONTH_DEFAULT)
             }
+            this.timeMillisSelected = cSelected.timeInMillis
 
-            cPrev = cSelected.new().prevMonth()
-            cNext = cSelected.new().nextMonth()
-            lstMonths.add(cPrev.createMonthFrom())
+            if (timeMillisSelected < timeMillisStart || timeMillisSelected > timeMillisEnd) {
+                throw IllegalStateException("daySelected is not in the range minDay - maxDay")
+            }
+            //Add previous month's calendar
+            if (timeMillisStart < timeMillisSelected) {
+                cPrev = cSelected.new().prevMonth()
+                isMinMonth = cPrev.timeInMillis == timeMillisStart
+                lstMonths.add(cPrev.createMonthFrom())
+            } else {
+                isMinMonth = true
+            }
+            //Add the calendar of the selected month
             lstMonths.add(cSelected.createMonthFrom())
-            lstMonths.add(cNext.createMonthFrom())
-        } catch (_: Exception) {
-
+            posSelected = lstMonths.size - 1
+            //Add next month's calendar
+            if (timeMillisEnd > timeMillisSelected) {
+                cNext = cSelected.new().nextMonth()
+                isMaxMonth = cNext.timeInMillis == timeMillisEnd
+                lstMonths.add(cNext.createMonthFrom())
+            } else {
+                isMaxMonth = true
+            }
+        } catch (ex: Exception) {
+            logError("setupMonths: ${ex.message}")
         }
     }
 
@@ -136,10 +167,8 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         rcv: RecyclerView,
         onMonthChanged: ((monthForm: MonthForm, percentPrev: Float, scrollDirection: Int) -> Unit)? = null
     ) {
-        rcv.scrollToPosition(1)
+        rcv.scrollToPosition(posSelected)
         rcv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            var isMinMonth = false
-            var isMaxMonth = false
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
