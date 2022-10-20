@@ -6,12 +6,10 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentBannerInfiniteBinding
-import com.huyhieu.mydocuments.utils.logDebug
-import kotlin.math.absoluteValue
 
 class BannerInfiniteFragment : BaseFragment<FragmentBannerInfiniteBinding>() {
     private val bannerAdapter = BannerAdapter()
-    val lstData = mutableListOf(1, 2)
+    val lstData = mutableListOf(1, 2, 3, 4, 5, 6)
     var lstOld = mutableListOf<Int>()
 
 
@@ -28,13 +26,13 @@ class BannerInfiniteFragment : BaseFragment<FragmentBannerInfiniteBinding>() {
             lstData.addAll(lstData)
         }
 
-        rcv.adapter = BannerAdapter()
-        rcv.setHasFixedSize(true)
+        rcv.adapter = bannerAdapter
         bannerAdapter.fillData(lstData)
 
         rcv.scrollToPosition(lstOld.size)
         rcv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            var posInsert = lstOld.size - 1
+            var posLeft = lstOld.size - 1
+            var posEnd = 0
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (lstData.size > 1) {
@@ -42,23 +40,22 @@ class BannerInfiniteFragment : BaseFragment<FragmentBannerInfiniteBinding>() {
                         (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                     if (dx < 0 && pos == 1) {
                         //bannerAdapter.insertAll(lstOld, 0)
-                        bannerAdapter.insert(0, lstOld[posInsert])
-                        posInsert--
-                        if (posInsert < 0) {
-                            posInsert = lstOld.size - 1
+                        bannerAdapter.insert(0, lstOld[posLeft])
+                        posEnd = posLeft
+                        posLeft--
+                        if (posLeft < 0) {
+                            posLeft = lstOld.size - 1
                         }
                         bannerAdapter.removeLast()
-                        logDebug(posInsert.toString())
                     } else if (dx > 0 && pos == bannerAdapter.itemCount - 2) {
                         //bannerAdapter.insertAll(lstOld)
-                        val posRight = (posInsert - (lstOld.size - 1)).absoluteValue
-                        bannerAdapter.insert(item = lstOld[posRight])
-                        posInsert++
-                        if (posInsert == lstOld.size) {
-                            posInsert = 0
+                        bannerAdapter.insert(item = lstOld[posEnd])
+                        posLeft = posEnd
+                        posEnd++
+                        if (posEnd > lstOld.size - 1) {
+                            posEnd = 0
                         }
                         bannerAdapter.removeFirst()
-                        logDebug(posInsert.toString())
                     }
                 }
             }
