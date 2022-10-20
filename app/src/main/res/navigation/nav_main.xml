@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/calendarFragment">
+    app:startDestination="@id/bannerInfiniteFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -94,10 +94,16 @@
     <fragment
         android:id="@+id/cardsFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.components.CardsFragment"
+        tools:layout="@layout/fragment_cards"
         android:label="CardsFragment" />
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.calendar.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/bannerInfiniteFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.banner.BannerInfiniteFragment"
+        android:label="BannerInfiniteFragment"
+        tools:layout="@layout/fragment_banner_infinite" />
 </navigation>
