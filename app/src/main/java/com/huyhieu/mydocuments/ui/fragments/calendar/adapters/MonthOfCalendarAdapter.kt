@@ -213,27 +213,30 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 val lm = rcv.layoutManager as LinearLayoutManager
-                val posSelected = lm.findFirstVisibleItemPosition()
-                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    if (posSelected == 0 && !isMinMonth) {
-                        cPrev.prevMonth()
-                        isMinMonth = cPrev.timeInMillis == timeMillisStart
-                        lstMonths.add(0, cPrev.createMonthFrom())
-                        notifyItemInserted(0)
-                    } else {
-                        if (!isMaxMonth) {
-                            val posLast = lm.findLastVisibleItemPosition()
-                            if (posLast == lstMonths.size - 1) {
-                                cNext.nextMonth()
-                                isMaxMonth = cNext.timeInMillis == timeMillisEnd
-                                lstMonths.add(cNext.createMonthFrom())
-                                notifyItemInserted(lstMonths.size)
-                            }
-                        }
-                    }
+                posSelected = lm.findFirstVisibleItemPosition()
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    addNewCalendar(posSelected)
                 }
             }
         })
+    }
+
+    fun addNewCalendar(posSelected: Int) {
+        if (posSelected == 0 && !isMinMonth) {
+            cPrev.prevMonth()
+            isMinMonth = cPrev.timeInMillis == timeMillisStart
+            lstMonths.add(0, cPrev.createMonthFrom())
+            notifyItemInserted(0)
+        } else {
+            if (!isMaxMonth) {
+                if (posSelected == lstMonths.size - 1) {
+                    cNext.nextMonth()
+                    isMaxMonth = cNext.timeInMillis == timeMillisEnd
+                    lstMonths.add(cNext.createMonthFrom())
+                    notifyItemInserted(lstMonths.size)
+                }
+            }
+        }
     }
 
     private fun Calendar.createMonthFrom() =

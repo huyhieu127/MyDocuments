@@ -49,10 +49,12 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
             tvDateSelected.text = String.format("Ngày ${it.date}")
         }
         imgNextMonth.setOnClickListener {
-            rcvMonth.smoothScrollToPosition(monthAdapter.posSelected + 1)
+            val pos = monthAdapter.posSelected + 1
+            rcvMonth.smoothScrollToPosition(pos)
         }
         imgPrvMonth.setOnClickListener {
-            rcvMonth.smoothScrollToPosition(monthAdapter.posSelected - 1)
+            val pos = monthAdapter.posSelected - 1
+            rcvMonth.smoothScrollToPosition(pos)
         }
     }
 
