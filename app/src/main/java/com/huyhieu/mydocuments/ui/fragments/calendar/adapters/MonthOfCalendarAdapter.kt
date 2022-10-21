@@ -43,6 +43,7 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var posSelected = 0
     var dayClick: ((DayForm) -> Unit)? = null
     private val lstMonths = mutableListOf<MonthForm>()
+    private var dayAdapterSelected: DaysOfCalendarAdapter? = null
 
     inner class MonthViewHolder(val binding: WidgetCalendarMonthOfYearBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -54,6 +55,12 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 val item = lstMonths[layoutPosition]
                 rcvDays.adapter = daysOfCalendarAdapter
                 daysOfCalendarAdapter.dayClick = dayClick
+                daysOfCalendarAdapter.onDaySelected = {
+                    if (dayAdapterSelected != it) {
+                        updateDayOld()
+                        dayAdapterSelected = it
+                    }
+                }
                 if (!item.lstDays.isNullOrEmpty()) {
                     daysOfCalendarAdapter.fillListDays(item.lstDays!!)
                 }
@@ -76,6 +83,12 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int = lstMonths.size
+
+    fun updateDayOld() {
+        dayAdapterSelected?.updateDayFromOtherMonth()
+    }
+
+    /********************************************************************************************/
 
     fun setupMonths(daySelected: String = "", minDay: String = "", maxDay: String = "") {
         try {
@@ -149,7 +162,12 @@ class MonthOfCalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 (1..numDayInMonth).forEach { day ->
                     val cal = calendar.new().setDay(day)
                     val date = cal.formatToString()
-                    val dayForm = DayForm(day.toString(), date, isSelected = date == dateCurrent)
+                    val dayForm = DayForm(
+                        day = day.toString(),
+                        date = date,
+                        isToday = date == dateCurrent,
+                        isSelected = date == daySelected
+                    )
                     lstDays.add(dayForm)
                 }
                 //Days of next month

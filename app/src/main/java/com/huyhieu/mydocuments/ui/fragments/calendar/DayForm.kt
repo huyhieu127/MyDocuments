@@ -6,5 +6,8 @@ class DayForm(
     var data: Any? = null,
     var isDayOfPrevMonth: Boolean = false,
     var isDayOfNextMonth: Boolean = false,
+    var isToday: Boolean = false,
     var isSelected: Boolean = false
-)
+) {
+    fun isDayAvailable() = !isDayOfPrevMonth && !isDayOfNextMonth
+}

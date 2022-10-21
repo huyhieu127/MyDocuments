@@ -1,5 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.calendar.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,15 +10,17 @@ import com.huyhieu.mydocuments.databinding.WidgetCalendarDayOfMonthBinding
 import com.huyhieu.mydocuments.ui.fragments.calendar.DayForm
 import com.huyhieu.mydocuments.ui.fragments.calendar.MonthForm
 import com.huyhieu.mydocuments.utils.extensions.color
+import com.huyhieu.mydocuments.utils.extensions.colorStateList
 import com.huyhieu.mydocuments.utils.extensions.setOnClickMyListener
 
 class DaysOfCalendarAdapter : RecyclerView.Adapter<ViewHolder>() {
 
     var dayClick: ((DayForm) -> Unit)? = null
+    var onDaySelected: ((DaysOfCalendarAdapter) -> Unit)? = null
     private var lstDays = mutableListOf<DayForm>()
     private lateinit var monthForm: MonthForm
-    private var daySelected = ""
-    private var idxSelected = -1
+    var daySelected = ""
+    var idxDaySelected = -1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = WidgetCalendarDayOfMonthBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -36,34 +39,42 @@ class DaysOfCalendarAdapter : RecyclerView.Adapter<ViewHolder>() {
 
     inner class DayViewHolder(val binding: WidgetCalendarDayOfMonthBinding) :
         ViewHolder(binding.root) {
-        fun bindViewHolder(lstDay: MutableList<DayForm>) {
+
+        private val context: Context by lazy { binding.root.context }
+
+        fun bindViewHolder(lstDays: MutableList<DayForm>) {
             binding.apply {
-                val item = lstDay[layoutPosition]
-                if (item.isDayOfPrevMonth || item.isDayOfNextMonth) {
-                    tvDay.setTextColor(root.context.color(R.color.colorGrayscaleDisable))
-                } else {
-                    //tvDay.setTextColor(root.context.color(R.color.color_selected_black_white))
-                    root.setOnClickMyListener {
-                        daySelected = item.date
-                        if (idxSelected != -1) {
-                            lstDay[idxSelected].isSelected = false
-                            notifyItemChanged(idxSelected)
-                        }
-                        notifyItemChanged(layoutPosition)
-
-                        dayClick?.invoke(item)
-                    }
-                }
+                val item = lstDays[layoutPosition]
                 tvDay.text = item.day
-
-                if (item.isSelected || (daySelected == item.date && daySelected.isNotEmpty())) {
+                //Set selected
+                if (item.isSelected) {
                     daySelected = item.date
-                    idxSelected = layoutPosition
+                    idxDaySelected = layoutPosition
                     root.isSelected = true
+                    onDaySelected?.invoke(this@DaysOfCalendarAdapter)
                 } else {
                     root.isSelected = false
                 }
-
+                //Set color selected
+                if (item.isToday && !root.isSelected) {
+                    tvDay.setTextColor(context.color(R.color.colorPrimary))
+                } else if (!item.isDayAvailable()) {
+                    tvDay.setTextColor(context.color(R.color.colorGrayscaleDisable))
+                } else {
+                    tvDay.setTextColor(context.colorStateList(R.color.color_selected_black_white))
+                }
+                //Set gesture
+                if (item.isDayAvailable()) {
+                    root.setOnClickMyListener {
+                        if (idxDaySelected != -1) {
+                            lstDays[idxDaySelected].isSelected = false
+                            notifyItemChanged(idxDaySelected)
+                        }
+                        item.isSelected = true
+                        notifyItemChanged(layoutPosition)
+                        dayClick?.invoke(item)
+                    }
+                }
             }
         }
     }
@@ -71,5 +82,12 @@ class DaysOfCalendarAdapter : RecyclerView.Adapter<ViewHolder>() {
     fun fillListDays(lstDays: MutableList<DayForm>) {
         this.lstDays = lstDays
         notifyItemRangeChanged(0, itemCount)
+    }
+
+    fun updateDayFromOtherMonth() {
+        if (idxDaySelected != -1) {
+            lstDays[idxDaySelected].isSelected = false
+            notifyItemChanged(idxDaySelected)
+        }
     }
 }
