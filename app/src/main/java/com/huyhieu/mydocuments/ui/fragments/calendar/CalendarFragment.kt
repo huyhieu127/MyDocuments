@@ -6,8 +6,10 @@ import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
 import com.huyhieu.mydocuments.ui.fragments.calendar.adapters.MonthOfCalendarAdapter
+import com.huyhieu.mydocuments.ui.fragments.fingerprint.BiometricPromptUtils
+import com.huyhieu.mydocuments.ui.fragments.fingerprint.BiometricPromptUtils.getPromptInfo
+import com.huyhieu.mydocuments.ui.fragments.fingerprint.BiometricPromptUtils.instanceOfBiometricPrompt
 import com.huyhieu.mydocuments.utils.extensions.*
-import com.huyhieu.mydocuments.utils.logDebug
 import java.util.*
 
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
@@ -17,7 +19,13 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
 
     override fun FragmentCalendarBinding.addControls(savedInstanceState: Bundle?) {
         mActivity?.setDarkColorStatusBar()
+        BiometricPromptUtils.checkDeviceSupport(requireContext()) {
+            instanceOfBiometricPrompt()
+            getPromptInfo()
+        }
+    }
 
+    override fun FragmentCalendarBinding.addEvents(savedInstanceState: Bundle?) {
         val cCurrent = Calendar.getInstance()
         val dayOfWeek = cCurrent.getDisplayDayOfWeek()
         val date = cCurrent.formatToString(CalendarCst.FORMAT_DATE_DEFAULT)
@@ -33,13 +41,11 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
         pagerSnapHelper.attachToRecyclerView(rcvMonth)
 
         rcvMonth.adapter = monthAdapter
-        val start = System.currentTimeMillis()
         monthAdapter.setupMonths(
             "19/11/2022",
             "01/01/${cCurrent.getYear() - 10}",
             "01/01/${cCurrent.getYear() + 10}"
         )
-        logDebug("Time open calendar = ${(System.currentTimeMillis() - start)}")
         monthAdapter.attachToRecyclerView(rcvMonth) { monthForm, percentPrev, scrollDirection ->
             motionMonth.progress = percentPrev
             tvMonthPrev.text = monthForm.toDisplayMonth()
@@ -56,9 +62,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
             val pos = monthAdapter.posSelected - 1
             rcvMonth.smoothScrollToPosition(pos)
         }
-    }
-
-    override fun FragmentCalendarBinding.addEvents(savedInstanceState: Bundle?) {
     }
 }
 
