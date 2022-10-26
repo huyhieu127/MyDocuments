@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/calendarFragment">
+    app:startDestination="@id/fingerprintFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -106,4 +106,9 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.banner.BannerInfiniteFragment"
         android:label="BannerInfiniteFragment"
         tools:layout="@layout/fragment_banner_infinite" />
+    <fragment
+        android:id="@+id/fingerprintFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.fingerprint.FingerprintFragment"
+        android:label="fragment_fingerprint"
+        tools:layout="@layout/fragment_fingerprint" />
 </navigation>

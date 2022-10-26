@@ -1,83 +1,144 @@
 package com.huyhieu.mydocuments.ui.fragments.fingerprint
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
+import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.huyhieu.mydocuments.utils.logDebug
 
-// Since we are using the same methods in more than one Activity, better give them their own file.
-object BiometricPromptUtils {
-    private const val TAG = "BiometricPromptUtils"
-
-
-    fun checkDeviceSupport(
-        context: Context,
-        authenticators: Int = Authenticators.BIOMETRIC_WEAK,
-        onNotSupport: (() -> Unit)? = null,
-        onSupport: (() -> Unit)? = null,
-    ) {
-        val biometricManager = BiometricManager.from(context)
-        when (biometricManager.canAuthenticate(authenticators)) {
-            BiometricManager.BIOMETRIC_SUCCESS -> {
-                logDebug("checkDeviceSupport - OK")
-                onSupport?.invoke()
-            }
-            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                logDebug("checkDeviceSupport - BIOMETRIC_ERROR_HW_UNAVAILABLE")
-            }
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                logDebug("checkDeviceSupport - BIOMETRIC_ERROR_NONE_ENROLLED")
-            }
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                logDebug("checkDeviceSupport - BIOMETRIC_ERROR_NO_HARDWARE")
-            }
-            BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> {
-                logDebug("checkDeviceSupport - BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED")
-            }
-            else -> {
-                logDebug("checkDeviceSupport - FAILED")
-                onNotSupport?.invoke()
-            }
+/**
+ * Check biometric*/
+fun Context?.isBiometricAvailable(
+    authenticators: Int = Authenticators.BIOMETRIC_WEAK,
+    onStatus: ((isAvailable: Boolean, code: Int) -> Unit)? = null,
+) {
+    this ?: return
+    val biometricManager = BiometricManager.from(this)
+    when (biometricManager.canAuthenticate(authenticators)) {
+        BiometricManager.BIOMETRIC_SUCCESS -> {
+            onStatus?.invoke(true, BiometricManager.BIOMETRIC_SUCCESS)
+        }
+        BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
+            onStatus?.invoke(false, BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE)
+        }
+        BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+            //createIntentSettingBiometric()
+            onStatus?.invoke(false, BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED)
+        }
+        BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+            onStatus?.invoke(false, BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE)
+        }
+        BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED -> {
+            onStatus?.invoke(false, BiometricManager.BIOMETRIC_ERROR_SECURITY_UPDATE_REQUIRED)
+        }
+        else -> {
+            onStatus?.invoke(false, biometricManager.canAuthenticate(authenticators))
         }
     }
+}
 
-    fun Fragment.instanceOfBiometricPrompt(): BiometricPrompt? {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            val executor = ContextCompat.getMainExecutor(requireContext())
+@RequiresApi(Build.VERSION_CODES.R)
+fun createIntentSettingBiometric() = Intent(Settings.ACTION_BIOMETRIC_ENROLL).apply {
+    putExtra(
+        Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
+        Authenticators.BIOMETRIC_STRONG or Authenticators.DEVICE_CREDENTIAL
+    )
+}
 
-            val callback = object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                    super.onAuthenticationError(errorCode, errString)
-                    logDebug("$errorCode :: $errString")
-                }
+/**
+ * Create instance of BiometricPrompt*/
+fun <T> T.createBiometricPrompt(
+    onAuthenticationError: ((errorCode: Int, errString: CharSequence) -> Unit)? = null,
+    onAuthenticationFailed: (() -> Unit)? = null,
+    onAuthenticationSucceeded: ((result: BiometricPrompt.AuthenticationResult) -> Unit)? = null,
+): BiometricPrompt? {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        when (this) {
+            is Fragment -> {
+                val executor = ContextCompat.getMainExecutor(this.requireContext())
+                BiometricPrompt(
+                    this,
+                    executor,
+                    callBackBiometricPrompt(
+                        onAuthenticationError,
+                        onAuthenticationFailed,
+                        onAuthenticationSucceeded
+                    )
+                )
 
-                override fun onAuthenticationFailed() {
-                    super.onAuthenticationFailed()
-                    logDebug("Authentication failed for an unknown reason")
-                }
-
-                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                    super.onAuthenticationSucceeded(result)
-                    logDebug("Authentication was successful")
-                }
             }
-            return BiometricPrompt(this, executor, callback)
-        } else {
-            return null
+            is FragmentActivity -> {
+                val executor = ContextCompat.getMainExecutor(this)
+                BiometricPrompt(
+                    this,
+                    executor,
+                    callBackBiometricPrompt(
+                        onAuthenticationError,
+                        onAuthenticationFailed,
+                        onAuthenticationSucceeded
+                    )
+                )
+            }
+            else -> null
+        }
+    } else {
+        null
+    }
+}
+
+/**
+ * Call back BiometricPrompt.AuthenticationCallback*/
+private fun callBackBiometricPrompt(
+    onAuthenticationError: ((errorCode: Int, errString: CharSequence) -> Unit)? = null,
+    onAuthenticationFailed: (() -> Unit)? = null,
+    onAuthenticationSucceeded: ((result: BiometricPrompt.AuthenticationResult) -> Unit)? = null,
+): BiometricPrompt.AuthenticationCallback {
+    return object : BiometricPrompt.AuthenticationCallback() {
+        override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+            super.onAuthenticationError(errorCode, errString)
+            onAuthenticationError?.invoke(errorCode, errString)
+            logDebug("onAuthenticationError: $errorCode :: $errString")
+        }
+
+        override fun onAuthenticationFailed() {
+            super.onAuthenticationFailed()
+            onAuthenticationFailed?.invoke()
+            logDebug("onAuthenticationFailed: Authentication failed for an unknown reason")
+        }
+
+        override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+            super.onAuthenticationSucceeded(result)
+            onAuthenticationSucceeded?.invoke(result)
+            logDebug("onAuthenticationSucceeded: Authentication was successful")
         }
     }
+}
 
-    fun getPromptInfo(): BiometricPrompt.PromptInfo {
-        return BiometricPrompt.PromptInfo.Builder()
-            .setTitle("My App's Authentication")
-            .setSubtitle("Please login to get access")
-            .setDescription("My App is using Android biometric authentication")
-            .setAllowedAuthenticators(Authenticators.BIOMETRIC_WEAK)
-            .setNegativeButtonText("setNegativeButtonText")
-            .build()
-    }
+/**
+ * Build PromptInfo*/
+private val promptInfo by lazy {
+    BiometricPrompt.PromptInfo.Builder()
+        .setTitle("Title")
+        .setSubtitle("Subtitle")
+        .setDescription("Description")
+        //.setAllowedAuthenticators(Authenticators.BIOMETRIC_WEAK)
+        .setAllowedAuthenticators(Authenticators.BIOMETRIC_STRONG)
+        //.setAllowedAuthenticators(Authenticators.BIOMETRIC_STRONG or Authenticators.DEVICE_CREDENTIAL)
+        .setNegativeButtonText("Negative Button Text")
+        .build()
+}
+
+/**
+ * Display the login prompt*/
+fun showDialogFingerprint(biometricPrompt: BiometricPrompt?) {
+    biometricPrompt
+        ?: throw Exception("""Function "showDialogFingerprint": BiometricPrompt is null""")
+    biometricPrompt.authenticate(promptInfo)
 }

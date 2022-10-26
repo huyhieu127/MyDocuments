@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.huyhieu.mydocuments"
-        minSdk 21
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -58,7 +58,7 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
@@ -118,7 +118,7 @@ dependencies {
 
     //Map
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
     implementation 'com.google.maps.android:android-maps-utils:2.4.0'
 
     //Glide
@@ -134,5 +134,5 @@ dependencies {
     implementation("androidx.paging:paging-runtime-ktx:3.1.1")
 
     //Biometric
-    implementation "androidx.biometric:biometric:1.1.0"
+    implementation "androidx.biometric:biometric:1.2.0-alpha05"
 }

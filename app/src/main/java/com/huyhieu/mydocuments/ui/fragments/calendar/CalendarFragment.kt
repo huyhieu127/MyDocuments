@@ -6,9 +6,6 @@ import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
 import com.huyhieu.mydocuments.ui.fragments.calendar.adapters.MonthOfCalendarAdapter
-import com.huyhieu.mydocuments.ui.fragments.fingerprint.BiometricPromptUtils
-import com.huyhieu.mydocuments.ui.fragments.fingerprint.BiometricPromptUtils.getPromptInfo
-import com.huyhieu.mydocuments.ui.fragments.fingerprint.BiometricPromptUtils.instanceOfBiometricPrompt
 import com.huyhieu.mydocuments.utils.extensions.*
 import java.util.*
 
@@ -19,10 +16,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
 
     override fun FragmentCalendarBinding.addControls(savedInstanceState: Bundle?) {
         mActivity?.setDarkColorStatusBar()
-        BiometricPromptUtils.checkDeviceSupport(requireContext()) {
-            instanceOfBiometricPrompt()
-            getPromptInfo()
-        }
     }
 
     override fun FragmentCalendarBinding.addEvents(savedInstanceState: Bundle?) {
