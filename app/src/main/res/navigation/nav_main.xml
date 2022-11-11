@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/fingerprintFragment">
+    app:startDestination="@id/analogClockFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -111,4 +111,12 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.fingerprint.FingerprintFragment"
         android:label="fragment_fingerprint"
         tools:layout="@layout/fragment_fingerprint" />
+    <fragment
+        android:id="@+id/analogClockFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.AnalogClockFragment"
+        android:label="fragment_analog_clock"
+        tools:layout="@layout/fragment_analog_clock" />
+    <action
+        android:id="@+id/action_global_analogClockFragment"
+        app:destination="@id/analogClockFragment" />
 </navigation>
