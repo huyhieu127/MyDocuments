@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.huyhieu.library.extensions.setOnClickMyListener
 import com.huyhieu.mydocuments.databinding.LayoutItemMenuBinding
 import com.huyhieu.mydocuments.models.MenuForm
-import com.huyhieu.mydocuments.utils.extensions.setOnClickMyListener
 
 class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

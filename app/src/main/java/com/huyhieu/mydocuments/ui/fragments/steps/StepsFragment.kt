@@ -2,14 +2,14 @@ package com.huyhieu.mydocuments.ui.fragments.steps
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.library.extensions.setDarkColorStatusBar
+import com.huyhieu.library.extensions.setTransitionTo
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStepsBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.StepDirections
 import com.huyhieu.mydocuments.navigation.navigate
-import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.utils.extensions.setTransitionTo
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject

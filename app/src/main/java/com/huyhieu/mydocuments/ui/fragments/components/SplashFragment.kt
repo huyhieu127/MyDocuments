@@ -3,11 +3,11 @@ package com.huyhieu.mydocuments.ui.fragments.components
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSplashBinding
 import com.huyhieu.mydocuments.navigation.directions.MainDirections
 import com.huyhieu.mydocuments.navigation.navigate
-import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

@@ -2,9 +2,9 @@ package com.huyhieu.mydocuments.ui.fragments.fingerprint
 
 import android.graphics.Color
 import android.os.Bundle
+import com.huyhieu.library.extensions.setOnClickMyListener
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentFingerprintBinding
-import com.huyhieu.mydocuments.utils.extensions.setOnClickMyListener
 import com.huyhieu.mydocuments.utils.logDebug
 
 class FingerprintFragment : BaseFragment<FragmentFingerprintBinding>() {

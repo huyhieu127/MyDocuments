@@ -12,20 +12,18 @@ import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.mydocuments.utils.commons.UButtonView
-import com.huyhieu.mydocuments.utils.commons.UTab
-import com.huyhieu.mydocuments.utils.extensions.hideKeyboard
+import com.huyhieu.library.extensions.hideKeyboard
 
 abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener {
 
     val mBinding: T by lazy { initializeBinding() }
 
-    val mActivity: BaseActivity<*>? by lazy {
+    val mActivity: BaseActivity<*> by lazy {
         try {
-            activity as BaseActivity<*>
-        }catch (ex: Exception){
-            null
-        }
+            activity
+        } catch (ex: Exception) {
+            requireActivity()
+        } as BaseActivity<*>
     }
 
     /**
@@ -89,7 +87,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
         v ?: return
         if (currentTime - time > delayClick) {
             time = currentTime
-            if (v is UButtonView) {
+            if (v is com.huyhieu.widget.commons.UButtonView) {
                 v.showLoading()
             }
             mBinding.onClickViewBinding(v)
@@ -122,7 +120,7 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(), View.OnClickListener 
         mActivity?.onBackPressed()
     }
 
-    open fun setTabNavigationBottom(tab: UTab) {
+    open fun setTabNavigationBottom(tab: com.huyhieu.widget.commons.UTab) {
         mActivity?.setTabNavigationBottom(tab)
     }
 

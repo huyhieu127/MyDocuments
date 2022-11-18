@@ -78,6 +78,7 @@ fun copyFile(fileName: String) {
     fos?.close()
 }
 
+
 fun getFile(fileName: String): File {
     return File(packageDir, fileName)
 }
@@ -243,4 +244,3 @@ fun Context?.getRealPathFromURI(contentUri: Uri?): String? {
         cursor?.close()
     }
 }
-

@@ -7,11 +7,10 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.mydocuments.App
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityBubbleChatBinding
-import com.huyhieu.mydocuments.utils.commons.bubblechat.BubbleChatService
-import com.huyhieu.mydocuments.utils.extensions.showToastShort
 
 class BubbleChatActivity : BaseActivity<ActivityBubbleChatBinding>() {
     override fun initializeBinding() = ActivityBubbleChatBinding.inflate(layoutInflater)
@@ -43,7 +42,8 @@ class BubbleChatActivity : BaseActivity<ActivityBubbleChatBinding>() {
     }
 
     private fun showBubbleChat() {
-        val intent = Intent(this, BubbleChatService::class.java)
+        val intent =
+            Intent(this, com.huyhieu.widget.commons.bubblechat.BubbleChatService::class.java)
         startService(intent)
         finish()
     }

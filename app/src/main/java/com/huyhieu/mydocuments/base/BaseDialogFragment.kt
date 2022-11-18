@@ -8,9 +8,8 @@ import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
+import com.huyhieu.library.extensions.hideKeyboard
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.utils.commons.UButtonView
-import com.huyhieu.mydocuments.utils.extensions.hideKeyboard
 
 abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnClickListener {
 
@@ -108,7 +107,7 @@ abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnCl
         v ?: return
         if (currentTime - time > delayClick) {
             time = currentTime
-            if (v is UButtonView) {
+            if (v is com.huyhieu.widget.commons.UButtonView) {
                 v.showLoading()
             }
             mBinding.onClickViewBinding(v)

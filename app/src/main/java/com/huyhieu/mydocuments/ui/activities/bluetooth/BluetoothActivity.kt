@@ -16,9 +16,9 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityBluetoothBinding
-import com.huyhieu.mydocuments.utils.extensions.showToastShort
 
 class BluetoothActivity : BaseActivity<ActivityBluetoothBinding>() {
 

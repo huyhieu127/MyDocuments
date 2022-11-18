@@ -8,7 +8,6 @@ import com.huyhieu.mydocuments.databinding.FragmentNavigationBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.HomeDirections
 import com.huyhieu.mydocuments.navigation.navigate
-import com.huyhieu.mydocuments.utils.commons.UTab
 import kotlinx.coroutines.launch
 
 class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
@@ -24,17 +23,17 @@ class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
         navTab.tabSelectedListener = {
             lifecycleScope.launch {
                 when (it) {
-                    UTab.TAB_SCAN -> {
+                    com.huyhieu.widget.commons.UTab.TAB_SCAN -> {
                         navigate(MyNavHost.Home, HomeDirections.toQR) {
                             setPopUpTo(R.id.homeFragment, false)
                         }
                     }
-                    UTab.TAB_HOME -> {
+                    com.huyhieu.widget.commons.UTab.TAB_HOME -> {
                         navigate(MyNavHost.Home, HomeDirections.toHome) {
                             setPopUpTo(R.id.homeFragment, true)
                         }
                     }
-                    UTab.TAB_PROFILE -> {
+                    com.huyhieu.widget.commons.UTab.TAB_PROFILE -> {
                         navigate(MyNavHost.Home, HomeDirections.toProfile) {
                             setPopUpTo(R.id.homeFragment, false)
                         }

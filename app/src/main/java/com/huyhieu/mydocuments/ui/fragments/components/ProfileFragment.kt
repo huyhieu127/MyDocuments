@@ -3,14 +3,14 @@ package com.huyhieu.mydocuments.ui.fragments.components
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.library.extensions.setDarkColorStatusBar
+import com.huyhieu.library.extensions.showToastShort
+import com.huyhieu.library.extensions.toSpannable
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
-import com.huyhieu.mydocuments.utils.dialog.ToastDialog
-import com.huyhieu.mydocuments.utils.dialog.ToastType
-import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.utils.extensions.showToastShort
-import com.huyhieu.mydocuments.utils.extensions.toSpannable
+import com.huyhieu.mydocuments.ui.components.ToastDialog
+import com.huyhieu.mydocuments.ui.components.ToastType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

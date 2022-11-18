@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments.ui.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
+import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
@@ -12,8 +13,6 @@ import com.huyhieu.mydocuments.ui.activities.bluetooth.BluetoothActivity
 import com.huyhieu.mydocuments.ui.activities.ffmmpegkit.FFmpegKitActivity
 import com.huyhieu.mydocuments.ui.fragments.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.home.components.MyDialog
-import com.huyhieu.mydocuments.utils.commons.UTab
-import com.huyhieu.mydocuments.utils.extensions.setDarkColorStatusBar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -28,7 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun FragmentHomeBinding.addControls(savedInstanceState: Bundle?) {
         mActivity?.setDarkColorStatusBar()
         showNavigationBottom()
-        setTabNavigationBottom(UTab.TAB_HOME)
+        setTabNavigationBottom(com.huyhieu.widget.commons.UTab.TAB_HOME)
         initListMenu()
     }
 

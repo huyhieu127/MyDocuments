@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.library.extensions.onTransitionCompleted
+import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSwipeRefreshBinding
-import com.huyhieu.mydocuments.utils.extensions.onTransitionCompleted
-import com.huyhieu.mydocuments.utils.extensions.showToastShort
 import com.huyhieu.mydocuments.utils.logDebug
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

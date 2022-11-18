@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius">8dp</dimen>
+    <dimen name="hole_padding">8dp</dimen>
+
+    <dimen name="btn_text_radius">10dp</dimen>
+    <dimen name="btn_icon_radius">16dp</dimen>
+    <dimen name="btn_elevation">4dp</dimen>
+
+    <dimen name="padding_bounds_map">100dp</dimen>
+    <dimen name="margin_bottom_title_option_view">2dp</dimen>
+    <dimen name="margin_bottom_title_note_view">8dp</dimen>
+    <dimen name="width_month_calendar">130dp</dimen>
+    <dimen name="width_month_calendar_minus">-130dp</dimen>
+</resources>
