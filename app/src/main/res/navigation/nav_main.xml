@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/analogClockFragment">
+    app:startDestination="@id/drawableAnimateFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -119,4 +119,9 @@
     <action
         android:id="@+id/action_global_analogClockFragment"
         app:destination="@id/analogClockFragment" />
+    <fragment
+        android:id="@+id/drawableAnimateFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.CanvasFragment"
+        android:label="fragment_drawable_animate"
+        tools:layout="@layout/fragment_canvas" />
 </navigation>

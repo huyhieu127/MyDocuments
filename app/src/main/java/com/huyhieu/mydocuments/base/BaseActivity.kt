@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.library.extensions.setDarkColorStatusBar
+import com.huyhieu.library.extensions.setNavigationBarColor
 import com.huyhieu.mydocuments.R
 
 abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClickListener {
@@ -61,5 +62,7 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
 
     open fun showNavigationBottom() {}
 
-    open fun hideNavigationBottom(@ColorRes idColor: Int = android.R.color.transparent) {}
+    open fun hideNavigationBottom(@ColorRes idColor: Int = android.R.color.transparent) {
+        setNavigationBarColor(idColor)
+    }
 }
