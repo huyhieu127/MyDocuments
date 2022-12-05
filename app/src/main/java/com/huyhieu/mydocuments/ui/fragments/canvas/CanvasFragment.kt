@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.fragments.components
+package com.huyhieu.mydocuments.ui.fragments.canvas
 
 import android.os.Bundle
 import com.huyhieu.library.extensions.setDarkColorStatusBar

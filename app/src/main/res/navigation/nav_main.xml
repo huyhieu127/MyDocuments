@@ -121,7 +121,7 @@
         app:destination="@id/analogClockFragment" />
     <fragment
         android:id="@+id/drawableAnimateFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.CanvasFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.canvas.CanvasFragment"
         android:label="fragment_drawable_animate"
         tools:layout="@layout/fragment_canvas" />
 </navigation>

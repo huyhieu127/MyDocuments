@@ -12,4 +12,6 @@
     <dimen name="margin_bottom_title_note_view">8dp</dimen>
     <dimen name="width_month_calendar">130dp</dimen>
     <dimen name="width_month_calendar_minus">-130dp</dimen>
+
+    <dimen name="text_size">11sp</dimen>
 </resources>
