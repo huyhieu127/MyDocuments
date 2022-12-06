@@ -7,6 +7,8 @@ import android.view.View
 import androidx.core.graphics.toRectF
 import com.huyhieu.mydocuments.R
 import kotlin.math.abs
+import kotlin.math.floor
+import kotlin.math.roundToInt
 
 
 class CustomCanvasView @JvmOverloads constructor(
@@ -55,9 +57,10 @@ class CustomCanvasView @JvmOverloads constructor(
             x(0).toInt(),
             y(0).toInt(),
         )
-        val colors = arrayOf(Color.RED, Color.YELLOW, Color.MAGENTA, Color.CYAN, Color.GREEN)
+        val colors = mutableListOf(Color.RED, Color.YELLOW, Color.MAGENTA, Color.CYAN, Color.GREEN)
         points.forEachIndexed { index, pair ->
-            val color = colors.random()
+            val idx = floor(Math.random() * (colors.size)).roundToInt()
+            val color = colors[idx]
             paintFill.shader = LinearGradient(
                 0F,
                 0F,
