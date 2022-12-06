@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.graphics.toRectF
 import com.huyhieu.mydocuments.R
 import kotlin.math.abs
 
@@ -36,32 +37,80 @@ class CustomCanvasView @JvmOverloads constructor(
     }
 
     private fun drawChart(canvas: Canvas, points: MutableList<Pair<Int, Int>>) {
-        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        val paintLine = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             strokeWidth = 5F
             color = Color.RED
-            style = Paint.Style.FILL_AND_STROKE
+            style = Paint.Style.STROKE
+            alpha = 220
         }
+        val paintFill = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            strokeWidth = 5F
+            //color = Color.RED
+            style = Paint.Style.FILL
+            alpha = 220
+        }
+        val rect = Rect(
+            x(0).toInt(),
+            y(0).toInt(),
+            x(0).toInt(),
+            y(0).toInt(),
+        )
+        val colors = arrayOf(Color.RED, Color.YELLOW, Color.MAGENTA, Color.CYAN, Color.GREEN)
         points.forEachIndexed { index, pair ->
+            val color = colors.random()
+            paintFill.shader = LinearGradient(
+                0F,
+                0F,
+                50F,
+                height.toFloat(),
+                color,
+                Color.TRANSPARENT,
+                Shader.TileMode.MIRROR
+            )
+            paintLine.color = color
             if (index == 0) {
                 canvas.drawLine(
-                    lAxisY, //x0
-                    bAxisX + heightChart, //y0
-                    axisX[pair.first.toFloat()] ?: 0F,
-                    axisY[pair.second.toFloat()] ?: 0F,
-                    paint
+                    x(0),
+                    y(0),
+                    x(pair.first),
+                    y(pair.second),
+                    paintLine
                 )
+                val path = Path().apply {
+                    this.moveTo(x(0), y(0))
+                    this.lineTo(x(pair.first), y(0))
+                    this.lineTo(x(pair.first), y(pair.second))
+                    this.fillType = Path.FillType.EVEN_ODD
+                }
+                path.addRect(rect.toRectF(), Path.Direction.CW)
+                canvas.drawPath(path, paintFill)
             } else {
                 val itemOld = points[index - 1]
                 canvas.drawLine(
-                    axisX[itemOld.first.toFloat()] ?: 0F,
-                    axisY[itemOld.second.toFloat()] ?: 0F,
-                    axisX[pair.first.toFloat()] ?: 0F,
-                    axisY[pair.second.toFloat()] ?: 0F,
-                    paint
+                    x(itemOld.first),
+                    y(itemOld.second),
+                    x(pair.first),
+                    y(pair.second),
+                    paintLine
                 )
+                val path = Path().apply {
+                    this.moveTo(x(itemOld.first), y(itemOld.second))
+                    this.lineTo(x(itemOld.first), y(0))
+                    this.lineTo(x(pair.first), y(0))
+                    this.lineTo(x(pair.first), y(pair.second))
+                    this.fillType = Path.FillType.EVEN_ODD
+                }
+                path.addRect(rect.toRectF(), Path.Direction.CW)
+                canvas.drawPath(path, paintFill)
             }
         }
     }
+
+    fun x(axis: Float) = axisX[axis] ?: 0F
+    fun x(axis: Int) = axisX[axis.toFloat()] ?: 0F
+
+    fun y(axis: Float) = axisY[axis] ?: 0F
+    fun y(axis: Int) = axisY[axis.toFloat()] ?: 0F
 
     private fun drawRotateImage(canvas: Canvas) {
         var bitmap = BitmapFactory.decodeResource(
@@ -124,6 +173,7 @@ class CustomCanvasView @JvmOverloads constructor(
         val sizeYChart = 10
         val hY = heightChart / sizeYChart
 
+        axisY[0F] = bAxisX + heightChart
         for (i in 1..sizeYChart) {
             val point = tAxisX + (abs(i - (sizeYChart + 1)) * hY) - hY
             val rect = Rect()
@@ -141,6 +191,7 @@ class CustomCanvasView @JvmOverloads constructor(
         val bNumAxisX = heightChart + textS + 24F
         val sizeXChart = 10
         val wX = ((widthChart) / sizeXChart)
+        axisX[0F] = lAxisY
         for (i in 1..sizeXChart) {
             val point = (i * wX) + lAxisY
             val rect = Rect()
