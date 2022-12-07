@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.utils
+package com.huyhieu.library
 
 import android.app.Activity
 import android.content.ClipData
@@ -7,7 +7,50 @@ import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Intent
 import android.net.Uri
+import android.util.TypedValue
 
+
+fun Float.spToPx(context: Context) =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, this, context.resources.displayMetrics)
+        .toInt()
+
+fun Int.spToPx(context: Context) =
+    TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_SP,
+        this.toFloat(),
+        context.resources.displayMetrics
+    )
+        .toInt()
+
+fun Float.dpToPx(context: Context) =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this, context.resources.displayMetrics)
+        .toInt()
+
+fun Int.dpToPx(context: Context) =
+    TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        this.toFloat(),
+        context.resources.displayMetrics
+    )
+        .toInt()
+
+fun Float.pxToDp(context: Context) =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, this, context.resources.displayMetrics)
+        .toInt()
+
+fun Int.pxToDp(context: Context) =
+    TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_PX,
+        this.toFloat(),
+        context.resources.displayMetrics
+    )
+        .toInt()
+
+fun Float.dpToSp(context: Context) =
+    (dpToPx(context) / context.resources.displayMetrics.scaledDensity)
+
+fun Int.dpToSp(context: Context) =
+    (dpToPx(context) / context.resources.displayMetrics.scaledDensity)
 
 fun Any?.isNull() = this == null
 

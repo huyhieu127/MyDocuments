@@ -10,6 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <View
+        android:id="@+id/vPoint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.huyhieu.widget.commons.HoleView
         android:id="@+id/hvQRCode"
         android:layout_width="match_parent"

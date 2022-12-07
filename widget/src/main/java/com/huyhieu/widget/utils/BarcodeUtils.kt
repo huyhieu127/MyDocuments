@@ -7,10 +7,7 @@ import android.graphics.Bitmap.CompressFormat
 import android.media.Image
 import android.net.Uri
 import androidx.activity.result.ActivityResultLauncher
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageProxy
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
@@ -34,7 +31,7 @@ class BarcodeUtils(
     private val fragment: Fragment,
     private val previewView: PreviewView,
     typeScan: BarcodeType,
-    private val onResult: (String?) -> Unit
+    private val onResult: (Barcode?, sizeImage: Point?) -> Unit
 ) {
     enum class BarcodeType {
         QR_CODE,
@@ -98,7 +95,7 @@ class BarcodeUtils(
         // Image analyzer
         val imageAnalyzer = ImageAnalysis.Builder()
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-            //.setTargetAspectRatio(AspectRatio.RATIO_16_9)
+            .setTargetAspectRatio(AspectRatio.RATIO_16_9)
             .build()
             .also {
                 it.setAnalyzer(
@@ -156,10 +153,10 @@ class BarcodeUtils(
                                 Barcode.FORMAT_QR_CODE -> {
                                 }
                             }
-                            onResult.invoke(barcode.rawValue)
+                            onResult.invoke(barcode, Point(inputImage.height, inputImage.width))
                         }
                     } else {
-                        onResult.invoke("Not found QR Code!")
+                        onResult.invoke(null, null)
                     }
                 }
                 .addOnFailureListener { ex ->
@@ -177,7 +174,7 @@ class BarcodeUtils(
         try {
             val image = InputImage.fromFilePath(fragment.requireContext(), uri)
             CoroutineScope(Dispatchers.IO).launch {
-                onResult.invoke("Scanning...")
+                //onResult.invoke("Scanning...")
                 scanImage(image)
             }
         } catch (ex: Exception) {
@@ -205,9 +202,10 @@ class BarcodeUtils(
                     InputImage.fromMediaImage(img, imageProxy.imageInfo.rotationDegrees)
 
                 //Scan
-                /*scanImage(inputImage) {
+                scanImage(inputImage) {
                     imageProxy.close()
-                }*/
+                    logDebug("Complete!${inputImage.height} - ${inputImage.width}")
+                }
 
             }
         }

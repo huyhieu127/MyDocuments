@@ -1,6 +1,7 @@
 package com.huyhieu.mydocuments.ui.fragments.navigation
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
@@ -14,6 +15,7 @@ class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
     override fun initializeBinding() = FragmentNavigationBinding.inflate(layoutInflater)
 
     override fun FragmentNavigationBinding.addControls(savedInstanceState: Bundle?) {
+        navTab.isVisible = false
     }
 
     override fun FragmentNavigationBinding.addEvents(savedInstanceState: Bundle?) {

@@ -36,8 +36,22 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
                 padding = 0F
             )
             barcode =
-                BarcodeUtils(this@QRCodeFragment, previewView, BarcodeUtils.BarcodeType.QR_CODE) {
-                    tvResult.text = it ?: ""
+                BarcodeUtils(
+                    this@QRCodeFragment,
+                    previewView,
+                    BarcodeUtils.BarcodeType.QR_CODE
+                ) { barcode, sizeImage ->
+                    barcode?.let {
+                        hvQRCode.sizeImage = sizeImage
+                        val rect = barcode.boundingBox
+                        //hvQRCode.rectResult = rect
+                        val points = barcode.cornerPoints
+                        hvQRCode.pointsResult = points
+                        tvResult.text = it.rawValue
+                    } ?: run {
+                        hvQRCode.pointsResult = null
+                        tvResult.text = "Not found!"
+                    }
                 }
         }
     }
