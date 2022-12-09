@@ -69,6 +69,8 @@ class HoleView @JvmOverloads constructor(
         }
     }
 
+    var onAreaViewListener: ((Boolean) -> Unit)? = null
+
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -114,13 +116,35 @@ class HoleView @JvmOverloads constructor(
         canvas.drawBitmap(bitmap!!, 0.0f, 0.0f, paint)
         rectResult?.let {
             sizeImage ?: return
-            val rect = Rect()
-            rect.left = x(it.left).toInt()
-            rect.right = x(it.right).toInt()
+            val padding = 20
 
-            rect.top = y(it.top).toInt()
-            rect.bottom = y(it.bottom).toInt()
-            canvas.drawRect(it, paintResult)
+            val rect = Rect()
+
+            val top = y(it.top).toInt() - padding
+            val bottom = y(it.bottom).toInt() + padding
+            rect.top = top
+            rect.bottom = bottom
+
+            val leftOriginal = x(it.left).toInt()
+            val rightOriginal = x(it.right).toInt()
+            val wContentOriginal = rightOriginal - leftOriginal
+            val hContent = rect.bottom - rect.top
+
+            val wContentReal = (hContent - wContentOriginal)
+            val leftReal = leftOriginal - (wContentReal / 2)
+            val rightReal = rightOriginal + (wContentReal / 2)
+
+            rect.left = leftReal
+            rect.right = rightReal
+
+            val isInAreaView = checkAreaScan(rect)
+            if (checkAreaScan(rect)) {
+                paintResult.color = Color.GREEN
+            } else {
+                paintResult.color = Color.RED
+            }
+            onAreaViewListener?.invoke(isInAreaView)
+            canvas.drawRect(rect, paintResult)
         }
 
         pointsResult?.let {
@@ -149,13 +173,27 @@ class HoleView @JvmOverloads constructor(
         }
     }
 
+    private fun checkAreaScan(rect: Rect): Boolean {
+        val view = holeRectangle?.view ?: holeCircle?.view
+        view ?: return false
+        return rect.left >= view.left && rect.top >= view.top && rect.right <= view.right && rect.bottom <= view.bottom
+    }
+
     private fun x(point: Point) = x(point.x)
 
     private fun y(point: Point) = y(point.y)
 
-    private fun x(axis: Int) = (axis.toFloat() * width.toFloat()) / (sizeImage?.x?.toFloat() ?: 0F)
+    private val widthImageInScreen
+        get() = /*(width * (sizeImage?.y ?: 0)) / height*/ sizeImage?.y ?: 0
 
-    private fun y(axis: Int) = (axis.toFloat() * height.toFloat()) / (sizeImage?.y?.toFloat() ?: 0F)
+    private val heightImageInScreen
+        get() = sizeImage?.x ?: 0
+
+    private fun x(axis: Int) =
+        (axis.toFloat() * width.toFloat()) / widthImageInScreen.toFloat()
+
+    private fun y(axis: Int) =
+        (axis.toFloat() * height.toFloat()) / heightImageInScreen.toFloat()
 
     private fun configureBitmap() {
         //create bitmap and layer

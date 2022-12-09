@@ -153,7 +153,7 @@ class BarcodeUtils(
                                 Barcode.FORMAT_QR_CODE -> {
                                 }
                             }
-                            onResult.invoke(barcode, Point(inputImage.height, inputImage.width))
+                            onResult.invoke(barcode, Point(inputImage.width, inputImage.height))
                         }
                     } else {
                         onResult.invoke(null, null)

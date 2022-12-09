@@ -2,11 +2,13 @@ package com.huyhieu.mydocuments.ui.fragments.components
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.setDarkColorStatusBar
+import com.huyhieu.library.extensions.tint
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
@@ -27,7 +29,7 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
     override fun initializeBinding() = FragmentQrCodeBinding.inflate(layoutInflater)
 
     override fun FragmentQrCodeBinding.addControls(savedInstanceState: Bundle?) {
-        mActivity?.setDarkColorStatusBar(false)
+        mActivity.setDarkColorStatusBar(false)
         showNavigationBottom()
         lifecycleScope.launch {
             hvQRCode.holeRectangle = com.huyhieu.widget.commons.HoleRectangle(
@@ -35,6 +37,19 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
                 radius = resources.getDimension(R.dimen.radius),
                 padding = 0F
             )
+            hvQRCode.onAreaViewListener = {
+                if (it) {
+                    imgTopLeft.tint(Color.WHITE)
+                    imgTopRight.tint(Color.WHITE)
+                    imgBottomLeft.tint(Color.WHITE)
+                    imgBottomRight.tint(Color.WHITE)
+                } else {
+                    imgTopLeft.tint(Color.RED)
+                    imgTopRight.tint(Color.RED)
+                    imgBottomLeft.tint(Color.RED)
+                    imgBottomRight.tint(Color.RED)
+                }
+            }
             barcode =
                 BarcodeUtils(
                     this@QRCodeFragment,
@@ -44,11 +59,12 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
                     barcode?.let {
                         hvQRCode.sizeImage = sizeImage
                         val rect = barcode.boundingBox
-                        //hvQRCode.rectResult = rect
-                        val points = barcode.cornerPoints
-                        hvQRCode.pointsResult = points
+                        hvQRCode.rectResult = rect
+                        /*val points = barcode.cornerPoints
+                        hvQRCode.pointsResult = points*/
                         tvResult.text = it.rawValue
                     } ?: run {
+                        hvQRCode.rectResult = null
                         hvQRCode.pointsResult = null
                         tvResult.text = "Not found!"
                     }
