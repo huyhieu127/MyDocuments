@@ -67,7 +67,7 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
     ) {
     }
 
-    open fun setTabNavigationBottom(tab: com.huyhieu.widget.commons.UTab) {}
+    open fun setTabNavigationBottom(tab: com.huyhieu.library.commons.UTab) {}
 
     open fun showNavigationBottom() {}
 

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_home" />
 
-    <com.huyhieu.widget.commons.UNavigationBottomView
+    <com.huyhieu.library.commons.UNavigationBottomView
         android:id="@+id/navTab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

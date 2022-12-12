@@ -25,17 +25,17 @@ class NavigationFragment : BaseFragmentOld<FragmentNavigationBinding>() {
         navTab.tabSelectedListener = {
             lifecycleScope.launch {
                 when (it) {
-                    com.huyhieu.widget.commons.UTab.TAB_SCAN -> {
+                    com.huyhieu.library.commons.UTab.TAB_SCAN -> {
                         navigate(MyNavHost.Home, HomeDirections.toQR) {
                             setPopUpTo(R.id.homeFragment, false)
                         }
                     }
-                    com.huyhieu.widget.commons.UTab.TAB_HOME -> {
+                    com.huyhieu.library.commons.UTab.TAB_HOME -> {
                         navigate(MyNavHost.Home, HomeDirections.toHome) {
                             setPopUpTo(R.id.homeFragment, true)
                         }
                     }
-                    com.huyhieu.widget.commons.UTab.TAB_PROFILE -> {
+                    com.huyhieu.library.commons.UTab.TAB_PROFILE -> {
                         navigate(MyNavHost.Home, HomeDirections.toProfile) {
                             setPopUpTo(R.id.homeFragment, false)
                         }

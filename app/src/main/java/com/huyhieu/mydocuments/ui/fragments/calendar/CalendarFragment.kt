@@ -2,12 +2,12 @@ package com.huyhieu.mydocuments.ui.fragments.calendar
 
 import android.os.Bundle
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.huyhieu.library.commons.calendar.adapters.MonthOfCalendarAdapter
 import com.huyhieu.library.constants.CalendarCst
 import com.huyhieu.library.extensions.*
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
-import com.huyhieu.widget.commons.calendar.adapters.MonthOfCalendarAdapter
 import java.util.*
 
 class CalendarFragment : BaseFragmentOld<FragmentCalendarBinding>() {

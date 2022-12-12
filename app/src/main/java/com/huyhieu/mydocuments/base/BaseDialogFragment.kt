@@ -107,7 +107,7 @@ abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnCl
         v ?: return
         if (currentTime - time > delayClick) {
             time = currentTime
-            if (v is com.huyhieu.widget.commons.UButtonView) {
+            if (v is com.huyhieu.library.commons.UButtonView) {
                 v.showLoading()
             }
             mBinding.onClickViewBinding(v)

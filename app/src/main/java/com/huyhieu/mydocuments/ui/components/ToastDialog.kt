@@ -41,20 +41,20 @@ class ToastDialog(
         when (type) {
             ToastType.NORMAL -> {
                 root.background =
-                    context?.drawable(com.huyhieu.widget.R.drawable.bg_outline_gray_white_corner_12)
-                imgIcon.backgroundTint(com.huyhieu.widget.R.color.colorPrimary)
+                    context?.drawable(com.huyhieu.library.R.drawable.bg_outline_gray_white_corner_12)
+                imgIcon.backgroundTint(com.huyhieu.library.R.color.colorPrimary)
                 imgIcon.tintVector(context?.color(R.color.black)!!)
             }
             ToastType.SUCCESS -> {
                 root.background =
-                    context?.drawable(com.huyhieu.widget.R.drawable.bg_outline_green_mint_corner_12)
-                imgIcon.backgroundTint(com.huyhieu.widget.R.color.colorGreenMint)
+                    context?.drawable(com.huyhieu.library.R.drawable.bg_outline_green_mint_corner_12)
+                imgIcon.backgroundTint(com.huyhieu.library.R.color.colorGreenMint)
                 imgIcon.tintVector(context?.color(R.color.white)!!)
             }
             ToastType.FAILED -> {
                 root.background =
-                    context?.drawable(com.huyhieu.widget.R.drawable.bg_outline_red_light_corner_12)
-                imgIcon.backgroundTint(com.huyhieu.widget.R.color.colorRedAlert)
+                    context?.drawable(com.huyhieu.library.R.drawable.bg_outline_red_light_corner_12)
+                imgIcon.backgroundTint(com.huyhieu.library.R.color.colorRedAlert)
                 imgIcon.tintVector(context?.color(R.color.white)!!)
             }
             else -> {

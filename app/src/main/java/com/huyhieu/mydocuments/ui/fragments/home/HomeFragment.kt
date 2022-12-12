@@ -26,7 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun FragmentHomeBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
-        //setTabNavigationBottom(com.huyhieu.widget.commons.UTab.TAB_HOME)
+        //setTabNavigationBottom(com.huyhieu.library.commons.UTab.TAB_HOME)
         initListMenu()
         addViewClick(rcvMenu, root)
     }

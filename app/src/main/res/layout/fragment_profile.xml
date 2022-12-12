@@ -32,14 +32,14 @@
                 app:cardBackgroundColor="@color/colorSecondary"
                 app:cardCornerRadius="8dp">
 
-                <com.huyhieu.widget.commons.MySeekBar
+                <com.huyhieu.library.commons.MySeekBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:secondaryProgress="100" />
             </com.google.android.material.card.MaterialCardView>
 
-            <com.huyhieu.widget.commons.UNoteView
+            <com.huyhieu.library.commons.UNoteView
                 android:id="@+id/noteSelfSetupLoan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                 app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Khoản vay tự thiết lập" />
 
-            <com.huyhieu.widget.commons.UNoteView
+            <com.huyhieu.library.commons.UNoteView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
@@ -59,14 +59,14 @@
                 app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
 
-            <com.huyhieu.widget.commons.UNoteView
+            <com.huyhieu.library.commons.UNoteView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
                 app:noteContent="Mức cho vay sẽ tự động kích hoạt sau khi nhận được tháng lương đầu tiên"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
 
-            <com.huyhieu.widget.commons.UNoteView
+            <com.huyhieu.library.commons.UNoteView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
@@ -76,7 +76,7 @@
                 app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
 
-            <com.huyhieu.widget.commons.UCheckBox
+            <com.huyhieu.library.commons.UCheckBox
                 android:id="@+id/ckb"
                 android:layout_width="wrap_content"
                 android:layout_marginVertical="14dp"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content" />
 
 
-            <com.huyhieu.widget.commons.UOptionView
+            <com.huyhieu.library.commons.UOptionView
                 android:id="@+id/optInformation"
                 style="@style/OptSettings"
                 android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                 app:optContent="Thông tin cá nhân"
                 app:optSrcIcon="@drawable/ic_profile_selected" />
 
-            <com.huyhieu.widget.commons.UOptionView
+            <com.huyhieu.library.commons.UOptionView
                 android:id="@+id/optListOfBeneficiaries"
                 style="@style/OptListOfBeneficiaries"
                 android:layout_width="match_parent"
@@ -105,7 +105,7 @@ Hồ Chí Minh"
                 app:optSrcIcon="@drawable/ic_scan_default"
                 app:optTitle="Địa chỉ nơi ở hiện tại" />
 
-            <com.huyhieu.widget.commons.UOptionView
+            <com.huyhieu.library.commons.UOptionView
                 android:id="@+id/optChangePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -117,7 +117,7 @@ Hồ Chí Minh"
                 app:optTitle="Top-up"
                 app:optValue="+25,000,000" />
 
-            <com.huyhieu.widget.commons.UOptionView
+            <com.huyhieu.library.commons.UOptionView
                 android:id="@+id/optCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -128,7 +128,7 @@ Hồ Chí Minh"
                 app:optTitle="Thẻ 200k"
                 app:optValueFill="Giảm 6%" />
 
-            <com.huyhieu.widget.commons.UOptionView
+            <com.huyhieu.library.commons.UOptionView
                 android:id="@+id/optAboutUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -170,7 +170,7 @@ Hồ Chí Minh"
             app:layout_constraintBottom_toTopOf="@id/btnConfirm"
             tools:layout_editor_absoluteX="30dp">
 
-            <com.huyhieu.widget.commons.UOptionView
+            <com.huyhieu.library.commons.UOptionView
                 style="@style/OptListOfBeneficiaries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -180,7 +180,7 @@ Hồ Chí Minh"
                 app:optSrcIcon="@drawable/ic_profile_selected"
                 app:optTitle="Họ và tên" />
 
-            <com.huyhieu.widget.commons.UOptionView
+            <com.huyhieu.library.commons.UOptionView
                 style="@style/OptListOfBeneficiaries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -190,7 +190,7 @@ Hồ Chí Minh"
                 app:optTitle="Email" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.huyhieu.widget.commons.UButtonView
+        <com.huyhieu.library.commons.UButtonView
             android:id="@+id/btnConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

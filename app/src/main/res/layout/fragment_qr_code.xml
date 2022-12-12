@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.huyhieu.widget.commons.HoleView
+    <com.huyhieu.library.commons.HoleView
         android:id="@+id/hvQRCode"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

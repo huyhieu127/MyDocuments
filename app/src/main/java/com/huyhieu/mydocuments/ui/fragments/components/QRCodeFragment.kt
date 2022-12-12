@@ -7,13 +7,14 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.library.commons.HoleRectangle
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.tint
+import com.huyhieu.library.utils.BarcodeUtils
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
 import com.huyhieu.mydocuments.utils.requestActivityResult
-import com.huyhieu.widget.utils.BarcodeUtils
 import kotlinx.coroutines.launch
 
 
@@ -32,7 +33,7 @@ class QRCodeFragment : BaseFragmentOld<FragmentQrCodeBinding>() {
         mActivity.setDarkColorStatusBar(false)
         showNavigationBottom()
         lifecycleScope.launch {
-            hvQRCode.holeRectangle = com.huyhieu.widget.commons.HoleRectangle(
+            hvQRCode.holeRectangle = HoleRectangle(
                 viewScan,
                 radius = resources.getDimension(R.dimen.radius),
                 padding = 0F

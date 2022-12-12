@@ -43,7 +43,7 @@ class BubbleChatActivity : BaseActivity<ActivityBubbleChatBinding>() {
 
     private fun showBubbleChat() {
         val intent =
-            Intent(this, com.huyhieu.widget.commons.bubblechat.BubbleChatService::class.java)
+            Intent(this, com.huyhieu.library.commons.bubblechat.BubbleChatService::class.java)
         startService(intent)
         finish()
     }

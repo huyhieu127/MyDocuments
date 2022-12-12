@@ -42,7 +42,7 @@
             android:exported="true" />
         <service
             android:enabled="true"
-            android:name="com.huyhieu.widget.commons.bubblechat.BubbleChatService" />
+            android:name="com.huyhieu.library.commons.bubblechat.BubbleChatService" />
 
         <activity
             android:name=".ui.activities.ffmmpegkit.FFmpegKitActivity"
