@@ -9,7 +9,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
-import com.huyhieu.mydocuments.utils.logDebug
+import com.huyhieu.library.utils.logDebug
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream

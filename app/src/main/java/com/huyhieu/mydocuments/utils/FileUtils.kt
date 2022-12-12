@@ -12,6 +12,8 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Size
 import androidx.annotation.RequiresPermission
+import com.huyhieu.library.utils.logDebug
+import com.huyhieu.library.utils.logError
 import com.huyhieu.mydocuments.App.Companion.ins
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart

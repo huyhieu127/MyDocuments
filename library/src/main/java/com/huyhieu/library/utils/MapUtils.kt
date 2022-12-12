@@ -25,7 +25,6 @@ import com.huyhieu.library.R
 import com.huyhieu.library.custom_views.UMarkerView
 import com.huyhieu.library.extensions.drawable
 import com.huyhieu.library.extensions.isGps
-import com.huyhieu.mydocuments.utils.logDebug
 import com.huyhieu.mydocuments.utils.requestActivityResult
 import com.huyhieu.mydocuments.utils.requestPermissions
 import kotlinx.coroutines.*

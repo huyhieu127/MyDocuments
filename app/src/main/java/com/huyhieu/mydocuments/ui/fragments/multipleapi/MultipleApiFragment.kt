@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.lifecycle.observe
 import androidx.lifecycle.viewModelScope
+import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentMultipleApiBinding
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI
-import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

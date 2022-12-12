@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.library.custom_views.UButtonView
@@ -32,12 +31,11 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         vb.onMyViewCreated(view, savedInstanceState)
-        vb.addLiveData(savedInstanceState)
+        vb.handleLiveData(savedInstanceState)
     }
 
     private fun initViewParent(rootView: View?) {
         mActivity.hideKeyboard()
-        handleEventOnBackPressed(rootView)
     }
 
     abstract fun VB.onMyViewCreated(view: View, savedInstanceState: Bundle?)
@@ -45,32 +43,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
     override fun onDestroyView() {
         _vb = null
         super.onDestroyView()
-    }
-
-    /******************* Handle keyboard back device *******************/
-    private fun handleEventOnBackPressed(rootView: View?) {
-        /*rootView?.apply {
-            isFocusableInTouchMode = true
-            requestFocus()
-            setOnKeyListener { _: View?, keyCode: Int, event: KeyEvent ->
-                if (event.action == KeyEvent.ACTION_UP) {
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        onBackPressedFragment()
-                        return@setOnKeyListener true
-                    }
-                }
-                false
-            }
-        }*/
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                onBackPressedFragment()
-            }
-        })
-    }
-
-    open fun onBackPressedFragment() {
-        mActivity.onBackPressedActivity()
     }
 
     /************************ Handle click **************************/

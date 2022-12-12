@@ -9,9 +9,9 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import com.arthenica.ffmpegkit.FFmpegKit
 import com.arthenica.ffmpegkit.Level
+import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityFfmpegKitBinding
-import com.huyhieu.mydocuments.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +30,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
                 val fileManagerString = selectedUri?.path
                 // MEDIA GALLERY
                 val selectedPath = getPath(selectedUri)
-                mBinding.run {
+                vb.run {
                     tvFilePath.text = selectedPath ?: ""
                     val folder = selectedPath!!.substring(
                         0,
@@ -45,7 +45,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
     override fun initializeBinding() = ActivityFfmpegKitBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState1: Bundle?) {
-        mBinding.run {
+        vb.run {
             cvChooseFile.setOnClickListener(this@FFmpegKitActivity)
             btnConvert.setOnClickListener(this@FFmpegKitActivity)
         }
@@ -55,7 +55,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
     }
 
     override fun onClick(p0: View?) {
-        mBinding.run {
+        vb.run {
             when (p0?.id) {
                 cvChooseFile.id -> showIntentChooseVideo()
                 btnConvert.id -> convertFile()
@@ -70,7 +70,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
         //val cmd = "-i ${mBinding.tvFilePath.text} -s 1280x720 -c:a copy ${mBinding.edtFolder.text}"
         //Giảm chất lượng video
         val cmd =
-            "-i ${mBinding.tvFilePath.text} -vn ${mBinding.edtFolder.text}"
+            "-i ${vb.tvFilePath.text} -vn ${vb.edtFolder.text}"
         val result = StringBuilder("Result: \n")
         FFmpegKit.executeAsync(cmd, { session ->
             val state = session.state
@@ -85,7 +85,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
                 )
             )
             CoroutineScope(Dispatchers.Main).launch {
-                mBinding.run {
+                vb.run {
                     tvResult.text = "$result\n\n\n"
                     nsv.smoothScrollTo(0, nsv.getChildAt(0).height + 200)
                 }
@@ -94,7 +94,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
             if (log.level != Level.AV_LOG_INFO || log.message.contains("size")) {
                 result.append("\n\n> ").append(log.message)
                 CoroutineScope(Dispatchers.Main).launch {
-                    mBinding.run {
+                    vb.run {
                         tvResult.text = "$result\n\n\n"
                         nsv.smoothScrollTo(0, nsv.getChildAt(0).height + 200)
                     }

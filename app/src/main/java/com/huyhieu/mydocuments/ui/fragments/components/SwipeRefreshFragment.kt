@@ -6,10 +6,10 @@ import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.onTransitionCompleted
 import com.huyhieu.library.extensions.showToastShort
+import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentSwipeRefreshBinding
-import com.huyhieu.mydocuments.utils.logDebug
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

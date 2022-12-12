@@ -12,9 +12,9 @@ import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.library.isNull
 import com.huyhieu.library.shareImage
+import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentIntentSystemBinding
-import com.huyhieu.mydocuments.utils.logDebug
 import com.huyhieu.mydocuments.utils.requestPermissions
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

@@ -41,7 +41,7 @@ class BluetoothActivity : BaseActivity<ActivityBluetoothBinding>() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onClick(p0: View?) {
         when (p0?.id) {
-            mBinding.tvMessage.id -> {
+            vb.tvMessage.id -> {
                 scanNow()
             }
         }
@@ -62,7 +62,7 @@ class BluetoothActivity : BaseActivity<ActivityBluetoothBinding>() {
                 pairedDevices?.forEach { device ->
                     val deviceName = device.name
                     val deviceHardwareAddress = device.address // MAC address
-                    mBinding.tvMessage.text =
+                    vb.tvMessage.text =
                         ("Results<pairedDevices>: $deviceName - $deviceHardwareAddress")
                 }
 
@@ -111,12 +111,12 @@ class BluetoothActivity : BaseActivity<ActivityBluetoothBinding>() {
                         checkPermission {
                             val deviceName = device.name
                             val deviceHardwareAddress = device.address // MAC address
-                            mBinding.tvMessage.text =
+                            vb.tvMessage.text =
                                 ("Results<device>: $deviceName - $deviceHardwareAddress")
                         }
                     }
                 }
-                else -> mBinding.tvMessage.text = ("Not found!")
+                else -> vb.tvMessage.text = ("Not found!")
             }
         }
     }

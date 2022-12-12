@@ -20,13 +20,13 @@ interface IBaseView<VB> : View.OnClickListener {
         return method.invoke(null, inflater, container, false) as VB
     }
 
-    fun VB.addViewClick(vararg views: View) {
+    fun VB.handleViewClick(vararg views: View) {
         views.forEach {
             it.setOnClickListener(this@IBaseView)
         }
     }
 
-    fun VB.addLiveData(savedInstanceState: Bundle?) {}
+    fun VB.handleLiveData(savedInstanceState: Bundle?) {}
 
     fun VB.callAPI(apiKey: String, param: Any? = null, function: ((resultData: Any?) -> Unit)? = null) {}
 

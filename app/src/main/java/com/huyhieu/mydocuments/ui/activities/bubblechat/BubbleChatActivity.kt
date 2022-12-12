@@ -17,11 +17,11 @@ class BubbleChatActivity : BaseActivity<ActivityBubbleChatBinding>() {
 
     override fun addControls(savedInstanceState1: Bundle?) {
         App.heightStatusBar =
-            (resources.displayMetrics.heightPixels - (resources.displayMetrics.heightPixels - mBinding.viewAnchor.y)).toInt()
+            (resources.displayMetrics.heightPixels - (resources.displayMetrics.heightPixels - vb.viewAnchor.y)).toInt()
     }
 
     override fun addEvents(savedInstanceState1: Bundle?) {
-        mBinding.btnOpenBubbleChat.setOnClickListener {
+        vb.btnOpenBubbleChat.setOnClickListener {
             checkChatHeadPermission()
         }
     }
