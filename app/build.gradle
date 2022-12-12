@@ -56,5 +56,6 @@ android {
 
 dependencies {
     implementation project(":library")
-    apply from: '../build-global.gradle'
+    apply from: '../dependencies-global.gradle'
+    apply from: 'dependencies-app.gradle'
 }

@@ -1,4 +1,4 @@
-package com.huyhieu.library.commons
+package com.huyhieu.library.custom_views
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -91,7 +91,7 @@ class UButtonView @JvmOverloads constructor(
     private fun setText(name: String?) {
         with(binding) {
             if (!name.isNullOrEmpty()) {
-                contentType = com.huyhieu.library.commons.UButtonView.CONTENT_TYPE_TEXT
+                contentType = CONTENT_TYPE_TEXT
                 tvName.text = name
             }
             if (radiusValue == 0F) {
@@ -103,7 +103,7 @@ class UButtonView @JvmOverloads constructor(
     private fun setIcon(name: String?, drawable: Drawable?) {
         with(binding) {
             if (name.isNullOrEmpty()) {
-                contentType = com.huyhieu.library.commons.UButtonView.CONTENT_TYPE_ICON
+                contentType = CONTENT_TYPE_ICON
             }
             if (drawable != null) {
                 imgIcon.setImageDrawable(drawable)
@@ -196,9 +196,9 @@ class UButtonView @JvmOverloads constructor(
             isLoading = false
 
             imgIcon.isVisible =
-                contentType == com.huyhieu.library.commons.UButtonView.CONTENT_TYPE_ICON
+                contentType == CONTENT_TYPE_ICON
             tvName.isVisible =
-                contentType == com.huyhieu.library.commons.UButtonView.CONTENT_TYPE_TEXT
+                contentType == CONTENT_TYPE_TEXT
 
             imgLoading.isVisible = false
             setUIParent()

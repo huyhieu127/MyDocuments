@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.gms.tasks.OnTokenCanceledListener
 import com.google.maps.android.ui.IconGenerator
 import com.huyhieu.library.R
+import com.huyhieu.library.custom_views.UMarkerView
 import com.huyhieu.library.extensions.drawable
 import com.huyhieu.library.extensions.isGps
 import com.huyhieu.mydocuments.utils.logDebug
@@ -238,7 +239,7 @@ class MapUtils(private val fragment: Fragment) {
     }
 
     private fun getMarkerIcon(@DrawableRes drawableRes: Int): BitmapDescriptor? {
-        val markerView = com.huyhieu.library.commons.UMarkerView(context)
+        val markerView = UMarkerView(context)
         markerView.setIcon(drawableRes)
         val iconGenerator = IconGenerator(context)
         iconGenerator.apply {

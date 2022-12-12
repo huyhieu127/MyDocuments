@@ -1,4 +1,4 @@
-package com.huyhieu.library.commons
+package com.huyhieu.library.custom_views
 
 import android.content.Context
 import android.text.SpannableString

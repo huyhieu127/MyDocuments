@@ -12,6 +12,8 @@ import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
+import com.huyhieu.library.custom_views.UButtonView
+import com.huyhieu.library.custom_views.UTab
 import com.huyhieu.library.extensions.hideKeyboard
 
 abstract class BaseFragmentOld<T : ViewBinding> : Fragment(), View.OnClickListener {
@@ -87,7 +89,7 @@ abstract class BaseFragmentOld<T : ViewBinding> : Fragment(), View.OnClickListen
         v ?: return
         if (currentTime - time > delayClick) {
             time = currentTime
-            if (v is com.huyhieu.library.commons.UButtonView) {
+            if (v is UButtonView) {
                 v.showLoading()
             }
             mBinding.onClickViewBinding(v)
@@ -120,7 +122,7 @@ abstract class BaseFragmentOld<T : ViewBinding> : Fragment(), View.OnClickListen
         mActivity?.onBackPressed()
     }
 
-    open fun setTabNavigationBottom(tab: com.huyhieu.library.commons.UTab) {
+    open fun setTabNavigationBottom(tab: UTab) {
         mActivity?.setTabNavigationBottom(tab)
     }
 

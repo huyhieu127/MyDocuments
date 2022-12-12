@@ -3,6 +3,7 @@ package com.huyhieu.mydocuments.ui.fragments.navigation
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.library.custom_views.UTab
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentNavigationBinding
@@ -25,17 +26,17 @@ class NavigationFragment : BaseFragmentOld<FragmentNavigationBinding>() {
         navTab.tabSelectedListener = {
             lifecycleScope.launch {
                 when (it) {
-                    com.huyhieu.library.commons.UTab.TAB_SCAN -> {
+                    UTab.TAB_SCAN -> {
                         navigate(MyNavHost.Home, HomeDirections.toQR) {
                             setPopUpTo(R.id.homeFragment, false)
                         }
                     }
-                    com.huyhieu.library.commons.UTab.TAB_HOME -> {
+                    UTab.TAB_HOME -> {
                         navigate(MyNavHost.Home, HomeDirections.toHome) {
                             setPopUpTo(R.id.homeFragment, true)
                         }
                     }
-                    com.huyhieu.library.commons.UTab.TAB_PROFILE -> {
+                    UTab.TAB_PROFILE -> {
                         navigate(MyNavHost.Home, HomeDirections.toProfile) {
                             setPopUpTo(R.id.homeFragment, false)
                         }

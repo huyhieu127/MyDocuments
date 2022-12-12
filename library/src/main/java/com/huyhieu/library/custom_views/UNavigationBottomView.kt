@@ -1,4 +1,4 @@
-package com.huyhieu.library.commons
+package com.huyhieu.library.custom_views
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -63,22 +63,22 @@ class UNavigationBottomView @JvmOverloads constructor(
     fun setTabSelected(tab: UTab) {
         with(binding) {
             when (tab) {
-                com.huyhieu.library.commons.UTab.TAB_SCAN -> {
+                UTab.TAB_SCAN -> {
                     //imgScan.startAnimation(anim)
                     setTabTransaction(imgTabScan.id)
                 }
-                com.huyhieu.library.commons.UTab.TAB_HOME -> {
+                UTab.TAB_HOME -> {
                     //imgHome.startAnimation(anim)
                     setTabTransaction(imgTabHome.id)
                 }
-                com.huyhieu.library.commons.UTab.TAB_PROFILE -> {
+                UTab.TAB_PROFILE -> {
                     //imgProfile.startAnimation(anim)
                     setTabTransaction(imgTabProfile.id)
                 }
             }
-            imgTabScan.isSelected = tab == com.huyhieu.library.commons.UTab.TAB_SCAN
-            imgTabHome.isSelected = tab == com.huyhieu.library.commons.UTab.TAB_HOME
-            imgTabProfile.isSelected = tab == com.huyhieu.library.commons.UTab.TAB_PROFILE
+            imgTabScan.isSelected = tab == UTab.TAB_SCAN
+            imgTabHome.isSelected = tab == UTab.TAB_HOME
+            imgTabProfile.isSelected = tab == UTab.TAB_PROFILE
         }
         tabSelectedListener?.invoke(tab)
     }
@@ -114,13 +114,13 @@ class UNavigationBottomView @JvmOverloads constructor(
                     with(binding) {
                         when (view.id) {
                             imgTabScan.id -> {
-                                setTabSelected(com.huyhieu.library.commons.UTab.TAB_SCAN)
+                                setTabSelected(UTab.TAB_SCAN)
                             }
                             imgTabHome.id -> {
-                                setTabSelected(com.huyhieu.library.commons.UTab.TAB_HOME)
+                                setTabSelected(UTab.TAB_HOME)
                             }
                             imgTabProfile.id -> {
-                                setTabSelected(com.huyhieu.library.commons.UTab.TAB_PROFILE)
+                                setTabSelected(UTab.TAB_PROFILE)
                             }
                         }
                     }
@@ -153,13 +153,13 @@ class UNavigationBottomView @JvmOverloads constructor(
         with(binding) {
             when (v?.id) {
                 imgTabScan.id -> {
-                    setTabSelected(com.huyhieu.library.commons.UTab.TAB_SCAN)
+                    setTabSelected(UTab.TAB_SCAN)
                 }
                 imgTabHome.id -> {
-                    setTabSelected(com.huyhieu.library.commons.UTab.TAB_HOME)
+                    setTabSelected(UTab.TAB_HOME)
                 }
                 imgTabProfile.id -> {
-                    setTabSelected(com.huyhieu.library.commons.UTab.TAB_PROFILE)
+                    setTabSelected(UTab.TAB_PROFILE)
                 }
             }
         }

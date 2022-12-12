@@ -7,6 +7,7 @@ import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
+import com.huyhieu.library.custom_views.UTab
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.setNavigationBarColor
 import com.huyhieu.mydocuments.R
@@ -67,7 +68,7 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
     ) {
     }
 
-    open fun setTabNavigationBottom(tab: com.huyhieu.library.commons.UTab) {}
+    open fun setTabNavigationBottom(tab: UTab) {}
 
     open fun showNavigationBottom() {}
 

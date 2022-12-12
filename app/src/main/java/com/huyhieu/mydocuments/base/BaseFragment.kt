@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.commons.UButtonView
+import com.huyhieu.library.custom_views.UButtonView
 import com.huyhieu.library.extensions.hideKeyboard
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {

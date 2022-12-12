@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:selectedDotColor="#FE9B4B" />
 
-    <com.huyhieu.library.commons.UButtonView
+    <com.huyhieu.library.custom_views.UButtonView
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

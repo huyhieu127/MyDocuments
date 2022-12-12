@@ -43,6 +43,5 @@ android {
 }
 
 dependencies {
-    //implementation project(path: ':app')
-    apply from: '../build-global.gradle'
+    apply from: '../dependencies-global.gradle'
 }
