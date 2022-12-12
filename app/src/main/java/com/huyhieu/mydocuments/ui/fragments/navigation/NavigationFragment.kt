@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentNavigationBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.HomeDirections
 import com.huyhieu.mydocuments.navigation.navigate
 import kotlinx.coroutines.launch
 
-class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
+class NavigationFragment : BaseFragmentOld<FragmentNavigationBinding>() {
     override fun initializeBinding() = FragmentNavigationBinding.inflate(layoutInflater)
 
     override fun FragmentNavigationBinding.addControls(savedInstanceState: Bundle?) {

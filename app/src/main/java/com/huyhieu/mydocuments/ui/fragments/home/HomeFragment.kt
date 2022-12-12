@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments.ui.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
@@ -22,17 +23,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     @Inject
     lateinit var viewModel: HomeVM
 
-    override fun initializeBinding() = FragmentHomeBinding.inflate(layoutInflater)
-
-    override fun FragmentHomeBinding.addControls(savedInstanceState: Bundle?) {
-        mActivity?.setDarkColorStatusBar()
-        showNavigationBottom()
-        setTabNavigationBottom(com.huyhieu.widget.commons.UTab.TAB_HOME)
+    override fun FragmentHomeBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        mActivity.setDarkColorStatusBar()
+        //showNavigationBottom()
+        //setTabNavigationBottom(com.huyhieu.widget.commons.UTab.TAB_HOME)
         initListMenu()
+        addViewClick(rcvMenu, root)
     }
 
-    override fun FragmentHomeBinding.addEvents(savedInstanceState: Bundle?) {
-        callAPI("")
+    override fun FragmentHomeBinding.onClickViewBinding(v: View, id: Int) {
+        TODO("Not yet implemented")
     }
 
     private fun FragmentHomeBinding.initListMenu() {

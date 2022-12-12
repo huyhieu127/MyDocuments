@@ -5,7 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.setTransitionTo
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentStepsBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.StepDirections
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class StepsFragment : BaseFragment<FragmentStepsBinding>() {
+class StepsFragment : BaseFragmentOld<FragmentStepsBinding>() {
 
     @Inject
     lateinit var stepsVM: StepsVM

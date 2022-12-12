@@ -10,14 +10,14 @@ import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.tint
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
 import com.huyhieu.mydocuments.utils.requestActivityResult
 import com.huyhieu.widget.utils.BarcodeUtils
 import kotlinx.coroutines.launch
 
 
-class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
+class QRCodeFragment : BaseFragmentOld<FragmentQrCodeBinding>() {
     private var barcode: BarcodeUtils? = null
     private var chooseImageLauncher = requestActivityResult {
         if (it.resultCode == Activity.RESULT_OK) {

@@ -4,10 +4,10 @@ import android.os.Bundle
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.setNavigationBarColor
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentCanvasBinding
 
-class CanvasFragment : BaseFragment<FragmentCanvasBinding>() {
+class CanvasFragment : BaseFragmentOld<FragmentCanvasBinding>() {
     override fun initializeBinding() = FragmentCanvasBinding.inflate(layoutInflater)
 
     override fun FragmentCanvasBinding.addControls(savedInstanceState: Bundle?) {

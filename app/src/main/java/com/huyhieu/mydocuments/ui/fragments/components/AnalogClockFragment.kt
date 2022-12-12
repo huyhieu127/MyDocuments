@@ -2,10 +2,10 @@ package com.huyhieu.mydocuments.ui.fragments.components
 
 import android.os.Bundle
 import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentAnalogClockBinding
 
-class AnalogClockFragment : BaseFragment<FragmentAnalogClockBinding>() {
+class AnalogClockFragment : BaseFragmentOld<FragmentAnalogClockBinding>() {
 
     override fun initializeBinding() = FragmentAnalogClockBinding.inflate(layoutInflater)
 

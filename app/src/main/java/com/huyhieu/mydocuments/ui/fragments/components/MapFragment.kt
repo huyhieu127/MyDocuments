@@ -9,12 +9,12 @@ import com.google.android.gms.maps.model.LatLng
 import com.huyhieu.library.extensions.isGooglePlayServicesAvailable
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentMapBinding
 import com.huyhieu.widget.utils.MapUtils
 
 
-class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback {
+class MapFragment : BaseFragmentOld<FragmentMapBinding>(), OnMapReadyCallback {
 
     private var mapUtils: MapUtils? = null
 

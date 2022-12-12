@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentIntroduceBinding
 
-class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
+class IntroduceFragment : BaseFragmentOld<FragmentIntroduceBinding>() {
     private val myViewPagerAdapter by lazy { MyViewPagerAdapter() }
     private var layouts: IntArray? = null
 

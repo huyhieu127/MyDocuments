@@ -5,12 +5,12 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.huyhieu.library.constants.CalendarCst
 import com.huyhieu.library.extensions.*
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
 import com.huyhieu.widget.commons.calendar.adapters.MonthOfCalendarAdapter
 import java.util.*
 
-class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
+class CalendarFragment : BaseFragmentOld<FragmentCalendarBinding>() {
     private val monthAdapter = MonthOfCalendarAdapter()
 
     override fun initializeBinding() = FragmentCalendarBinding.inflate(layoutInflater)

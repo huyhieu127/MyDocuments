@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments.base
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -28,7 +29,7 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
         /*Initialize binding*/
         mBinding = initializeBinding()
         setContentView(mBinding.root)
-
+        handleEventOnBackPressed()
         setDarkColorStatusBar(isDark = true)
         window?.decorView?.rootView?.setBackgroundColor(
             ContextCompat.getColor(
@@ -42,11 +43,19 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
         onLiveData()
     }
 
+    private fun handleEventOnBackPressed() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                onBackPressedActivity()
+            }
+        })
+    }
+
     open fun getDataFormIntent() {
 
     }
 
-    open fun onLiveData(){}
+    open fun onLiveData() {}
 
     /**
      * @apiKey : Key of API
@@ -64,5 +73,9 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
 
     open fun hideNavigationBottom(@ColorRes idColor: Int = android.R.color.transparent) {
         setNavigationBarColor(idColor)
+    }
+
+    open fun onBackPressedActivity() {
+        onBackPressed()
     }
 }

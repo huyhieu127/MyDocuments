@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentBannerInfiniteBinding
 
-class BannerInfiniteFragment : BaseFragment<FragmentBannerInfiniteBinding>() {
+class BannerInfiniteFragment : BaseFragmentOld<FragmentBannerInfiniteBinding>() {
     private val bannerAdapter = BannerAdapter()
     val lstData = mutableListOf(1, 2, 3, 4, 5, 6)
     var lstOld = mutableListOf<Int>()

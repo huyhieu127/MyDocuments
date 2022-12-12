@@ -2,7 +2,7 @@ package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentSteps3Binding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.popBackStackTo
@@ -14,7 +14,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 @AndroidEntryPoint
-class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
+class Steps3Fragment : BaseFragmentOld<FragmentSteps3Binding>() {
 
     @Inject
     lateinit var stepsVM: StepsVM

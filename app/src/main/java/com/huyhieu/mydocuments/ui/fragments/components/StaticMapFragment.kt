@@ -3,11 +3,11 @@ package com.huyhieu.mydocuments.ui.fragments.components
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentStaticMapBinding
 
 //Enable google map static in gg cloud
-class StaticMapFragment : BaseFragment<FragmentStaticMapBinding>() {
+class StaticMapFragment : BaseFragmentOld<FragmentStaticMapBinding>() {
     private var locationUrl =
         "https://maps.googleapis.com/maps/api/staticmap" +
                 "?center={shop_address}" +

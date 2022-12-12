@@ -7,13 +7,13 @@ import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.onTransitionCompleted
 import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentOld
 import com.huyhieu.mydocuments.databinding.FragmentSwipeRefreshBinding
 import com.huyhieu.mydocuments.utils.logDebug
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SwipeRefreshFragment : BaseFragment<FragmentSwipeRefreshBinding>() {
+class SwipeRefreshFragment : BaseFragmentOld<FragmentSwipeRefreshBinding>() {
     override fun initializeBinding() = FragmentSwipeRefreshBinding.inflate(layoutInflater)
 
     override fun FragmentSwipeRefreshBinding.addControls(savedInstanceState: Bundle?) {
