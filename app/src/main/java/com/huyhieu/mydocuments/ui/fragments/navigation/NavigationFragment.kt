@@ -1,28 +1,25 @@
 package com.huyhieu.mydocuments.ui.fragments.navigation
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.custom_views.UTab
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentNavigationBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.HomeDirections
 import com.huyhieu.mydocuments.navigation.navigate
 import kotlinx.coroutines.launch
 
-class NavigationFragment : BaseFragmentOld<FragmentNavigationBinding>() {
-    override fun initializeBinding() = FragmentNavigationBinding.inflate(layoutInflater)
+class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
 
-    override fun FragmentNavigationBinding.addControls(savedInstanceState: Bundle?) {
+    override fun FragmentNavigationBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         navTab.isVisible = false
     }
 
-    override fun FragmentNavigationBinding.addEvents(savedInstanceState: Bundle?) {
-    }
-
-    override fun FragmentNavigationBinding.onLiveData(savedInstanceState: Bundle?) {
+    override fun FragmentNavigationBinding.handleLiveData(savedInstanceState: Bundle?) {
         navTab.tabSelectedListener = {
             lifecycleScope.launch {
                 when (it) {

@@ -8,23 +8,19 @@ import com.huyhieu.library.extensions.onTransitionCompleted
 import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSwipeRefreshBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SwipeRefreshFragment : BaseFragmentOld<FragmentSwipeRefreshBinding>() {
-    override fun initializeBinding() = FragmentSwipeRefreshBinding.inflate(layoutInflater)
+class SwipeRefreshFragment : BaseFragment<FragmentSwipeRefreshBinding>() {
 
-    override fun FragmentSwipeRefreshBinding.addControls(savedInstanceState: Bundle?) {
+    override fun FragmentSwipeRefreshBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         handleOnTouchView(nstView)
         handleOnTouchView(rcv)
         lifecycleScope.launch {
             delay(2000L)
         }
-    }
-
-    override fun FragmentSwipeRefreshBinding.addEvents(savedInstanceState: Bundle?) {
         root.onTransitionCompleted { _, currentId ->
             when (currentId) {
                 R.id.refresh -> {

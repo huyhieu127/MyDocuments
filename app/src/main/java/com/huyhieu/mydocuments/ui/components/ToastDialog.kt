@@ -19,8 +19,8 @@ enum class ToastType {
 
 class ToastDialog(
     val type: ToastType,
-    val title: String? = "",
-    val content: String? = "",
+    var title: String? = "",
+    var content: String? = "",
     val iconDrawable: Int? = null,
     val bgDrawable: Int? = null,
     val iconColor: Int? = null,
@@ -77,6 +77,15 @@ class ToastDialog(
         }
         if (!content.isNullOrEmpty()) {
             tvContent.text = content
+        }
+    }
+
+    fun updateData(title: String? = this.title, content: String? = this.content) {
+        if (!title.isNullOrEmpty() && this.title != title) {
+            mBinding.tvTitle.text = title
+        }
+        if (!content.isNullOrEmpty() && this.content != content) {
+            mBinding.tvContent.text = content
         }
     }
 

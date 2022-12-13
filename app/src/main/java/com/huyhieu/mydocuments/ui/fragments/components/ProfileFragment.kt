@@ -6,27 +6,20 @@ import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.library.extensions.toSpannable
-import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
 import com.huyhieu.mydocuments.ui.components.ToastDialog
 import com.huyhieu.mydocuments.ui.components.ToastType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class ProfileFragment : BaseFragmentOld<FragmentProfileBinding>() {
-    override fun initializeBinding() = FragmentProfileBinding.inflate(layoutInflater)
+class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
-    override fun FragmentProfileBinding.addControls(savedInstanceState: Bundle?) {
-        mActivity?.setDarkColorStatusBar()
+    override fun FragmentProfileBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
-        hideNavigationBottom(R.color.white)
-    }
-
-    override fun FragmentProfileBinding.addEvents(savedInstanceState: Bundle?) {
-        optInformation.setOnClickListener(this@ProfileFragment)
-        noteSelfSetupLoan.setOnClickListener(this@ProfileFragment)
-        noteSelfSetupLoan.tvSeeMore.setOnClickListener(this@ProfileFragment)
+        //hideNavigationBottom(R.color.white)
+        handleViewClick(optInformation, noteSelfSetupLoan, noteSelfSetupLoan.tvSeeMore)
 
         val text =
             "Bằng việc đăng ký tài khoản, bạn đồng ý với Điều khoản sử dụng và Chính sách bảo mật của chúng tôi."
@@ -75,8 +68,8 @@ class ProfileFragment : BaseFragmentOld<FragmentProfileBinding>() {
         }
     }
 
-    override fun FragmentProfileBinding.onClickViewBinding(v: View) {
-        when (v.id) {
+    override fun FragmentProfileBinding.onClickViewBinding(v: View, id: Int) {
+        when (id) {
             optInformation.id -> {
                 mActivity.showToastShort("Thông tin cá nhân")
             }

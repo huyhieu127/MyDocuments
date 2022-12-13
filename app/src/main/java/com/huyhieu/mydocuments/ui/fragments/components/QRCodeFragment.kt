@@ -12,13 +12,13 @@ import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.tint
 import com.huyhieu.library.utils.BarcodeUtils
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
 import com.huyhieu.mydocuments.utils.requestActivityResult
 import kotlinx.coroutines.launch
 
 
-class QRCodeFragment : BaseFragmentOld<FragmentQrCodeBinding>() {
+class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
     private var barcode: BarcodeUtils? = null
     private var chooseImageLauncher = requestActivityResult {
         if (it.resultCode == Activity.RESULT_OK) {
@@ -27,11 +27,11 @@ class QRCodeFragment : BaseFragmentOld<FragmentQrCodeBinding>() {
         }
     }
 
-    override fun initializeBinding() = FragmentQrCodeBinding.inflate(layoutInflater)
+    override fun FragmentQrCodeBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
 
-    override fun FragmentQrCodeBinding.addControls(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(false)
-        showNavigationBottom()
+        //showNavigationBottom()
+        handleViewClick(imgGallery)
         lifecycleScope.launch {
             hvQRCode.holeRectangle = HoleRectangle(
                 viewScan,
@@ -73,12 +73,8 @@ class QRCodeFragment : BaseFragmentOld<FragmentQrCodeBinding>() {
         }
     }
 
-    override fun FragmentQrCodeBinding.addEvents(savedInstanceState: Bundle?) {
-        imgGallery.setOnClickListener(this@QRCodeFragment)
-    }
-
-    override fun FragmentQrCodeBinding.onClickViewBinding(v: View) {
-        when (v.id) {
+    override fun FragmentQrCodeBinding.onClickViewBinding(v: View, id: Int) {
+        when (id) {
             imgGallery.id -> {
                 showIntentChoosePicture()
             }

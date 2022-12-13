@@ -3,9 +3,7 @@ package com.huyhieu.mydocuments.ui.fragments.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.huyhieu.library.extensions.handleBackPressedFragment
 import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
@@ -30,13 +28,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         //showNavigationBottom()
         //setTabNavigationBottom(com.huyhieu.library.components.UTab.TAB_HOME)
         initListMenu()
-        handleViewClick(rcvMenu, root)
-        handleBackPressedFragment {
-            context.showToastShort("handleBackPressedHomeFragment")
-        }
-    }
-
-    override fun FragmentHomeBinding.onClickViewBinding(v: View, id: Int) {
     }
 
     private fun FragmentHomeBinding.initListMenu() {
@@ -67,7 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         navigate(MyNavHost.Main, MainDirections.toSteps)
                     }
                     MenuType.More -> {
-                        mActivity?.supportFragmentManager?.let {
+                        mActivity.supportFragmentManager?.let {
                             MyDialog.getInstance().show(it, null)
                         }
                     }

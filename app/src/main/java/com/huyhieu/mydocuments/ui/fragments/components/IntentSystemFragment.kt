@@ -13,14 +13,14 @@ import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.library.isNull
 import com.huyhieu.library.shareImage
 import com.huyhieu.library.utils.logDebug
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentIntentSystemBinding
 import com.huyhieu.mydocuments.utils.requestPermissions
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-class IntentSystemFragment : BaseFragmentOld<FragmentIntentSystemBinding>() {
+class IntentSystemFragment : BaseFragment<FragmentIntentSystemBinding>() {
 
     private var uriPicture: Uri? = null
     private var isShowPicture = false
@@ -30,11 +30,9 @@ class IntentSystemFragment : BaseFragmentOld<FragmentIntentSystemBinding>() {
         Manifest.permission.READ_EXTERNAL_STORAGE,
     )
 
-    override fun initializeBinding() = FragmentIntentSystemBinding.inflate(layoutInflater)
-
     private val requestPermission = requestPermissions(
         onGranted = {
-            mBinding.capture()
+            vb.capture()
         }, onDined = {
             logDebug("Dined! - WRITE_EXTERNAL_STORAGE or READ_EXTERNAL_STORAGE")
         })
@@ -43,19 +41,15 @@ class IntentSystemFragment : BaseFragmentOld<FragmentIntentSystemBinding>() {
         requestPermission.launch(permissions)
     }
 
-    override fun FragmentIntentSystemBinding.addControls(savedInstanceState: Bundle?) {
-        mActivity?.setDarkColorStatusBar()
-    }
-
-    override fun FragmentIntentSystemBinding.addEvents(savedInstanceState: Bundle?) {
-        btnCallSupport.setOnClickListener(this@IntentSystemFragment)
-        btnCaptureView.setOnClickListenerCustom(listener = this@IntentSystemFragment)
+    override fun FragmentIntentSystemBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        mActivity.setDarkColorStatusBar()
+        handleViewClick(btnCallSupport, btnCaptureView, imgPicture)
         btnShare.setOnClickListenerCustom(false, listener = this@IntentSystemFragment)
-        imgPicture.setOnClickListener(this@IntentSystemFragment)
     }
 
-    override fun FragmentIntentSystemBinding.onClickViewBinding(v: View) {
-        when (v.id) {
+
+    override fun FragmentIntentSystemBinding.onClickViewBinding(v: View, id: Int) {
+        when (id) {
             btnCallSupport.id -> {
                 lifecycleScope.launch {
                     delay(2000)
@@ -70,7 +64,7 @@ class IntentSystemFragment : BaseFragmentOld<FragmentIntentSystemBinding>() {
                 if (uriPicture != null) {
                     mActivity.shareImage(uriPicture)
                 } else {
-                    mActivity?.showToastShort("Picture not found!")
+                    mActivity.showToastShort("Picture not found!")
                 }
             }
             imgPicture.id -> {
@@ -89,9 +83,9 @@ class IntentSystemFragment : BaseFragmentOld<FragmentIntentSystemBinding>() {
             btnCaptureView.hideLoading()
             // Wait done anim
             delay(500)
-            mActivity?.captureView(root) {
+            mActivity.captureView(root) {
                 if (it.isNull()) {
-                    mActivity?.showToastShort("Can't capture!")
+                    mActivity.showToastShort("Can't capture!")
                 } else {
                     uriPicture = it
                     imgPicture.setImageURI(it)

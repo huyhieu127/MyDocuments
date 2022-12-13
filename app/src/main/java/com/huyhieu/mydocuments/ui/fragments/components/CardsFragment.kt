@@ -1,15 +1,13 @@
 package com.huyhieu.mydocuments.ui.fragments.components
 
 import android.os.Bundle
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import android.view.View
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCardsBinding
 
-class CardsFragment : BaseFragmentOld<FragmentCardsBinding>() {
-    override fun initializeBinding() = FragmentCardsBinding.inflate(layoutInflater)
+class CardsFragment : BaseFragment<FragmentCardsBinding>() {
 
-    override fun FragmentCardsBinding.addControls(savedInstanceState: Bundle?) {
-    }
+    override fun FragmentCardsBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
 
-    override fun FragmentCardsBinding.addEvents(savedInstanceState: Bundle?) {
     }
 }

@@ -10,3 +10,7 @@ fun Fragment.handleBackPressedFragment(onBack: (() -> Unit) = {/*Do nothing*/ })
         }
     })
 }
+
+fun Fragment.showToastShort(msg: String?) {
+    context.showToastShort(msg)
+}

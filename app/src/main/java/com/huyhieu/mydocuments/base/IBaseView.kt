@@ -8,9 +8,10 @@ import androidx.navigation.NavDirections
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
+import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
-interface IBaseView<VB> : View.OnClickListener {
+interface IBaseView<VB : ViewBinding> : View.OnClickListener {
 
     @Suppress("UNCHECKED_CAST")
     fun getViewBinding(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): VB {

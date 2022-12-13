@@ -1,11 +1,13 @@
 package com.huyhieu.mydocuments.ui.fragments.steps
 
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.library.extensions.handleBackPressedFragment
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.setTransitionTo
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStepsBinding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.StepDirections
@@ -15,21 +17,19 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class StepsFragment : BaseFragmentOld<FragmentStepsBinding>() {
+class StepsFragment : BaseFragment<FragmentStepsBinding>() {
 
     @Inject
     lateinit var stepsVM: StepsVM
 
-    override fun initializeBinding() = FragmentStepsBinding.inflate(layoutInflater)
-
-    override fun FragmentStepsBinding.addControls(savedInstanceState: Bundle?) {
-        mActivity?.setDarkColorStatusBar(false)
+    override fun FragmentStepsBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        mActivity.setDarkColorStatusBar(false)
+        handleBackPressedFragment {
+            mActivity.finish()
+        }
     }
 
-    override fun FragmentStepsBinding.addEvents(savedInstanceState: Bundle?) {
-    }
-
-    override fun FragmentStepsBinding.onLiveData(savedInstanceState: Bundle?) {
+    override fun FragmentStepsBinding.handleLiveData(savedInstanceState: Bundle?) {
         lifecycleScope.launch {
             stepsVM.stepsLiveData.observe(this@StepsFragment) {
                 when (it) {
@@ -68,9 +68,5 @@ class StepsFragment : BaseFragmentOld<FragmentStepsBinding>() {
             }
             stepsVM.stepsLiveData.postValue(0)
         }
-    }
-
-    override fun onBackPressedFragment() {
-        mActivity?.finish()
     }
 }

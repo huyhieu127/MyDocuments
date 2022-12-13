@@ -1,8 +1,10 @@
 package com.huyhieu.mydocuments.ui.fragments.steps.components
 
 import android.os.Bundle
+import android.view.View
+import com.huyhieu.library.extensions.handleBackPressedFragment
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps3Binding
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.popBackStackTo
@@ -14,7 +16,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 @AndroidEntryPoint
-class Steps3Fragment : BaseFragmentOld<FragmentSteps3Binding>() {
+class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
 
     @Inject
     lateinit var stepsVM: StepsVM
@@ -33,18 +35,16 @@ class Steps3Fragment : BaseFragmentOld<FragmentSteps3Binding>() {
             }
     }
 
-    override fun initializeBinding() = FragmentSteps3Binding.inflate(layoutInflater)
-
-    override fun FragmentSteps3Binding.addControls(savedInstanceState: Bundle?) {
-    }
-
-    override fun FragmentSteps3Binding.addEvents(savedInstanceState: Bundle?) {
-        btnNext.setOnClickListener {
-            stepsVM.setStep(4)
+    override fun FragmentSteps3Binding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        handleViewClick(btnNext)
+        handleBackPressedFragment {
+            popBackStackTo(MyNavHost.Home, R.id.navigationFragment)
         }
     }
 
-    override fun onBackPressedFragment() {
-        popBackStackTo(MyNavHost.Home, R.id.navigationFragment)
+    override fun FragmentSteps3Binding.onClickViewBinding(v: View, id: Int) {
+        when (id) {
+            btnNext.id -> stepsVM.setStep(4)
+        }
     }
 }

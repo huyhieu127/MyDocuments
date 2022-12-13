@@ -48,7 +48,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
     /************************ Handle click **************************/
     private val currentTime: Long get() = System.currentTimeMillis()
     private var time = 0L
-    private val delayClick = 1000L
+    private val delayClick = 500L
 
     final override fun onClick(v: View?) {
         v ?: return

@@ -1,11 +1,12 @@
 package com.huyhieu.mydocuments.ui.fragments.multipleapi
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.observe
 import androidx.lifecycle.viewModelScope
 import com.huyhieu.library.utils.logDebug
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMultipleApiBinding
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,22 +15,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MultipleApiFragment : BaseFragmentOld<FragmentMultipleApiBinding>() {
+class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
 
     @Inject
     lateinit var viewModel: MultipleApiVM
 
-    override fun initializeBinding() = FragmentMultipleApiBinding.inflate(layoutInflater)
-
-    override fun FragmentMultipleApiBinding.addControls(savedInstanceState: Bundle?) {
-    }
-
-    override fun FragmentMultipleApiBinding.addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentMultipleApiBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         //callAPI("")
         viewModel.fetchPokemonDetail()
     }
 
-    override fun FragmentMultipleApiBinding.onLiveData(savedInstanceState: Bundle?) {
+    override fun FragmentMultipleApiBinding.handleLiveData(savedInstanceState: Bundle?) {
         viewModel.viewModelScope.launch {
             viewModel.resultAPI.collectLatest {
                 it ?: return@collectLatest

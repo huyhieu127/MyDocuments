@@ -1,13 +1,14 @@
 package com.huyhieu.mydocuments.ui.fragments.components
 
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.Glide
 import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStaticMapBinding
 
 //Enable google map static in gg cloud
-class StaticMapFragment : BaseFragmentOld<FragmentStaticMapBinding>() {
+class StaticMapFragment : BaseFragment<FragmentStaticMapBinding>() {
     private var locationUrl =
         "https://maps.googleapis.com/maps/api/staticmap" +
                 "?center={shop_address}" +
@@ -18,16 +19,11 @@ class StaticMapFragment : BaseFragmentOld<FragmentStaticMapBinding>() {
                 "&style=feature:poi|element:labels|visibility:off" +
                 "&key=API_KEY"
 
-    override fun initializeBinding() = FragmentStaticMapBinding.inflate(layoutInflater)
-
-    override fun FragmentStaticMapBinding.addControls(savedInstanceState: Bundle?) {
-        mActivity?.setDarkColorStatusBar()
-    }
-
-    override fun FragmentStaticMapBinding.addEvents(savedInstanceState: Bundle?) {
+    override fun FragmentStaticMapBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        mActivity.setDarkColorStatusBar()
         val url = getStaticMapURL("10.802702, 106.647505")
 
-        Glide.with(mActivity!!).load(url).into(mBinding.imgStaticMap)
+        Glide.with(mActivity).load(url).into(imgStaticMap)
     }
 
     private fun getStaticMapURL(latLng: String): String {

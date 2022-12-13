@@ -8,49 +8,41 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentIntroduceBinding
 
-class IntroduceFragment : BaseFragmentOld<FragmentIntroduceBinding>() {
+class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
     private val myViewPagerAdapter by lazy { MyViewPagerAdapter() }
     private var layouts: IntArray? = null
 
-    override fun initializeBinding() = FragmentIntroduceBinding.inflate(layoutInflater)
+    override fun FragmentIntroduceBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        //hideNavigationBottom()
+        layouts = intArrayOf(
+            R.layout.fragment_introduce_page1,
+            R.layout.fragment_introduce_page2,
+            R.layout.fragment_introduce_page3
+        )
 
-    override fun FragmentIntroduceBinding.addControls(savedInstanceState: Bundle?) {
-        hideNavigationBottom()
-    }
+        vpIntroduce.adapter = myViewPagerAdapter
+        vpIntroduce.offscreenPageLimit = 2
+        dotsIndicator.attachTo(vpIntroduce)
+        vpIntroduce.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
 
-    override fun FragmentIntroduceBinding.addEvents(savedInstanceState: Bundle?) {
-        mBinding.apply {
-            layouts = intArrayOf(
-                R.layout.fragment_introduce_page1,
-                R.layout.fragment_introduce_page2,
-                R.layout.fragment_introduce_page3
-            )
+            override fun onPageSelected(position: Int) {
+                fillText(position)
+                //btnNext.isInvisible = position != layouts!!.size - 1
+                btnNext.isEnabled = position == layouts!!.size - 1
+            }
 
-            vpIntroduce.adapter = myViewPagerAdapter
-            vpIntroduce.offscreenPageLimit = 2
-            dotsIndicator.attachTo(vpIntroduce)
-            vpIntroduce.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                }
-
-                override fun onPageSelected(position: Int) {
-                    fillText(position)
-                    //btnNext.isInvisible = position != layouts!!.size - 1
-                    btnNext.isEnabled = position == layouts!!.size - 1
-                }
-
-                override fun onPageScrollStateChanged(state: Int) {}
-            })
-            tvSkip.setOnClickListener(this@IntroduceFragment)
-            btnNext.setOnClickListener(this@IntroduceFragment)
-        }
+            override fun onPageScrollStateChanged(state: Int) {}
+        })
+        handleViewClick(tvSkip, btnNext)
     }
 
     private fun FragmentIntroduceBinding.fillText(position: Int) {
@@ -74,7 +66,7 @@ class IntroduceFragment : BaseFragmentOld<FragmentIntroduceBinding>() {
         }
     }
 
-    override fun FragmentIntroduceBinding.onClickViewBinding(v: View) {
+    override fun FragmentIntroduceBinding.onClickViewBinding(v: View, id: Int) {
         when (v.id) {
             tvSkip.id -> {
                 launchHomeScreen()
@@ -90,7 +82,7 @@ class IntroduceFragment : BaseFragmentOld<FragmentIntroduceBinding>() {
         }
     }
 
-    private fun getCurrentItem(): Int = mBinding.vpIntroduce.currentItem + 1
+    private fun getCurrentItem(): Int = vb.vpIntroduce.currentItem + 1
 
     private fun launchHomeScreen() {
 //        mActivity?.navigate(

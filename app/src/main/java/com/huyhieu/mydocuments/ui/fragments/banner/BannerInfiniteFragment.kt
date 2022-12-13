@@ -1,21 +1,18 @@
 package com.huyhieu.mydocuments.ui.fragments.banner
 
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentBannerInfiniteBinding
 
-class BannerInfiniteFragment : BaseFragmentOld<FragmentBannerInfiniteBinding>() {
+class BannerInfiniteFragment : BaseFragment<FragmentBannerInfiniteBinding>() {
     private val bannerAdapter = BannerAdapter()
     val lstData = mutableListOf(1, 2, 3, 4, 5, 6)
     var lstOld = mutableListOf<Int>()
-
-
-    override fun initializeBinding() = FragmentBannerInfiniteBinding.inflate(layoutInflater)
-
-    override fun FragmentBannerInfiniteBinding.addControls(savedInstanceState: Bundle?) {
+    override fun FragmentBannerInfiniteBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(rcv)
 
@@ -61,8 +58,4 @@ class BannerInfiniteFragment : BaseFragmentOld<FragmentBannerInfiniteBinding>() 
             }
         })
     }
-
-    override fun FragmentBannerInfiniteBinding.addEvents(savedInstanceState: Bundle?) {
-    }
-
 }

@@ -2,37 +2,33 @@ package com.huyhieu.mydocuments.ui.fragments.fingerprint
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import com.huyhieu.library.extensions.setOnClickMyListener
 import com.huyhieu.library.utils.logDebug
-import com.huyhieu.mydocuments.base.BaseFragmentOld
+import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentFingerprintBinding
 
-class FingerprintFragment : BaseFragmentOld<FragmentFingerprintBinding>() {
+class FingerprintFragment : BaseFragment<FragmentFingerprintBinding>() {
     private val biometricPrompt by lazy {
         createBiometricPrompt(
             onAuthenticationError = { _: Int, _: CharSequence ->
-                mBinding.root.setBackgroundColor(Color.YELLOW)
+                vb.root.setBackgroundColor(Color.YELLOW)
             },
             onAuthenticationFailed = {
-                mBinding.root.setBackgroundColor(Color.RED)
+                vb.root.setBackgroundColor(Color.RED)
             },
             onAuthenticationSucceeded = {
-                mBinding.root.setBackgroundColor(Color.GREEN)
+                vb.root.setBackgroundColor(Color.GREEN)
             }
         )
     }
 
-    override fun initializeBinding() = FragmentFingerprintBinding.inflate(layoutInflater)
-
-    override fun FragmentFingerprintBinding.addControls(savedInstanceState: Bundle?) {
+    override fun FragmentFingerprintBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         imgFingerprint.setOnClickMyListener {
             context.isBiometricAvailable { isAvailable, errorCode ->
                 logDebug("isBiometricAvailable : $isAvailable , ")
                 showDialogFingerprint(biometricPrompt)
             }
         }
-    }
-
-    override fun FragmentFingerprintBinding.addEvents(savedInstanceState: Bundle?) {
     }
 }
