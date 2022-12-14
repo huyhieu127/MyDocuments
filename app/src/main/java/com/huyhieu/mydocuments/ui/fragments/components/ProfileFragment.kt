@@ -8,8 +8,8 @@ import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.library.extensions.toSpannable
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
-import com.huyhieu.mydocuments.ui.components.ToastDialog
-import com.huyhieu.mydocuments.ui.components.ToastType
+import com.huyhieu.mydocuments.ui.components.toast.ToastDialog
+import com.huyhieu.mydocuments.ui.components.toast.ToastType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

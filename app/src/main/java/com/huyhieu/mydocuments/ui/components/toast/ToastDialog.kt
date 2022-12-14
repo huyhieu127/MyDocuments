@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.components
+package com.huyhieu.mydocuments.ui.components.toast
 
 import android.os.Bundle
 import android.view.View
@@ -25,6 +25,7 @@ class ToastDialog(
     val bgDrawable: Int? = null,
     val iconColor: Int? = null,
     val bgIconColor: Int? = null,
+    var onClose: ((ToastDialog) -> Unit)? = null
 ) : BaseDialogFragment<DialogToastBinding>() {
 
     override fun initializeBinding() = DialogToastBinding.inflate(layoutInflater)
@@ -81,17 +82,21 @@ class ToastDialog(
     }
 
     fun updateData(title: String? = this.title, content: String? = this.content) {
-        if (!title.isNullOrEmpty() && this.title != title) {
+        if (title != null && this.title != title) {
+            this.title = title
             mBinding.tvTitle.text = title
         }
-        if (!content.isNullOrEmpty() && this.content != content) {
+        if (content != null && this.content != content) {
+            this.content = content
             mBinding.tvContent.text = content
         }
     }
 
     override fun DialogToastBinding.onClickViewBinding(v: View) {
         when (v.id) {
-            cvCancel.id -> dismissAllowingStateLoss()
+            cvCancel.id -> {
+                onClose?.invoke(this@ToastDialog) ?: dismissAllowingStateLoss()
+            }
         }
     }
 }

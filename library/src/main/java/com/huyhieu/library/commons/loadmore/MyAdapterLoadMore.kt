@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.huyhieu.library.databinding.LayoutItemLoadingBinding
+import com.huyhieu.library.databinding.ItemLoadingBinding
 
 abstract class MyAdapterLoadMore<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -80,8 +80,7 @@ abstract class MyAdapterLoadMore<T> : RecyclerView.Adapter<RecyclerView.ViewHold
         viewType: Int
     ): RecyclerView.ViewHolder {
         return if (viewType == TYPE_LOADING) {
-            val view =
-                LayoutItemLoadingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            val view = ItemLoadingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             LoadingViewHolder(view)
         } else {
             onCreateMyViewHolder(parent, viewType)
@@ -90,6 +89,6 @@ abstract class MyAdapterLoadMore<T> : RecyclerView.Adapter<RecyclerView.ViewHold
 
     final override fun getItemCount(): Int = lstData?.size ?: 0
 
-    inner class LoadingViewHolder(view: LayoutItemLoadingBinding) :
+    inner class LoadingViewHolder(view: ItemLoadingBinding) :
         RecyclerView.ViewHolder(view.root)
 }
