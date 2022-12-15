@@ -39,25 +39,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             fillData(viewModel.lstMenus)
             itemClick = { menuForm ->
                 when (menuForm.type) {
-                    MenuType.Guide -> {
+                    MenuType.GUIDE -> {
                         navigate(MyNavHost.Main, MainDirections.toGuide)
                     }
-                    MenuType.MotionCard -> {
+                    MenuType.MOTION -> {
                         navigate(MyNavHost.Main, MainDirections.toMotionCard)
                     }
-                    MenuType.FFmpegKit -> {
+                    MenuType.FFMPEG_KIT -> {
                         startActivity(Intent(mActivity, FFmpegKitActivity::class.java))
                     }
-                    MenuType.MultipleAPI -> {
+                    MenuType.MULTIPLE_API -> {
                         navigate(MyNavHost.Main, MainDirections.toMultipleAPI)
                     }
-                    MenuType.Bluetooth -> {
+                    MenuType.BLUETOOTH -> {
                         startActivity(Intent(mActivity, BluetoothActivity::class.java))
                     }
-                    MenuType.Steps -> {
+                    MenuType.STEPS -> {
                         navigate(MyNavHost.Main, MainDirections.toSteps)
                     }
-                    MenuType.More -> {
+                    MenuType.COMPONENTS -> {
                         mActivity.supportFragmentManager?.let {
                             MyDialog.getInstance().show(it, null)
                         }

@@ -40,15 +40,14 @@ class MyNavigationBottomView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr), View.OnClickListener {
-    private val binding =
-        WidgetUNavigationBottomBinding.inflate(LayoutInflater.from(context), this, true)
+    private val vb = WidgetUNavigationBottomBinding.inflate(LayoutInflater.from(context), this, true)
 
     private val durationTransaction = 250L
 
     var tabSelectedListener: ((tab: UTab) -> Unit)? = null
 
     init {
-        with(binding) {
+        with(vb) {
             CoroutineScope(Dispatchers.IO).launch {
                 /*imgTabScan.setOnTouchEvent()
                 imgTabHome.setOnTouchEvent()
@@ -61,11 +60,11 @@ class MyNavigationBottomView @JvmOverloads constructor(
 
     fun setBackgroundBlur(viewTargetParent: ViewGroup) {
         val radius = 20F
-        binding.blBackground.setupWith(viewTargetParent, getBlurAlgorithm())
-            .setFrameClearDrawable(binding.blBackground.background)
+        vb.blBackground.setupWith(viewTargetParent, getBlurAlgorithm())
+            .setFrameClearDrawable(vb.blBackground.background)
             .setBlurRadius(radius)
             .setBlurAutoUpdate(true)
-            .setOverlayColor(context.color(R.color.white_10))
+            .setOverlayColor(context.color(R.color.black_10))
     }
 
     private fun getBlurAlgorithm(): BlurAlgorithm {
@@ -84,7 +83,7 @@ class MyNavigationBottomView @JvmOverloads constructor(
 
     @SuppressLint("Recycle")
     fun setTabSelected(tab: UTab) {
-        with(binding) {
+        with(vb) {
             when (tab) {
                 UTab.TAB_SCAN -> {
                     //imgScan.startAnimation(anim)
@@ -107,7 +106,7 @@ class MyNavigationBottomView @JvmOverloads constructor(
     }
 
     private fun setTabTransaction(idTab: Int) {
-        with(binding) {
+        with(vb) {
             cstNavigation.post {
                 val constraintSet = ConstraintSet()
                 constraintSet.clone(cstNavigation)
@@ -136,7 +135,7 @@ class MyNavigationBottomView @JvmOverloads constructor(
                 }
                 MotionEvent.ACTION_UP -> {
                     view.startAnimation(animOut)
-                    with(binding) {
+                    with(vb) {
                         when (view.id) {
                             imgTabScan.id -> {
                                 setTabSelected(UTab.TAB_SCAN)
@@ -175,7 +174,7 @@ class MyNavigationBottomView @JvmOverloads constructor(
     }
 
     override fun onClick(v: View?) {
-        with(binding) {
+        with(vb) {
             when (v?.id) {
                 imgTabScan.id -> {
                     setTabSelected(UTab.TAB_SCAN)

@@ -3,7 +3,6 @@ package com.huyhieu.mydocuments.ui.fragments.multipleapi
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.lifecycle.observe
 import androidx.lifecycle.viewModelScope
 import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
@@ -32,10 +31,9 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
                 logDebug(it.statusAPI.toString())
             }
         }
-        /*viewModel.resultAPI.onEach {
-            it ?: return@onEach
-            logDebug(it.response?.data.toString())
-        }*/
+        viewModel.loadingState.observe(viewLifecycleOwner) {
+            logDebug(it.toString())
+        }
     }
 
     override fun FragmentMultipleApiBinding.callAPI(
@@ -44,7 +42,7 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
         function: ((resultData: Any?) -> Unit)?
     ) {
         var result = ""
-        viewModel.getPokemons().observe(this@MultipleApiFragment) {
+        viewModel.getPokemons().observe(viewLifecycleOwner) {
             when (it.statusPokeAPI) {
                 ResultPokeAPI.StatusPokeAPI.LOADING -> {
                     logDebug(" - LOADING")
