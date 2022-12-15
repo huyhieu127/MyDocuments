@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/flKey"
-        android:layout_width="@dimen/size_text_keyboard"
+        android:layout_width="@dimen/keyboard_text_size"
         android:layout_height="0dp"
         android:layout_marginVertical="@dimen/_10sdp"
         android:foreground="?android:selectableItemBackgroundBorderless"
@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/tvKeyName"
-            style="@style/TextKeyboard"
+            style="@style/KeyboardTextStyle"
             android:background="@drawable/bg_circle_stroke"
             tools:text="1" />
     </androidx.cardview.widget.CardView>

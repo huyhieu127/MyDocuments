@@ -1,60 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
     android:animateLayoutChanges="true"
-    android:background="@drawable/bg_corner_top"
-    android:backgroundTint="@color/colorSecondary"
+    app:cardBackgroundColor="@color/transparent"
+    app:cardCornerRadius="@dimen/_18sdp"
+    app:cardElevation="0dp"
     app:layout_constraintBottom_toBottomOf="parent">
 
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blBackground"
+        android:background="#1ADCDCDC"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/tabSelected"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        android:background="@drawable/bg_corner_18"
-        android:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/imgTabHome"
-        app:layout_constraintStart_toStartOf="@id/imgTabHome"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cstNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/_10sdp">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgTabScan"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imgTabHome"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_scan" />
+            <View
+                android:id="@+id/tabSelected"
+                android:layout_width="@dimen/navigation_size_box"
+                android:layout_height="@dimen/navigation_size_box"
+                android:background="@drawable/bg_corner_16"
+                android:backgroundTint="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/imgTabHome"
+                app:layout_constraintStart_toStartOf="@id/imgTabHome"
+                app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgTabHome"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_home" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgTabScan"
+                style="@style/NavigationBoxStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgTabHome"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_scan" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgTabProfile"
-        android:layout_width="?actionBarSize"
-        android:layout_height="?actionBarSize"
-        android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toEndOf="@id/imgTabHome"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_profile" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgTabHome"
+                style="@style/NavigationBoxStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_home" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgTabProfile"
+                style="@style/NavigationBoxStyle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toEndOf="@id/imgTabHome"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_profile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </eightbitlab.com.blurview.BlurView>
+
+
+</androidx.cardview.widget.CardView>

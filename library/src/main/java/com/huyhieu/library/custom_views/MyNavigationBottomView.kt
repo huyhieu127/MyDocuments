@@ -2,12 +2,14 @@ package com.huyhieu.library.custom_views
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -17,7 +19,11 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.huyhieu.library.R
 import com.huyhieu.library.databinding.WidgetUNavigationBottomBinding
-import com.huyhieu.library.setAnimation
+import com.huyhieu.library.extensions.color
+import com.huyhieu.library.utils.setAnimation
+import eightbitlab.com.blurview.BlurAlgorithm
+import eightbitlab.com.blurview.RenderEffectBlur
+import eightbitlab.com.blurview.RenderScriptBlur
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,7 +35,7 @@ enum class UTab {
     TAB_PROFILE
 }
 
-class UNavigationBottomView @JvmOverloads constructor(
+class MyNavigationBottomView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -53,10 +59,27 @@ class UNavigationBottomView @JvmOverloads constructor(
         setTabSelected(UTab.TAB_HOME)
     }
 
+    fun setBackgroundBlur(viewTargetParent: ViewGroup) {
+        val radius = 20F
+        binding.blBackground.setupWith(viewTargetParent, getBlurAlgorithm())
+            .setFrameClearDrawable(binding.blBackground.background)
+            .setBlurRadius(radius)
+            .setBlurAutoUpdate(true)
+            .setOverlayColor(context.color(R.color.white_10))
+    }
+
+    private fun getBlurAlgorithm(): BlurAlgorithm {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            RenderEffectBlur()
+        } else {
+            RenderScriptBlur(context)
+        }
+    }
+
     private fun WidgetUNavigationBottomBinding.setGesture() {
-        imgTabScan.setOnClickListener(this@UNavigationBottomView)
-        imgTabHome.setOnClickListener(this@UNavigationBottomView)
-        imgTabProfile.setOnClickListener(this@UNavigationBottomView)
+        imgTabScan.setOnClickListener(this@MyNavigationBottomView)
+        imgTabHome.setOnClickListener(this@MyNavigationBottomView)
+        imgTabProfile.setOnClickListener(this@MyNavigationBottomView)
     }
 
     @SuppressLint("Recycle")
@@ -85,15 +108,17 @@ class UNavigationBottomView @JvmOverloads constructor(
 
     private fun setTabTransaction(idTab: Int) {
         with(binding) {
-            val constraintSet = ConstraintSet()
-            constraintSet.clone(root)
-            constraintSet.connect(tabSelected.id, ConstraintSet.START, idTab, ConstraintSet.START)
-            constraintSet.connect(tabSelected.id, ConstraintSet.END, idTab, ConstraintSet.END)
-            val transition = ChangeBounds()
-            transition.interpolator = AccelerateDecelerateInterpolator()
-            transition.duration = durationTransaction
-            TransitionManager.beginDelayedTransition(root, transition)
-            constraintSet.applyTo(root)
+            cstNavigation.post {
+                val constraintSet = ConstraintSet()
+                constraintSet.clone(cstNavigation)
+                constraintSet.connect(tabSelected.id, ConstraintSet.START, idTab, ConstraintSet.START)
+                constraintSet.connect(tabSelected.id, ConstraintSet.END, idTab, ConstraintSet.END)
+                val transition = ChangeBounds()
+                transition.interpolator = AccelerateDecelerateInterpolator()
+                transition.duration = durationTransaction
+                TransitionManager.beginDelayedTransition(cstNavigation, transition)
+                constraintSet.applyTo(cstNavigation)
+            }
         }
     }
 

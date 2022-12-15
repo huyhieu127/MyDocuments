@@ -2,7 +2,6 @@ package com.huyhieu.mydocuments.ui.fragments.navigation
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.custom_views.UTab
 import com.huyhieu.mydocuments.R
@@ -16,7 +15,7 @@ import kotlinx.coroutines.launch
 class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
 
     override fun FragmentNavigationBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
-        navTab.isVisible = false
+        navTab.setBackgroundBlur(root)
     }
 
     override fun FragmentNavigationBinding.handleLiveData(savedInstanceState: Bundle?) {

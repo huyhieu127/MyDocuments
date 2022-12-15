@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Keyboard-->
-    <dimen name="size_text_keyboard">@dimen/_54sdp</dimen>
-    <dimen name="size_text_keyboard_radius">@dimen/_27sdp</dimen>
+    <dimen name="keyboard_text_size">@dimen/_54sdp</dimen>
+    <dimen name="keyboard_radius_key">@dimen/_27sdp</dimen>
 
-    <style name="TextKeyboard" parent="Widget.AppCompat.TextView">
+    <style name="KeyboardTextStyle" parent="Widget.AppCompat.TextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@drawable/bg_circle_stroke</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <!--Navigation-->
+    <dimen name="navigation_size_box">@dimen/_40sdp</dimen>
+    <dimen name="navigation_height">@dimen/_70sdp</dimen>
+
+    <style name="NavigationBoxStyle">
+        <item name="android:layout_width">@dimen/navigation_size_box</item>
+        <item name="android:layout_height">@dimen/navigation_size_box</item>
+        <item name="android:padding">@dimen/_10sdp</item>
     </style>
 
 </resources>
