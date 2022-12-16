@@ -65,10 +65,10 @@ open class BaseVM : ViewModel() {
                 loadingState.postValue(LoadingState<T>(isLoading = true, data = null))
             }.catch {
                 logDebug(it.message)
-            }.onCompletion {
+            }.flowOn(Dispatchers.IO).onCompletion {
                 onResult?.invoke(mutableMapAPI)
                 loadingState.postValue(LoadingState(isLoading = false, data = it))
-            }.flowOn(Dispatchers.IO).collectLatest {
+            }.collectLatest {
                 mutableMapAPI[it.first] = it.second
             }
         }
