@@ -28,11 +28,26 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
         viewModel.viewModelScope.launch {
             viewModel.resultAPI.collectLatest {
                 it ?: return@collectLatest
-                logDebug(it.statusAPI.toString())
+                logDebug(it.results?.size?.toString())
             }
         }
         viewModel.loadingState.observe(viewLifecycleOwner) {
-            logDebug(it.toString())
+            it ?: return@observe
+            progressBar.isVisible = it.isLoading
+        }
+        viewModel.fetchPokemonDetailLD.observe(viewLifecycleOwner) { result ->
+            result ?: return@observe
+            var sumApi = ""
+            var sumSize = 0
+            result.onEach {
+                val api = it.key
+                val size = it.value?.results?.size ?: 0
+                sumApi += " $api: $size "
+                sumSize += size
+            }
+            val response = "SUCCESS:$sumApi\nTotal size: $sumSize"
+            logDebug(response)
+            tvResult.text = response
         }
     }
 

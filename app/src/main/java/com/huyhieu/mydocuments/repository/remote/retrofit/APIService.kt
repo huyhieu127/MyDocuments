@@ -1,5 +1,6 @@
 package com.huyhieu.mydocuments.repository.remote.retrofit
 
+import com.google.gson.JsonObject
 import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.models.pokemon.PokemonUrlForm
 import retrofit2.Response
@@ -17,9 +18,9 @@ interface APIService {
     @GET("pokemon")
     suspend fun getPokemons(@QueryMap params: MutableMap<String, Any>): Response<ResponsePokeAPI<MutableList<PokemonUrlForm>>>
 
-    @GET("pokemon")
-    suspend fun getPokemonsss(@QueryMap params: MutableMap<String, Any>): Response<ResponseData<MutableList<PokemonUrlForm>>>
+    @GET("pokemonsss")
+    suspend fun getPokemonFailed(@QueryMap params: MutableMap<String, Any>): Response<ResponsePokeAPI<MutableList<PokemonUrlForm>>>
 
     @GET("pokemon/{idPokemon}/")
-    suspend fun getPokemonDetail(@Path("idPokemon") idPokemon: String): Response<ResponseData<MutableList<PokemonUrlForm>>>
+    suspend fun getPokemonDetail(@Path("idPokemon") idPokemon: String): Response<ResponsePokeAPI<JsonObject>>
 }

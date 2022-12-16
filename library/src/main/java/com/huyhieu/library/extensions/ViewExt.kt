@@ -1,11 +1,14 @@
 package com.huyhieu.library.extensions
 
 import android.view.View
+import com.huyhieu.library.utils.logDebug
 
-fun View.setOnClickMyListener(delay: Long = 1000L, onClick: () -> Unit) {
-    var time = System.currentTimeMillis()
+internal var time = 0L
+fun View.setOnClickMyListener(delay: Long = 500L, onClick: () -> Unit) {
+    logDebug("$time")
     setOnClickListener {
         val currentTime = System.currentTimeMillis()
+        logDebug("setOnClickListener $time")
         if (currentTime - time > delay) {
             time = currentTime
             //logDebug("setOnClickMyListener: ${this.getNameById(id)}")

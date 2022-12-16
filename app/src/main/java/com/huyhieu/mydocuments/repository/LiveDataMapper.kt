@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import com.huyhieu.library.utils.logDebug
-import com.huyhieu.mydocuments.base.mutableLiveData
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResponseData
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultAPI
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI
@@ -16,7 +15,7 @@ import javax.inject.Inject
 class LiveDataMapper @Inject constructor() : Repository() {
 
     fun <T> mapToLiveDataPokeAPI(vararg api: Pair<String, suspend () -> Response<T>>):
-            MutableLiveData<ResultPokeAPI<T>> = mutableLiveData(Dispatchers.IO) {
+            LiveData<ResultPokeAPI<T>> = liveData(Dispatchers.IO) {
         //state loading
         val startTime = System.currentTimeMillis()
         emit(ResultPokeAPI.loading())
