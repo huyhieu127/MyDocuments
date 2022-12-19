@@ -8,6 +8,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.Dimension
 import androidx.cardview.widget.CardView
 import androidx.core.content.withStyledAttributes
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -200,7 +201,7 @@ class UButtonView @JvmOverloads constructor(
             tvName.isVisible =
                 contentType == CONTENT_TYPE_TEXT
 
-            imgLoading.isVisible = false
+            imgLoading.isInvisible = true
             setUIParent()
         }
     }

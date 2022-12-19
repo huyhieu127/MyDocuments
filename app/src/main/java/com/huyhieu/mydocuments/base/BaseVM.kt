@@ -39,8 +39,7 @@ open class BaseVM : ViewModel() {
 
     fun <T> mapperAsyncFlows(
         vararg apis: Pair<String, suspend () -> Response<ResponsePokeAPI<T>>>,
-        isHandleOnEachApi: Boolean = false,
-        //onResult: ((resp: Pair<String, ResponsePokeAPI<T>?>) -> Unit)? = null
+        tag: String = "",
         onResult: ((resp: MutableMap<String, ResponsePokeAPI<T>?>) -> Unit)? = null
     ) {
         //Get result form Data Source
@@ -62,12 +61,12 @@ open class BaseVM : ViewModel() {
                     }
                 }
             }.onStart {
-                loadingState.postValue(LoadingState<T>(isLoading = true, data = null))
+                loadingState.postValue(LoadingState<T>(isLoading = true, data = null, tag = tag))
             }.catch {
                 logDebug(it.message)
             }.flowOn(Dispatchers.IO).onCompletion {
                 onResult?.invoke(mutableMapAPI)
-                loadingState.postValue(LoadingState(isLoading = false, data = it))
+                loadingState.postValue(LoadingState(isLoading = false, data = it, tag = tag))
             }.collectLatest {
                 mutableMapAPI[it.first] = it.second
             }
@@ -76,6 +75,7 @@ open class BaseVM : ViewModel() {
 
     fun <T> mapperSyncFlows(
         vararg apis: Pair<String, suspend () -> Response<ResponsePokeAPI<T>>>,
+        tag: String = "",
         onResult: ((resp: Pair<String, ResponsePokeAPI<T>?>) -> Unit)? = null
     ) {
         //Get result form Data Source
@@ -90,12 +90,13 @@ open class BaseVM : ViewModel() {
                     }
                 }
             }.onStart {
-                loadingState.postValue(LoadingState<T>(isLoading = true, data = null))
+                loadingState.postValue(LoadingState<T>(isLoading = true, data = null, tag = tag))
             }.catch {
                 logDebug(it.message)
-            }.flowOn(Dispatchers.IO).collectLatest {
+            }.flowOn(Dispatchers.IO).onCompletion {
+                loadingState.postValue(LoadingState<T>(isLoading = false, data = null, tag = tag))
+            }.collectLatest {
                 onResult?.invoke(it)
-                loadingState.postValue(LoadingState(isLoading = false, data = it, apiKey = it.first))
             }
         }
     }

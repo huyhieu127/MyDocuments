@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="ToolBarBaseView">
+        <attr name="tb_base_title" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="UButtonView">
         <attr name="uButtonName" format="string" />
         <attr name="uBackground" format="color" />
