@@ -40,7 +40,7 @@
                     android:secondaryProgress="100" />
             </com.google.android.material.card.MaterialCardView>
 
-            <com.huyhieu.library.custom_views.UNoteView
+            <com.huyhieu.library.custom_views.MyNoteView
                 android:id="@+id/noteSelfSetupLoan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Khoản vay tự thiết lập" />
 
-            <com.huyhieu.library.custom_views.UNoteView
+            <com.huyhieu.library.custom_views.MyNoteView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
@@ -60,14 +60,14 @@
                 app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
 
-            <com.huyhieu.library.custom_views.UNoteView
+            <com.huyhieu.library.custom_views.MyNoteView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
                 app:noteContent="Mức cho vay sẽ tự động kích hoạt sau khi nhận được tháng lương đầu tiên"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
 
-            <com.huyhieu.library.custom_views.UNoteView
+            <com.huyhieu.library.custom_views.MyNoteView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="14dp"
@@ -77,7 +77,7 @@
                 app:noteSrcIcon="@drawable/ic_home_selected"
                 app:noteTitle="Thời gian kích hoạt hạn mức" />
 
-            <com.huyhieu.library.custom_views.UCheckBox
+            <com.huyhieu.library.custom_views.MyCheckBox
                 android:id="@+id/ckb"
                 android:layout_width="wrap_content"
                 android:layout_marginVertical="14dp"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content" />
 
 
-            <com.huyhieu.library.custom_views.UOptionView
+            <com.huyhieu.library.custom_views.MyOptionView
                 android:id="@+id/optInformation"
                 style="@style/OptSettings"
                 android:layout_width="match_parent"
@@ -95,7 +95,7 @@
                 app:optContent="Thông tin cá nhân"
                 app:optSrcIcon="@drawable/ic_profile_selected" />
 
-            <com.huyhieu.library.custom_views.UOptionView
+            <com.huyhieu.library.custom_views.MyOptionView
                 android:id="@+id/optListOfBeneficiaries"
                 style="@style/OptListOfBeneficiaries"
                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@ Hồ Chí Minh"
                 app:optSrcIcon="@drawable/ic_scan_default"
                 app:optTitle="Địa chỉ nơi ở hiện tại" />
 
-            <com.huyhieu.library.custom_views.UOptionView
+            <com.huyhieu.library.custom_views.MyOptionView
                 android:id="@+id/optChangePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@ Hồ Chí Minh"
                 app:optTitle="Top-up"
                 app:optValue="+25,000,000" />
 
-            <com.huyhieu.library.custom_views.UOptionView
+            <com.huyhieu.library.custom_views.MyOptionView
                 android:id="@+id/optCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,7 +129,7 @@ Hồ Chí Minh"
                 app:optTitle="Thẻ 200k"
                 app:optValueFill="Giảm 6%" />
 
-            <com.huyhieu.library.custom_views.UOptionView
+            <com.huyhieu.library.custom_views.MyOptionView
                 android:id="@+id/optAboutUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

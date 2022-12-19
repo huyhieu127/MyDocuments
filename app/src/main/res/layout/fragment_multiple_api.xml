@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true">
 
-    <com.huyhieu.library.custom_views.ToolBarBaseView
+    <com.huyhieu.library.custom_views.MyToolBarBaseView
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4" />
 
-    <com.huyhieu.library.custom_views.UButtonView
+    <com.huyhieu.library.custom_views.MyButtonView
         android:id="@+id/btnSync"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         app:layout_constraintWidth_percent="0.4"
         app:uButtonName="Sync" />
 
-    <com.huyhieu.library.custom_views.UButtonView
+    <com.huyhieu.library.custom_views.MyButtonView
         android:id="@+id/btnAsync"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

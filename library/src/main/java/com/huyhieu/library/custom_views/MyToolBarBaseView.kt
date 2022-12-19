@@ -6,14 +6,14 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.content.withStyledAttributes
 import com.huyhieu.library.R
-import com.huyhieu.library.databinding.WidgetToolbarBaseBinding
+import com.huyhieu.library.databinding.WidgetMyToolbarBaseBinding
 
-class ToolBarBaseView @JvmOverloads constructor(
+class MyToolBarBaseView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
-    private var vb = WidgetToolbarBaseBinding.inflate(LayoutInflater.from(context), this, true)
+    private var vb = WidgetMyToolbarBaseBinding.inflate(LayoutInflater.from(context), this, true)
     var title: String
         get() {
             return vb.tvTitle.text.toString()
@@ -25,7 +25,7 @@ class ToolBarBaseView @JvmOverloads constructor(
     init {
         context.withStyledAttributes(attrs, R.styleable.ToolBarBaseView) {
             val textTitle = getString(R.styleable.ToolBarBaseView_tb_base_title) ?: ""
-            this@ToolBarBaseView.title = textTitle
+            this@MyToolBarBaseView.title = textTitle
         }
     }
 }

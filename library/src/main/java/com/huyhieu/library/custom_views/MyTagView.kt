@@ -8,15 +8,15 @@ import android.widget.FrameLayout
 import androidx.annotation.ColorInt
 import androidx.core.content.withStyledAttributes
 import com.huyhieu.library.R
-import com.huyhieu.library.databinding.WidgetUTagViewBinding
+import com.huyhieu.library.databinding.WidgetMyTagViewBinding
 import com.huyhieu.library.extensions.color
 
-class UTagView @JvmOverloads constructor(
+class MyTagView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
-    private val binding = WidgetUTagViewBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = WidgetMyTagViewBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         context.withStyledAttributes(attrs, R.styleable.UTagView) {
@@ -35,15 +35,15 @@ class UTagView @JvmOverloads constructor(
         }
     }
 
-    private fun WidgetUTagViewBinding.setIcon(icon: Drawable?) {
+    private fun WidgetMyTagViewBinding.setIcon(icon: Drawable?) {
         imgIcon.setImageDrawable(icon)
     }
 
-    private fun WidgetUTagViewBinding.setTitle(title: String?) {
+    private fun WidgetMyTagViewBinding.setTitle(title: String?) {
         tvTitle.text = title ?: ""
     }
 
-    private fun WidgetUTagViewBinding.setBackgroundTag(@ColorInt colorInt: Int) {
+    private fun WidgetMyTagViewBinding.setBackgroundTag(@ColorInt colorInt: Int) {
         root.setCardBackgroundColor(colorInt)
     }
 }

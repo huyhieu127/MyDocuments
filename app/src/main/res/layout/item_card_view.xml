@@ -55,7 +55,7 @@
             app:layout_constraintStart_toStartOf="@id/tvSurplus"
             app:layout_constraintTop_toBottomOf="@id/tvSurplus" />
 
-        <com.huyhieu.library.custom_views.UTagView
+        <com.huyhieu.library.custom_views.MyTagView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"

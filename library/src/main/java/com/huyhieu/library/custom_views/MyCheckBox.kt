@@ -9,15 +9,15 @@ import androidx.annotation.ColorInt
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.huyhieu.library.R
-import com.huyhieu.library.databinding.WidgetUCheckboxBinding
+import com.huyhieu.library.databinding.WidgetMyCheckboxBinding
 import com.huyhieu.library.extensions.applySpannable
 
-class UCheckBox @JvmOverloads constructor(
+class MyCheckBox @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
-    private val binding = WidgetUCheckboxBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = WidgetMyCheckboxBinding.inflate(LayoutInflater.from(context), this, true)
 
     var checkBoxListener: ((isChecked: Boolean) -> Unit)? = null
     var isChecked: Boolean
@@ -30,7 +30,7 @@ class UCheckBox @JvmOverloads constructor(
     init {
         context.withStyledAttributes(attrs, R.styleable.UCheckBox) {
             val isChecked = getBoolean(R.styleable.UCheckBox_ckbChecked, false)
-            this@UCheckBox.isChecked = isChecked
+            this@MyCheckBox.isChecked = isChecked
             setGestureChecked()
 
             val content = getString(R.styleable.UCheckBox_ckbContent)
@@ -42,7 +42,7 @@ class UCheckBox @JvmOverloads constructor(
     private fun setGestureChecked() {
         with(binding) {
             imgIcon.setOnClickListener {
-                this@UCheckBox.isChecked = (!imgIcon.isSelected)
+                this@MyCheckBox.isChecked = (!imgIcon.isSelected)
             }
         }
 

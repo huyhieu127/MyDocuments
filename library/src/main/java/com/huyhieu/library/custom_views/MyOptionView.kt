@@ -11,18 +11,18 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.huyhieu.library.R
-import com.huyhieu.library.databinding.WidgetUOptionBinding
+import com.huyhieu.library.databinding.WidgetMyOptionBinding
 import com.huyhieu.library.extensions.backgroundTint
 import com.huyhieu.library.extensions.dimen
 import com.huyhieu.library.extensions.tintVector
 
-class UOptionView @JvmOverloads constructor(
+class MyOptionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
     private val binding =
-        WidgetUOptionBinding.inflate(LayoutInflater.from(context), this, true)
+        WidgetMyOptionBinding.inflate(LayoutInflater.from(context), this, true)
 
     init {
         context.withStyledAttributes(attrs, R.styleable.UOptionView) {

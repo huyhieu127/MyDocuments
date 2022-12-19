@@ -7,7 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.huyhieu.library.databinding.ViewMakerBinding
 import com.huyhieu.library.extensions.drawable
 
-class UMarkerView constructor(context: Context) : ConstraintLayout(context) {
+class MyMarkerView constructor(context: Context) : ConstraintLayout(context) {
     private var markerBinding = ViewMakerBinding.inflate(LayoutInflater.from(context), this, true)
 
 

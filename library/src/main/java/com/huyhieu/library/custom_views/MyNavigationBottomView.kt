@@ -18,7 +18,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.huyhieu.library.R
-import com.huyhieu.library.databinding.WidgetUNavigationBottomBinding
+import com.huyhieu.library.databinding.WidgetMyNavigationBottomBinding
 import com.huyhieu.library.extensions.color
 import com.huyhieu.library.utils.setAnimation
 import eightbitlab.com.blurview.BlurAlgorithm
@@ -40,7 +40,7 @@ class MyNavigationBottomView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr), View.OnClickListener {
-    private val vb = WidgetUNavigationBottomBinding.inflate(LayoutInflater.from(context), this, true)
+    private val vb = WidgetMyNavigationBottomBinding.inflate(LayoutInflater.from(context), this, true)
 
     private val durationTransaction = 250L
 
@@ -75,7 +75,7 @@ class MyNavigationBottomView @JvmOverloads constructor(
         }
     }
 
-    private fun WidgetUNavigationBottomBinding.setGesture() {
+    private fun WidgetMyNavigationBottomBinding.setGesture() {
         imgTabScan.setOnClickListener(this@MyNavigationBottomView)
         imgTabHome.setOnClickListener(this@MyNavigationBottomView)
         imgTabProfile.setOnClickListener(this@MyNavigationBottomView)

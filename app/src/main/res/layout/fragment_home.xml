@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <com.huyhieu.library.custom_views.ToolBarBaseView
+    <com.huyhieu.library.custom_views.MyToolBarBaseView
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

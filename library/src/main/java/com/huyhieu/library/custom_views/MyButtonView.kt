@@ -13,19 +13,19 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.huyhieu.library.R
-import com.huyhieu.library.databinding.WidgetUButtonBinding
+import com.huyhieu.library.databinding.WidgetMyButtonBinding
 import com.huyhieu.library.extensions.color
 import com.huyhieu.library.extensions.dimen
 import com.huyhieu.library.extensions.drawable
 import com.huyhieu.library.extensions.typedValue
 
 
-class UButtonView @JvmOverloads constructor(
+class MyButtonView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : CardView(context, attrs, defStyleAttr), DefaultLifecycleObserver {
-    private var binding = WidgetUButtonBinding.inflate(LayoutInflater.from(context), this, true)
+    private var binding = WidgetMyButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
     private var contentType = 0
 
@@ -55,26 +55,26 @@ class UButtonView @JvmOverloads constructor(
     init {
         context.withStyledAttributes(attrs, R.styleable.UButtonView) {
             val isEnable = getBoolean(R.styleable.UButtonView_uEnabled, true)
-            this@UButtonView.isEnabled = isEnable
+            this@MyButtonView.isEnabled = isEnable
 
             val isEnableLoading = getBoolean(R.styleable.UButtonView_uEnableLoading, true)
-            this@UButtonView.isEnableLoading = isEnableLoading
+            this@MyButtonView.isEnableLoading = isEnableLoading
 
             val bgColor =
                 getColor(
                     R.styleable.UButtonView_uBackground,
                     context.color(com.huyhieu.library.R.color.colorPrimary)
                 )
-            this@UButtonView.bgColor = bgColor
+            this@MyButtonView.bgColor = bgColor
 
             val elevation = getDimension(
                 R.styleable.UButtonView_uElevation,
                 context.dimen(R.dimen.btn_elevation)
             )
-            this@UButtonView.elevationValue = elevation
+            this@MyButtonView.elevationValue = elevation
 
             val radius = getDimension(R.styleable.UButtonView_uRadius, 0F)
-            this@UButtonView.radiusValue = radius
+            this@MyButtonView.radiusValue = radius
 
             val name = getString(R.styleable.UButtonView_uButtonName)
             setText(name)

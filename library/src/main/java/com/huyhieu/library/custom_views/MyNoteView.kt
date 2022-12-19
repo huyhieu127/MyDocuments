@@ -13,17 +13,17 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isVisible
 import com.huyhieu.library.R
-import com.huyhieu.library.databinding.WidgetUNoteBinding
+import com.huyhieu.library.databinding.WidgetMyNoteBinding
 import com.huyhieu.library.extensions.backgroundTint
 import com.huyhieu.library.extensions.dimen
 import com.huyhieu.library.extensions.tintVector
 
-class UNoteView @JvmOverloads constructor(
+class MyNoteView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
-    private val binding = WidgetUNoteBinding.inflate(LayoutInflater.from(context), this, true)
+    private val binding = WidgetMyNoteBinding.inflate(LayoutInflater.from(context), this, true)
 
     val tvSeeMore get() = binding.tvSeeMore
 

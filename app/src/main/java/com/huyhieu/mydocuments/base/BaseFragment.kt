@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.custom_views.UButtonView
+import com.huyhieu.library.custom_views.MyButtonView
 import com.huyhieu.library.extensions.hideKeyboard
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
@@ -54,7 +54,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
         v ?: return
         if (currentTime - time > delayClick) {
             time = currentTime
-            if (v is UButtonView) {
+            if (v is MyButtonView) {
                 v.showLoading()
             }
             vb.onClickViewBinding(v, v.id)
