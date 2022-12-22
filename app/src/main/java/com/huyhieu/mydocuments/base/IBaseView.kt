@@ -21,6 +21,26 @@ interface IBaseView<VB : ViewBinding> : View.OnClickListener {
         return method.invoke(null, inflater, container, false) as VB
     }
 
+    @Suppress("UNCHECKED_CAST")
+    fun getViewBinding2(
+        inflater: LayoutInflater,
+        container: ViewGroup? = null,
+        savedInstanceState: Bundle?
+    ): VB {
+        var genericVBClass = javaClass
+        var cls: Class<VB>? = null
+        while (cls !is Class<VB>) {
+            val type = genericVBClass.genericSuperclass as? ParameterizedType
+            cls = type?.actualTypeArguments?.get(0) as? Class<VB>
+            if (cls == null) {
+                genericVBClass = genericVBClass.superclass as Class<IBaseView<VB>>
+            }
+        }
+        val method = cls.getMethod("inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java)
+        @Suppress("UNCHECKED_CAST")
+        return method.invoke(null, inflater, container, false) as VB
+    }
+
     fun VB.handleViewClick(vararg views: View) {
         views.forEach {
             it.setOnClickListener(this@IBaseView)
