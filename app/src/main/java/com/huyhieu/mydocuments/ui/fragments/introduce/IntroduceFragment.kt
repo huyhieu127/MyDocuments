@@ -5,11 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentIntroduceBinding
+import com.huyhieu.mydocuments.navigation.MyNavHost
+import com.huyhieu.mydocuments.navigation.clearBackStack
+import com.huyhieu.mydocuments.navigation.directions.MainDirections
+import com.huyhieu.mydocuments.navigation.navigate
 
 class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
     private val myViewPagerAdapter by lazy { MyViewPagerAdapter() }
@@ -85,13 +90,9 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
     private fun getCurrentItem(): Int = vb.vpIntroduce.currentItem + 1
 
     private fun launchHomeScreen() {
-//        mActivity?.navigate(
-//            MainDirections.toHome,
-//            NavOptions.Builder().apply {
-//                setLaunchSingleTop(true)
-//                setPopUpTo(R.id.action_global_homeFragment, inclusive = false, saveState = false)
-//            }.build()
-//        )
+        navigate(MyNavHost.Main, MainDirections.toNavigation) {
+            clearBackStack(findNavController(), true)
+        }
     }
 
 

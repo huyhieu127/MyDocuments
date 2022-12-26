@@ -8,6 +8,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSplashBinding
 import com.huyhieu.mydocuments.navigation.directions.MainDirections
 import com.huyhieu.mydocuments.navigation.navigate
+import com.huyhieu.mydocuments.shared.appShared
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -21,10 +22,11 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     override fun FragmentSplashBinding.onClickViewBinding(v: View, id: Int) {
         when (id) {
             btnNext.id -> {
-                lifecycleScope.launch {
-                    delay(1000)
-                    navigate(MainDirections.toIntroduce)
-                }
+                if (appShared.isLoadedIntroduce)
+                    lifecycleScope.launch {
+                        delay(1000)
+                        navigate(MainDirections.toIntroduce)
+                    }
             }
         }
     }

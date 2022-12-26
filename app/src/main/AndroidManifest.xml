@@ -20,13 +20,9 @@
         tools:ignore="ProtectedPermissions" /> <!-- Camera -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- Map -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!--Bubble Chat-->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
-    <!--Fingerprint-->
-    <!-- Step 1: Add the following permission to the app  -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Bubble Chat -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- Fingerprint -->
+    <!-- Step 1: Add the following permission to the app -->
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
@@ -37,12 +33,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDocuments">
+
         <activity
             android:name=".ui.activities.bubblechat.BubbleChatActivity"
             android:exported="true" />
+
         <service
-            android:enabled="true"
-            android:name="com.huyhieu.library.commons.bubblechat.BubbleChatService" />
+            android:name="com.huyhieu.library.commons.bubblechat.BubbleChatService"
+            android:enabled="true" />
 
         <activity
             android:name=".ui.activities.ffmmpegkit.FFmpegKitActivity"
@@ -59,9 +57,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Scan barcode -->
+        </activity> <!-- Scan barcode -->
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode" /> <!-- Map SDKs -->

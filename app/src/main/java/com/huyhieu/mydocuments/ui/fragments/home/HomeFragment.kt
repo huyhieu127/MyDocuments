@@ -28,6 +28,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         MenuForm(name = "Motion Card") {
             navigate(MyNavHost.Main, MainDirections.toMotionCard)
         },
+        MenuForm(name = "Canvas chart") {
+            navigate(MyNavHost.Main, MainDirections.toCanvasChart)
+        },
         MenuForm(name = "Mobile FFmpeg Kit") {
             startActivity(Intent(mActivity, FFmpegKitActivity::class.java))
         },

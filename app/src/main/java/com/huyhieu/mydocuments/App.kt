@@ -3,7 +3,7 @@ package com.huyhieu.mydocuments
 import android.net.ConnectivityManager
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.storage.FirebaseStorage
-import com.huyhieu.mydocuments.repository.local.SharedPreferencesManager
+import com.huyhieu.mydocuments.shared.SharedPreferencesManager
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -17,16 +17,13 @@ class App : MultiDexApplication() {
         }
 
         val ins by lazy { getInstance() }
-        lateinit var fireStore: FirebaseStorage
+
         var heightStatusBar = 0
     }
-
-    val sharedPref by lazy { SharedPreferencesManager(this) }
 
     override fun onCreate() {
         super.onCreate()
         instance = this
-        fireStore = FirebaseStorage.getInstance()
     }
 
     fun checkNetwork(): Boolean {
@@ -41,4 +38,9 @@ class App : MultiDexApplication() {
         }
     }
 
+    /**
+     * Use at file [../shared/App.kt]
+     * */
+    val fireStore by lazy { FirebaseStorage.getInstance() }
+    val sharedPref by lazy { SharedPreferencesManager(this) }
 }

@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.setTransparentStatusBar
-import com.huyhieu.mydocuments.App
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
+import com.huyhieu.mydocuments.shared.appFireStore
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     @Inject
     lateinit var mainVM: MainVM
-    var storageRef = App.fireStore.reference
+    var storageRef = appFireStore.reference
 
     override fun initializeBinding() = ActivityMainBinding.inflate(layoutInflater)
 

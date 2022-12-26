@@ -1,30 +1,57 @@
 package com.huyhieu.mydocuments.navigation.directions
 
-import com.huyhieu.mydocuments.ui.fragments.components.GuideFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.components.MotionCardFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.introduce.IntroduceFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.multipleapi.MultipleApiFragmentDirections
 import com.huyhieu.mydocuments.ui.fragments.navigation.NavigationFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.steps.StepsFragmentDirections
 
 object MainDirections {
+
+    val toMultipleAPI
+        get() =
+            NavigationFragmentDirections.actionGlobalMultipleAPIFragment()
+
+    val toSwipe
+        get() =
+            NavigationFragmentDirections.actionGlobalSwipeRefreshFragment()
+
+    val toCalendar
+        get() =
+            NavigationFragmentDirections.actionGlobalCalendarFragment()
+
+    val toBannerInfinite
+        get() =
+            NavigationFragmentDirections.actionGlobalBannerInfiniteFragment()
+
+    val toFingerprint
+        get() =
+            NavigationFragmentDirections.actionGlobalFingerprintFragment()
+
+    val toPinCode
+        get() =
+            NavigationFragmentDirections.actionGlobalPinCodeFragment()
+
+    val toCanvasChart
+        get() =
+            NavigationFragmentDirections.actionGlobalCanvasFragment()
+
+    val toMap
+        get() =
+            NavigationFragmentDirections.actionGlobalMapFragment()
+
+    val toStaticMap
+        get() =
+            NavigationFragmentDirections.actionGlobalStaticMapFragment()
 
     val toNavigation
         get() = NavigationFragmentDirections.actionGlobalNavigationFragment()
 
     val toIntroduce
-        get() = IntroduceFragmentDirections.actionGlobalIntroduceFragment()
+        get() = NavigationFragmentDirections.actionGlobalIntroduceFragment()
 
     val toSteps
-        get() = StepsFragmentDirections.actionGlobalStepsFragment()
+        get() = NavigationFragmentDirections.actionGlobalStepsFragment()
 
     val toGuide
-        get() = GuideFragmentDirections.actionGlobalGuideFragment()
+        get() = NavigationFragmentDirections.actionGlobalGuideFragment()
 
     val toMotionCard
-        get() = MotionCardFragmentDirections.actionGlobalMotionCardFragment()
-
-    val toMultipleAPI
-        get() =
-            MultipleApiFragmentDirections.actionGlobalMultipleAPIFragment()
+        get() = NavigationFragmentDirections.actionGlobalMotionCardFragment()
 }
