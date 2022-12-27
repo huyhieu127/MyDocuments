@@ -10,9 +10,8 @@ class SharedPreferencesManager(private val context: Context?) {
      * */
     private val mySharedPref get() = context?.getSharedPreferences(MY_SHARED_PREF, Context.MODE_PRIVATE)
 
-    private fun SharedPreferences?.setValue(onInsertValue: SharedPreferences.Editor.() -> Unit) {
-        this ?: return
-        with(this.edit()) {
+    private fun insertMySharedPref(onInsertValue: SharedPreferences.Editor.() -> Unit) {
+        mySharedPref?.edit()?.apply {
             onInsertValue()
             apply()
         }
@@ -35,7 +34,7 @@ class SharedPreferencesManager(private val context: Context?) {
             return mySharedPref?.getBoolean(IS_LOADED_INTRODUCE, false) ?: false
         }
         set(value) {
-            mySharedPref?.setValue {
+            insertMySharedPref {
                 putBoolean(IS_LOADED_INTRODUCE, value)
             }
         }
