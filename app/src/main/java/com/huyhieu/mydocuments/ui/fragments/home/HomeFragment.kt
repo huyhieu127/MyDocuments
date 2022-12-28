@@ -25,6 +25,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     lateinit var viewModel: HomeVM
     private val adapterMenu by lazy { MenuAdapter() }
     private var lstMenus = mutableListOf(
+        MenuForm(name = "Recall API") {
+            navigate(MyNavHost.Main, MainDirections.toRecallAPI)
+        },
         MenuForm(name = "Motion Card") {
             navigate(MyNavHost.Main, MainDirections.toMotionCard)
         },

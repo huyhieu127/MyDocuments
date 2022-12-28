@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.fragments.multipleapi
+package com.huyhieu.mydocuments.ui.fragments.network.multipleapi
 
 import androidx.lifecycle.MutableLiveData
 import com.huyhieu.mydocuments.base.BaseVM
@@ -20,21 +20,21 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
                     Pair("limit", 1000),
                     Pair("offset", offset),
                 )
-                apiService.getPokemons(params)
+                pokeApiService.getPokemons(params)
             },
             Pair(APIKey.API_2) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 10),
                     Pair("offset", offset + 1),
                 )
-                apiService.getPokemons(params)
+                pokeApiService.getPokemons(params)
             },
             Pair(APIKey.API_3) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 500),
                     Pair("offset", offset + 2),
                 )
-                apiService.getPokemons(params)
+                pokeApiService.getPokemons(params)
             })
 
     /**
@@ -46,21 +46,21 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
                     Pair("limit", 1000),
                     Pair("offset", offset),
                 )
-                apiService.getPokemonFailed(params)
+                pokeApiService.getPokemonFailed(params)
             },
             Pair(APIKey.API_2) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 10),
                     Pair("offset", offset + 1),
                 )
-                apiService.getPokemons(params)
+                pokeApiService.getPokemons(params)
             },
             Pair(APIKey.API_3) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 500),
                     Pair("offset", offset + 2),
                 )
-                apiService.getPokemons(params)
+                pokeApiService.getPokemons(params)
             },
             tag = "async"
         ) {
@@ -75,21 +75,21 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
                     Pair("limit", 1000),
                     Pair("offset", offset),
                 )
-                apiService.getPokemonFailed(params)
+                pokeApiService.getPokemonFailed(params)
             },
             Pair(APIKey.API_2) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 10),
                     Pair("offset", offset + 1),
                 )
-                apiService.getPokemons(params)
+                pokeApiService.getPokemons(params)
             },
             Pair(APIKey.API_3) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 500),
                     Pair("offset", offset + 2),
                 )
-                apiService.getPokemons(params)
+                pokeApiService.getPokemons(params)
             },
             tag = "sync"
         ) {

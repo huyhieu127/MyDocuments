@@ -16,17 +16,25 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     override fun FragmentSplashBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(true)
-        handleViewClick(btnNext)
+        if (appShared.isLoadedIntroduce) {
+            navigate(MainDirections.toNavigation)
+        } else {
+            handleViewClick(btnNext)
+        }
     }
 
     override fun FragmentSplashBinding.onClickViewBinding(v: View, id: Int) {
         when (id) {
             btnNext.id -> {
-                if (appShared.isLoadedIntroduce)
+                if (!appShared.isLoadedIntroduce) {
                     lifecycleScope.launch {
                         delay(1000)
+                        appShared.isLoadedIntroduce = true
                         navigate(MainDirections.toIntroduce)
                     }
+                } else {
+                    navigate(MainDirections.toNavigation)
+                }
             }
         }
     }

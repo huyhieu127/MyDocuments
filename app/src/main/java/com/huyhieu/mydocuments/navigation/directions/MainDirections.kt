@@ -54,4 +54,7 @@ object MainDirections {
 
     val toMotionCard
         get() = NavigationFragmentDirections.actionGlobalMotionCardFragment()
+
+    val toRecallAPI
+        get() = NavigationFragmentDirections.actionGlobalRecallAPIFragment()
 }

@@ -25,10 +25,12 @@ android {
 
     buildTypes {
         debug{
-            buildConfigField "String", "SERVER_URL", '"https://pokeapi.co/api/v2/"'
+            buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
+            buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
         }
         release {
-            buildConfigField "String", "SERVER_URL", '"https://pokeapi.co/api/v2/"'
+            buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
+            buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

@@ -4,17 +4,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.huyhieu.library.utils.logDebug
+import com.huyhieu.library.utils.logError
 import com.huyhieu.mydocuments.repository.FlowMapper
 import com.huyhieu.mydocuments.repository.LiveDataMapper
-import com.huyhieu.mydocuments.repository.remote.retrofit.APIService
-import com.huyhieu.mydocuments.repository.remote.retrofit.ResponseData
-import com.huyhieu.mydocuments.repository.remote.retrofit.ResponsePokeAPI
-import com.huyhieu.mydocuments.repository.remote.retrofit.ResultAPI
+import com.huyhieu.mydocuments.repository.remote.retrofit.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
+import javax.inject.Named
 
 open class BaseVM : ViewModel() {
     @Inject
@@ -24,7 +23,12 @@ open class BaseVM : ViewModel() {
     lateinit var mapperFlow: FlowMapper
 
     @Inject
-    lateinit var apiService: APIService
+    @Named("PokeAPI")
+    lateinit var pokeApiService: PokeAPIService
+
+    @Inject
+    @Named("ReqResAPI")
+    lateinit var reqResApiService: ReqResAPIService
 
     var loadingState: MutableLiveData<LoadingState<*>> = MutableLiveData()
 
@@ -34,6 +38,57 @@ open class BaseVM : ViewModel() {
     ) {
         viewModelScope.launch {
             stateFlow.collectLatest { onResult?.invoke(it) }
+        }
+    }
+
+    fun <T> mapperFlow(
+        api: suspend () -> Response<ResponsePokeAPI<T>>,
+        onResult: ((ResponsePokeAPI<T>?) -> Unit)? = null
+    ) {
+        //Get result form Data Source
+        viewModelScope.launch {
+            flow {
+                val resultApi = api.invoke()
+                if (resultApi.isSuccessful && resultApi.body() != null) {
+                    emit(resultApi.body())
+                } else {
+                    emit(null)
+                }
+            }.flowOn(Dispatchers.IO).onStart {
+                loadingState.postValue(LoadingState<T>(isLoading = true, data = null))
+            }.catch {
+                logDebug(it.message)
+            }.flowOn(Dispatchers.IO).onCompletion {
+                loadingState.postValue(LoadingState(isLoading = false, data = it))
+            }.onEach {
+                onResult?.invoke(it)
+            }
+        }
+    }
+
+    fun <T> mapperFlowSimple(
+        api: suspend () -> Response<T>,
+        onResult: ((T?) -> Unit)? = null
+    ) {
+        //Get result form Data Source
+        viewModelScope.launch {
+            flow {
+                val resultApi = api.invoke()
+                logDebug("mapperFlowSimple: ${resultApi.raw()}")
+                if (resultApi.isSuccessful && resultApi.body() != null) {
+                    emit(resultApi.body())
+                } else {
+                    emit(null)
+                }
+            }.onStart {
+                loadingState.postValue(LoadingState<T>(isLoading = true, data = null))
+            }.catch {
+                logError("mapperFlowSimple: ${it.message}")
+            }.flowOn(Dispatchers.IO).onCompletion {
+                loadingState.postValue(LoadingState(isLoading = false, data = it))
+            }.collectLatest {
+                onResult?.invoke(it)
+            }
         }
     }
 

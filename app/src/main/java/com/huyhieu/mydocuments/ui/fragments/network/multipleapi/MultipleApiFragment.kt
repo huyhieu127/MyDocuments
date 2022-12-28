@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.ui.fragments.multipleapi
+package com.huyhieu.mydocuments.ui.fragments.network.multipleapi
 
 import android.os.Bundle
 import android.view.View
