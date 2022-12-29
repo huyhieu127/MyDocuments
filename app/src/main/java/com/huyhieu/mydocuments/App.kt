@@ -3,6 +3,7 @@ package com.huyhieu.mydocuments
 import android.net.ConnectivityManager
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.storage.FirebaseStorage
+import com.huyhieu.mydocuments.repository.remote.NetworkConfigs
 import com.huyhieu.mydocuments.shared.SharedPreferencesManager
 import dagger.hilt.android.HiltAndroidApp
 
@@ -24,6 +25,7 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        NetworkConfigs.requestNetwork()
     }
 
     fun checkNetwork(): Boolean {

@@ -16,6 +16,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 open class BaseVM : ViewModel() {
+
     @Inject
     lateinit var mapper: LiveDataMapper
 

@@ -8,6 +8,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentRecallApiBinding
+import com.huyhieu.mydocuments.repository.remote.NetworkConfigs
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -18,6 +19,7 @@ class RecallAPIFragment : BaseFragment<FragmentRecallApiBinding>() {
     lateinit var recallAPIVM: RecallAPIVM
 
     override fun FragmentRecallApiBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+        val stateInternet = NetworkConfigs.getState()
         recallAPIVM.fetchUser()
     }
 
