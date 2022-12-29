@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.fragments.components.CountdownFragment">
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/prgCountdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progress="90"
+        app:indicatorColor="@color/blue"
+        app:indicatorDirectionCircular="counterclockwise"
+        app:indicatorSize="@dimen/_200sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        app:trackColor="@color/colorPrimaryLight"
+        app:trackCornerRadius="@dimen/_6sdp"
+        app:trackThickness="@dimen/_12sdp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_14sdp"
+        android:text="120"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_70ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/prgCountdown"
+        app:layout_constraintEnd_toEndOf="@id/prgCountdown"
+        app:layout_constraintStart_toStartOf="@id/prgCountdown"
+        app:layout_constraintTop_toTopOf="@id/prgCountdown"
+        app:layout_constraintVertical_bias="0.3" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTextSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="giây"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        android:translationY="@dimen/_minus14sdp"
+        app:layout_constraintEnd_toEndOf="@id/prgCountdown"
+        app:layout_constraintStart_toStartOf="@id/prgCountdown"
+        app:layout_constraintTop_toBottomOf="@id/tvTimer"
+        app:layout_constraintVertical_bias="0.3" />
+
+
+    <com.huyhieu.library.custom_views.MyProgressBarCircleView
+        android:id="@+id/prgMyCountdown"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTimer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_14sdp"
+        android:text="120"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_70ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/prgMyCountdown"
+        app:layout_constraintEnd_toEndOf="@id/prgMyCountdown"
+        app:layout_constraintStart_toStartOf="@id/prgMyCountdown"
+        app:layout_constraintTop_toTopOf="@id/prgMyCountdown"
+        app:layout_constraintVertical_bias="0.3" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTextSecond2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="giây"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        android:translationY="@dimen/_minus14sdp"
+        app:layout_constraintEnd_toEndOf="@id/prgMyCountdown"
+        app:layout_constraintStart_toStartOf="@id/prgMyCountdown"
+        app:layout_constraintTop_toBottomOf="@id/tvTimer2"
+        app:layout_constraintVertical_bias="0.3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

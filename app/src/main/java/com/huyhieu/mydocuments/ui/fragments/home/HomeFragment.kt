@@ -28,8 +28,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         MenuForm(name = "Recall API") {
             navigate(MyNavHost.Main, MainDirections.toRecallAPI)
         },
-        MenuForm(name = "Motion Card") {
-            navigate(MyNavHost.Main, MainDirections.toMotionCard)
+        MenuForm(name = "Countdown") {
+            navigate(MyNavHost.Main, MainDirections.toCountdown)
         },
         MenuForm(name = "Canvas chart") {
             navigate(MyNavHost.Main, MainDirections.toCanvasChart)

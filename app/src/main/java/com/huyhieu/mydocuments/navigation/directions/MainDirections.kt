@@ -40,6 +40,10 @@ object MainDirections {
         get() =
             NavigationFragmentDirections.actionGlobalStaticMapFragment()
 
+    val toCountdown
+        get() =
+            NavigationFragmentDirections.actionGlobalCountdownFragment()
+
     val toNavigation
         get() = NavigationFragmentDirections.actionGlobalNavigationFragment()
 

@@ -51,7 +51,7 @@
             app:destination="@id/canvasFragment" />
         <action
             android:id="@+id/action_navigationFragment_to_analogClockFragment"
-            app:destination="@id/analogClockFragment" />
+            app:destination="@id/countdownFragment" />
         <action
             android:id="@+id/action_navigationFragment_to_intentSystemFragment"
             app:destination="@id/intentSystemFragment" />
@@ -199,13 +199,13 @@
         app:destination="@id/fingerprintFragment" />
 
     <fragment
-        android:id="@+id/analogClockFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.AnalogClockFragment"
-        android:label="fragment_analog_clock"
-        tools:layout="@layout/fragment_analog_clock" />
+        android:id="@+id/countdownFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.CountdownFragment"
+        android:label="fragment_countdown"
+        tools:layout="@layout/fragment_countdown" />
     <action
-        android:id="@+id/action_global_analogClockFragment"
-        app:destination="@id/analogClockFragment" />
+        android:id="@+id/action_global_countdownFragment"
+        app:destination="@id/countdownFragment" />
 
     <fragment
         android:id="@+id/canvasFragment"
