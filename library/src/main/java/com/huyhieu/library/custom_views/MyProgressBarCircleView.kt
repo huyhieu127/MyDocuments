@@ -16,6 +16,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.sin
 
 
 class MyProgressBarCircleView @JvmOverloads constructor(
@@ -26,6 +28,7 @@ class MyProgressBarCircleView @JvmOverloads constructor(
 
     var maxProgressValue: Float = 120F
     var countdown: ((second: Int) -> Unit)? = null
+    var duration: Long = 100L
 
     private var valueCurrent = 0F
     private var thickness = 0
@@ -34,10 +37,22 @@ class MyProgressBarCircleView @JvmOverloads constructor(
     private var paintSecondary: Paint? = null
 
     private val rect by lazy {
-        val space = thickness / 2F
+        val space = thickness.toFloat()
         RectF(0F + space, 0F + space, (width - space), (height - space))
     }
 
+    //Radius start - end point
+    private val centerX by lazy { width / 2F }
+    private val centerY by lazy { height / 2F }
+    private val radius by lazy {
+        if (width > height) {
+            (height / 2F) - thickness
+        } else {
+            (width / 2F) - thickness
+        }
+    }
+    private var paintStartPoint: Paint? = null
+    private var paintEndPoint: Paint? = null
 
     init {
         thickness = context.dimenPx(com.intuit.sdp.R.dimen._12sdp)
@@ -46,7 +61,7 @@ class MyProgressBarCircleView @JvmOverloads constructor(
         paintPrimary?.apply {
             isDither = true
             style = Paint.Style.STROKE
-            color = context.color(R.color.blue)
+            color = context.color(R.color.colorPrimaryMiddle)
             strokeWidth = thickness.toFloat()
             isAntiAlias = true
         }
@@ -58,6 +73,23 @@ class MyProgressBarCircleView @JvmOverloads constructor(
             color = context.color(R.color.colorPrimaryLight)
             strokeWidth = thickness.toFloat()
             isAntiAlias = true
+        }
+
+        paintStartPoint = Paint()
+        paintStartPoint?.apply {
+            isDither = true
+            style = Paint.Style.FILL
+            color = context.color(R.color.colorPrimaryMiddle)
+            isAntiAlias = true
+        }
+
+        paintEndPoint = Paint()
+        paintEndPoint?.apply {
+            isDither = true
+            style = Paint.Style.FILL
+            color = context.color(R.color.colorPrimary)
+            isAntiAlias = true
+            setShadowLayer(5F, 0F, 4F, context.color(R.color.black_10))
         }
 
         runAnimation()
@@ -73,6 +105,7 @@ class MyProgressBarCircleView @JvmOverloads constructor(
 
     fun setColorPrimary(@ColorInt color: Int) {
         this.paintPrimary?.color = color
+        this.paintStartPoint?.color = color
         invalidate()
     }
 
@@ -81,12 +114,17 @@ class MyProgressBarCircleView @JvmOverloads constructor(
         invalidate()
     }
 
+    fun setColorPointEnd(@ColorInt color: Int) {
+        this.paintEndPoint?.color = color
+        invalidate()
+    }
+
     private fun countdownTimer() {
         CoroutineScope(Dispatchers.Main).launch {
             repeat(maxProgressValue.toInt()) {
                 val secondDisplay = abs(it - maxProgressValue.toInt())
                 countdown?.invoke(secondDisplay)
-                delay(1000L)
+                delay(duration)
             }
             countdown?.invoke(0)
         }
@@ -94,13 +132,22 @@ class MyProgressBarCircleView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.drawArc(rect, 270f, 360f, false, paintSecondary!!)
-        canvas.drawArc(rect, 270f, -(360 * (valueCurrent / maxProgressValue)), false, paintPrimary!!)
+        val angle = -(360 * (valueCurrent / maxProgressValue))
+        canvas.drawArc(rect, 270F, 360F, false, paintSecondary!!)
+        canvas.drawArc(rect, 270F, angle, false, paintPrimary!!)
+
+        val startX: Float = cos(Math.toRadians(270.0)).toFloat() * radius + centerX
+        val startY: Float = sin(Math.toRadians(270.0)).toFloat() * radius + centerY
+        val endX: Float = cos(Math.toRadians((270.0 + angle))).toFloat() * radius + centerX
+        val endY: Float = sin(Math.toRadians((270.0 + angle))).toFloat() * radius + centerY
+
+        canvas.drawCircle(startX, startY, thickness / 2F, paintStartPoint!!);
+        canvas.drawCircle(endX, endY, thickness / 1.25F, paintEndPoint!!)
     }
 
     private fun runAnimation() {
         val animator = ValueAnimator.ofFloat(maxProgressValue, 0F)
-        animator.duration = maxProgressValue.toLong() * 1000L
+        animator.duration = maxProgressValue.toLong() * duration
         animator.addUpdateListener {
             val value = it.animatedValue as Float
             valueCurrent = value

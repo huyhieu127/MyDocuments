@@ -20,6 +20,7 @@
     <color name="colorPrimaryLight">#DDF4FF</color>
 
     <color name="colorSecondary">#673AB7</color>
+    <color name="colorSecondaryMiddle">#AB82F3</color>
     <color name="colorSecondaryLight">#E2D3FB</color>
     <color name="colorSecondary_95">#F2673AB7</color>
 
@@ -32,6 +33,6 @@
     <color name="colorGreenLight">#E9FFF3</color>
 
     <color name="colorRedAlert">#FF2E00</color>
-    <color name="colorRedAlertMiddle">#FFEAE6</color>
+    <color name="colorRedAlertMiddle">#FF694D</color>
     <color name="colorRedAlertLight">#FFF5F3</color>
 </resources>

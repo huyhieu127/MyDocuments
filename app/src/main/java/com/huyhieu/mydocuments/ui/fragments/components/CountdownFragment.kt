@@ -54,24 +54,34 @@ class CountdownFragment : BaseFragment<FragmentCountdownBinding>() {
                 tvTimer2.text = secondDisplay.toString()
                 // prgCountdown.progress = (process.roundToInt())
                 if (secondDisplay == 90) {
-                    prgMyCountdown.setColorPrimary(Color.RED)
-                    tvTimer2.setTextColor(Color.RED)
-                    tvTextSecond2.setTextColor(Color.RED)
+                    tvTimer2.setTextColor(context.color(com.huyhieu.library.R.color.colorRedAlert))
+                    tvTextSecond2.setTextColor(context.color(com.huyhieu.library.R.color.colorRedAlert))
+
+                    prgMyCountdown.setColorPointEnd(context.color(com.huyhieu.library.R.color.colorRedAlert))
+                    prgMyCountdown.setColorPrimary(context.color(com.huyhieu.library.R.color.colorRedAlertMiddle))
+                    prgMyCountdown.setColorSecondary(context.color(com.huyhieu.library.R.color.colorRedAlertLight))
                 }
                 if (secondDisplay == 60) {
-                    prgMyCountdown.setColorPrimary(Color.YELLOW)
-                    tvTimer2.setTextColor(Color.YELLOW)
-                    tvTextSecond2.setTextColor(Color.YELLOW)
+                    tvTimer2.setTextColor(context.color(com.huyhieu.library.R.color.colorSecondary))
+                    tvTextSecond2.setTextColor(context.color(com.huyhieu.library.R.color.colorSecondary))
+
+                    prgMyCountdown.setColorPointEnd(context.color(com.huyhieu.library.R.color.colorSecondary))
+                    prgMyCountdown.setColorPrimary(context.color(com.huyhieu.library.R.color.colorSecondaryMiddle))
+                    prgMyCountdown.setColorSecondary(context.color(com.huyhieu.library.R.color.colorSecondaryLight))
                 }
                 if (secondDisplay == 30) {
-                    prgMyCountdown.setColorPrimary(Color.GREEN)
-                    tvTimer2.setTextColor(Color.GREEN)
-                    tvTextSecond2.setTextColor(Color.GREEN)
+                    tvTimer2.setTextColor(context.color(com.huyhieu.library.R.color.colorGreenMint))
+                    tvTextSecond2.setTextColor(context.color(com.huyhieu.library.R.color.colorGreenMint))
+
+                    prgMyCountdown.setColorPointEnd(context.color(com.huyhieu.library.R.color.colorGreenMint))
+                    prgMyCountdown.setColorPrimary(context.color(com.huyhieu.library.R.color.colorGreenMiddle))
+                    prgMyCountdown.setColorSecondary(context.color(com.huyhieu.library.R.color.colorGreenLight))
                 }
                 if (secondDisplay == 0) {
                     tvTimer2.text = "0"
-                    tvTimer2.setTextColor(context.color(com.huyhieu.library.R.color.colorPrimaryLight))
-                    tvTextSecond2.setTextColor(context.color(com.huyhieu.library.R.color.colorPrimaryLight))
+                    /*tvTimer2.setTextColor(context.color(com.huyhieu.library.R.color.colorGreenLight))
+                    tvTextSecond2.setTextColor(context.color(com.huyhieu.library.R.color.colorGreenLight))
+                    prgMyCountdown.setColorPointEnd(context.color(com.huyhieu.library.R.color.colorGreenLight))*/
                 }
             }
         }
