@@ -46,32 +46,34 @@ class CountdownFragment : BaseFragment<FragmentCountdownBinding>() {
             }
             prgCountdown.setProgressCompat(0, true)
             tvTimer.text = "0"
+            tvTimer.setTextColor(context.color(com.huyhieu.library.R.color.colorPrimaryLight))
+            tvTextSecond.setTextColor(context.color(com.huyhieu.library.R.color.colorPrimaryLight))
         }
-        val timerCountdown2 = 120
         lifecycleScope.launchWhenResumed {
-            repeat(timerCountdown) {
-                val secondDisplay = abs(it - timerCountdown2)
+            prgMyCountdown.countdown = { secondDisplay ->
                 tvTimer2.text = secondDisplay.toString()
                 // prgCountdown.progress = (process.roundToInt())
                 if (secondDisplay == 90) {
-                    //prgMyCountdown.setIndicatorColor(Color.RED)
+                    prgMyCountdown.setColorPrimary(Color.RED)
                     tvTimer2.setTextColor(Color.RED)
                     tvTextSecond2.setTextColor(Color.RED)
                 }
                 if (secondDisplay == 60) {
-                    //prgMyCountdown.setIndicatorColor(Color.YELLOW)
+                    prgMyCountdown.setColorPrimary(Color.YELLOW)
                     tvTimer2.setTextColor(Color.YELLOW)
                     tvTextSecond2.setTextColor(Color.YELLOW)
                 }
                 if (secondDisplay == 30) {
-                    //prgMyCountdown.setIndicatorColor(Color.GREEN)
+                    prgMyCountdown.setColorPrimary(Color.GREEN)
                     tvTimer2.setTextColor(Color.GREEN)
                     tvTextSecond2.setTextColor(Color.GREEN)
                 }
-                delay(1000L)
+                if (secondDisplay == 0) {
+                    tvTimer2.text = "0"
+                    tvTimer2.setTextColor(context.color(com.huyhieu.library.R.color.colorPrimaryLight))
+                    tvTextSecond2.setTextColor(context.color(com.huyhieu.library.R.color.colorPrimaryLight))
+                }
             }
-            tvTimer.text = "0"
-            tvTimer2.setTextColor(context.color(com.huyhieu.library.R.color.colorPrimary))
         }
     }
 }
