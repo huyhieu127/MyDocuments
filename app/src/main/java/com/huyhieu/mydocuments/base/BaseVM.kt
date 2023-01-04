@@ -103,23 +103,24 @@ open class BaseVM : ViewModel() {
             val mutableMapAPI = mutableMapOf<String, ResponsePokeAPI<T>?>()
             channelFlow {
                 apis.forEachIndexed { idx, api ->
-                    launch {
-                        flow {
-                            val resultApi = api.second.invoke()
-                            if (resultApi.isSuccessful && resultApi.body() != null) {
-                                emit(Pair(api.first, resultApi.body()))
-                            } else {
-                                emit(Pair(api.first, null))
-                            }
-                        }.flowOn(Dispatchers.IO).collectLatest {
-                            send(it)
+                    flow {
+                        val resultApi = api.second.invoke()
+                        if (resultApi.isSuccessful && resultApi.body() != null) {
+                            emit(Pair(api.first, resultApi.body()))
+                        } else {
+                            emit(Pair(api.first, null))
                         }
+                    }.catch {
+                        send(Pair(api.first, null))
+                        logError("API flow: ${api.first}: ${it.message}")
+                    }.flowOn(Dispatchers.IO).collectLatest {
+                        send(it)
                     }
                 }
             }.onStart {
                 loadingState.postValue(LoadingState<T>(isLoading = true, data = null, tag = tag))
             }.catch {
-                logDebug(it.message)
+                logError(it.message)
             }.flowOn(Dispatchers.IO).onCompletion {
                 onResult?.invoke(mutableMapAPI)
                 loadingState.postValue(LoadingState(isLoading = false, data = it, tag = tag))
