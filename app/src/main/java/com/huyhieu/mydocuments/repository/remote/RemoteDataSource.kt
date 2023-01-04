@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.repository.remote
 
 import com.huyhieu.library.utils.logError
-import com.huyhieu.mydocuments.App
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResponseData
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultAPI
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI
@@ -20,7 +19,7 @@ open class RemoteDataSource {
 
     protected suspend fun <T> getResultAPICore(remoteAPI: suspend () -> Response<ResponseData<T>>): ResultAPI<ResponseData<T>> {
         try {
-            if (App.getInstance().checkNetwork()) {
+            if (NetworkUtils.isAvailable) {
                 val response = remoteAPI()
                 if (response.isSuccessful) {
                     val body = response.body()
@@ -58,7 +57,7 @@ open class RemoteDataSource {
 
     protected suspend fun <T> getPokeAPI(remoteAPI: suspend () -> Response<T>): ResultPokeAPI<T> {
         try {
-            if (App.getInstance().checkNetwork()) {
+            if (NetworkUtils.isAvailable) {
                 val response = remoteAPI()
                 if (response.isSuccessful) {
                     val body = response.body()

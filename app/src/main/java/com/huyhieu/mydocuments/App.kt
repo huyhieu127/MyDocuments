@@ -1,9 +1,8 @@
 package com.huyhieu.mydocuments
 
-import android.net.ConnectivityManager
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.storage.FirebaseStorage
-import com.huyhieu.mydocuments.repository.remote.NetworkConfigs
+import com.huyhieu.mydocuments.repository.remote.NetworkUtils
 import com.huyhieu.mydocuments.shared.SharedPreferencesManager
 import dagger.hilt.android.HiltAndroidApp
 
@@ -25,19 +24,7 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        NetworkConfigs.requestNetwork()
-    }
-
-    fun checkNetwork(): Boolean {
-        val connMgr = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-        return run {
-            val is3g = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)
-                ?.isConnectedOrConnecting
-            //For WiFi Check
-            val isWifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
-                ?.isConnectedOrConnecting
-            is3g ?: false || isWifi ?: false
-        }
+        NetworkUtils.requestNetwork()
     }
 
     /**

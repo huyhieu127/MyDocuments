@@ -7,7 +7,9 @@ import android.net.NetworkRequest
 import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.App
 
-object NetworkConfigs {
+object NetworkUtils {
+
+    var isAvailable = false
 
     private val networkRequest = NetworkRequest.Builder()
         .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
@@ -19,6 +21,7 @@ object NetworkConfigs {
         // network is available for use
         override fun onAvailable(network: Network) {
             super.onAvailable(network)
+            isAvailable = true
             logDebug("NetworkConfigs - onAvailable")
         }
 
@@ -51,6 +54,7 @@ object NetworkConfigs {
         // lost network connection
         override fun onLost(network: Network) {
             super.onLost(network)
+            isAvailable = false
             logDebug("NetworkConfigs - onLost")
         }
     }
@@ -61,5 +65,7 @@ object NetworkConfigs {
         connectivityManager.requestNetwork(networkRequest, networkCallback)
     }
 
-    fun getState() = connectivityManager.activeNetwork
+    fun getState() {
+        logDebug("${connectivityManager.isDefaultNetworkActive} - ${connectivityManager.isActiveNetworkMetered}")
+    }
 }

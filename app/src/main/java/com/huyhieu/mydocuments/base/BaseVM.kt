@@ -7,6 +7,7 @@ import com.huyhieu.library.utils.logDebug
 import com.huyhieu.library.utils.logError
 import com.huyhieu.mydocuments.repository.FlowMapper
 import com.huyhieu.mydocuments.repository.LiveDataMapper
+import com.huyhieu.mydocuments.repository.remote.NetworkUtils
 import com.huyhieu.mydocuments.repository.remote.retrofit.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -74,17 +75,20 @@ open class BaseVM : ViewModel() {
         //Get result form Data Source
         viewModelScope.launch {
             flow {
-                val resultApi = api.invoke()
-                logDebug("mapperFlowSimple: ${resultApi.raw()}")
-                if (resultApi.isSuccessful && resultApi.body() != null) {
-                    emit(resultApi.body())
+                if (NetworkUtils.isAvailable) {
+                    val resultApi = api.invoke()
+                    if (resultApi.isSuccessful && resultApi.body() != null) {
+                        emit(resultApi.body())
+                    } else {
+                        emit(null)
+                    }
                 } else {
-                    emit(null)
+                    //emit(null)
                 }
             }.onStart {
                 loadingState.postValue(LoadingState<T>(isLoading = true, data = null))
             }.catch {
-                logError("mapperFlowSimple: ${it.message}")
+                logError("mapperFlowSimple: $it")
             }.flowOn(Dispatchers.IO).onCompletion {
                 loadingState.postValue(LoadingState(isLoading = false, data = it))
             }.collectLatest {
