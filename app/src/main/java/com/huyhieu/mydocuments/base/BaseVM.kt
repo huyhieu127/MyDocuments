@@ -109,16 +109,21 @@ open class BaseVM : ViewModel() {
                 apis.forEachIndexed { idx, api ->
                     launch {
                         flow {
-                            val resultApi = api.second.invoke()
-                            if (resultApi.isSuccessful && resultApi.body() != null) {
-                                emit(Pair(api.first, resultApi.body()))
-                            } else {
+                            try {
+                                val resultApi = api.second.invoke()
+                                if (resultApi.isSuccessful && resultApi.body() != null) {
+                                    emit(Pair(api.first, resultApi.body()))
+                                } else {
+                                    emit(Pair(api.first, null))
+                                }
+                            } catch (ex: Exception) {
+                                logError("API - ${api.first}: \"ERROR\"")
                                 emit(Pair(api.first, null))
                             }
-                        }.catch {
+                        }/*.catch {
                             send(Pair(api.first, null))
-                            logError("API flow: ${api.first}: ${it.message}")
-                        }.flowOn(Dispatchers.IO).collectLatest {
+                            logError("API - ${api.first}: ${it.message}")
+                        }*/.flowOn(Dispatchers.IO).collectLatest {
                             send(it)
                         }
                     }

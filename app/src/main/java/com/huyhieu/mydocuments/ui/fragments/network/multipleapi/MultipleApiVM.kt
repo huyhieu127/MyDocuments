@@ -46,7 +46,7 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
                     Pair("limit", 1000),
                     Pair("offset", offset),
                 )
-                pokeApiService.getPokemonFailed(params)
+                pokeApiService.getPokemons(params)
             },
             Pair(APIKey.API_2) {
                 val params = mutableMapOf<String, Any>(
