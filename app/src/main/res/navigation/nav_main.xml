@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/canvasFragment">
+    app:startDestination="@id/radarChartFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -233,5 +233,10 @@
     <action
         android:id="@+id/action_global_recallAPIFragment"
         app:destination="@id/recallAPIFragment" />
+    <fragment
+        android:id="@+id/radarChartFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.chart.RadarChartFragment"
+        android:label="fragment_radar_chart"
+        tools:layout="@layout/fragment_radar_chart" />
 
 </navigation>
