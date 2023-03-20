@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/canvasFragment">
+    app:startDestination="@id/radarChartFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -238,5 +238,10 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.components.rcv_swipe.NotificationSwipeFragment"
         android:label="fragment_notification_swipe"
         tools:layout="@layout/fragment_notification_swipe" />
+    <fragment
+        android:id="@+id/radarChartFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.chart.RadarChartFragment"
+        android:label="fragment_radar_chart"
+        tools:layout="@layout/fragment_radar_chart" />
 
 </navigation>
