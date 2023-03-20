@@ -233,5 +233,10 @@
     <action
         android:id="@+id/action_global_recallAPIFragment"
         app:destination="@id/recallAPIFragment" />
+    <fragment
+        android:id="@+id/notificationSwipeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.rcv_swipe.NotificationSwipeFragment"
+        android:label="fragment_notification_swipe"
+        tools:layout="@layout/fragment_notification_swipe" />
 
 </navigation>

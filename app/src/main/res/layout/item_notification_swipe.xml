@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="0.5dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutContentBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|end">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorRedAlertMiddle"
+            android:gravity="center"
+            android:text="Xóa"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="match_parent"
+            android:background="@color/colorGreenMint"
+            android:gravity="center"
+            android:text="Đã xem"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutContentFront"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BA000000"
+        android:gravity="center"
+        android:padding="@dimen/_8sdp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_25sdp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/colorGrayscaleDisable"
+            app:strokeWidth="1dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/img_pj" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ôi bạn ơi! Trúng số rồi bạn ơi!"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="Cơ hội đổi đời của bạn đến rồi, còn chần chờ gì nữa! Khám phá ngay!"
+                android:textColor="#E1E1E1"
+                android:textSize="@dimen/_12ssp" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>
