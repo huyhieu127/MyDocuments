@@ -1,10 +1,8 @@
 package com.huyhieu.mydocuments.ui.fragments.chart
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.*
+import android.graphics.Path.FillType
 import android.util.AttributeSet
 import android.view.View
 import com.huyhieu.library.R
@@ -12,6 +10,7 @@ import com.huyhieu.library.extensions.color
 import com.huyhieu.library.utils.logError
 import kotlin.math.cos
 import kotlin.math.sin
+
 
 class RadarChartView @JvmOverloads constructor(
     context: Context,
@@ -32,16 +31,16 @@ class RadarChartView @JvmOverloads constructor(
     private val spaceRow get() = radius / numberRow
 
     private val paintAxis = Paint().apply {
-        color = Color.WHITE
+        color = Color.DKGRAY
         strokeWidth = 2F
     }
 
     private val paintDots = Paint().apply {
         isDither = true
         style = Paint.Style.FILL
-        color = context.color(R.color.colorPrimary)
+        color = Color.WHITE
         isAntiAlias = true
-        strokeWidth = 20F
+        strokeWidth = 10F
         setShadowLayer(5F, 0F, 4F, context.color(R.color.black_10))
     }
 
@@ -59,8 +58,10 @@ class RadarChartView @JvmOverloads constructor(
 
         //RED
         val paintRed = Paint().apply {
-            color = Color.RED
+            color = Color.parseColor("#40FF0000")
             strokeWidth = 10F
+            style = Paint.Style.FILL_AND_STROKE
+            isAntiAlias = true
         }
         val redValues = mutableMapOf(
             1 to 1.0F, 2 to 0.75F, 3 to 1F, 4 to 0.8F, 5 to 0.8F, 6 to 0.4F
@@ -69,8 +70,10 @@ class RadarChartView @JvmOverloads constructor(
 
         //YELLOW
         val paintYellow = Paint().apply {
-            color = Color.YELLOW
+            color = Color.parseColor("#40FFFF00")
             strokeWidth = 10F
+            style = Paint.Style.FILL_AND_STROKE
+            isAntiAlias = true
         }
         val yellowValues = mutableMapOf(
             1 to 0.8F, 2 to 0.9F, 3 to 0.3F, 4 to 0.9F, 5 to 0.6F, 6 to 0.9F
@@ -115,8 +118,8 @@ class RadarChartView @JvmOverloads constructor(
                 sin(Math.toRadians(((it + 3) * corner) + 30)).toFloat() * radius + yCenter
 
             //Dots
-            canvas.drawCircle(startX, startY, 10F, paintDots)
-            canvas.drawCircle(endX, endY, 10F, paintDots)
+            canvas.drawCircle(startX, startY, 4F, paintDots)
+            canvas.drawCircle(endX, endY, 4F, paintDots)
 
             //Line vertical
             canvas.drawLine(startX, startY, endXFrame, endYFrame, paintAxis)
@@ -161,6 +164,15 @@ class RadarChartView @JvmOverloads constructor(
 
         canvas.drawCircle(startX, startY, 8F, paintDots)
         canvas.drawCircle(endX, endY, 8F, paintDots)
+
+        val path = Path().apply {
+            fillType = FillType.EVEN_ODD
+            moveTo(startX, startY)
+            lineTo(endX, endY)
+            lineTo(xCenter, yCenter)
+            close()
+        }
+        canvas.drawPath(path, paint)
     }
 
     private fun MutableMap<Int, Float>.valueStart(numericalOther: Int): Float {
