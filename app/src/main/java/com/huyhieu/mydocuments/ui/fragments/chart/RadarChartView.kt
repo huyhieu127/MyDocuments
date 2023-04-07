@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.huyhieu.library.R
 import com.huyhieu.library.extensions.color
+import com.huyhieu.library.utils.logDebug
 import com.huyhieu.library.utils.logError
 import kotlin.math.cos
 import kotlin.math.sin
@@ -57,28 +58,38 @@ class RadarChartView @JvmOverloads constructor(
         }
 
         //RED
-        val paintRed = Paint().apply {
+        val paintBgRed = Paint().apply {
             color = Color.parseColor("#40FF0000")
-            strokeWidth = 10F
-            style = Paint.Style.FILL_AND_STROKE
+            style = Paint.Style.FILL
+            isAntiAlias = true
+        }
+        val paintStrokeRed = Paint().apply {
+            color = Color.parseColor("#FF0000")
+            strokeWidth = 6F
+            style = Paint.Style.STROKE
             isAntiAlias = true
         }
         val redValues = mutableMapOf(
             1 to 1.0F, 2 to 0.75F, 3 to 1F, 4 to 0.8F, 5 to 0.8F, 6 to 0.4F
         )
-        drawLinePrimary(canvas, redValues, paintRed)
+        drawLinePrimary(canvas, redValues, paintBgRed, paintStrokeRed)
 
         //YELLOW
-        val paintYellow = Paint().apply {
+        val paintBgYellow = Paint().apply {
             color = Color.parseColor("#40FFFF00")
-            strokeWidth = 10F
-            style = Paint.Style.FILL_AND_STROKE
+            style = Paint.Style.FILL
+            isAntiAlias = true
+        }
+        val paintStrokeYellow = Paint().apply {
+            color = Color.parseColor("#FFFF00")
+            strokeWidth = 6F
+            style = Paint.Style.STROKE
             isAntiAlias = true
         }
         val yellowValues = mutableMapOf(
             1 to 0.8F, 2 to 0.9F, 3 to 0.3F, 4 to 0.9F, 5 to 0.6F, 6 to 0.9F
         )
-        drawLinePrimary(canvas, yellowValues, paintYellow)
+        drawLinePrimary(canvas, yellowValues, paintBgYellow, paintStrokeYellow)
     }
 
     private fun drawFrameCircle(canvas: Canvas) {
@@ -118,8 +129,7 @@ class RadarChartView @JvmOverloads constructor(
                 sin(Math.toRadians(((it + 3) * corner) + 30)).toFloat() * radius + yCenter
 
             //Dots
-            canvas.drawCircle(startX, startY, 4F, paintDots)
-            canvas.drawCircle(endX, endY, 4F, paintDots)
+            //canvas.drawCircle(startX, startY, 4F, paintDots)
 
             //Line vertical
             canvas.drawLine(startX, startY, endXFrame, endYFrame, paintAxis)
@@ -128,18 +138,42 @@ class RadarChartView @JvmOverloads constructor(
         }
     }
 
-    private fun drawLinePrimary(canvas: Canvas, values: MutableMap<Int, Float>, paint: Paint) {
+    private fun drawLinePrimary(
+        canvas: Canvas, values: MutableMap<Int, Float>, paintBg: Paint, paintStroke: Paint
+    ) {
+        val mapPoints = mutableMapOf<Int, Float>()
         (1..numTop).forEach { numericalOther ->
             try {
                 val valueStart = values.valueStart(numericalOther)
                 val valueEnd = values.valueEnd(numericalOther)
-                drawLinePrimary(canvas, values, numericalOther, valueStart, valueEnd, paint)
+                //drawLinePrimary(canvas, values, numericalOther, valueStart, valueEnd, paint)
+                mapPoints[numericalOther] = valueStart
             } catch (ex: Exception) {
                 val valueStart = values.valueStart(numericalOther)
                 val valueEnd = values.valueEnd(0)//First value
-                drawLinePrimary(canvas, values, numericalOther, valueStart, valueEnd, paint)
+                //drawLinePrimary(canvas, values, numericalOther, valueStart, valueEnd, paint)
+                mapPoints[numericalOther] = valueStart
             }
         }
+
+        val path = Path().also {
+            it.fillType = FillType.EVEN_ODD
+        }.apply {
+            for ((key, value) in mapPoints) {
+                val x = value.measureAxisX(key)
+                val y = value.measureAxisY(key)
+                if (key == 1) {
+                    moveTo(x, y)
+                } else {
+                    lineTo(x, y)
+                }
+            }
+            close()
+        }
+        //Draw background
+        canvas.drawPath(path, paintBg)
+        //Draw stroke
+        canvas.drawPath(path, paintStroke)
     }
 
     private fun drawLinePrimary(
@@ -150,15 +184,10 @@ class RadarChartView @JvmOverloads constructor(
         valueEnd: Float,
         paint: Paint
     ) {
-        val startX: Float =
-            (cos(Math.toRadians(((numericalOther) * corner) + 30)).toFloat() * valueStart) + xCenter
-        val startY: Float =
-            (sin(Math.toRadians(((numericalOther) * corner) + 30)).toFloat() * valueStart) + yCenter
-
-        val endX: Float =
-            cos(Math.toRadians(((numericalOther + 1) * corner) + 30)).toFloat() * valueEnd + xCenter
-        val endY: Float =
-            sin(Math.toRadians(((numericalOther + 1) * corner) + 30)).toFloat() * valueEnd + yCenter
+        val startX: Float = valueStart.measureAxisX(numericalOther)
+        val startY: Float = valueStart.measureAxisY(numericalOther)
+        val endX: Float = valueEnd.measureAxisX(numericalOther + 1)
+        val endY: Float = valueEnd.measureAxisY(numericalOther + 1)
 
         canvas.drawLine(startX, startY, endX, endY, paint)
 
@@ -172,7 +201,16 @@ class RadarChartView @JvmOverloads constructor(
             lineTo(xCenter, yCenter)
             close()
         }
+        logDebug("$startX - $startY --- $endX - $endY")
         canvas.drawPath(path, paint)
+    }
+
+    private fun Float.measureAxisX(numericalOther: Int): Float {
+        return (cos(Math.toRadians(((numericalOther) * corner) + 30)).toFloat() * this) + xCenter
+    }
+
+    private fun Float.measureAxisY(numericalOther: Int): Float {
+        return (sin(Math.toRadians(((numericalOther) * corner) + 30)).toFloat() * this) + yCenter
     }
 
     private fun MutableMap<Int, Float>.valueStart(numericalOther: Int): Float {
