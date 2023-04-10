@@ -1,0 +1,74 @@
+[
+  {
+    "type": "MENU_THEME",
+    "name": "Theme",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_LANGUAGE",
+    "name": "Language",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_NETWORK_API",
+    "name": "Network API",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": [
+      {
+        "type": "300001",
+        "name": "Recall API",
+        "note": "Multiple API",
+        "isAvailable": true,
+        "elements": [
+        ]
+      }
+    ]
+  },
+  {
+    "type": "MENU_WIDGET",
+    "name": "Widget",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_CHART",
+    "name": "Chart",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_NOTIFICATION",
+    "name": "Notification",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_SYSTEM",
+    "name": "System",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_DIALOG",
+    "name": "Dialog",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_OTHERS",
+    "name": "Other components",
+    "note": "Updating...",
+    "isAvailable": true,
+    "elements": []
+  }
+]

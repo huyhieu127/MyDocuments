@@ -25,8 +25,6 @@ import com.huyhieu.library.R
 import com.huyhieu.library.custom_views.MyMarkerView
 import com.huyhieu.library.extensions.drawable
 import com.huyhieu.library.extensions.isGps
-import com.huyhieu.mydocuments.utils.requestActivityResult
-import com.huyhieu.mydocuments.utils.requestPermissions
 import kotlinx.coroutines.*
 
 class MapUtils(private val fragment: Fragment) {

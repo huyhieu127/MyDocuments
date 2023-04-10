@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.utils
+package com.huyhieu.library.utils
 
 import android.content.Context
 import android.content.pm.PackageManager

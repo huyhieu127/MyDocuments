@@ -14,7 +14,7 @@ import com.huyhieu.library.utils.BarcodeUtils
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
-import com.huyhieu.mydocuments.utils.requestActivityResult
+import com.huyhieu.library.utils.requestActivityResult
 import kotlinx.coroutines.launch
 
 

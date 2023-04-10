@@ -1,4 +1,4 @@
-package com.huyhieu.library
+package com.huyhieu.library.utils
 
 import android.content.ContentValues
 import android.content.Context
@@ -9,7 +9,6 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
-import com.huyhieu.library.utils.logDebug
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream

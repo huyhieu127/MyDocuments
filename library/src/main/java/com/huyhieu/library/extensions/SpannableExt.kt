@@ -16,7 +16,7 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.FontRes
-import com.huyhieu.library.CustomTypefaceSpan
+import com.huyhieu.library.utils.CustomTypefaceSpan
 import com.huyhieu.library.R
 
 /**

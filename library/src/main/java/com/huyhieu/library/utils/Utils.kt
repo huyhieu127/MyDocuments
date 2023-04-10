@@ -1,4 +1,4 @@
-package com.huyhieu.library
+package com.huyhieu.library.utils
 
 import android.app.Activity
 import android.content.ClipData
