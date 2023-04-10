@@ -25,6 +25,10 @@ open class BaseVM : ViewModel() {
     lateinit var mapperFlow: FlowMapper
 
     @Inject
+    @Named("GitHubAPI")
+    lateinit var gitHubAPIService: GitHubAPIService
+
+    @Inject
     @Named("PokeAPI")
     lateinit var pokeApiService: PokeAPIService
 
@@ -69,8 +73,7 @@ open class BaseVM : ViewModel() {
     }
 
     fun <T> mapperFlowSimple(
-        api: suspend () -> Response<T>,
-        onResult: ((T?) -> Unit)? = null
+        api: suspend () -> Response<T>, onResult: ((T?) -> Unit)? = null
     ) {
         //Get result form Data Source
         viewModelScope.launch {

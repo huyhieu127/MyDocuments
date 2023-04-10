@@ -18,7 +18,7 @@ class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
         navTab.setBackgroundBlur(root)
     }
 
-    override fun FragmentNavigationBinding.handleLiveData(savedInstanceState: Bundle?) {
+    override fun FragmentNavigationBinding.onMyLiveData(savedInstanceState: Bundle?) {
         navTab.tabSelectedListener = {
             lifecycleScope.launch {
                 when (it) {

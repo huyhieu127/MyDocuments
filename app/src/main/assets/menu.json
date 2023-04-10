@@ -2,21 +2,21 @@
   {
     "type": "MENU_THEME",
     "name": "Theme",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": []
   },
   {
     "type": "MENU_LANGUAGE",
     "name": "Language",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": []
   },
   {
     "type": "MENU_NETWORK_API",
     "name": "Network API",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": [
       {
@@ -32,7 +32,7 @@
   {
     "type": "MENU_WIDGET",
     "name": "Widget",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": []
   },
@@ -46,28 +46,28 @@
   {
     "type": "MENU_NOTIFICATION",
     "name": "Notification",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": []
   },
   {
     "type": "MENU_SYSTEM",
     "name": "System",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": []
   },
   {
     "type": "MENU_DIALOG",
     "name": "Dialog",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": []
   },
   {
     "type": "MENU_OTHERS",
     "name": "Other components",
-    "note": "Updating...",
+    "note": "Coming soon",
     "isAvailable": true,
     "elements": []
   }

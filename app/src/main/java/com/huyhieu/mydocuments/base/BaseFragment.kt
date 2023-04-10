@@ -2,9 +2,12 @@ package com.huyhieu.mydocuments.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.library.custom_views.MyButtonView
 import com.huyhieu.library.extensions.hideKeyboard
@@ -21,7 +24,11 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
         } as BaseActivity<*>
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override val lifecycleOwner: LifecycleOwner get() = this.viewLifecycleOwner
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         _vb = getViewBinding(layoutInflater, container, savedInstanceState)
         val view = _vb?.root
         initViewParent(view)
@@ -31,7 +38,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         vb.onMyViewCreated(view, savedInstanceState)
-        vb.handleLiveData(savedInstanceState)
+        vb.onMyLiveData(savedInstanceState)
     }
 
     private fun initViewParent(rootView: View?) {
@@ -60,6 +67,4 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
             vb.onClickViewBinding(v, v.id)
         }
     }
-
-    open fun VB.onClickViewBinding(v: View, id: Int) {}
 }

@@ -199,5 +199,10 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.network.NetworkAPIFragment"
         android:label="fragment_remote_api"
         tools:layout="@layout/fragment_network_api" />
+    <fragment
+        android:id="@+id/chartFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.chart.ChartFragment"
+        android:label="fragment_chart"
+        tools:layout="@layout/fragment_chart" />
 
 </navigation>

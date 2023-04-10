@@ -29,7 +29,7 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
         }
     }
 
-    override fun FragmentStepsBinding.handleLiveData(savedInstanceState: Bundle?) {
+    override fun FragmentStepsBinding.onMyLiveData(savedInstanceState: Bundle?) {
         lifecycleScope.launch {
             stepsVM.stepsLiveData.observe(this@StepsFragment) {
                 when (it) {

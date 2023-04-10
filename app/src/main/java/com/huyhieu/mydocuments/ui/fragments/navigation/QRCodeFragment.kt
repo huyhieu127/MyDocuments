@@ -31,7 +31,7 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
 
         mActivity.setDarkColorStatusBar(false)
         //showNavigationBottom()
-        handleViewClick(imgGallery)
+        setViewsClick(imgGallery)
         lifecycleScope.launch {
             hvQRCode.holeRectangle = HoleRectangle(
                 viewScan,

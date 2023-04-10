@@ -3,13 +3,13 @@ package com.huyhieu.mydocuments.ui.fragments.navigation.home
 import android.os.Bundle
 import android.view.View
 import com.huyhieu.library.extensions.setDarkColorStatusBar
+import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
+import com.huyhieu.mydocuments.models.HomeMenu
 import com.huyhieu.mydocuments.models.MenuForm
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.MenuAdapter
-import com.huyhieu.mydocuments.utils.readAssets
-import com.huyhieu.mydocuments.utils.toMutableListData
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -56,21 +56,59 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //setTabNavigationBottom(com.huyhieu.library.components.UTab.TAB_HOME)
-
-//        val json = readAsset("fly.json")
-//        val listType: Type = object : TypeToken<ArrayList<Seat>>() {}.type
-//        val lstSeats = Gson().fromJson<MutableList<Seat>>(json, listType)
-        initListMenu()
+        viewModel.loadMenuFromAsset()
+        viewModel.fetchGitHubCommitted()
+        setupMenu()
     }
 
-    private fun FragmentHomeBinding.initListMenu() {
-        val menuJson = readAssets("menu.json")
-        lstMenus = menuJson.toMutableListData() ?: mutableListOf()
+    override fun FragmentHomeBinding.onMyLiveData(savedInstanceState: Bundle?) {
+        viewModel.menuLiveData.observe {
+            it ?: return@observe
+            lstMenus = it
+            adapterMenu.fillData(lstMenus)
+        }
+        viewModel.githubCommittedLiveData.observe {
+            it ?: return@observe
+            showToastShort(it.first().commit.committer.name)
+        }
+    }
+
+    private fun FragmentHomeBinding.setupMenu() {
         rcvMenu.apply {
             setHasFixedSize(true)
             adapter = adapterMenu
         }
-        adapterMenu.fillData(lstMenus)
+        adapterMenu.itemClick = {
+            when (it.type) {
+                HomeMenu.MENU_THEME -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_LANGUAGE -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_NETWORK_API -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_WIDGET -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_CHART -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_NOTIFICATION -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_SYSTEM -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_DIALOG -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+                HomeMenu.MENU_OTHERS -> {
+                    showToastShort("${it.name} coming soon!")
+                }
+            }
+        }
     }
 
 }

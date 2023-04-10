@@ -25,10 +25,12 @@ android {
 
     buildTypes {
         debug{
+            buildConfigField "String", "GITHUB_API_URL", '"https://api.github.com/"'
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
         }
         release {
+            buildConfigField "String", "GITHUB_API_URL", '"https://api.github.com/"'
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
             minifyEnabled false

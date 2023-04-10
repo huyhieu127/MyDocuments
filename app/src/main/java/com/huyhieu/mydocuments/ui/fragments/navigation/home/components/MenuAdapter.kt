@@ -11,6 +11,7 @@ import com.huyhieu.mydocuments.models.MenuForm
 class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var lstData: MutableList<MenuForm>? = null
+    var itemClick: ((MenuForm) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
     fun fillData(lstData: MutableList<MenuForm>) {
@@ -32,15 +33,16 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = lstData?.size ?: 0
 
-    inner class MyViewHolder(val binding: LayoutItemMenuBinding) :
+    inner class MyViewHolder(private val binding: LayoutItemMenuBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindViewHolder() {
             lstData?.get(layoutPosition)?.let { item ->
                 binding.apply {
                     root.setOnClickMyListener {
-                       item.onNavigate?.invoke()
+                        itemClick?.invoke(item)
                     }
                     tvTitle.text = item.name
+                    tvNote.text = item.note
                 }
             }
         }

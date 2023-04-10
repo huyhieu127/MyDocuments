@@ -18,7 +18,7 @@ class RecallAPIFragment : BaseFragment<FragmentRecallApiBinding>() {
     lateinit var recallAPIVM: RecallAPIVM
 
     override fun FragmentRecallApiBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
-        handleViewClick(btnRetry)
+        setViewsClick(btnRetry)
         recallAPIVM.fetchUser()
     }
 
@@ -30,7 +30,7 @@ class RecallAPIFragment : BaseFragment<FragmentRecallApiBinding>() {
         }
     }
 
-    override fun FragmentRecallApiBinding.handleLiveData(savedInstanceState: Bundle?) {
+    override fun FragmentRecallApiBinding.onMyLiveData(savedInstanceState: Bundle?) {
         recallAPIVM.loadingState.observe(viewLifecycleOwner) {
             prgLoading.isVisible = it.isLoading
         }

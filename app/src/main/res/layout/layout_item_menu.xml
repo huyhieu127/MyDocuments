@@ -52,7 +52,7 @@
             android:ellipsize="end"
             android:gravity="start|center"
             android:lines="2"
-            android:text="Updating..."
+            tools:text="Updating..."
             android:textColor="@color/colorGrayscaleGray"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintBottom_toBottomOf="parent"

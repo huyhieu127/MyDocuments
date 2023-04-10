@@ -47,7 +47,7 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
 
             override fun onPageScrollStateChanged(state: Int) {}
         })
-        handleViewClick(tvSkip, btnNext)
+        setViewsClick(tvSkip, btnNext)
     }
 
     private fun FragmentIntroduceBinding.fillText(position: Int) {

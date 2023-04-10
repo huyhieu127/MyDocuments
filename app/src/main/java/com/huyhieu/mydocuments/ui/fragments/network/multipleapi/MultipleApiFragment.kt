@@ -17,7 +17,7 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
 
     override fun FragmentMultipleApiBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         //callAPI("")
-        handleViewClick(
+        setViewsClick(
             btnSync,
             btnAsync,
         )
@@ -36,7 +36,7 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
         }
     }
 
-    override fun FragmentMultipleApiBinding.handleLiveData(savedInstanceState: Bundle?) {
+    override fun FragmentMultipleApiBinding.onMyLiveData(savedInstanceState: Bundle?) {
         viewModel.loadingState.observe(viewLifecycleOwner) {
             it ?: return@observe
             progressBar.isVisible = it.isLoading

@@ -21,6 +21,7 @@ object HomeMenu {
     const val MENU_WIDGET = "MENU_WIDGET"
     const val MENU_CHART = "MENU_CHART"
     const val MENU_NOTIFICATION = "MENU_NOTIFICATION"
+    const val MENU_SYSTEM = "MENU_SYSTEM"
     const val MENU_DIALOG = "MENU_DIALOG"
     const val MENU_OTHERS = "MENU_OTHERS"
 }
