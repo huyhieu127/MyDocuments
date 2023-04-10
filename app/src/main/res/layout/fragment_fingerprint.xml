@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.fragments.fingerprint.FingerprintFragment">
+    tools:context=".ui.fragments.system.fingerprint.FingerprintFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgFingerprint"

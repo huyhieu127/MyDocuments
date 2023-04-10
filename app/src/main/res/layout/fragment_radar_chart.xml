@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.fragments.chart.RadarChartFragment">
+    tools:context=".ui.fragments.chart.radar_chart.RadarChartFragment">
 
-    <com.huyhieu.mydocuments.ui.fragments.chart.RadarChartView
+    <com.huyhieu.mydocuments.ui.fragments.chart.radar_chart.RadarChartView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"

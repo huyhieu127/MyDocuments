@@ -1,7 +1,8 @@
 package com.huyhieu.mydocuments.navigation.directions
 
-import com.huyhieu.mydocuments.ui.fragments.components.QRCodeFragmentDirections
-import com.huyhieu.mydocuments.ui.fragments.home.HomeFragmentDirections
+import com.huyhieu.mydocuments.ui.fragments.navigation.QRCodeFragmentDirections
+import com.huyhieu.mydocuments.ui.fragments.navigation.home.HomeFragmentDirections
+
 
 object HomeDirections {
     val toHome get() = HomeFragmentDirections.actionGlobalHomeFragment()

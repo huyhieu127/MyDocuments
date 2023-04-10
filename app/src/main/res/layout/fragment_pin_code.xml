@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.components.pin_code.PinCodeFragment">
+    tools:context=".ui.fragments.components.pin_code.PinCodeFragment">
 
     <com.huyhieu.library.custom_views.keyboard.KeyBoardNumberView
         android:id="@+id/keyBoardNumber"

@@ -7,7 +7,7 @@
     android:layout_gravity="top"
     android:background="@drawable/bg_outline_green_mint_corner_12"
     android:paddingBottom="12dp"
-    tools:context=".ui.fragments.components.ProfileFragment">
+    tools:context=".ui.fragments.navigation.ProfileFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgIcon"

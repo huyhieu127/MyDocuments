@@ -1,6 +1,7 @@
 package com.huyhieu.mydocuments.navigation.directions
 
-import com.huyhieu.mydocuments.ui.fragments.steps.components.Steps1FragmentDirections
+import com.huyhieu.mydocuments.ui.fragments.components.steps.components.Steps1FragmentDirections
+
 
 object StepDirections {
     val toStep1

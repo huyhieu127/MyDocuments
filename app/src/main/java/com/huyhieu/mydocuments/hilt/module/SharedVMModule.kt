@@ -1,7 +1,7 @@
 package com.huyhieu.mydocuments.hilt.module
 
 import com.huyhieu.mydocuments.ui.activities.main.MainVM
-import com.huyhieu.mydocuments.ui.fragments.steps.StepsVM
+import com.huyhieu.mydocuments.ui.fragments.components.steps.StepsVM
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

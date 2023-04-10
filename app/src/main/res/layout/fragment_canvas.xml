@@ -8,9 +8,9 @@
     android:orientation="vertical"
     android:background="@color/black"
     android:fitsSystemWindows="true"
-    tools:context=".ui.fragments.canvas.CanvasFragment">
+    tools:context=".ui.fragments.chart.line_chart.CanvasFragment">
 
-    <com.huyhieu.mydocuments.ui.fragments.canvas.CustomCanvasView
+    <com.huyhieu.mydocuments.ui.fragments.chart.line_chart.CustomCanvasView
         android:id="@+id/canvasView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
