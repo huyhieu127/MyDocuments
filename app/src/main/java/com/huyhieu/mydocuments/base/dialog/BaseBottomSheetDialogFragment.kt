@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.huyhieu.library.custom_views.MyButtonView
+import com.huyhieu.library.extensions.dimenPx
+import com.huyhieu.library.extensions.drawable
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.base.interfaces.IBaseView
@@ -53,6 +56,9 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDial
     ): View? {
         _vb = getViewBinding(layoutInflater, container, savedInstanceState)
         val view = _vb?.root
+        view?.elevation = 16F
+        view?.setPadding(0, context.dimenPx(com.intuit.sdp.R.dimen._20sdp), 0, 0)
+        view?.background = context.drawable(R.drawable.bg_bottom_sheet)
         vb.setupCreateView()
         return view
     }
@@ -66,7 +72,7 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDial
      * Config dialog
      * */
     override fun getTheme(): Int {
-        return R.style.CustomAlertDialog
+        return R.style.CustomBottomSheetModal_Transparent
     }
 
     fun setAllowTouchBehind() {
@@ -74,6 +80,19 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDial
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
         )
+    }
+
+    fun showBottomSheet(fragmentManager: FragmentManager, tag: String = this.tag.orEmpty()) {
+        val bottomSheetExist = findBottomSheetExist(fragmentManager, tag)
+        if (bottomSheetExist == null) {
+            show(fragmentManager, tag)
+        }
+    }
+
+    fun findBottomSheetExist(
+        fragmentManager: FragmentManager, tag: String
+    ): BottomSheetDialogFragment? {
+        return fragmentManager.findFragmentByTag(tag) as BottomSheetDialogFragment?
     }
 
     /**---------------- Handle click ----------------**/

@@ -10,11 +10,14 @@ import com.huyhieu.mydocuments.models.github.CommitForm
 import com.huyhieu.mydocuments.utils.readAssets
 import com.huyhieu.mydocuments.utils.toJson
 import com.huyhieu.mydocuments.utils.toMutableListData
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import javax.inject.Inject
 
+@ActivityRetainedScoped
 class HomeVM @Inject constructor() : BaseVM() {
     val menuLiveData = MutableLiveData<MutableList<MenuForm>?>()
 

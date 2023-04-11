@@ -1,9 +1,9 @@
 package com.huyhieu.mydocuments.ui.fragments.navigation.home
 
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.showToastShort
+import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.models.HomeMenu
@@ -65,7 +65,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         homeVM.githubCommittedLiveData.observe {
             it ?: return@observe
-            showToastShort("GitHub: ${it.first().commit.committer.name} - ${it.first().commit.message}")
+            PopupNotifyFragment.newInstance().showBottomSheet(parentFragmentManager)
         }
     }
 
@@ -77,6 +77,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         adapterMenu.itemClick = {
             when (it.type) {
                 HomeMenu.MENU_THEME -> {
+                    logDebug("${it.name} coming soon!")
                     showToastShort("${it.name} coming soon!")
                 }
                 HomeMenu.MENU_LANGUAGE -> {
