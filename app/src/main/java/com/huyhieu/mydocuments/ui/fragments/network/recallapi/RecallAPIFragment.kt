@@ -17,7 +17,7 @@ class RecallAPIFragment : BaseFragment<FragmentRecallApiBinding>() {
     @Inject
     lateinit var recallAPIVM: RecallAPIVM
 
-    override fun FragmentRecallApiBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentRecallApiBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         setViewsClick(btnRetry)
         recallAPIVM.fetchUser()
     }

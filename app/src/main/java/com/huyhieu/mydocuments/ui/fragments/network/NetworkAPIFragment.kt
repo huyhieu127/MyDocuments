@@ -6,10 +6,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentNetworkApiBinding
 
 class NetworkAPIFragment : BaseFragment<FragmentNetworkApiBinding>() {
-    override fun FragmentNetworkApiBinding.onMyViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+    override fun FragmentNetworkApiBinding.onMyViewCreated(savedInstanceState: Bundle?) {
 
     }
 }

@@ -18,7 +18,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     lateinit var mainVM: MainVM
     var storageRef = appFireStore.reference
 
-    override fun initializeBinding() = ActivityMainBinding.inflate(layoutInflater)
+    override fun binding() = ActivityMainBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState1: Bundle?) {
         //setFullScreen()
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
 
-    override fun onLiveData() {
+    override fun onMyLiveData() {
         mainVM.pushNotify.observe(this) {
         }
     }

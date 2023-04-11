@@ -23,7 +23,7 @@ class FingerprintFragment : BaseFragment<FragmentFingerprintBinding>() {
         )
     }
 
-    override fun FragmentFingerprintBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentFingerprintBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         imgFingerprint.setOnClickMyListener {
             context.isBiometricAvailable { isAvailable, errorCode ->
                 logDebug("isBiometricAvailable : $isAvailable , ")

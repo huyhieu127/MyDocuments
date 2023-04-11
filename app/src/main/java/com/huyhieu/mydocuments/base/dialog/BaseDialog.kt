@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.base
+package com.huyhieu.mydocuments.base.dialog
 
 import android.app.AlertDialog
 import android.content.Context
@@ -8,27 +8,25 @@ import android.view.WindowManager
 import androidx.annotation.StyleRes
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseDialog<T : ViewBinding>(context: Context, @StyleRes themeResId: Int) :
-    AlertDialog(context, themeResId) {
-    lateinit var mBinding: T
+abstract class BaseDialog<VB : ViewBinding>(context: Context, @StyleRes themeResId: Int) :
+    AlertDialog(context, themeResId), IBaseViewDialog<VB>  {
+    lateinit var vb: VB
 
     /**
      * - Force assignment of value after class has been initialized.
      * + Example:
-     *   override fun initializeBinding(): DialogConfirmBinding = DialogConfirmBinding.inflate(layoutInflater)
+     *   override fun binding(): DialogConfirmBinding = DialogConfirmBinding.inflate(layoutInflater)
      */
-    abstract fun initializeBinding(): T
-
-    abstract fun T.onReady(savedInstanceState: Bundle?)
+    abstract fun binding(): VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = initializeBinding()
-        setContentView(mBinding.root)
-        mBinding.onReady(savedInstanceState)
+        vb = binding()
+        setContentView(vb.root)
+        vb.onMyViewCreated(savedInstanceState)
     }
 
-    fun setTopDialog() {
+    fun setAnchorTop() {
         window?.let { window ->
             val wlp: WindowManager.LayoutParams = window.attributes
             wlp.gravity = Gravity.TOP
@@ -37,7 +35,7 @@ abstract class BaseDialog<T : ViewBinding>(context: Context, @StyleRes themeResI
         }
     }
 
-    fun setTouchBehindDialog() {
+    fun setAllowTouchBehind() {
         window?.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL

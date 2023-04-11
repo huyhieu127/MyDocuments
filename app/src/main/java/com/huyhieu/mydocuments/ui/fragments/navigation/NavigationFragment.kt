@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
 
-    override fun FragmentNavigationBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentNavigationBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         navTab.setBackgroundBlur(root)
     }
 

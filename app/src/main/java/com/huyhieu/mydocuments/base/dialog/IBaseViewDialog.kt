@@ -1,28 +1,19 @@
-package com.huyhieu.mydocuments.base.interfaces
+package com.huyhieu.mydocuments.base.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.extensions.hideKeyboard
 import java.lang.reflect.ParameterizedType
 
 @Suppress("UNCHECKED_CAST")
-interface IBaseView<VB : ViewBinding> : INavigationController<VB>, IViewClickListener<VB>,
-    ILiveData<VB> {
+interface IBaseViewDialog<VB : ViewBinding> {
 
     /**
      * Abstract function
      * */
     fun VB.onMyViewCreated(savedInstanceState: Bundle?)
-
-    /**
-     * Function
-     * */
-    fun VB.setupCreateView() {
-        mActivity.hideKeyboard()
-        root.handleBackDevice()
-    }
 
     fun getViewBinding(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -44,7 +35,7 @@ interface IBaseView<VB : ViewBinding> : INavigationController<VB>, IViewClickLis
             val type = genericVBClass.genericSuperclass as? ParameterizedType
             cls = type?.actualTypeArguments?.get(0) as? Class<VB>
             if (cls == null) {
-                genericVBClass = genericVBClass.superclass as Class<IBaseView<VB>>
+                genericVBClass = genericVBClass.superclass as Class<IBaseViewDialog<VB>>
             }
         }
         val method = cls.getMethod(

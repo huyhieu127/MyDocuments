@@ -15,7 +15,7 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
     @Inject
     lateinit var viewModel: MultipleApiVM
 
-    override fun FragmentMultipleApiBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentMultipleApiBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         //callAPI("")
         setViewsClick(
             btnSync,

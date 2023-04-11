@@ -16,7 +16,7 @@ import kotlin.math.roundToInt
 
 class CountdownFragment : BaseFragment<FragmentCountdownBinding>() {
 
-    override fun FragmentCountdownBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentCountdownBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar()
         val timerCountdown = 120
         lifecycleScope.launchWhenResumed {

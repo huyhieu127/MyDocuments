@@ -48,7 +48,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 //        //Fake
 //    )
 
-    override fun FragmentHomeBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentHomeBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //setTabNavigationBottom(com.huyhieu.library.components.UTab.TAB_HOME)

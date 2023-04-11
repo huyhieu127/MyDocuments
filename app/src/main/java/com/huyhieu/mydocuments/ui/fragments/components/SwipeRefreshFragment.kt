@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class SwipeRefreshFragment : BaseFragment<FragmentSwipeRefreshBinding>() {
 
-    override fun FragmentSwipeRefreshBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentSwipeRefreshBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         handleOnTouchView(nstView)
         handleOnTouchView(rcv)
         lifecycleScope.launch {

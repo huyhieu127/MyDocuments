@@ -27,7 +27,7 @@ interface IViewClickListener<VB : ViewBinding> : View.OnClickListener, IParams<V
             setOnKeyListener { _: View?, keyCode: Int, event: KeyEvent ->
                 if (event.action == KeyEvent.ACTION_UP) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        onBackPressed()
+                        onMyBackPressed()
                         return@setOnKeyListener true
                     }
                 }
@@ -36,5 +36,5 @@ interface IViewClickListener<VB : ViewBinding> : View.OnClickListener, IParams<V
         }
     }
 
-    fun onBackPressed() {}
+    fun onMyBackPressed() {}
 }

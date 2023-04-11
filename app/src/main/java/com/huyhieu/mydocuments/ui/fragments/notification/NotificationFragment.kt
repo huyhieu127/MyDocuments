@@ -6,10 +6,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentNotificationBinding
 
 class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
-    override fun FragmentNotificationBinding.onMyViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+    override fun FragmentNotificationBinding.onMyViewCreated(savedInstanceState: Bundle?) {
 
     }
 

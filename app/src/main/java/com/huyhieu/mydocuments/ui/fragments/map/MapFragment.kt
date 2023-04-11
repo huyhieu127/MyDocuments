@@ -19,7 +19,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback {
 
     private var mapUtils: MapUtils? = null
 
-    override fun FragmentMapBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentMapBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(true)
         if (mActivity.isGooglePlayServicesAvailable()) {
             val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment

@@ -7,7 +7,7 @@ import com.huyhieu.mydocuments.databinding.FragmentWidgetBinding
 
 
 class WidgetFragment : BaseFragment<FragmentWidgetBinding>() {
-    override fun FragmentWidgetBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentWidgetBinding.onMyViewCreated(savedInstanceState: Bundle?) {
 
     }
 }

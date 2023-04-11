@@ -13,7 +13,7 @@ import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityBubbleChatBinding
 
 class BubbleChatActivity : BaseActivity<ActivityBubbleChatBinding>() {
-    override fun initializeBinding() = ActivityBubbleChatBinding.inflate(layoutInflater)
+    override fun binding() = ActivityBubbleChatBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState1: Bundle?) {
         App.heightStatusBar =

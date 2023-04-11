@@ -9,7 +9,7 @@ import com.huyhieu.mydocuments.ui.fragments.dialog.toast.showToastSuccess
 
 class PinCodeFragment : BaseFragment<FragmentPinCodeBinding>() {
 
-    override fun FragmentPinCodeBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentPinCodeBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         //Create instance toast
         showToastSuccess(title = "Mã pin của bạn", content = "Mời bạn nhập mã pin", isCancelable = false) {
             it.updateData(content = "Mời bạn nhập mã pin")

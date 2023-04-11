@@ -8,7 +8,7 @@ import com.huyhieu.mydocuments.databinding.FragmentNotificationSwipeBinding
 
 class NotificationSwipeFragment : BaseFragment<FragmentNotificationSwipeBinding>() {
     val adapter by lazy { NotificationSwipeAdapter() }
-    override fun FragmentNotificationSwipeBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentNotificationSwipeBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         requireActivity().setDarkColorStatusBar(true)
         rcvNotifications.adapter = adapter
         adapter.listItems = (1..10).toMutableList()

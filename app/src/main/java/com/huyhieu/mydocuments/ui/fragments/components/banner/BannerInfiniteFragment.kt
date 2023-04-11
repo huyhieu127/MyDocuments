@@ -12,7 +12,7 @@ class BannerInfiniteFragment : BaseFragment<FragmentBannerInfiniteBinding>() {
     private val bannerAdapter = BannerAdapter()
     val lstData = mutableListOf(1, 2, 3, 4, 5, 6)
     var lstOld = mutableListOf<Int>()
-    override fun FragmentBannerInfiniteBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentBannerInfiniteBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(rcv)
 

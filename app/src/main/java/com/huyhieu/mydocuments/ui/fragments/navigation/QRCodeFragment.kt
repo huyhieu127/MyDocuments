@@ -27,7 +27,7 @@ class QRCodeFragment : BaseFragment<FragmentQrCodeBinding>() {
         }
     }
 
-    override fun FragmentQrCodeBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentQrCodeBinding.onMyViewCreated(savedInstanceState: Bundle?) {
 
         mActivity.setDarkColorStatusBar(false)
         //showNavigationBottom()

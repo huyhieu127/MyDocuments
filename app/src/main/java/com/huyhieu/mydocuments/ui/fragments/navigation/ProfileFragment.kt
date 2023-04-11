@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
-    override fun FragmentProfileBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentProfileBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //hideNavigationBottom(R.color.white)

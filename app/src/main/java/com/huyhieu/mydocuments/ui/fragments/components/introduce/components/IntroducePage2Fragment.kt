@@ -6,6 +6,6 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentIntroducePage2Binding
 
 class IntroducePage2Fragment : BaseFragment<FragmentIntroducePage2Binding>() {
-    override fun FragmentIntroducePage2Binding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentIntroducePage2Binding.onMyViewCreated(savedInstanceState: Bundle?) {
     }
 }

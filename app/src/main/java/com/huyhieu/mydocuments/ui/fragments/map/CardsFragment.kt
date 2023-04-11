@@ -7,7 +7,7 @@ import com.huyhieu.mydocuments.databinding.FragmentCardsBinding
 
 class CardsFragment : BaseFragment<FragmentCardsBinding>() {
 
-    override fun FragmentCardsBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentCardsBinding.onMyViewCreated(savedInstanceState: Bundle?) {
 
     }
 }

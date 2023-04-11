@@ -9,7 +9,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCanvasBinding
 
 class CanvasFragment : BaseFragment<FragmentCanvasBinding>() {
-    override fun FragmentCanvasBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentCanvasBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(false)
         mActivity.setNavigationBarColor(R.color.black)
     }

@@ -7,6 +7,6 @@ import com.huyhieu.mydocuments.databinding.FragmentIntroducePage3Binding
 
 class IntroducePage3Fragment : BaseFragment<FragmentIntroducePage3Binding>() {
 
-    override fun FragmentIntroducePage3Binding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentIntroducePage3Binding.onMyViewCreated(savedInstanceState: Bundle?) {
     }
 }

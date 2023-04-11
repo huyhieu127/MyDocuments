@@ -14,7 +14,7 @@ import java.util.*
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
     private val monthAdapter = MonthOfCalendarAdapter()
 
-    override fun FragmentCalendarBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentCalendarBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar()
         val cCurrent = Calendar.getInstance()
         val dayOfWeek = cCurrent.getDisplayDayOfWeek()

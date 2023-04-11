@@ -42,7 +42,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
             }
         }
 
-    override fun initializeBinding() = ActivityFfmpegKitBinding.inflate(layoutInflater)
+    override fun binding() = ActivityFfmpegKitBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState1: Bundle?) {
         vb.run {

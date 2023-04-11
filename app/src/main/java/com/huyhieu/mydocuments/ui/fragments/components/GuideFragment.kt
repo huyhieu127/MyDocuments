@@ -8,7 +8,7 @@ import com.huyhieu.mydocuments.databinding.FragmentGuideBinding
 
 class GuideFragment : BaseFragment<FragmentGuideBinding>() {
 
-    override fun FragmentGuideBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentGuideBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         hvFrame.holeCircle = HoleCircle(button)
     }
 }

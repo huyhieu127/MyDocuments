@@ -1,19 +1,19 @@
-package com.huyhieu.mydocuments.base
+package com.huyhieu.mydocuments.base.dialog
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.DialogFragment
+import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.library.custom_views.MyButtonView
 import com.huyhieu.mydocuments.R
+import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.base.interfaces.IBaseView
 import com.huyhieu.mydocuments.ui.activities.main.MainVM
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.HomeVM
 import javax.inject.Inject
 
-abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment(),
-    IBaseView<VB> {
+abstract class BaseDialogFragment<VB : ViewBinding> : AppCompatDialogFragment(), IBaseView<VB> {
 
     @Inject
     lateinit var mainVM: MainVM
@@ -21,14 +21,15 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment(),
     @Inject
     lateinit var homeVM: HomeVM
 
-    val window get() = this.dialog?.window
+    private val window get() = this.dialog?.window
 
     private var _vb: VB? = null
 
     /**
      * Params interface
      * */
-    override val vb: VB get() = _vb ?: throw NullPointerException("VB: ViewBinding has not been added yet!")
+    override val vb: VB
+        get() = _vb ?: throw NullPointerException("VB: ViewBinding has not been added yet!")
 
     override val mActivity: BaseActivity<*> by lazy {
         try {
@@ -53,7 +54,7 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment(),
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vb.onMyViewCreated(view, savedInstanceState)
+        vb.onMyViewCreated(savedInstanceState)
         vb.onMyLiveData(savedInstanceState)
     }
 
@@ -64,7 +65,7 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment(),
         return R.style.CustomAlertDialog
     }
 
-    fun setTopDialog() {
+    fun setAnchorTop() {
         window?.let { window ->
             val wlp: WindowManager.LayoutParams = window.attributes
             wlp.gravity = Gravity.TOP
@@ -73,7 +74,7 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment(),
         }
     }
 
-    fun setTouchBehindDialog() {
+    fun setAllowTouchBehind() {
         window?.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL

@@ -19,7 +19,7 @@ class StaticMapFragment : BaseFragment<FragmentStaticMapBinding>() {
                 "&style=feature:poi|element:labels|visibility:off" +
                 "&key=API_KEY"
 
-    override fun FragmentStaticMapBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentStaticMapBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar()
         val url = getStaticMapURL("10.802702, 106.647505")
 

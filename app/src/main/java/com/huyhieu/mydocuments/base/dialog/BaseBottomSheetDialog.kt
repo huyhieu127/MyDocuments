@@ -1,4 +1,4 @@
-package com.huyhieu.mydocuments.base
+package com.huyhieu.mydocuments.base.dialog
 
 import android.content.Context
 import android.os.Bundle
@@ -8,24 +8,22 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 abstract class BaseBottomSheetDialog<T : ViewBinding>(context: Context, @StyleRes themeResId: Int) :
-    BottomSheetDialog(context, themeResId) {
-    lateinit var mBinding: T
+    BottomSheetDialog(context, themeResId), IBaseViewDialog<T> {
+    lateinit var vb: T
 
     /**
      * - Force assignment of value after class has been initialized.
      * + Example:
-     *   override fun initializeBinding(): DialogConfirmBinding = DialogConfirmBinding.inflate(layoutInflater)
+     *   override fun binding(): DialogConfirmBinding = DialogConfirmBinding.inflate(layoutInflater)
      */
-    abstract fun initializeBinding(): T
-
-    abstract fun onReady(savedInstanceState: Bundle?)
+    abstract fun binding(): T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        mBinding = initializeBinding()
-        setContentView(mBinding.root)
-        onReady(savedInstanceState)
+        vb = binding()
+        setContentView(vb.root)
+        vb.onMyViewCreated(savedInstanceState)
     }
 
 }

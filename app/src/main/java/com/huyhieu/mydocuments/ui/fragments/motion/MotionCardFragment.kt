@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MotionCardFragment : BaseFragment<FragmentMotionCardBinding>() {
 
-    override fun FragmentMotionCardBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentMotionCardBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         //hideNavigationBottom()
         motionCard.setTransitionTo(R.id.startCard, R.id.endCard)
     }

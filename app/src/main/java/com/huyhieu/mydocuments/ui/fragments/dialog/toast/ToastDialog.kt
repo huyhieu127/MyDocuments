@@ -7,7 +7,7 @@ import com.huyhieu.library.extensions.color
 import com.huyhieu.library.extensions.drawable
 import com.huyhieu.library.extensions.tintVector
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseDialogFragment
+import com.huyhieu.mydocuments.base.dialog.BaseDialogFragment
 import com.huyhieu.mydocuments.databinding.DialogToastBinding
 
 enum class ToastType {
@@ -28,9 +28,9 @@ class ToastDialog(
     var onClose: ((ToastDialog) -> Unit)? = null
 ) : BaseDialogFragment<DialogToastBinding>() {
 
-    override fun DialogToastBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
-        setTopDialog()
-        setTouchBehindDialog()
+    override fun DialogToastBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+        setAnchorTop()
+        setAllowTouchBehind()
         createUI()
 
         cvCancel.setOnClickListener(this@ToastDialog)

@@ -22,7 +22,7 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
     @Inject
     lateinit var stepsVM: StepsVM
 
-    override fun FragmentStepsBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentStepsBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(false)
         handleBackPressedFragment {
             mActivity.finish()

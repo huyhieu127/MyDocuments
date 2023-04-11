@@ -20,7 +20,7 @@ class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>() {
     private val myViewPagerAdapter by lazy { MyViewPagerAdapter() }
     private var layouts: IntArray? = null
 
-    override fun FragmentIntroduceBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentIntroduceBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         //hideNavigationBottom()
         layouts = intArrayOf(
             R.layout.fragment_introduce_page1,

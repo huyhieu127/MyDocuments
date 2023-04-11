@@ -9,10 +9,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentRadarChartBinding
 
 class RadarChartFragment : BaseFragment<FragmentRadarChartBinding>() {
-    override fun FragmentRadarChartBinding.onMyViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+    override fun FragmentRadarChartBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(false)
         mActivity.setNavigationBarColor(R.color.black)
     }

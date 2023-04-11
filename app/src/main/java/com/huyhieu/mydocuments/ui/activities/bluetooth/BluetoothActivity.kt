@@ -29,7 +29,7 @@ class BluetoothActivity : BaseActivity<ActivityBluetoothBinding>() {
             scanNow()
         }
 
-    override fun initializeBinding() = ActivityBluetoothBinding.inflate(layoutInflater)
+    override fun binding() = ActivityBluetoothBinding.inflate(layoutInflater)
 
     override fun addControls(savedInstanceState1: Bundle?) {
     }

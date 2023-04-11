@@ -6,7 +6,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentChartBinding
 
 class ChartFragment : BaseFragment<FragmentChartBinding>() {
-    override fun FragmentChartBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun FragmentChartBinding.onMyViewCreated(savedInstanceState: Bundle?) {
 
     }
 }
