@@ -3,77 +3,69 @@ package com.huyhieu.mydocuments.base
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.NavDirections
-import androidx.navigation.NavOptionsBuilder
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.navOptions
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.library.custom_views.MyButtonView
-import com.huyhieu.library.extensions.hideKeyboard
 import com.huyhieu.mydocuments.R
+import com.huyhieu.mydocuments.base.interfaces.IBaseView
+import com.huyhieu.mydocuments.ui.activities.main.MainVM
+import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.HomeVM
+import javax.inject.Inject
 
-abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnClickListener {
+abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment(),
+    IBaseView<VB> {
 
-    val mBinding: T by lazy { initializeBinding() }
+    @Inject
+    lateinit var mainVM: MainVM
 
-    val mActivity: BaseActivity<*>? by lazy {
-        try {
-            activity as BaseActivity<*>
-        } catch (ex: Exception) {
-            null
-        }
-    }
+    @Inject
+    lateinit var homeVM: HomeVM
+
+    val window get() = this.dialog?.window
+
+    private var _vb: VB? = null
 
     /**
-     * - Force assignment of value after class has been initialized.
-     * + Example:
-     *   override fun initializeBinding(inflater: LayoutInflater,container: ViewGroup? ) = ResultProfileBinding.inflate(layoutInflater)
-     */
-    abstract fun initializeBinding(): T
+     * Params interface
+     * */
+    override val vb: VB get() = _vb ?: throw NullPointerException("VB: ViewBinding has not been added yet!")
 
-    abstract fun T.onReady(savedInstanceState: Bundle?)
+    override val mActivity: BaseActivity<*> by lazy {
+        try {
+            activity
+        } catch (ex: Exception) {
+            requireActivity()
+        } as BaseActivity<*>
+    }
 
+    override val lifecycleOwner: LifecycleOwner get() = viewLifecycleOwner
+
+    /**
+     * Functions
+     * */
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val view = mBinding.root
-        initViewParent(view)
+        _vb = getViewBinding(layoutInflater, container, savedInstanceState)
+        val view = _vb?.root
+        vb.setupCreateView()
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mBinding.onReady(savedInstanceState)
-        mBinding.onLiveData(savedInstanceState)
-    }
-
-
-    private fun initViewParent(rootView: View?) {
-        mActivity?.hideKeyboard()
-        handleBackDevice(rootView)
-    }
-
-    open fun T.onLiveData(savedInstanceState: Bundle?) {}
-
-    open fun T.callAPI(
-        apiKey: String,
-        param: Any? = null,
-        function: ((resultData: Any?) -> Unit)? = null
-    ) {
+        vb.onMyViewCreated(view, savedInstanceState)
+        vb.onMyLiveData(savedInstanceState)
     }
 
     /**
-     * Config dialog*/
-
+     * Config dialog
+     * */
     override fun getTheme(): Int {
         return R.style.CustomAlertDialog
     }
 
-    fun getWindow() = this.dialog?.window
-
     fun setTopDialog() {
-        getWindow()?.let { window ->
+        window?.let { window ->
             val wlp: WindowManager.LayoutParams = window.attributes
             wlp.gravity = Gravity.TOP
             wlp.flags = wlp.flags and WindowManager.LayoutParams.FLAG_DIM_BEHIND.inv()
@@ -82,27 +74,16 @@ abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnCl
     }
 
     fun setTouchBehindDialog() {
-        getWindow()?.setFlags(
+        window?.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
         )
     }
 
-    /************************ Navigate **************************/
-    fun childNavigate(
-        navHostFragment: NavHostFragment,
-        directions: NavDirections,
-        navOptionBuilder: (NavOptionsBuilder.() -> Unit)? = null
-    ) {
-        val navOpt = navOptionBuilder?.let { navOptions { it() } }
-        navHostFragment.navController.navigate(directions, navOpt)
-    }
-
-    /************************ Handle click **************************/
-    private val currentTime: Long
-        get() = System.currentTimeMillis()
+    /**---------------- Handle click ----------------**/
+    private val currentTime: Long get() = System.currentTimeMillis()
     private var time = 0L
-    private val delayClick = 1000L
+    private val delayClick = 500L
 
     final override fun onClick(v: View?) {
         v ?: return
@@ -111,33 +92,7 @@ abstract class BaseDialogFragment<T : ViewBinding> : DialogFragment(), View.OnCl
             if (v is MyButtonView) {
                 v.showLoading()
             }
-            mBinding.onClickViewBinding(v)
+            vb.onClickViewBinding(v, v.id)
         }
-    }
-
-    open fun T.onClickViewBinding(v: View) {
-
-    }
-
-    /******************* Handle keyboard back device *******************/
-    private fun handleBackDevice(rootView: View?) {
-        rootView?.apply {
-            isFocusableInTouchMode = true
-            requestFocus()
-            setOnKeyListener { _: View?, keyCode: Int, event: KeyEvent ->
-                if (event.action == KeyEvent.ACTION_UP) {
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        onBackPressedFragment()
-                        return@setOnKeyListener true
-                    }
-                }
-                false
-            }
-        }
-    }
-
-
-    open fun onBackPressedFragment() {
-        mActivity?.onBackPressed()
     }
 }

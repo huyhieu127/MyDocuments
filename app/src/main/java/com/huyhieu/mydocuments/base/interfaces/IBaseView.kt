@@ -1,23 +1,31 @@
-package com.huyhieu.mydocuments.base
+package com.huyhieu.mydocuments.base.interfaces
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavDirections
-import androidx.navigation.NavOptionsBuilder
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.mydocuments.base.interfaces.ILiveData
+import com.huyhieu.library.extensions.hideKeyboard
+import com.huyhieu.mydocuments.base.BaseActivity
 import java.lang.reflect.ParameterizedType
 
-interface IBaseView<VB : ViewBinding> : View.OnClickListener, ILiveData<VB> {
-    @Suppress("UNCHECKED_CAST")
+@Suppress("UNCHECKED_CAST")
+interface IBaseView<VB : ViewBinding> : INavigationController<VB>, IViewClickListener<VB>,
+    ILiveData<VB> {
+
+    /**
+     * Abstract function
+     * */
+    fun VB.onMyViewCreated(view: View, savedInstanceState: Bundle?)
+
+    /**
+     * Function
+     * */
+    fun VB.setupCreateView() {
+        mActivity.hideKeyboard()
+        root.handleBackDevice()
+    }
+
     fun getViewBinding(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): VB {
@@ -29,7 +37,6 @@ interface IBaseView<VB : ViewBinding> : View.OnClickListener, ILiveData<VB> {
         return method.invoke(null, inflater, container, false) as VB
     }
 
-    @Suppress("UNCHECKED_CAST")
     fun getViewBinding2(
         inflater: LayoutInflater, container: ViewGroup? = null, savedInstanceState: Bundle?
     ): VB {
@@ -45,25 +52,6 @@ interface IBaseView<VB : ViewBinding> : View.OnClickListener, ILiveData<VB> {
         val method = cls.getMethod(
             "inflate", LayoutInflater::class.java, ViewGroup::class.java, Boolean::class.java
         )
-        @Suppress("UNCHECKED_CAST") return method.invoke(null, inflater, container, false) as VB
-    }
-
-    /************************ Set onClick **************************/
-    fun VB.setViewsClick(vararg views: View) {
-        views.forEach {
-            it.setOnClickListener(this@IBaseView)
-        }
-    }
-
-    fun VB.onClickViewBinding(v: View, id: Int) {}
-
-    /************************ Navigate **************************/
-    fun childNavigate(
-        navHostFragment: NavHostFragment,
-        directions: NavDirections,
-        navOptionBuilder: (NavOptionsBuilder.() -> Unit)? = null
-    ) {
-        val navOpt = navOptionBuilder?.let { navOptions { it() } }
-        navHostFragment.navController.navigate(directions, navOpt)
+        return method.invoke(null, inflater, container, false) as VB
     }
 }

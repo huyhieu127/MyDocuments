@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.huyhieu.library.custom_views.UTab
 import com.huyhieu.library.extensions.color
@@ -31,14 +32,9 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
         setContentView(vb.root)
         setDarkColorStatusBar(isDark = true)
         window?.decorView?.rootView?.setBackgroundColor(color(R.color.white))
-        handleDataIntent()
         addControls(savedInstanceState)
         addEvents(savedInstanceState)
         onLiveData()
-    }
-
-    open fun handleDataIntent() {
-
     }
 
     open fun onLiveData() {}
@@ -59,9 +55,5 @@ abstract class BaseActivity<T : ViewBinding> : AppCompatActivity(), View.OnClick
 
     open fun hideNavigationBottom(@ColorRes idColor: Int = android.R.color.transparent) {
         setNavigationBarColor(idColor)
-    }
-
-    open fun onBackPressedActivity() {
-
     }
 }

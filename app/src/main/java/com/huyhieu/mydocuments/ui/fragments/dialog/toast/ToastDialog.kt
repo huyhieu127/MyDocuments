@@ -28,9 +28,7 @@ class ToastDialog(
     var onClose: ((ToastDialog) -> Unit)? = null
 ) : BaseDialogFragment<DialogToastBinding>() {
 
-    override fun initializeBinding() = DialogToastBinding.inflate(layoutInflater)
-
-    override fun DialogToastBinding.onReady(savedInstanceState: Bundle?) {
+    override fun DialogToastBinding.onMyViewCreated(view: View, savedInstanceState: Bundle?) {
         setTopDialog()
         setTouchBehindDialog()
         createUI()
@@ -84,15 +82,15 @@ class ToastDialog(
     fun updateData(title: String? = this.title, content: String? = this.content) {
         if (title != null && this.title != title) {
             this.title = title
-            mBinding.tvTitle.text = title
+            vb.tvTitle.text = title
         }
         if (content != null && this.content != content) {
             this.content = content
-            mBinding.tvContent.text = content
+            vb.tvContent.text = content
         }
     }
 
-    override fun DialogToastBinding.onClickViewBinding(v: View) {
+    override fun DialogToastBinding.onClickViewBinding(v: View, id: Int) {
         when (v.id) {
             cvCancel.id -> {
                 onClose?.invoke(this@ToastDialog) ?: dismissAllowingStateLoss()

@@ -29,10 +29,8 @@ class HomeVM @Inject constructor() : BaseVM() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = gitHubAPIService.getCommit()
-                launch(Dispatchers.Main) {
-                    logDebug(response.body().toJson())
-                    githubCommittedLiveData.postValue(response.body())
-                }
+                logDebug(response.body().toJson())
+                githubCommittedLiveData.postValue(response.body())
             } catch (ex: Exception) {
                 logDebug(ex.message)
             }

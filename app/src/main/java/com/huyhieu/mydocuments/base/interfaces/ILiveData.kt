@@ -7,8 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
 
-interface ILiveData<VB : ViewBinding> {
-    val lifecycleOwner: LifecycleOwner
+interface ILiveData<VB : ViewBinding> : IParams<VB>{
 
     fun VB.onMyLiveData(savedInstanceState: Bundle?) {}
 

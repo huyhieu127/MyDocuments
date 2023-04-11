@@ -8,16 +8,12 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.models.HomeMenu
 import com.huyhieu.mydocuments.models.MenuForm
-import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.HomeVM
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    @Inject
-    lateinit var viewModel: HomeVM
     private val adapterMenu by lazy { MenuAdapter() }
     private var lstMenus = mutableListOf<MenuForm>()
 //        MenuForm(name = "Network API") {
@@ -56,20 +52,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //setTabNavigationBottom(com.huyhieu.library.components.UTab.TAB_HOME)
-        viewModel.loadMenuFromAsset()
-        viewModel.fetchGitHubCommitted()
+        homeVM.loadMenuFromAsset()
+        homeVM.fetchGitHubCommitted()
         setupMenu()
     }
 
     override fun FragmentHomeBinding.onMyLiveData(savedInstanceState: Bundle?) {
-        viewModel.menuLiveData.observe {
+        homeVM.menuLiveData.observe {
             it ?: return@observe
             lstMenus = it
             adapterMenu.fillData(lstMenus)
         }
-        viewModel.githubCommittedLiveData.observe {
+        homeVM.githubCommittedLiveData.observe {
             it ?: return@observe
-            showToastShort(it.first().commit.committer.name)
+            showToastShort("GitHub: ${it.first().commit.committer.name} - ${it.first().commit.message}")
         }
     }
 
