@@ -35,7 +35,7 @@ class Steps3Fragment : BaseFragment<FragmentSteps3Binding>() {
             }
     }
 
-    override fun FragmentSteps3Binding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         setViewsClick(btnNext)
         handleBackPressedFragment {
             popBackStackTo(MyNavHost.Home, R.id.navigationFragment)

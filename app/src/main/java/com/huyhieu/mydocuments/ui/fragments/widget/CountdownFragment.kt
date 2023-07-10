@@ -2,7 +2,6 @@ package com.huyhieu.mydocuments.ui.fragments.widget
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.color
 import com.huyhieu.library.extensions.setDarkColorStatusBar
@@ -16,7 +15,7 @@ import kotlin.math.roundToInt
 
 class CountdownFragment : BaseFragment<FragmentCountdownBinding>() {
 
-    override fun FragmentCountdownBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?): Unit = with(vb) {
         mActivity.setDarkColorStatusBar()
         val timerCountdown = 120
         lifecycleScope.launchWhenResumed {

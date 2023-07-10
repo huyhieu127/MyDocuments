@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
-    override fun FragmentSplashBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setDarkColorStatusBar(true)
         if (appShared.isLoadedIntroduce) {
             navigate(MainDirections.toNavigation)

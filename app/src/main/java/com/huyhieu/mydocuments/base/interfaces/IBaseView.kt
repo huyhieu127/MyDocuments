@@ -14,7 +14,7 @@ interface IBaseView<VB : ViewBinding> : INavigationController<VB>, IViewClickLis
     /**
      * Abstract function
      * */
-    fun VB.onMyViewCreated(savedInstanceState: Bundle?)
+    fun onMyViewCreated(savedInstanceState: Bundle?)
 
     /**
      * Function

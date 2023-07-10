@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.widget.calendar
 
 import android.os.Bundle
-import android.view.View
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.huyhieu.library.commons.calendar.adapters.MonthOfCalendarAdapter
 import com.huyhieu.library.constants.CalendarCst
@@ -14,7 +13,7 @@ import java.util.*
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
     private val monthAdapter = MonthOfCalendarAdapter()
 
-    override fun FragmentCalendarBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setDarkColorStatusBar()
         val cCurrent = Calendar.getInstance()
         val dayOfWeek = cCurrent.getDisplayDayOfWeek()

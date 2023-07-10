@@ -23,7 +23,7 @@ abstract class BaseDialog<VB : ViewBinding>(context: Context, @StyleRes themeRes
         super.onCreate(savedInstanceState)
         vb = binding()
         setContentView(vb.root)
-        vb.onMyViewCreated(savedInstanceState)
+        onMyViewCreated(savedInstanceState)
     }
 
     fun setAnchorTop() {

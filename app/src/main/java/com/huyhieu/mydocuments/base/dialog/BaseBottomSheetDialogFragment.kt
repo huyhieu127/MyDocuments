@@ -8,7 +8,6 @@ import android.view.WindowManager
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.huyhieu.library.custom_views.MyButtonView
@@ -73,8 +72,8 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDial
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vb.onMyViewCreated(savedInstanceState)
-        vb.onMyLiveData(savedInstanceState)
+        onMyViewCreated(savedInstanceState)
+        onMyLiveData(savedInstanceState)
         dialog?.setCanceledOnTouchOutside(true)
 //        behavior.state = BottomSheetBehavior.STATE_EXPANDED
 //        behavior.isHideable = false

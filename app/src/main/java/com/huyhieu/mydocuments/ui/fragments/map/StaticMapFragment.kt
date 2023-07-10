@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.map
 
 import android.os.Bundle
-import android.view.View
 import com.bumptech.glide.Glide
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.base.BaseFragment
@@ -19,7 +18,7 @@ class StaticMapFragment : BaseFragment<FragmentStaticMapBinding>() {
                 "&style=feature:poi|element:labels|visibility:off" +
                 "&key=API_KEY"
 
-    override fun FragmentStaticMapBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?): Unit = with(vb) {
         mActivity.setDarkColorStatusBar()
         val url = getStaticMapURL("10.802702, 106.647505")
 

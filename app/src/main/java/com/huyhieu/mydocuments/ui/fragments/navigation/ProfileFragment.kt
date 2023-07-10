@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
-    override fun FragmentProfileBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //hideNavigationBottom(R.color.white)
@@ -31,11 +31,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 type = ToastType.SUCCESS,
                 title = "Cài lại mật khẩu thành công",
                 content = "Bạn có thể đăng nhập bằng mật khẩu mới",
-            ).apply {
+            ).also {
                 lifecycleScope.launch {
-                    show(this@ProfileFragment.childFragmentManager, "TOAST")
+                    it.show(this@ProfileFragment.childFragmentManager, "TOAST")
                     delay(2000)
-                    dismiss()
+                    it.dismiss()
                 }
             }
         }.toSpannable(requireContext(), policy) {
@@ -44,11 +44,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 type = ToastType.FAILED,
                 title = "Đã có lỗi xảy ra",
                 content = "Bạn vui lòng thử lại lần nữa",
-            ).apply {
+            ).also {it ->
                 lifecycleScope.launch {
-                    show(this@ProfileFragment.childFragmentManager, "TOAST")
+                    it.show(this@ProfileFragment.childFragmentManager, "TOAST")
                     delay(2000)
-                    dismiss()
+                    it.dismiss()
                 }
             }
         }
@@ -58,11 +58,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 type = ToastType.NORMAL,
                 title = "Chào mừng bạn đến với UBank",
                 content = "Bắt đầu trải nghiệm những điều kỳ diệu trong ngân hàng số dành riêng cho bạn.",
-            ).apply {
-                show(this@ProfileFragment.childFragmentManager, "TOAST")
+            ).also {it
+                it.show(this@ProfileFragment.childFragmentManager, "TOAST")
                 lifecycleScope.launch {
                     delay(2000)
-                    dismiss()
+                    it.dismiss()
                 }
             }
         }

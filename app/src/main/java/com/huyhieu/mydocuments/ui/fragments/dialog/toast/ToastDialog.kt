@@ -28,7 +28,7 @@ class ToastDialog(
     var onClose: ((ToastDialog) -> Unit)? = null
 ) : BaseDialogFragment<DialogToastBinding>() {
 
-    override fun DialogToastBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         setAnchorTop()
         setAllowTouchBehind()
         createUI()

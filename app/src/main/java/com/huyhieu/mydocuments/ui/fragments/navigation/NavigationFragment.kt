@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.navigation
 
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.custom_views.UTab
 import com.huyhieu.mydocuments.R
@@ -14,11 +13,11 @@ import kotlinx.coroutines.launch
 
 class NavigationFragment : BaseFragment<FragmentNavigationBinding>() {
 
-    override fun FragmentNavigationBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         navTab.setBackgroundBlur(root)
     }
 
-    override fun FragmentNavigationBinding.onMyLiveData(savedInstanceState: Bundle?) {
+    override fun onMyLiveData(savedInstanceState: Bundle?) = with(vb) {
         navTab.tabSelectedListener = {
             lifecycleScope.launch {
                 when (it) {

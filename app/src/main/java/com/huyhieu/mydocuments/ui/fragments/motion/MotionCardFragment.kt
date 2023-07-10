@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.motion
 
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.library.extensions.setTransitionTo
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
@@ -11,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MotionCardFragment : BaseFragment<FragmentMotionCardBinding>() {
 
-    override fun FragmentMotionCardBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         //hideNavigationBottom()
         motionCard.setTransitionTo(R.id.startCard, R.id.endCard)
     }

@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.components.steps
 
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.huyhieu.library.extensions.handleBackPressedFragment
 import com.huyhieu.library.extensions.setDarkColorStatusBar
@@ -22,14 +21,14 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
     @Inject
     lateinit var stepsVM: StepsVM
 
-    override fun FragmentStepsBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(false)
         handleBackPressedFragment {
             mActivity.finish()
         }
     }
 
-    override fun FragmentStepsBinding.onMyLiveData(savedInstanceState: Bundle?) {
+    override fun onMyLiveData(savedInstanceState: Bundle?): Unit = with(vb) {
         lifecycleScope.launch {
             stepsVM.stepsLiveData.observe(this@StepsFragment) {
                 when (it) {

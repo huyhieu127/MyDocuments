@@ -23,7 +23,7 @@ abstract class BaseBottomSheetDialog<T : ViewBinding>(context: Context, @StyleRe
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         vb = binding()
         setContentView(vb.root)
-        vb.onMyViewCreated(savedInstanceState)
+        onMyViewCreated(savedInstanceState)
     }
 
 }

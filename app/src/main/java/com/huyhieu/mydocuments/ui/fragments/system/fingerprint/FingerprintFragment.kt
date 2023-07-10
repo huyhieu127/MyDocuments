@@ -2,7 +2,6 @@ package com.huyhieu.mydocuments.ui.fragments.system.fingerprint
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import com.huyhieu.library.extensions.setOnClickMyListener
 import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
@@ -23,7 +22,7 @@ class FingerprintFragment : BaseFragment<FragmentFingerprintBinding>() {
         )
     }
 
-    override fun FragmentFingerprintBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         imgFingerprint.setOnClickMyListener {
             context.isBiometricAvailable { isAvailable, errorCode ->
                 logDebug("isBiometricAvailable : $isAvailable , ")

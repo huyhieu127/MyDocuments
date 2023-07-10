@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.base.interfaces
 
 import android.os.Bundle
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -9,7 +8,7 @@ import androidx.viewbinding.ViewBinding
 
 interface ILiveData<VB : ViewBinding> : IParams<VB>{
 
-    fun VB.onMyLiveData(savedInstanceState: Bundle?) {}
+    fun onMyLiveData(savedInstanceState: Bundle?) {}
 
     /**
      * LiveData

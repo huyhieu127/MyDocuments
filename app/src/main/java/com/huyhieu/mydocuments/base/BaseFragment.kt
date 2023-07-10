@@ -50,8 +50,8 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
 
     final override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vb.onMyViewCreated(savedInstanceState)
-        vb.onMyLiveData(savedInstanceState)
+        onMyViewCreated(savedInstanceState)
+        onMyLiveData(savedInstanceState)
     }
 
     override fun onDestroyView() {

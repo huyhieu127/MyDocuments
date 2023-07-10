@@ -2,7 +2,6 @@ package com.huyhieu.mydocuments.base.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
@@ -13,7 +12,7 @@ interface IBaseViewDialog<VB : ViewBinding> {
     /**
      * Abstract function
      * */
-    fun VB.onMyViewCreated(savedInstanceState: Bundle?)
+    fun onMyViewCreated(savedInstanceState: Bundle?)
 
     fun getViewBinding(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?

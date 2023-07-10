@@ -3,7 +3,6 @@ package com.huyhieu.mydocuments.ui.fragments.navigation.home
 import android.os.Bundle
 import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.showToastShort
-import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.models.HomeMenu
@@ -18,7 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val adapterMenu by lazy { MenuAdapter() }
     private var lstMenus = mutableListOf<MenuForm>()
 
-    override fun FragmentHomeBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //setTabNavigationBottom(com.huyhieu.library.components.UTab.TAB_HOME)
@@ -26,7 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setupMenu()
     }
 
-    override fun FragmentHomeBinding.onMyLiveData(savedInstanceState: Bundle?) {
+    override fun onMyLiveData(savedInstanceState: Bundle?) {
         homeVM.menuLiveData.observe {
             it ?: return@observe
             lstMenus = it

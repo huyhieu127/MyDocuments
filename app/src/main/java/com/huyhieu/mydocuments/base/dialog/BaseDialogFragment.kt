@@ -54,8 +54,8 @@ abstract class BaseDialogFragment<VB : ViewBinding> : AppCompatDialogFragment(),
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        vb.onMyViewCreated(savedInstanceState)
-        vb.onMyLiveData(savedInstanceState)
+        onMyViewCreated(savedInstanceState)
+        onMyLiveData(savedInstanceState)
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.huyhieu.mydocuments.ui.fragments.map
 
 import android.os.Bundle
-import android.view.View
 import androidx.core.view.isVisible
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,7 +18,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback {
 
     private var mapUtils: MapUtils? = null
 
-    override fun FragmentMapBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setDarkColorStatusBar(true)
         if (mActivity.isGooglePlayServicesAvailable()) {
             val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment

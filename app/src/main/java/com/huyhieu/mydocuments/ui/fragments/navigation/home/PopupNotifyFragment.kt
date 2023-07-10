@@ -2,9 +2,7 @@ package com.huyhieu.mydocuments.ui.fragments.navigation.home
 
 import android.os.Bundle
 import android.view.View
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.huyhieu.mydocuments.BuildConfig
-import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.dialog.BaseBottomSheetDialogFragment
 import com.huyhieu.mydocuments.databinding.FragmentPopupNotifyBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +19,7 @@ class PopupNotifyFragment : BaseBottomSheetDialogFragment<FragmentPopupNotifyBin
         return R.style.CustomBottomSheetModal
     }*/
 
-    override fun FragmentPopupNotifyBinding.onMyViewCreated(savedInstanceState: Bundle?) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         initView()
         setViewsClick(vb.btnClose)
     }
