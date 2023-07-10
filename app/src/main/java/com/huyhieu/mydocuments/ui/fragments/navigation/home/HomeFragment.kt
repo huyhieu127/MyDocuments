@@ -8,6 +8,7 @@ import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.models.HomeMenu
 import com.huyhieu.mydocuments.models.MenuForm
+import com.huyhieu.mydocuments.ui.fragments.dialog.toast.showToastSuccess
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.MenuAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,44 +17,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val adapterMenu by lazy { MenuAdapter() }
     private var lstMenus = mutableListOf<MenuForm>()
-//        MenuForm(name = "Network API") {
-//            navigate(MyNavHost.Main, MainDirections.toRecallAPI)
-//        },
-//        MenuForm(name = "Widget") {x
-//            navigate(MyNavHost.Main, MainDirections.toCountdown)
-//        },
-//        MenuForm(name = "Chart") {
-//            navigate(MyNavHost.Main, MainDirections.toCanvasChart)
-//        },
-//        MenuForm(name = "Notification") {
-//            navigate(MyNavHost.Main, MainDirections.toMultipleAPI)
-//        },
-//        MenuForm(name = "Components") {
-//            startActivity(Intent(mActivity, BluetoothActivity::class.java))
-//        },
-//        MenuForm(name = "Systems") {
-//            startActivity(Intent(mActivity, FFmpegKitActivity::class.java))
-//        },
-//        MenuForm(name = "Dialog") {
-//            mActivity.supportFragmentManager?.let {
-//                MyDialog.getInstance().show(it, null)
-//            }
-//        },
-//        MenuForm(name = "Language") {
-//            navigate(MyNavHost.Main, MainDirections.toSteps)
-//        },
-//        MenuForm(name = "Theme") {
-//            navigate(MyNavHost.Main, MainDirections.toSteps)
-//        }
-//        //Fake
-//    )
 
     override fun FragmentHomeBinding.onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //setTabNavigationBottom(com.huyhieu.library.components.UTab.TAB_HOME)
         homeVM.loadMenuFromAsset()
-        homeVM.fetchGitHubCommitted()
         setupMenu()
     }
 
@@ -65,7 +34,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         homeVM.githubCommittedLiveData.observe {
             it ?: return@observe
-            PopupNotifyFragment.newInstance().showBottomSheet(parentFragmentManager)
         }
     }
 
@@ -76,9 +44,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
         adapterMenu.itemClick = {
             when (it.type) {
+                HomeMenu.MENU_ABOUT -> {
+                    PopupNotifyFragment.newInstance().showBottomSheet(parentFragmentManager)
+                }
                 HomeMenu.MENU_THEME -> {
-                    logDebug("${it.name} coming soon!")
-                    showToastShort("${it.name} coming soon!")
+                    showToastSuccess()
                 }
                 HomeMenu.MENU_LANGUAGE -> {
                     showToastShort("${it.name} coming soon!")

@@ -1,5 +1,12 @@
 [
   {
+    "type": "MENU_ABOUT",
+    "name": "Abouts",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
     "type": "MENU_THEME",
     "name": "Theme",
     "note": "Coming soon",

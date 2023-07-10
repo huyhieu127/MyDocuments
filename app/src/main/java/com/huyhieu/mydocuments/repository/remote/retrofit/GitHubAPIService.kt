@@ -15,7 +15,7 @@ interface GitHubAPIService {
 
     @Headers(
         "Accept: application/vnd.github+json",
-        "Authorization: Bearer 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",
+        "Authorization: Bearer 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",
         "X-GitHub-Api-Version: 2022-11-28"
     )
     @GET("repos/huyhieu127/MyDocuments/commits")

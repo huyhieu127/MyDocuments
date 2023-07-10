@@ -9,10 +9,9 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/btn_height"
         android:gravity="center"
-        android:paddingVertical="@dimen/_12sdp"
-        android:text="GitHub"
+        android:text="Abouts"
         android:textColor="@color/black"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold" />
@@ -27,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:gravity="center"
-        android:text="Latest commit information"
+        android:text="Một vài thông tin xem trước của ứng dụng."
         android:textColor="@color/colorGrayscaleGray"
         android:textSize="@dimen/_10ssp" />
 
@@ -55,10 +54,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:textStyle="bold"
                 android:gravity="end"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
                 tools:text="Name" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -80,10 +79,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:textStyle="bold"
                 android:gravity="end"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
                 tools:text="Name" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -93,25 +92,80 @@
             android:layout_marginVertical="@dimen/_12sdp"
             android:background="@color/line" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Massage"
-            android:textColor="@color/colorGrayscaleGray"
-            android:textSize="@dimen/_11ssp" />
+            android:layout_marginTop="@dimen/_6sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvMassage"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Version name"
+                android:textColor="@color/colorGrayscaleGray"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVersionName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                tools:text="Name" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:background="#F6F6F6"
-            android:minLines="4"
-            android:paddingHorizontal="@dimen/_10sdp"
-            android:paddingVertical="@dimen/_6sdp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_11ssp"
-            tools:text="Name" />
+            android:layout_marginTop="@dimen/_6sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Version code"
+                android:textColor="@color/colorGrayscaleGray"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvVersionCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                tools:text="Name" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Build type"
+                android:textColor="@color/colorGrayscaleGray"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBuildType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                tools:text="Name" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.huyhieu.library.custom_views.MyButtonView
             android:id="@+id/btnClose"

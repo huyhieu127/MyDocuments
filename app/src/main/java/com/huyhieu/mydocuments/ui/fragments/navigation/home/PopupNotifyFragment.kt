@@ -2,6 +2,9 @@ package com.huyhieu.mydocuments.ui.fragments.navigation.home
 
 import android.os.Bundle
 import android.view.View
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.huyhieu.mydocuments.BuildConfig
+import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.dialog.BaseBottomSheetDialogFragment
 import com.huyhieu.mydocuments.databinding.FragmentPopupNotifyBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,9 +22,16 @@ class PopupNotifyFragment : BaseBottomSheetDialogFragment<FragmentPopupNotifyBin
     }*/
 
     override fun FragmentPopupNotifyBinding.onMyViewCreated(savedInstanceState: Bundle?) {
-        setAllowTouchBehind()
-        dialog?.setCanceledOnTouchOutside(true)
+        initView()
         setViewsClick(vb.btnClose)
+    }
+
+    private fun FragmentPopupNotifyBinding.initView() {
+        tvAuthor.text = "huyhieu127"
+        tvEmail.text = "id.huyhieu@gmail.com"
+        tvVersionName.text = BuildConfig.VERSION_NAME
+        tvVersionCode.text = BuildConfig.VERSION_CODE.toString()
+        tvBuildType.text = BuildConfig.BUILD_TYPE.uppercase()
     }
 
     override fun FragmentPopupNotifyBinding.onClickViewBinding(v: View, id: Int) {
@@ -29,16 +39,6 @@ class PopupNotifyFragment : BaseBottomSheetDialogFragment<FragmentPopupNotifyBin
             vb.btnClose.id -> {
                 dismissAllowingStateLoss()
             }
-        }
-    }
-
-    override fun FragmentPopupNotifyBinding.onMyLiveData(savedInstanceState: Bundle?) {
-        homeVM.githubCommittedLiveData.observe {
-            it ?: return@observe
-            val lastedCommit = it.first()
-            tvAuthor.text = lastedCommit.commit.committer.name
-            tvEmail.text = lastedCommit.commit.committer.email
-            tvMassage.text = lastedCommit.commit.message + "\n\n\nUpdate time: ${System.nanoTime()}"
         }
     }
 }

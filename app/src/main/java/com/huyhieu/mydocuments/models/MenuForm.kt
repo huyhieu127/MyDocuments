@@ -15,6 +15,7 @@ data class MenuForm(
 
 object HomeMenu {
     //Home menu
+    const val MENU_ABOUT = "MENU_ABOUT"
     const val MENU_THEME = "MENU_THEME"
     const val MENU_LANGUAGE = "MENU_LANGUAGE"
     const val MENU_NETWORK_API = "MENU_NETWORK_API"

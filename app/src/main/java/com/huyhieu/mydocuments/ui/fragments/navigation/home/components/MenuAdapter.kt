@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.huyhieu.library.extensions.setOnClickMyListener
+import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.databinding.LayoutItemMenuBinding
+import com.huyhieu.mydocuments.models.HomeMenu
 import com.huyhieu.mydocuments.models.MenuForm
 
 class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -33,15 +35,26 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = lstData?.size ?: 0
 
-    inner class MyViewHolder(private val binding: LayoutItemMenuBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class MyViewHolder(private val vb: LayoutItemMenuBinding) :
+        RecyclerView.ViewHolder(vb.root) {
         fun bindViewHolder() {
             lstData?.get(layoutPosition)?.let { item ->
-                binding.apply {
+                vb.apply {
                     root.setOnClickMyListener {
                         itemClick?.invoke(item)
                     }
                     tvTitle.text = item.name
+                    vb.setNote(item)
+                }
+            }
+        }
+
+        private fun LayoutItemMenuBinding.setNote(item: MenuForm) {
+            when (item.type) {
+                HomeMenu.MENU_ABOUT -> {
+                    tvNote.text = String.format("${BuildConfig.BUILD_TYPE.uppercase()}_${BuildConfig.VERSION_NAME}")
+                }
+                else -> {
                     tvNote.text = item.note
                 }
             }

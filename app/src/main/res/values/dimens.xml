@@ -6,6 +6,7 @@
     <dimen name="btn_text_radius">10dp</dimen>
     <dimen name="btn_icon_radius">16dp</dimen>
     <dimen name="btn_elevation">4dp</dimen>
+    <dimen name="btn_height">@dimen/_46sdp</dimen>
 
     <dimen name="padding_bounds_map">100dp</dimen>
     <dimen name="margin_bottom_title_option_view">2dp</dimen>

@@ -2,8 +2,8 @@ package com.huyhieu.mydocuments.ui.fragments.navigation.home.components
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.google.gson.JsonArray
 import com.huyhieu.library.utils.logDebug
+import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.base.BaseVM
 import com.huyhieu.mydocuments.models.MenuForm
 import com.huyhieu.mydocuments.models.github.CommitForm
@@ -11,10 +11,8 @@ import com.huyhieu.mydocuments.utils.readAssets
 import com.huyhieu.mydocuments.utils.toJson
 import com.huyhieu.mydocuments.utils.toMutableListData
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.json.JSONArray
 import javax.inject.Inject
 
 @ActivityRetainedScoped

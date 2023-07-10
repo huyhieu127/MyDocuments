@@ -49,15 +49,16 @@
             android:id="@+id/tvNote"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_2sdp"
             android:ellipsize="end"
             android:gravity="start|center"
             android:lines="2"
-            tools:text="Updating..."
             android:textColor="@color/colorGrayscaleGray"
-            android:textSize="@dimen/_10ssp"
+            android:textSize="@dimen/_8ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgArrowRight"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Updating..." />
 
 
         <androidx.appcompat.widget.AppCompatImageView

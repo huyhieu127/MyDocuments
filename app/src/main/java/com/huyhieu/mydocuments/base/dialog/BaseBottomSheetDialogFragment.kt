@@ -8,16 +8,20 @@ import android.view.WindowManager
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.huyhieu.library.custom_views.MyButtonView
 import com.huyhieu.library.extensions.dimenPx
 import com.huyhieu.library.extensions.drawable
+import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.base.interfaces.IBaseView
 import com.huyhieu.mydocuments.ui.activities.main.MainVM
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.HomeVM
 import javax.inject.Inject
+
 
 abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDialogFragment(),
     IBaseView<VB> {
@@ -31,6 +35,8 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDial
     private val window get() = this.dialog?.window
 
     private var _vb: VB? = null
+
+    val behavior by lazy { (dialog as BottomSheetDialog).behavior }
 
     /**
      * Params interface
@@ -62,10 +68,19 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDial
         vb.setupCreateView()
         return view
     }
+    fun setPeekHeight(peekHeight: Int) {
+        behavior.peekHeight = context.dimenPx(com.intuit.sdp.R.dimen._20sdp) + peekHeight
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         vb.onMyViewCreated(savedInstanceState)
         vb.onMyLiveData(savedInstanceState)
+        dialog?.setCanceledOnTouchOutside(true)
+//        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+//        behavior.isHideable = false
+//        setPeekHeight(R.dimen.btn_height)
+
+        //setAllowTouchBehind()
     }
 
     /**
@@ -76,17 +91,18 @@ abstract class BaseBottomSheetDialogFragment<VB : ViewBinding> : BottomSheetDial
     }
 
     fun setAllowTouchBehind() {
-        window?.setFlags(
+        dialog?.window?.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
         )
     }
 
-    fun showBottomSheet(fragmentManager: FragmentManager, tag: String = this.tag.orEmpty()) {
+    fun showBottomSheet(fragmentManager: FragmentManager, tag: String = javaClass.simpleName) {
         val bottomSheetExist = findBottomSheetExist(fragmentManager, tag)
         if (bottomSheetExist == null) {
             show(fragmentManager, tag)
         }
+        logDebug("showBottomSheet - $tag")
     }
 
     fun findBottomSheetExist(
