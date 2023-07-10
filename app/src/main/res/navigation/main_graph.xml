@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/swipeRefreshFragment">
+    app:startDestination="@id/headerAnimationFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -204,5 +204,10 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.chart.ChartFragment"
         android:label="fragment_chart"
         tools:layout="@layout/fragment_chart" />
+    <fragment
+        android:id="@+id/headerAnimationFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.animation.HeaderAnimationFragment"
+        android:label="fragment_header_animation"
+        tools:layout="@layout/fragment_header_animation" />
 
 </navigation>

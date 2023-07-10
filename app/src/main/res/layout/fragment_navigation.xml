@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_home" />
+        app:navGraph="@navigation/home_grahp" />
 
     <com.huyhieu.library.custom_views.MyNavigationBottomView
         android:id="@+id/navTab"
