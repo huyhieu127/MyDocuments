@@ -12,7 +12,7 @@ import com.huyhieu.mydocuments.R
 import kotlin.math.abs
 
 
-class CustomCanvasView @JvmOverloads constructor(
+class LineChartView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/headerAnimationFragment">
+    app:startDestination="@id/cubicChartFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -159,13 +159,13 @@
         app:destination="@id/countdownFragment" />
 
     <fragment
-        android:id="@+id/canvasFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.chart.line_chart.CanvasFragment"
+        android:id="@+id/lineChartFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.chart.line_chart.LineChartFragment"
         android:label="fragment_canvas"
-        tools:layout="@layout/fragment_canvas" />
+        tools:layout="@layout/fragment_line_chart" />
     <action
-        android:id="@+id/action_global_canvasFragment"
-        app:destination="@id/canvasFragment" />
+        android:id="@+id/action_global_lineChartFragment"
+        app:destination="@id/lineChartFragment" />
 
     <fragment
         android:id="@+id/pinCodeFragment"
@@ -209,5 +209,10 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.animation.HeaderAnimationFragment"
         android:label="fragment_header_animation"
         tools:layout="@layout/fragment_header_animation" />
+    <fragment
+        android:id="@+id/cubicChartFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.chart.cubic_chart.CubicChartFragment"
+        android:label="CubicChartFragment"
+        tools:layout="@layout/fragment_cubic_chart"/>
 
 </navigation>

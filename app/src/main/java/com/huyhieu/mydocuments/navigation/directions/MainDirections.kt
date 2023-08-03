@@ -28,9 +28,9 @@ object MainDirections {
         get() =
             NavigationFragmentDirections.actionGlobalPinCodeFragment()
 
-    val toCanvasChart
+    val toLineChart
         get() =
-            NavigationFragmentDirections.actionGlobalCanvasFragment()
+            NavigationFragmentDirections.actionGlobalLineChartFragment()
 
     val toMap
         get() =

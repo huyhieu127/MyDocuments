@@ -5,9 +5,9 @@ import com.huyhieu.library.extensions.setDarkColorStatusBar
 import com.huyhieu.library.extensions.setNavigationBarColor
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
-import com.huyhieu.mydocuments.databinding.FragmentCanvasBinding
+import com.huyhieu.mydocuments.databinding.FragmentLineChartBinding
 
-class CanvasFragment : BaseFragment<FragmentCanvasBinding>() {
+class LineChartFragment : BaseFragment<FragmentLineChartBinding>() {
     override fun onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(false)
         mActivity.setNavigationBarColor(R.color.black)
