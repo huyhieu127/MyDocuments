@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:fitsSystemWindows="true"
+    app:layoutDescription="@xml/fragment_my_tube_scene"
+    tools:context=".ui.fragments.my_tube.MyTubeFragment">
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/bgTab"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_corner_14_green_light"
+        app:altSrc="@drawable/bg_corner_14"
+        app:layout_constraintBottom_toBottomOf="@id/txtLocal"
+        app:layout_constraintEnd_toEndOf="@id/txtLocal"
+        app:layout_constraintStart_toStartOf="@id/txtLocal"
+        app:layout_constraintTop_toTopOf="@id/txtLocal" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="Local"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtServer"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtServer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:text="Server"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtLocal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/frameRight"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
+        android:id="@+id/rcvServer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@color/colorPrimaryMiddle"
+        android:clipToPadding="false"
+        android:nestedScrollingEnabled="false"
+        android:paddingVertical="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/frameRight"
+        app:layout_constraintStart_toStartOf="@id/frameRight"
+        app:layout_constraintTop_toBottomOf="@id/txtServer" />
+
+    <View
+        android:id="@+id/frameLeft"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
+        android:id="@+id/rcvLocal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@color/colorGreenMiddle"
+        android:clipToPadding="false"
+        android:paddingVertical="@dimen/_4sdp"
+        app:layout_constraintBottom_toTopOf="@+id/frameBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtLocal"
+        tools:listitem="@layout/item_my_tube" />
+
+    <View
+        android:id="@+id/frameBottom"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_70sdp"
+        android:background="@color/colorRedAlert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.motion.widget.MotionLayout>

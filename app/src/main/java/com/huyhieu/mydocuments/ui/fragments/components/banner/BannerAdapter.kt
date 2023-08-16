@@ -29,7 +29,7 @@ class BannerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = lstData.size
 
-    inner class MyViewHolder(val binding: ItemBannerBinding) :
+    private inner class MyViewHolder(val binding: ItemBannerBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindViewHolder() {
             lstData[layoutPosition].let { item ->

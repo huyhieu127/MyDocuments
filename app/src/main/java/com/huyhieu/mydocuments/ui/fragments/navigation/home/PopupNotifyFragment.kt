@@ -21,7 +21,7 @@ class PopupNotifyFragment : BaseBottomSheetDialogFragment<FragmentPopupNotifyBin
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         initView()
-        setViewsClick(vb.btnClose)
+        setClickViews(vb.btnClose)
     }
 
     private fun FragmentPopupNotifyBinding.initView() {

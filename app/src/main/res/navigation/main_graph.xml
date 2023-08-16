@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/cubicChartFragment">
+    app:startDestination="@id/myTubeFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -213,6 +213,17 @@
         android:id="@+id/cubicChartFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.chart.cubic_chart.CubicChartFragment"
         android:label="CubicChartFragment"
-        tools:layout="@layout/fragment_cubic_chart"/>
+        tools:layout="@layout/fragment_cubic_chart" />
+    <fragment
+        android:id="@+id/exoPlayerFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.my_tube.exo_player.ExoPlayerFragment"
+        android:label="fragment_exo_player"
+        tools:layout="@layout/fragment_exo_player" />
+
+    <fragment
+        android:id="@+id/myTubeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.my_tube.MyTubeFragment"
+        android:label="fragment_my_tube"
+        tools:layout="@layout/fragment_my_tube" />
 
 </navigation>

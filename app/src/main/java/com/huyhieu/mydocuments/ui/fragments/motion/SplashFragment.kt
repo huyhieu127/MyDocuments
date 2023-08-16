@@ -19,7 +19,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         if (appShared.isLoadedIntroduce) {
             navigate(MainDirections.toNavigation)
         } else {
-            setViewsClick(btnNext)
+            setClickViews(btnNext)
         }
     }
 

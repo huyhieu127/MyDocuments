@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.huyhieu.library.utils.logDebug
 
 class MyRecyclerViewLoadMore(context: Context, attrs: AttributeSet?) : RecyclerView(context, attrs) {
     var onLoadMore: (() -> Unit)? = null
@@ -28,5 +29,7 @@ class MyRecyclerViewLoadMore(context: Context, attrs: AttributeSet?) : RecyclerV
 
     private fun getItemCount() = this@MyRecyclerViewLoadMore.adapter?.itemCount ?: 0
 
-    private fun getEndPage() = (this@MyRecyclerViewLoadMore.adapter as? MyAdapterLoadMore<*>)?.isEndPage ?: false
+    private fun getEndPage() =
+        (this@MyRecyclerViewLoadMore.adapter as? MyAdapterLoadMore<*>)?.isEndPage ?: false
+
 }

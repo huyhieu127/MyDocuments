@@ -19,7 +19,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
         //hideNavigationBottom(R.color.white)
-        setViewsClick(optInformation, noteSelfSetupLoan, noteSelfSetupLoan.tvSeeMore)
+        setClickViews(optInformation, noteSelfSetupLoan, noteSelfSetupLoan.tvSeeMore)
 
         val text =
             "Bằng việc đăng ký tài khoản, bạn đồng ý với Điều khoản sử dụng và Chính sách bảo mật của chúng tôi."

@@ -17,7 +17,7 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         //callAPI("")
-        setViewsClick(
+        setClickViews(
             btnSync,
             btnAsync,
         )

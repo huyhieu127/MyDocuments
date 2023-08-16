@@ -43,7 +43,7 @@ class IntentSystemFragment : BaseFragment<FragmentIntentSystemBinding>() {
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setDarkColorStatusBar()
-        setViewsClick(btnCallSupport, btnCaptureView, imgPicture)
+        setClickViews(btnCallSupport, btnCaptureView, imgPicture)
         btnShare.setOnClickListenerCustom(false, listener = this@IntentSystemFragment)
     }
 
