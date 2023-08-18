@@ -1,15 +1,15 @@
-package com.huyhieu.mydocuments.ui.fragments.my_tube
+package com.huyhieu.mydocuments.ui.fragments.you_tube
 
 import androidx.recyclerview.widget.RecyclerView
 import com.huyhieu.mydocuments.base.BaseSimpleAdapter
-import com.huyhieu.mydocuments.databinding.ItemMyTubeBinding
-import com.huyhieu.mydocuments.models.MyTubeForm
+import com.huyhieu.mydocuments.databinding.ItemYouTubeBinding
+import com.huyhieu.mydocuments.models.YouTubeForm
 import com.huyhieu.mydocuments.utils.load
 
-class MyTubeAdapter : BaseSimpleAdapter<ItemMyTubeBinding, MyTubeForm>() {
-    override fun ItemMyTubeBinding.onBindMyViewHolder(
+class YouTubeAdapter : BaseSimpleAdapter<ItemYouTubeBinding, YouTubeForm>() {
+    override fun ItemYouTubeBinding.onBindMyViewHolder(
         holder: RecyclerView.ViewHolder,
-        item: MyTubeForm,
+        item: YouTubeForm,
         position: Int
     ) {
         if (item.urlThumbnail.isNotEmpty()) {

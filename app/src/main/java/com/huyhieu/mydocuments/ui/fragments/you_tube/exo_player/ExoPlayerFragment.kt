@@ -1,7 +1,8 @@
-package com.huyhieu.mydocuments.ui.fragments.my_tube.exo_player
+package com.huyhieu.mydocuments.ui.fragments.you_tube.exo_player
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
@@ -19,7 +20,6 @@ class ExoPlayerFragment : BaseFragment<FragmentExoPlayerBinding>() {
         registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia()) { uri ->
             if (uri != null) {
                 Log.d(">>>>>>>>>>>>>>>", "Selected URI: $uri")
-
                 val mediaItems = uri.map { MediaItem.fromUri(it) }
                 player.addMediaItems(mediaItems)
                 //Play
@@ -30,7 +30,7 @@ class ExoPlayerFragment : BaseFragment<FragmentExoPlayerBinding>() {
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) {
         vb.playerView.player = player
-        //pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.VideoOnly))
+        pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.VideoOnly))
         //findVideos()
     }
 

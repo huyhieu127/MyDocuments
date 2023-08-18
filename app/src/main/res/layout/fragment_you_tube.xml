@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlackYoutube"
+    android:fitsSystemWindows="true"
+    app:layoutDescription="@xml/fragment_you_tube_scene"
+    tools:context=".ui.fragments.you_tube.YouTubeFragment">
+
+    <View
+        android:id="@+id/frameRight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="parent" />
+    <!--Appbar-->
+    <View
+        android:id="@+id/frameAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
+        app:layout_constraintStart_toStartOf="@id/frameAppbar"
+        app:layout_constraintTop_toTopOf="@id/frameAppbar"
+        app:srcCompat="@drawable/ic_logo_youtube_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgCast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@+id/imgNotification"
+        app:layout_constraintTop_toTopOf="@id/frameAppbar"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgNotification"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@id/imgSearch"
+        app:layout_constraintTop_toTopOf="@id/frameAppbar"
+        app:srcCompat="@drawable/ic_notification" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtBadgeNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:background="@drawable/bg_corner_10_stroke"
+        android:paddingHorizontal="@dimen/_4sdp"
+        android:paddingVertical="@dimen/_1sdp"
+        android:text="9+"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_7ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgNotification"
+        app:layout_constraintTop_toTopOf="@id/imgNotification" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSearch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@id/frameAvatarUser"
+        app:layout_constraintTop_toTopOf="@id/frameAppbar"
+        app:srcCompat="@drawable/ic_search" />
+
+    <FrameLayout
+        android:id="@+id/frameAvatarUser"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_14sdp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/frameAppbar">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvAvatarUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="@dimen/_14sdp"
+            app:cardElevation="0dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAvatarUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/img_usuper" />
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
+        android:id="@+id/rcvHome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/frameTabBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frameAppbar"
+        tools:listitem="@layout/item_you_tube" />
+
+    <!--Full container watching-->
+    <View
+        android:id="@+id/frameFakeBottom"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/frameContainerWatching"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorBlackYoutube"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frameWindow" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/frameHeaderWatching"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/frameContainerWatching">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Making My Way - Sơn Tùng MTP | Mây Bae Cover - Nhạc Hot TikTok Hay 2023 - Nhạc Trẻ Remix 2023"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHashTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:text="21 N lượt xem  1 tháng trước  #makingmyway #nonstop2023 #nhactreremix"
+            android:textColor="#C1C1C1"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toStartOf="@+id/imgPlayWindow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleWindow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:background="@color/line" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_8sdp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/_30sdp"
+                app:cardElevation="0dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgAuthorAvatar"
+                    android:layout_width="@dimen/_42sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    app:srcCompat="@drawable/img_bulbasaur" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="KEYO Official"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="2,1 Tr người đăng ký"
+                    android:textColor="#C1C1C1"
+                    android:textSize="@dimen/_11ssp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Đăng ký"
+                android:textColor="@color/colorRedYoutube"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:background="@color/line" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
+        android:id="@+id/rcvWatching"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:nestedScrollingEnabled="true"
+        app:layout_constraintBottom_toBottomOf="@id/frameContainerWatching"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameHeaderWatching"
+        tools:listitem="@layout/item_you_tube" />
+
+    <HorizontalScrollView
+        android:id="@id/frameTabWatching"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlackYoutube"
+        android:fillViewport="true"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameHeaderWatching">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_4sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:background="@drawable/bg_corner_16"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="Tất cả"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:background="@drawable/bg_corner_16"
+                android:backgroundTint="#545454"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="HHTQ"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:background="@drawable/bg_corner_16"
+                android:backgroundTint="#545454"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="Anime"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:background="@drawable/bg_corner_16"
+                android:backgroundTint="#545454"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="ABCXZY"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:background="@drawable/bg_corner_16"
+                android:backgroundTint="#545454"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="ABCXZY"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:background="@drawable/bg_corner_16"
+                android:backgroundTint="#545454"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="ABCXZY"
+                android:textColor="@color/white" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </HorizontalScrollView>
+
+    <!--Window-->
+    <View
+        android:id="@+id/frameWindow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorBlackYoutube"
+        app:layout_constraintBottom_toBottomOf="@id/playerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameWindowContainerMini"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_48sdp"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@id/playerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playerView">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTitleWindow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="KEYO - EM LÀ AI | Official Music Video"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toStartOf="@id/imgPlayWindow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDescribeWindow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="KEYO Official"
+            android:textColor="#C1C1C1"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toStartOf="@+id/imgPlayWindow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleWindow" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgPlayWindow"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imgCloseWindow"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:srcCompat="@drawable/ic_play" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCloseWindow"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/_12sdp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:srcCompat="@drawable/ic_close" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorBlackYoutube"
+        android:clickable="true"
+        android:elevation="@dimen/_2sdp"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="@id/frameWindow"
+        app:layout_constraintStart_toStartOf="@id/frameWindow"
+        app:layout_constraintTop_toTopOf="@id/frameWindow"
+        app:srcCompat="@drawable/img_thumbnail" />
+
+    <!--Tab bar-->
+    <View
+        android:id="@+id/frameTabBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/colorBlackYoutube"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <!--Home-->
+    <View
+        android:id="@+id/frameTabHome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/frameTabBar"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabShorts"
+        app:layout_constraintStart_toStartOf="@id/frameTabBar"
+        app:layout_constraintTop_toTopOf="@id/frameTabBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgHome"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabHome"
+        app:layout_constraintStart_toStartOf="@id/frameTabHome"
+        app:layout_constraintTop_toTopOf="@id/frameTabHome"
+        app:srcCompat="@drawable/ic_home_filled" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trang chủ"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgHome"
+        app:layout_constraintStart_toStartOf="@id/imgHome"
+        app:layout_constraintTop_toBottomOf="@id/imgHome" />
+
+    <!--Shorts-->
+    <View
+        android:id="@+id/frameTabShorts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/frameTabBar"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabAddNew"
+        app:layout_constraintStart_toEndOf="@+id/frameTabHome"
+        app:layout_constraintTop_toTopOf="@id/frameTabBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgShorts"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabShorts"
+        app:layout_constraintStart_toStartOf="@id/frameTabShorts"
+        app:layout_constraintTop_toTopOf="@id/frameTabShorts"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtShorts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shorts"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgShorts"
+        app:layout_constraintStart_toStartOf="@id/imgShorts"
+        app:layout_constraintTop_toBottomOf="@id/imgShorts" />
+
+    <!--Add new-->
+    <View
+        android:id="@+id/frameTabAddNew"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/frameTabBar"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabSubscribe"
+        app:layout_constraintStart_toEndOf="@+id/frameTabShorts"
+        app:layout_constraintTop_toTopOf="@id/frameTabBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgAddNew"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingVertical="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="@id/frameTabAddNew"
+        app:layout_constraintEnd_toEndOf="@id/frameTabAddNew"
+        app:layout_constraintStart_toStartOf="@id/frameTabAddNew"
+        app:layout_constraintTop_toTopOf="@id/frameTabAddNew"
+        app:srcCompat="@drawable/ic_add_circle" />
+
+    <!--Subscribe-->
+    <View
+        android:id="@+id/frameTabSubscribe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/frameTabBar"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabGallery"
+        app:layout_constraintStart_toEndOf="@+id/frameTabAddNew"
+        app:layout_constraintTop_toTopOf="@id/frameTabBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSubscribe"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabSubscribe"
+        app:layout_constraintStart_toStartOf="@id/frameTabSubscribe"
+        app:layout_constraintTop_toTopOf="@id/frameTabSubscribe"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtSubscribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kênh đăng ký"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgSubscribe"
+        app:layout_constraintStart_toStartOf="@id/imgSubscribe"
+        app:layout_constraintTop_toBottomOf="@id/imgSubscribe" />
+
+    <!--Gallery-->
+    <View
+        android:id="@+id/frameTabGallery"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/frameTabBar"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toEndOf="@id/frameTabBar"
+        app:layout_constraintStart_toEndOf="@+id/frameTabSubscribe"
+        app:layout_constraintTop_toTopOf="@id/frameTabBar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgGallery"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabGallery"
+        app:layout_constraintStart_toStartOf="@id/frameTabGallery"
+        app:layout_constraintTop_toTopOf="@id/frameTabGallery"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thư viện"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgGallery"
+        app:layout_constraintStart_toStartOf="@id/imgGallery"
+        app:layout_constraintTop_toBottomOf="@id/imgGallery" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

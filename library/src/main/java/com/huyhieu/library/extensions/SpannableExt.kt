@@ -16,8 +16,8 @@ import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DimenRes
 import androidx.annotation.FontRes
-import com.huyhieu.library.utils.CustomTypefaceSpan
 import com.huyhieu.library.R
+import com.huyhieu.library.utils.CustomTypefaceSpan
 
 /**
  * Multiple style text*/
@@ -27,8 +27,8 @@ fun TextView.setSpannable(
     @DimenRes textSize: Int = 0,
     @FontRes fontId: Int = 0,//R.font.font_svn_gilroy_semibold
     @ColorRes colorId: Int = R.color.colorPrimary,
-    actionClick: (() -> Unit)? = null
-) {
+    actionClick: ((subText: String) -> Unit)? = null
+): TextView {
     /*Set style*/
     val spannable = SpannableString(content).toSpannable(
         context = context,
@@ -38,7 +38,26 @@ fun TextView.setSpannable(
         colorId = colorId,
         actionClick = actionClick
     )
-    applySpannable(spannable)
+    return applySpannable(spannable)
+}
+
+fun TextView.addSpannable(
+    subText: String,
+    @DimenRes textSize: Int = 0,
+    @FontRes fontId: Int = 0,//R.font.font_svn_gilroy_semibold
+    @ColorRes colorId: Int = R.color.colorPrimary,
+    actionClick: ((subText: String) -> Unit)? = null
+): TextView {
+    /*Set style*/
+    val spannable = (this.text as SpannableString).toSpannable(
+        context = context,
+        subText = subText,
+        textSize = textSize,
+        fontId = fontId,
+        colorId = colorId,
+        actionClick = actionClick
+    )
+    return applySpannable(spannable)
 }
 
 fun String.toSpannable(
@@ -47,7 +66,7 @@ fun String.toSpannable(
     @DimenRes textSize: Int = 0,
     @FontRes fontId: Int = 0,//R.font.font_svn_gilroy_semibold
     @ColorRes colorId: Int = R.color.colorPrimary,
-    actionClick: (() -> Unit)? = null
+    actionClick: ((subText: String) -> Unit)? = null
 ): SpannableString {
     /*Set style*/
     return SpannableString(this).toSpannable(
@@ -66,7 +85,7 @@ fun SpannableString.toSpannable(
     @DimenRes textSize: Int = 0,
     @FontRes fontId: Int = 0,//R.font.font_svn_gilroy_semibold
     @ColorRes colorId: Int = R.color.colorPrimary,
-    actionClick: (() -> Unit)? = null
+    actionClick: ((subText: String) -> Unit)? = null
 ): SpannableString {
     if (this.isEmpty() || subText.isEmpty()) return this
     val startIdx = this.indexOf(subText)
@@ -106,7 +125,7 @@ fun SpannableString.toSpannable(
             setSpan(
                 object : ClickableSpan() {
                     override fun onClick(widget: View) {
-                        actionClick.invoke()
+                        actionClick.invoke(subText)
                     }
 
                     override fun updateDrawState(ds: TextPaint) {
@@ -125,9 +144,10 @@ fun SpannableString.toSpannable(
 fun TextView.applySpannable(
     spannable: Spannable,
     onBuilder: (Spannable.() -> Unit)? = { setLinkColor(R.color.colorPrimary) }
-) {
+): TextView {
     onBuilder?.invoke(spannable)
     text = spannable
+    return this
 }
 
 fun TextView.setLinkColor(@ColorRes colorRes: Int = R.color.colorPrimary) {

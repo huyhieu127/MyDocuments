@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/myTubeFragment">
+    app:startDestination="@id/youTubeFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -216,14 +216,14 @@
         tools:layout="@layout/fragment_cubic_chart" />
     <fragment
         android:id="@+id/exoPlayerFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.my_tube.exo_player.ExoPlayerFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.you_tube.exo_player.ExoPlayerFragment"
         android:label="fragment_exo_player"
         tools:layout="@layout/fragment_exo_player" />
 
     <fragment
-        android:id="@+id/myTubeFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.my_tube.MyTubeFragment"
+        android:id="@+id/youTubeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.you_tube.YouTubeFragment"
         android:label="fragment_my_tube"
-        tools:layout="@layout/fragment_my_tube" />
+        tools:layout="@layout/fragment_you_tube" />
 
 </navigation>

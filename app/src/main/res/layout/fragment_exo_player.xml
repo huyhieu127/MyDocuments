@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.my_tube.exo_player.ExoPlayerFragment">
+    tools:context=".ui.fragments.you_tube.exo_player.ExoPlayerFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameContainer"

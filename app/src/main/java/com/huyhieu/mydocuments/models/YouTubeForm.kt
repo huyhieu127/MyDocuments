@@ -1,6 +1,6 @@
 package com.huyhieu.mydocuments.models
 
-class MyTubeForm(
+class YouTubeForm(
     val urlThumbnail: String ="",
     val title: String = "",
     val urlAuthorAvatar: String ="",

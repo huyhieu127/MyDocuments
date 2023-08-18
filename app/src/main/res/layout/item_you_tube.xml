@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_4sdp"
-    android:background="@color/black"
     android:nestedScrollingEnabled="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:background="@color/colorBlackYoutube">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +20,8 @@
             app:layout_constraintDimensionRatio="h,16:9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/img_usuper" />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/img_thumbnail" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -51,23 +53,23 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="KEYO - EM LÀ AI | Official Music Video"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDescribe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:text="KEYO Official • 400 N lượt xem • 2 tuần trước"
                 android:textColor="#C1C1C1"
-                android:textSize="@dimen/_12ssp" />
+                android:textSize="@dimen/_11ssp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>

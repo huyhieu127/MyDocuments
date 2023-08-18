@@ -2,11 +2,9 @@ package com.huyhieu.mydocuments.base.interfaces
 
 import android.annotation.SuppressLint
 import android.view.KeyEvent
-import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.utils.logDebug
 
 interface IViewClickListener<VB : ViewBinding> : View.OnClickListener, IParams<VB> {
     /**
@@ -15,19 +13,6 @@ interface IViewClickListener<VB : ViewBinding> : View.OnClickListener, IParams<V
     fun setClickViews(vararg views: View) {
         views.forEach {
             it.setOnClickListener(this@IViewClickListener)
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    fun MotionLayout.setClickViewsOfMotion(vararg views: View) {
-        views.forEach {
-            it.setOnTouchListener { v, event ->
-                if (event.action == MotionEvent.ACTION_UP && (progress == 0.0F || progress == 1.0F)) {
-                    logDebug(this.transitionName)
-                    vb.onClickViewBinding(v, v.id)
-                }
-                return@setOnTouchListener false
-            }
         }
     }
 
