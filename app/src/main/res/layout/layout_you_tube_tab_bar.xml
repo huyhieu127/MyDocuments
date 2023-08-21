@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40sdp"
+    android:background="@color/colorBlackYoutube">
+    <!--Home-->
+    <View
+        android:id="@+id/frameTabHome"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabShorts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgHome"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabHome"
+        app:layout_constraintStart_toStartOf="@id/frameTabHome"
+        app:layout_constraintTop_toTopOf="@id/frameTabHome"
+        app:srcCompat="@drawable/ic_home_filled" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trang chủ"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgHome"
+        app:layout_constraintStart_toStartOf="@id/imgHome"
+        app:layout_constraintTop_toBottomOf="@id/imgHome" />
+
+    <!--Shorts-->
+    <View
+        android:id="@+id/frameTabShorts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabAddNew"
+        app:layout_constraintStart_toEndOf="@+id/frameTabHome"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgShorts"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabShorts"
+        app:layout_constraintStart_toStartOf="@id/frameTabShorts"
+        app:layout_constraintTop_toTopOf="@id/frameTabShorts"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtShorts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shorts"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgShorts"
+        app:layout_constraintStart_toStartOf="@id/imgShorts"
+        app:layout_constraintTop_toBottomOf="@id/imgShorts" />
+
+    <!--Add new-->
+    <View
+        android:id="@+id/frameTabAddNew"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabSubscribe"
+        app:layout_constraintStart_toEndOf="@+id/frameTabShorts"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgAddNew"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingVertical="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="@id/frameTabAddNew"
+        app:layout_constraintEnd_toEndOf="@id/frameTabAddNew"
+        app:layout_constraintStart_toStartOf="@id/frameTabAddNew"
+        app:layout_constraintTop_toTopOf="@id/frameTabAddNew"
+        app:srcCompat="@drawable/ic_add_circle" />
+
+    <!--Subscribe-->
+    <View
+        android:id="@+id/frameTabSubscribe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toStartOf="@+id/frameTabGallery"
+        app:layout_constraintStart_toEndOf="@+id/frameTabAddNew"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSubscribe"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabSubscribe"
+        app:layout_constraintStart_toStartOf="@id/frameTabSubscribe"
+        app:layout_constraintTop_toTopOf="@id/frameTabSubscribe"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtSubscribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kênh đăng ký"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgSubscribe"
+        app:layout_constraintStart_toStartOf="@id/imgSubscribe"
+        app:layout_constraintTop_toBottomOf="@id/imgSubscribe" />
+
+    <!--Gallery-->
+    <View
+        android:id="@+id/frameTabGallery"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w, 1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frameTabSubscribe"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgGallery"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintEnd_toEndOf="@id/frameTabGallery"
+        app:layout_constraintStart_toStartOf="@id/frameTabGallery"
+        app:layout_constraintTop_toTopOf="@id/frameTabGallery"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thư viện"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgGallery"
+        app:layout_constraintStart_toStartOf="@id/imgGallery"
+        app:layout_constraintTop_toBottomOf="@id/imgGallery" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,10 +88,11 @@ class YouTubeFragment : BaseFragment<FragmentYouTubeBinding>() {
     @SuppressLint("ClickableViewAccessibility")
     private fun initView() = with(vb) {
         rcvHome.init(adapterLocal)
-        rcvWatching.init(adapterLocal)
+        frameWatching.rcvWatching.init(adapterLocal)
+
         adapterLocal.fillData(lstLocal)
         val content = "21 N lượt xem  1 tháng trước  #makingmyway #nonstop2023 #nhactreremix"
-        tvHashTag.setSpannable(
+        frameWatching.tvHashTag.setSpannable(
             content = content,
             subText = "#makingmyway",
             colorId = R.color.blue,

@@ -11,4 +11,5 @@
 
     <color name="colorRedYoutube">#FF0000</color>
     <color name="colorBlackYoutube">#0F0F0F</color>
+    <color name="colorCardYoutube">#2E2E2E</color>
 </resources>
