@@ -8,7 +8,7 @@
         app:duration="350" />
     <Transition
         android:id="@+id/transitionCollapse"
-        app:constraintSetEnd="@id/miniWindow"
+        app:constraintSetEnd="@id/collapseWindow"
         app:constraintSetStart="@+id/fullWindow"
         app:transitionFlags="onInterceptTouchReturnSwipe">
         <OnSwipe
@@ -86,7 +86,7 @@
     </ConstraintSet>
 
     <ConstraintSet
-        android:id="@+id/miniWindow"
+        android:id="@+id/collapseWindow"
         app:deriveConstraintsFrom="@+id/normal">
         <Constraint
             android:id="@+id/rcvHome"

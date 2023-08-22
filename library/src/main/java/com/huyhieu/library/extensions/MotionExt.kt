@@ -3,7 +3,7 @@ package com.huyhieu.library.extensions
 import androidx.constraintlayout.motion.widget.MotionLayout
 
 
-fun MotionLayout.setTransitionTo(startID: Int, endID: Int, duration: Int = 500, onComplete: Runnable? = null) {
+fun MotionLayout.setTransitionTo(startID: Int, endID: Int, duration: Int = 300, onComplete: Runnable? = null) {
     post {
         setTransition(startID, endID)
         setTransitionDuration(duration)

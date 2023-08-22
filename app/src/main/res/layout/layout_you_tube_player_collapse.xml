@@ -5,6 +5,8 @@
     android:id="@+id/framePlayerCollapse"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_48sdp"
+    android:clickable="true"
+    android:focusable="true"
     app:layout_constraintBottom_toBottomOf="@id/playerView"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="parent"
@@ -12,7 +14,7 @@
     tools:background="@color/colorBlackYoutube">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTitleWindow"
+        android:id="@+id/tvPlayerCollapseTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
@@ -22,12 +24,12 @@
         android:text="KEYO - EM LÀ AI | Official Music Video"
         android:textColor="@color/white"
         android:textSize="@dimen/_10ssp"
-        app:layout_constraintEnd_toStartOf="@id/imgPlayWindow"
+        app:layout_constraintEnd_toStartOf="@id/imgCollapsePlay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvDescribeWindow"
+        android:id="@+id/tvPlayerCollapseDescribe"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
@@ -37,25 +39,25 @@
         android:text="KEYO Official"
         android:textColor="#C1C1C1"
         android:textSize="@dimen/_10ssp"
-        app:layout_constraintEnd_toStartOf="@+id/imgPlayWindow"
+        app:layout_constraintEnd_toStartOf="@+id/imgCollapsePlay"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleWindow" />
+        app:layout_constraintTop_toBottomOf="@id/tvPlayerCollapseTitle" />
 
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgPlayWindow"
+        android:id="@+id/imgCollapsePlay"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:padding="@dimen/_8sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/imgCloseWindow"
+        app:layout_constraintEnd_toStartOf="@id/imgCollapseClose"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
         app:srcCompat="@drawable/ic_play" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgCloseWindow"
+        android:id="@+id/imgCollapseClose"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_4sdp"

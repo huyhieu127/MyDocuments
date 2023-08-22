@@ -1,5 +1,6 @@
 package com.huyhieu.mydocuments.base
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
         private set
 
     var onClickItem: ((item: DATA) -> Unit)? = null
+    var onClickItemWithPosition: ((position: Int, item: DATA) -> Unit)? = null
     /**
      * Configs
      * */
@@ -39,6 +41,7 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
                 vb.onBindMyViewHolder(holder = this, item = item, position = layoutPosition)
                 vb.root.setOnClickListener {
                     onClickItem?.invoke(item)
+                    onClickItemWithPosition?.invoke(layoutPosition, item)
                 }
             }
         }
@@ -50,10 +53,12 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
 
     abstract fun VB.onBindMyViewHolder(holder: RecyclerView.ViewHolder, item: DATA, position: Int)
 
+    @SuppressLint("NotifyDataSetChanged")
     fun fillData(listData: MutableList<DATA>) {
         this.listData = listData
         tryCatch {
-            notifyItemRangeInserted(0, listData.size - 1)
+            notifyDataSetChanged()
+            //notifyItemRangeInserted(0, listData.size - 1)
         }
     }
 

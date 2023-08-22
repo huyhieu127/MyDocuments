@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWatchingTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_8sdp"
@@ -37,9 +38,9 @@
             android:text="21 N lượt xem  1 tháng trước  #makingmyway #nonstop2023 #nhactreremix"
             android:textColor="#C1C1C1"
             android:textSize="@dimen/_10ssp"
-            app:layout_constraintEnd_toStartOf="@+id/imgPlayWindow"
+            app:layout_constraintEnd_toStartOf="@+id/imgCollapsePlay"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitleWindow" />
+            app:layout_constraintTop_toBottomOf="@id/tvWatchingTitle" />
 
         <View
             android:layout_width="match_parent"
@@ -74,6 +75,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvWatchingAuthorName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_2sdp"
