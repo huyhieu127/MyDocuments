@@ -14,95 +14,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toEndOf="parent" />
-    <!--Appbar-->
+
     <View
+        android:id="@+id/frameFakeBottom"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <!--Appbar-->
+    <include
+        layout="@layout/layout_you_tube_header"
         android:id="@+id/frameAppbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
-        app:layout_constraintStart_toStartOf="@id/frameAppbar"
-        app:layout_constraintTop_toTopOf="@id/frameAppbar"
-        app:srcCompat="@drawable/ic_logo_youtube_text" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgCast"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/imgNotification"
-        app:layout_constraintTop_toTopOf="@id/frameAppbar"
-        app:srcCompat="@drawable/ic_cast" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgNotification"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@id/imgSearch"
-        app:layout_constraintTop_toTopOf="@id/frameAppbar"
-        app:srcCompat="@drawable/ic_notification" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtBadgeNotification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_11sdp"
-        android:layout_marginEnd="@dimen/_4sdp"
-        android:background="@drawable/bg_corner_10_stroke"
-        android:paddingHorizontal="@dimen/_4sdp"
-        android:paddingVertical="@dimen/_1sdp"
-        android:text="9+"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_7ssp"
-        app:layout_constraintEnd_toEndOf="@id/imgNotification"
-        app:layout_constraintTop_toTopOf="@id/imgNotification" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgSearch"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/_10sdp"
-        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toStartOf="@id/frameAvatarUser"
-        app:layout_constraintTop_toTopOf="@id/frameAppbar"
-        app:srcCompat="@drawable/ic_search" />
-
-    <FrameLayout
-        android:id="@+id/frameAvatarUser"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_14sdp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/frameAppbar"
-        app:layout_constraintDimensionRatio="w,1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/frameAppbar">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvAvatarUser"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="@dimen/_14sdp"
-            app:cardElevation="0dp">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgAvatarUser"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/img_usuper" />
-        </androidx.cardview.widget.CardView>
-    </FrameLayout>
 
     <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
         android:id="@+id/rcvHome"
@@ -116,23 +42,14 @@
         tools:listitem="@layout/item_you_tube" />
 
     <!--Full container watching-->
-    <View
-        android:id="@+id/frameFakeBottom"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
-
     <include
         android:id="@+id/frameWatching"
         layout="@layout/layout_you_tube_watching"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/framePlayer" />
+        app:layout_constraintTop_toBottomOf="@+id/playerView" />
 
     <!--Window-->
     <View
@@ -143,75 +60,18 @@
         app:layout_constraintBottom_toBottomOf="@id/playerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/playerView" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <include
+        layout="@layout/layout_you_tube_player_collapse"
         android:id="@+id/framePlayerCollapse"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_48sdp"
-        android:alpha="0"
         app:layout_constraintBottom_toBottomOf="@id/playerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/playerView">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTitleWindow"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="KEYO - EM LÀ AI | Official Music Video"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_10ssp"
-            app:layout_constraintEnd_toStartOf="@id/imgPlayWindow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDescribeWindow"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:ellipsize="end"
-            android:lines="1"
-            android:text="KEYO Official"
-            android:textColor="#C1C1C1"
-            android:textSize="@dimen/_10ssp"
-            app:layout_constraintEnd_toStartOf="@+id/imgPlayWindow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitleWindow" />
-
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgPlayWindow"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:padding="@dimen/_8sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/imgCloseWindow"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
-            app:srcCompat="@drawable/ic_play" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgCloseWindow"
-            android:layout_width="@dimen/_40sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:adjustViewBounds="true"
-            android:padding="@dimen/_12sdp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
-            app:srcCompat="@drawable/ic_close" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:alpha="0"
+        app:layout_constraintTop_toTopOf="@id/playerView" />
 
     <androidx.media3.ui.PlayerView
         android:id="@+id/playerView"
@@ -225,7 +85,7 @@
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="@id/framePlayer"
         app:layout_constraintStart_toStartOf="@id/framePlayer"
-        app:layout_constraintTop_toTopOf="@id/framePlayer"
+        app:layout_constraintTop_toBottomOf="parent"
         app:srcCompat="@drawable/img_thumbnail" />
 
     <!--Tab bar-->
@@ -234,6 +94,6 @@
         layout="@layout/layout_you_tube_tab_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

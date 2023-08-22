@@ -12,6 +12,7 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
     var listData = mutableListOf<DATA>()
         private set
 
+    var onClickItem: ((item: DATA) -> Unit)? = null
     /**
      * Configs
      * */
@@ -36,6 +37,9 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
             tryCatch {
                 val item = listData[layoutPosition]
                 vb.onBindMyViewHolder(holder = this, item = item, position = layoutPosition)
+                vb.root.setOnClickListener {
+                    onClickItem?.invoke(item)
+                }
             }
         }
     }

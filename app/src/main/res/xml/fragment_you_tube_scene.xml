@@ -2,6 +2,12 @@
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <Transition
+        android:id="@+id/transitionWatching"
+        app:constraintSetEnd="@id/fullWindow"
+        app:constraintSetStart="@+id/normal"
+        app:duration="350" />
+    <Transition
+        android:id="@+id/transitionCollapse"
         app:constraintSetEnd="@id/miniWindow"
         app:constraintSetStart="@+id/fullWindow"
         app:transitionFlags="onInterceptTouchReturnSwipe">
@@ -37,18 +43,51 @@
 
         </KeyFrameSet>
     </Transition>
-
     <!--Window-->
-    <ConstraintSet android:id="@+id/fullWindow">
-        <Constraint android:id="@+id/rcvHome" />
+    <ConstraintSet android:id="@+id/normal">
         <Constraint android:id="@+id/framePlayer" />
         <Constraint android:id="@+id/playerView" />
+        <Constraint android:id="@+id/frameWatching" />
         <Constraint android:id="@+id/frameTabBar" />
+    </ConstraintSet>
+    <ConstraintSet
+        android:id="@+id/fullWindow"
+        app:deriveConstraintsFrom="@+id/normal">
+        <Constraint
+            android:id="@+id/framePlayer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/playerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/playerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="@id/framePlayer"
+            app:layout_constraintStart_toStartOf="@id/framePlayer"
+            app:layout_constraintTop_toTopOf="@id/framePlayer" />
+        <Constraint
+            android:id="@+id/frameWatching"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/frameFakeBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/framePlayer" />
+        <Constraint
+            android:id="@+id/frameTabBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/colorBlackYoutube"
+            app:layout_constraintTop_toBottomOf="parent" />
     </ConstraintSet>
 
     <ConstraintSet
         android:id="@+id/miniWindow"
-        app:deriveConstraintsFrom="@+id/fullWindow">
+        app:deriveConstraintsFrom="@+id/normal">
         <Constraint
             android:id="@+id/rcvHome"
             android:layout_width="0dp"

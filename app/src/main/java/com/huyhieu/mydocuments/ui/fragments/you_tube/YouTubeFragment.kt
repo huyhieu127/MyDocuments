@@ -8,8 +8,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import com.huyhieu.library.extensions.addSpannable
+import com.huyhieu.library.extensions.onTransitionCompleted
 import com.huyhieu.library.extensions.setNavigationBarColor
 import com.huyhieu.library.extensions.setSpannable
+import com.huyhieu.library.extensions.setTransitionTo
 import com.huyhieu.library.extensions.showToastShort
 import com.huyhieu.library.utils.logDebug
 import com.huyhieu.mydocuments.R
@@ -72,7 +74,11 @@ class YouTubeFragment : BaseFragment<FragmentYouTubeBinding>() {
     override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setNavigationBarColor(R.color.colorBlackYoutube)
         initView()
-        setClickViews(playerView, imgPlayWindow, imgCloseWindow)
+        setClickViews(
+            playerView,
+            framePlayerCollapse.imgPlayWindow,
+            framePlayerCollapse.imgCloseWindow
+        )
 
         vb.playerView.player = player
         vb.playerView.useController = false
@@ -89,7 +95,6 @@ class YouTubeFragment : BaseFragment<FragmentYouTubeBinding>() {
     private fun initView() = with(vb) {
         rcvHome.init(adapterLocal)
         frameWatching.rcvWatching.init(adapterLocal)
-
         adapterLocal.fillData(lstLocal)
         val content = "21 N lượt xem  1 tháng trước  #makingmyway #nonstop2023 #nhactreremix"
         frameWatching.tvHashTag.setSpannable(
@@ -112,6 +117,13 @@ class YouTubeFragment : BaseFragment<FragmentYouTubeBinding>() {
                 showToastShort(it)
             }
         )
+
+        adapterLocal.onClickItem = {
+            showTransitionWatching()
+        }
+        root.onTransitionCompleted { _, currentId ->
+            checkEnableTransition(currentId)
+        }
     }
 
     override fun FragmentYouTubeBinding.onClickViewBinding(v: View, id: Int) {
@@ -121,14 +133,50 @@ class YouTubeFragment : BaseFragment<FragmentYouTubeBinding>() {
                 root.transitionToStart()
             }
 
-            imgPlayWindow -> {
+            framePlayerCollapse.imgPlayWindow -> {
                 logDebug("Play")
             }
 
-            imgCloseWindow -> {
-                logDebug("Close")
+            framePlayerCollapse.imgCloseWindow -> {
+                hideTransitionWatching()
             }
         }
     }
 
+    private fun showTransitionWatching() = with(vb) {
+        if (root.currentState == R.id.miniWindow) {
+            root.transitionToStart()
+        }else{
+            root.setTransition(R.id.transitionWatching)
+            root.transitionToEnd()
+        }
+    }
+
+    private fun hideTransitionWatching() = with(vb) {
+        root.setTransitionTo(R.id.miniWindow, R.id.normal)
+        root.transitionToStart()
+    }
+
+    private fun checkEnableTransition(id: Int) {
+        enableTransitionWatching(id)
+        enableTransitionCollapse(id)
+    }
+
+    private fun enableTransitionWatching(id: Int) = with(vb) {
+//        logDebug("enableTransitionWatching: ${id == R.id.transitionCollapse}")
+//        if (id == R.id.transitionCollapse) {
+//            root.setTransition(R.id.transitionWatching)
+//        }
+//        root.enableViewTransition(R.id.transitionWatching, id == R.id.transitionCollapse)
+//        root.enableTransition(R.id.transitionWatching, id == R.id.transitionCollapse)
+    }
+
+    private fun enableTransitionCollapse(id: Int) = with(vb) {
+        logDebug("enableTransitionCollapse: ${id == R.id.fullWindow}")
+        if (id == R.id.fullWindow) {
+            root.setTransition(R.id.transitionCollapse)
+        }
+        root.enableViewTransition(R.id.transitionCollapse, id != R.id.normal)
+        root.enableTransition(R.id.transitionCollapse, id != R.id.normal)
+    }
 }

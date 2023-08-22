@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40sdp"
+    tools:background="@color/colorBlackYoutube">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_logo_youtube_text" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgCast"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@+id/imgNotification"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cast" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgNotification"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@id/imgSearch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_notification" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtBadgeNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:background="@drawable/bg_corner_10_stroke"
+        android:paddingHorizontal="@dimen/_4sdp"
+        android:paddingVertical="@dimen/_1sdp"
+        android:text="9+"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_7ssp"
+        app:layout_constraintEnd_toEndOf="@id/imgNotification"
+        app:layout_constraintTop_toTopOf="@id/imgNotification" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgSearch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toStartOf="@id/frameAvatarUser"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_search" />
+
+    <FrameLayout
+        android:id="@+id/frameAvatarUser"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_14sdp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvAvatarUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="@dimen/_14sdp"
+            app:cardElevation="0dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAvatarUser"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/img_usuper" />
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

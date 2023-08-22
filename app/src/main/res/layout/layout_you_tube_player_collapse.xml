@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/framePlayerCollapse"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_48sdp"
+    app:layout_constraintBottom_toBottomOf="@id/playerView"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="@id/playerView"
+    tools:background="@color/colorBlackYoutube">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleWindow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="KEYO - EM LÀ AI | Official Music Video"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toStartOf="@id/imgPlayWindow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDescribeWindow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:text="KEYO Official"
+        android:textColor="#C1C1C1"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toStartOf="@+id/imgPlayWindow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleWindow" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPlayWindow"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:padding="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/imgCloseWindow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:srcCompat="@drawable/ic_play" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgCloseWindow"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:adjustViewBounds="true"
+        android:padding="@dimen/_12sdp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        app:srcCompat="@drawable/ic_close" />
+</androidx.constraintlayout.widget.ConstraintLayout>
