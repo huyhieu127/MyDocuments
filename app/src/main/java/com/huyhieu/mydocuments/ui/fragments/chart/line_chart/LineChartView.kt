@@ -72,9 +72,8 @@ class LineChartView @JvmOverloads constructor(
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas ?: return
         //drawRotateImage(canvas!!)
         //drawCircle
         drawLine(canvas)

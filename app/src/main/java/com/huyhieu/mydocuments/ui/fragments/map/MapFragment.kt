@@ -6,9 +6,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.huyhieu.library.extensions.isGooglePlayServicesAvailable
-import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.utils.MapUtils
+import com.huyhieu.mydocuments.libraries.extensions.isGooglePlayServicesAvailable
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.utils.MapUtils
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMapBinding

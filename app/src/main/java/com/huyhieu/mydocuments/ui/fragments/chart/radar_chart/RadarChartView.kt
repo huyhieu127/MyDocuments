@@ -1,14 +1,18 @@
 package com.huyhieu.mydocuments.ui.fragments.chart.radar_chart
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Path
 import android.graphics.Path.FillType
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
-import com.huyhieu.library.R
-import com.huyhieu.library.extensions.color
-import com.huyhieu.library.utils.logDebug
-import com.huyhieu.library.utils.logError
+import com.huyhieu.mydocuments.libraries.extensions.color
+import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.mydocuments.libraries.utils.logError
+import com.huyhieu.mydocuments.R
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -45,9 +49,8 @@ class RadarChartView @JvmOverloads constructor(
         setShadowLayer(5F, 0F, 4F, context.color(R.color.black_10))
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas ?: return
         drawFrame(canvas)
     }
 

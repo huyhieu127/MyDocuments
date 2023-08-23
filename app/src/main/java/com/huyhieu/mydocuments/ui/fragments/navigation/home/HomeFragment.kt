@@ -1,8 +1,8 @@
 package com.huyhieu.mydocuments.ui.fragments.navigation.home
 
 import android.os.Bundle
-import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.extensions.showToastShort
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.showToastShort
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.models.HomeMenu
@@ -20,7 +20,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         mActivity.setDarkColorStatusBar()
         //showNavigationBottom()
-        //setTabNavigationBottom(com.huyhieu.library.components.UTab.TAB_HOME)
+        //setTabNavigationBottom(com.huyhieu.mydocuments.libraries.components.UTab.TAB_HOME)
         homeVM.loadMenuFromAsset()
         setupMenu()
     }

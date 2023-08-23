@@ -3,8 +3,8 @@ package com.huyhieu.mydocuments.base
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.huyhieu.library.utils.logDebug
-import com.huyhieu.library.utils.logError
+import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.mydocuments.libraries.utils.logError
 import com.huyhieu.mydocuments.repository.FlowMapper
 import com.huyhieu.mydocuments.repository.LiveDataMapper
 import com.huyhieu.mydocuments.repository.remote.NetworkUtils

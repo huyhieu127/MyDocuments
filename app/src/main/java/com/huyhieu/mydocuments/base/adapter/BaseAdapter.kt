@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.*
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.extensions.setOnClickMyListener
+import com.huyhieu.mydocuments.libraries.extensions.setOnClickMyListener
 import com.huyhieu.mydocuments.base.adapter.*
 
 interface BaseAdapter<T, A : RecyclerView.Adapter<*>> {

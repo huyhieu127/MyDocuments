@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.huyhieu.library.extensions.setOnClickMyListener
+import com.huyhieu.mydocuments.libraries.extensions.setOnClickMyListener
 import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.databinding.LayoutItemMenuBinding
 import com.huyhieu.mydocuments.models.HomeMenu

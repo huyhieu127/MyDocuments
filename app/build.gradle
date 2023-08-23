@@ -2,21 +2,25 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android'
+
+    id 'kotlin-parcelize'
+
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'kotlin-parcelize'
+
     id 'androidx.navigation.safeargs'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+
     id 'com.google.gms.google-services'
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.huyhieu.mydocuments"
         minSdk 23
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -48,6 +52,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.huyhieu.mydocuments'
 //    sourceSets {
 //        main {
 //            jniLibs.srcDirs = ["libs"]
@@ -59,10 +64,13 @@ android {
 }
 
 dependencies {
-    implementation project(":library")
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    apply from: '../dependencies-global.gradle'
-    apply from: 'dependencies-app.gradle'
+    apply from: 'dependencies.gradle'
+}
+
+// Hilt: Allow references to generated code
+kapt {
+    correctErrorTypes true
 }

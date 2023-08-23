@@ -2,8 +2,8 @@ package com.huyhieu.mydocuments.ui.fragments.system.fingerprint
 
 import android.graphics.Color
 import android.os.Bundle
-import com.huyhieu.library.extensions.setOnClickMyListener
-import com.huyhieu.library.utils.logDebug
+import com.huyhieu.mydocuments.libraries.extensions.setOnClickMyListener
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentFingerprintBinding
 

@@ -2,7 +2,7 @@ package com.huyhieu.mydocuments.ui.fragments.map
 
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.huyhieu.library.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStaticMapBinding
 

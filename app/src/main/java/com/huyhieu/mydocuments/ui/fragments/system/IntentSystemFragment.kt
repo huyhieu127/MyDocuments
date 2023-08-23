@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import com.huyhieu.library.utils.callPhoneNumber
-import com.huyhieu.library.utils.captureView
-import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.extensions.showToastShort
-import com.huyhieu.library.utils.isNull
-import com.huyhieu.library.utils.shareImage
-import com.huyhieu.library.utils.logDebug
+import com.huyhieu.mydocuments.libraries.utils.callPhoneNumber
+import com.huyhieu.mydocuments.libraries.utils.captureView
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.showToastShort
+import com.huyhieu.mydocuments.libraries.utils.isNull
+import com.huyhieu.mydocuments.libraries.utils.shareImage
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentIntentSystemBinding
-import com.huyhieu.library.utils.requestPermissions
+import com.huyhieu.mydocuments.libraries.utils.requestPermissions
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

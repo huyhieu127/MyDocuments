@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
+    <com.huyhieu.mydocuments.libraries.commons.loadmore.MyRecyclerViewLoadMore
         android:id="@+id/rcvPlayList"
         android:layout_width="match_parent"
         android:layout_height="0dp"

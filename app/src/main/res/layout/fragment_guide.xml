@@ -19,7 +19,7 @@
         android:layout_marginBottom="200dp"
         android:text="Button" />
 
-    <com.huyhieu.library.commons.HoleView
+    <com.huyhieu.mydocuments.libraries.commons.HoleView
         android:id="@+id/hvFrame"
         android:elevation="2dp"
         android:layout_width="match_parent"

@@ -7,14 +7,14 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import androidx.lifecycle.lifecycleScope
-import com.huyhieu.library.commons.HoleRectangle
-import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.extensions.tint
-import com.huyhieu.library.utils.BarcodeUtils
+import com.huyhieu.mydocuments.libraries.commons.HoleRectangle
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.tint
+import com.huyhieu.mydocuments.libraries.utils.BarcodeUtils
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentQrCodeBinding
-import com.huyhieu.library.utils.requestActivityResult
+import com.huyhieu.mydocuments.libraries.utils.requestActivityResult
 import kotlinx.coroutines.launch
 
 

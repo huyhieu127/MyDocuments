@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.3" />
 
 
-    <com.huyhieu.library.custom_views.MyProgressBarCircleView
+    <com.huyhieu.mydocuments.libraries.custom_views.MyProgressBarCircleView
         android:id="@+id/prgMyCountdown"
         android:layout_width="@dimen/_200sdp"
         android:layout_height="@dimen/_200sdp"

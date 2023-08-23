@@ -3,9 +3,9 @@ package com.huyhieu.mydocuments.ui.fragments.navigation
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
-import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.extensions.showToastShort
-import com.huyhieu.library.extensions.toSpannable
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.showToastShort
+import com.huyhieu.mydocuments.libraries.extensions.toSpannable
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentProfileBinding
 import com.huyhieu.mydocuments.ui.fragments.dialog.toast.ToastDialog

@@ -17,8 +17,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
-import com.huyhieu.library.extensions.color
-import com.huyhieu.library.utils.logDebug
+import com.huyhieu.mydocuments.libraries.extensions.color
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.R
 import kotlin.math.abs
 
@@ -61,14 +61,14 @@ class CubicChartView @JvmOverloads constructor(
         style = Paint.Style.FILL
         color = colors[1]
         isAntiAlias = true
-        setShadowLayer(5F, 0F, 4F, context.color(com.huyhieu.library.R.color.black_10))
+        setShadowLayer(5F, 0F, 4F, context.color(R.color.black_10))
     }
     private val paintStrokeDots = Paint().apply {
         isDither = true
         style = Paint.Style.FILL
         color = colors[3]
         isAntiAlias = true
-        setShadowLayer(5F, 0F, 4F, context.color(com.huyhieu.library.R.color.black_10))
+        setShadowLayer(5F, 0F, 4F, context.color(R.color.black_10))
     }
 
     private val paintTextAxis = Paint().apply {
@@ -77,7 +77,7 @@ class CubicChartView @JvmOverloads constructor(
         textSize = 24F
         isAntiAlias = true
         textAlign = Paint.Align.CENTER
-        setShadowLayer(5F, 0F, 4F, context.color(com.huyhieu.library.R.color.black_10))
+        setShadowLayer(5F, 0F, 4F, context.color(R.color.black_10))
     }
 
     private var isDrawLine = false
@@ -124,9 +124,8 @@ class CubicChartView @JvmOverloads constructor(
         }
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas ?: return
         //drawRotateImage(canvas!!)
         //drawCircle
         drawLine(canvas)

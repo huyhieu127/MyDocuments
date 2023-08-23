@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.components.pin_code.PinCodeFragment">
 
-    <com.huyhieu.library.custom_views.keyboard.KeyBoardNumberView
+    <com.huyhieu.mydocuments.libraries.custom_views.keyboard.KeyBoardNumberView
         android:id="@+id/keyBoardNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

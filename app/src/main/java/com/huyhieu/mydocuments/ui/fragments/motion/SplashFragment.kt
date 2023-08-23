@@ -3,7 +3,7 @@ package com.huyhieu.mydocuments.ui.fragments.motion
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
-import com.huyhieu.library.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSplashBinding
 import com.huyhieu.mydocuments.navigation.directions.MainDirections

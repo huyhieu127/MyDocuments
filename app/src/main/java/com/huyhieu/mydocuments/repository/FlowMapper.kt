@@ -2,8 +2,8 @@ package com.huyhieu.mydocuments.repository
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.huyhieu.library.utils.logDebug
-import com.huyhieu.library.utils.logError
+import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.mydocuments.libraries.utils.logError
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResponsePokeAPI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*

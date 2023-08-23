@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp" />
 
-    <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
+    <com.huyhieu.mydocuments.libraries.commons.loadmore.MyRecyclerViewLoadMore
         android:id="@+id/rcvHome"
         android:layout_width="0dp"
         android:layout_height="0dp"

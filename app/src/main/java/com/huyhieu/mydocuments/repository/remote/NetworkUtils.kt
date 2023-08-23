@@ -4,7 +4,7 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import com.huyhieu.library.utils.logDebug
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.App
 
 object NetworkUtils {

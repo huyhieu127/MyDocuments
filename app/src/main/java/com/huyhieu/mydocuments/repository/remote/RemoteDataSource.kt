@@ -1,6 +1,6 @@
 package com.huyhieu.mydocuments.repository.remote
 
-import com.huyhieu.library.utils.logError
+import com.huyhieu.mydocuments.libraries.utils.logError
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResponseData
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultAPI
 import com.huyhieu.mydocuments.repository.remote.retrofit.ResultPokeAPI

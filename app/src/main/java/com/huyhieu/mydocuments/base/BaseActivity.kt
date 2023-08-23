@@ -5,10 +5,10 @@ import android.view.View
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.custom_views.UTab
-import com.huyhieu.library.extensions.color
-import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.extensions.setNavigationBarColor
+import com.huyhieu.mydocuments.libraries.custom_views.UTab
+import com.huyhieu.mydocuments.libraries.extensions.color
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setNavigationBarColor
 import com.huyhieu.mydocuments.R
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), View.OnClickListener {

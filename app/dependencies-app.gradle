@@ -1,9 +1,0 @@
-dependencies {
-    //multidex
-    implementation 'androidx.multidex:multidex:2.0.1'
-
-    //Firebase
-    implementation platform('com.google.firebase:firebase-bom:31.0.0')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-storage'
-}

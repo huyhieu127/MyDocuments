@@ -8,7 +8,7 @@ import android.os.Build
 import android.os.CancellationSignal
 import android.provider.MediaStore
 import android.util.Size
-import com.huyhieu.library.utils.logDebug
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.models.YouTubeForm
 
 fun Context.loadMedia(): MutableList<YouTubeForm> {

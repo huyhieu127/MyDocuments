@@ -2,7 +2,7 @@ package com.huyhieu.mydocuments.ui.fragments.navigation
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.huyhieu.library.custom_views.UTab
+import com.huyhieu.mydocuments.libraries.custom_views.UTab
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentNavigationBinding

@@ -160,7 +160,7 @@
             android:background="@color/line" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <com.huyhieu.library.commons.loadmore.MyRecyclerViewLoadMore
+    <com.huyhieu.mydocuments.libraries.commons.loadmore.MyRecyclerViewLoadMore
         android:id="@+id/rcvWatching"
         android:layout_width="match_parent"
         android:layout_height="0dp"

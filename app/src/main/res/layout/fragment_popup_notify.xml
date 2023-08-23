@@ -167,7 +167,7 @@
                 tools:text="Name" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <com.huyhieu.library.custom_views.MyButtonView
+        <com.huyhieu.mydocuments.libraries.custom_views.MyButtonView
             android:id="@+id/btnClose"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

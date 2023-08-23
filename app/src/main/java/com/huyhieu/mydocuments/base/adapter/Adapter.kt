@@ -38,11 +38,11 @@ typealias OnItemPositionClick<T> = ((T, Int) -> Unit)?
 
 open class DiffItemCallback<T> : DiffUtil.ItemCallback<T>() {
 
-    override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
+    override fun areItemsTheSame(oldItem: T & Any, newItem: T & Any): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: T, newItem: T): Boolean {
+    override fun areContentsTheSame(oldItem: T & Any, newItem: T & Any): Boolean {
         return false
     }
 }

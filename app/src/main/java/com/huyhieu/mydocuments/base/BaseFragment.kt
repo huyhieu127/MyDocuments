@@ -4,15 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.custom_views.MyButtonView
 import com.huyhieu.mydocuments.base.interfaces.IBaseView
+import com.huyhieu.mydocuments.libraries.custom_views.MyButtonView
 import com.huyhieu.mydocuments.ui.activities.main.MainVM
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.HomeVM
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
 
@@ -58,6 +65,20 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
     override fun onDestroyView() {
         _vb = null
         super.onDestroyView()
+    }
+
+    /**---------------- Lifecycle ----------------**/
+    fun CoroutineScope.repeatOnLifecycle(
+        state: Lifecycle.State = Lifecycle.State.CREATED,
+        context: CoroutineContext = EmptyCoroutineContext,
+        start: CoroutineStart = CoroutineStart.DEFAULT,
+        block: suspend CoroutineScope.() -> Unit
+    ): Job {
+        return launch(context, start) {
+            lifecycle.repeatOnLifecycle(state) {
+                block.invoke(this)
+            }
+        }
     }
 
     /**---------------- Handle click ----------------**/

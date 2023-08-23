@@ -2,8 +2,8 @@ package com.huyhieu.mydocuments.ui.activities.main
 
 import android.os.Bundle
 import android.view.View
-import com.huyhieu.library.extensions.setDarkColorStatusBar
-import com.huyhieu.library.extensions.setTransparentStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setTransparentStatusBar
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.shared.appFireStore

@@ -2,10 +2,10 @@ package com.huyhieu.mydocuments.ui.fragments.dialog.toast
 
 import android.os.Bundle
 import android.view.View
-import com.huyhieu.library.extensions.backgroundTint
-import com.huyhieu.library.extensions.color
-import com.huyhieu.library.extensions.drawable
-import com.huyhieu.library.extensions.tintVector
+import com.huyhieu.mydocuments.libraries.extensions.backgroundTint
+import com.huyhieu.mydocuments.libraries.extensions.color
+import com.huyhieu.mydocuments.libraries.extensions.drawable
+import com.huyhieu.mydocuments.libraries.extensions.tintVector
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.dialog.BaseDialogFragment
 import com.huyhieu.mydocuments.databinding.DialogToastBinding
@@ -40,20 +40,20 @@ class ToastDialog(
         when (type) {
             ToastType.NORMAL -> {
                 root.background =
-                    context?.drawable(com.huyhieu.library.R.drawable.bg_outline_gray_white_corner_12)
-                imgIcon.backgroundTint(com.huyhieu.library.R.color.colorPrimary)
+                    context?.drawable(R.drawable.bg_outline_gray_white_corner_12)
+                imgIcon.backgroundTint(R.color.colorPrimary)
                 imgIcon.tintVector(context?.color(R.color.black)!!)
             }
             ToastType.SUCCESS -> {
                 root.background =
-                    context?.drawable(com.huyhieu.library.R.drawable.bg_outline_green_mint_corner_12)
-                imgIcon.backgroundTint(com.huyhieu.library.R.color.colorGreenMint)
+                    context?.drawable(R.drawable.bg_outline_green_mint_corner_12)
+                imgIcon.backgroundTint(R.color.colorGreenMint)
                 imgIcon.tintVector(context?.color(R.color.white)!!)
             }
             ToastType.FAILED -> {
                 root.background =
-                    context?.drawable(com.huyhieu.library.R.drawable.bg_outline_red_light_corner_12)
-                imgIcon.backgroundTint(com.huyhieu.library.R.color.colorRedAlert)
+                    context?.drawable(R.drawable.bg_outline_red_light_corner_12)
+                imgIcon.backgroundTint(R.color.colorRedAlert)
                 imgIcon.tintVector(context?.color(R.color.white)!!)
             }
             else -> {

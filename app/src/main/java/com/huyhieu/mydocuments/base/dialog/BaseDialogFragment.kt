@@ -5,7 +5,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.custom_views.MyButtonView
+import com.huyhieu.mydocuments.libraries.custom_views.MyButtonView
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.base.interfaces.IBaseView

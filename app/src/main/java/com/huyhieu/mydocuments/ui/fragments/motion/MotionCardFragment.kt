@@ -1,7 +1,7 @@
 package com.huyhieu.mydocuments.ui.fragments.motion
 
 import android.os.Bundle
-import com.huyhieu.library.extensions.setTransitionTo
+import com.huyhieu.mydocuments.libraries.extensions.setTransitionTo
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMotionCardBinding

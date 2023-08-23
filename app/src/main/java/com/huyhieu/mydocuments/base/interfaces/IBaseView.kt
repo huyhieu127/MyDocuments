@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
-import com.huyhieu.library.extensions.hideKeyboard
+import com.huyhieu.mydocuments.libraries.extensions.hideKeyboard
 import java.lang.reflect.ParameterizedType
 
 @Suppress("UNCHECKED_CAST")
