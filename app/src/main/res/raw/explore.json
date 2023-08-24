@@ -1,0 +1,18 @@
+{
+  "videos": [
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/explore/vn/1_eSign_VE.mp4",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/explore/vn/2_Home_VE.mp4",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/explore/vn/3_Scan2Pay_VE.mp4",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/explore/vn/4_Contact-VE.mp4",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/explore/vn/5_Loan_VE.mp4",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/explore/vn/6_Manage-your-CC_VE.mp4"
+  ],
+  "gifs": [
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/gif/vn/Contact.gif",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/gif/vn/eSign.gif",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/gif/vn/Home.gif",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/gif/vn/Loan.gif",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/gif/vn/Manage-your-CC.gif",
+    "https://fema-app-file-prod.s3.ap-southeast-1.amazonaws.com/gif/vn/Scan2Pay.gif"
+  ]
+}

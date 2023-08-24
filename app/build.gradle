@@ -34,8 +34,10 @@ android {
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
 
-            //minifyEnabled true
             //debuggable false
+
+            //Need fix proguard
+            //minifyEnabled true
             //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
@@ -43,8 +45,8 @@ android {
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
 
-            minifyEnabled true
             debuggable false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

@@ -21,11 +21,16 @@
 #-renamesourcefileattribute SourceFile
 
 
-#Navigation
-#-keepnames class androidx.navigation.fragment.NavHostFragment
--keep class androidx.fragment.*{
-    public <methods>;
-}
 #Data
 -keepnames class * extends android.os.Parcelable
 -keepnames class * extends java.io.Serializable
+
+#Components
+#-keepnames class androidx.navigation.fragment.NavHostFragment
+-keep class androidx**
+-keepclassmembers class androidx**{
+    public <methods>;
+}
+-keepclassmembers class com.huyhieu.mydocuments.databinding.**  {
+    public <methods>;
+}
