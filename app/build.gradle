@@ -8,13 +8,14 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
 
-    id 'androidx.navigation.safeargs'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
     id 'com.google.gms.google-services'
 }
 
 android {
+
     compileSdk 34
 
     defaultConfig {
@@ -32,19 +33,27 @@ android {
             buildConfigField "String", "GITHUB_API_URL", '"https://api.github.com/"'
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
+
+            //minifyEnabled true
+            //debuggable false
+            //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             buildConfigField "String", "GITHUB_API_URL", '"https://api.github.com/"'
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
-            minifyEnabled false
+
+            minifyEnabled true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -52,6 +61,17 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+//    packagingOptions {
+//        jniLibs {
+//            excludes += ['META-INF/*']
+//        }
+//        resources {
+//            excludes += ['META-INF/*']
+//        }
+//        excludes += ['xsd/catalog.xml']
+//    }
+
     namespace 'com.huyhieu.mydocuments'
 //    sourceSets {
 //        main {
@@ -64,9 +84,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     apply from: 'dependencies.gradle'
 }
 
@@ -74,3 +91,14 @@ dependencies {
 kapt {
     correctErrorTypes true
 }
+//configurations.configureEach {
+//    resolutionStrategy {
+//        //force 'jakarta.activation:jakarta.activation-api:1.2.1'
+//        implementation("com.sun.activation:javax.activation:1.2.0") {
+//            because("androidx.navigation.safeargs old version: com.sun.activation:javax.activation:1.2.0")
+//        }
+//        implementation("jakarta.activation:jakarta.activation-api:1.2.1") {
+//            because("androidx.navigation.safeargs old version: jakarta.activation:jakarta.activation-api:1.2.1")
+//        }
+//    }
+//}
