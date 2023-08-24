@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.fragments.tiktok.TikTokFragment">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2ForYou"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical" />
+
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        android:clickable="false"
+        android:fitsSystemWindows="true"
+        android:focusable="false"
+        app:resize_mode="fixed_width"
+        app:surface_type="texture_view" />
+</FrameLayout>

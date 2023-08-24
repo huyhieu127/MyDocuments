@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/youTubeFragment">
+    app:startDestination="@id/tikTokFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -225,5 +225,10 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.you_tube.YouTubeFragment"
         android:label="fragment_my_tube"
         tools:layout="@layout/fragment_you_tube" />
+    <fragment
+        android:id="@+id/tikTokFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.tiktok.TikTokFragment"
+        android:label="fragment_tik_tok"
+        tools:layout="@layout/fragment_tik_tok" />
 
 </navigation>
