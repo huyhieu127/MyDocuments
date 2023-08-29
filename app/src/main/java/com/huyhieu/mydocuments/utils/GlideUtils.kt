@@ -7,7 +7,9 @@ import com.bumptech.glide.RequestBuilder
 
 fun ImageView.load(
     any: Any?,
-    block: (RequestBuilder<Drawable>.() -> Unit)? = null
+    block: (RequestBuilder<Drawable>.() -> RequestBuilder<Drawable>) = { this }
 ) {
-    Glide.with(this).load(any).centerCrop().into(this@load)
+    Glide.with(this).load(any)
+        .block()
+        .into(this@load)
 }

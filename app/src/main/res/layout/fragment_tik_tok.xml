@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:fitsSystemWindows="true"
-        android:orientation="vertical" />
+        android:orientation="horizontal" />
 
     <androidx.media3.ui.PlayerView
         android:id="@+id/playerView"
@@ -24,6 +24,18 @@
         android:clickable="false"
         android:fitsSystemWindows="true"
         android:focusable="false"
+        android:visibility="invisible"
         app:resize_mode="fixed_width"
         app:surface_type="texture_view" />
+
+    <include layout="@layout/layout_tit_tok_controller"
+        android:id="@+id/frameController"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/prgLoading"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone" />
 </FrameLayout>

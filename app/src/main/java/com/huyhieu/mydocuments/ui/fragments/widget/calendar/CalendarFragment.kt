@@ -2,13 +2,17 @@ package com.huyhieu.mydocuments.ui.fragments.widget.calendar
 
 import android.os.Bundle
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.huyhieu.mydocuments.libraries.commons.calendar.adapters.MonthOfCalendarAdapter
-import com.huyhieu.mydocuments.libraries.constants.CalendarCst
-import com.huyhieu.mydocuments.libraries.extensions.*
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCalendarBinding
-import java.util.*
+import com.huyhieu.mydocuments.libraries.commons.calendar.adapters.MonthOfCalendarAdapter
+import com.huyhieu.mydocuments.libraries.constants.CalendarCst
+import com.huyhieu.mydocuments.libraries.extensions.formatToString
+import com.huyhieu.mydocuments.libraries.extensions.getDisplayDayOfWeek
+import com.huyhieu.mydocuments.libraries.extensions.getYear
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setSpannable
+import java.util.Calendar
 
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
     private val monthAdapter = MonthOfCalendarAdapter()

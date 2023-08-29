@@ -1,24 +1,37 @@
 package com.huyhieu.mydocuments.ui.fragments.tiktok
 
 import android.os.Bundle
+import android.view.View
+import android.widget.SeekBar
+import androidx.annotation.OptIn
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.gson.JsonObject
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentVM
 import com.huyhieu.mydocuments.databinding.FragmentTikTokBinding
 import com.huyhieu.mydocuments.libraries.extensions.setNavigationBarColor
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.models.TikTokVideoForm
 import com.huyhieu.mydocuments.utils.readAssets
 import com.huyhieu.mydocuments.utils.toData
 import com.huyhieu.mydocuments.utils.toJson
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
+class TikTokFragment : BaseFragmentVM<FragmentTikTokBinding, TikTokVM>() {
 
-class TikTokFragment : BaseFragment<FragmentTikTokBinding>() {
     private val forYouAdapter by lazy { TikTokPlayerAdapter() }
+
     private val player by lazy {
         ExoPlayer.Builder(requireContext()).build().apply {
             playWhenReady = true
@@ -26,65 +39,162 @@ class TikTokFragment : BaseFragment<FragmentTikTokBinding>() {
         }
     }
 
-    private val callback = object : ViewPager2.OnPageChangeCallback() {
+    private val vpCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageScrolled(
             position: Int,
             positionOffset: Float,
             positionOffsetPixels: Int
         ) {
             super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            //logDebug("super.onPageScrolled($position, $positionOffset, $positionOffsetPixels) ${vb.vp2ForYou.currentItem}")
-            vb.playerView.y = (-positionOffsetPixels).toFloat()
+//            val y = (-positionOffsetPixels).toFloat()
+//            vb.playerView.y = y
+//            vb.lnContainer.y = y
+            val x = (-positionOffsetPixels).toFloat()
+            //logDebug("$positionOffsetPixels  --------- $position -> $positionOffset")
+            vb.playerView.x = x
+            vb.frameController.root.x = x
         }
 
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
-            val currentMediaItemIndex = player.currentMediaItemIndex
+            player.pause()
+            jobTime?.cancel()
+
+            val oldIndex = player.currentMediaItemIndex
             val seekTime = forYouAdapter.listData[position].timePlayed
-            //Change state
-            //forYouAdapter.update(position, currentMediaItemIndex)
 
             //Save time played of video played
             val timePlayed = player.currentPosition
-            forYouAdapter.listData[currentMediaItemIndex].timePlayed = timePlayed
+            forYouAdapter.listData[oldIndex].timePlayed = timePlayed
+
+            //Save last frame of video played
+            screenshotLatestFrame(oldIndex)
 
             //Play video in this page
-            if (position > currentMediaItemIndex) {
-                vb.playerView.isInvisible = true
-                player.seekToNextMediaItem()
-                //player.seekTo(seekTime)
-            }
-            if (position < currentMediaItemIndex) {
-                vb.playerView.isInvisible = true
-                player.seekToPreviousMediaItem()
-                //player.seekTo(seekTime)
-            }
+            vb.playerView.isInvisible = true
+            player.seekTo(position, seekTime)
+            val duration = player.duration
+            val time = (seekTime * 100) / duration
+            vb.frameController.seekBarDuration.progress = time.toInt()
+            player.play()
+        }
+    }
 
+    private val playerCallback = object : Player.Listener {
+        override fun onIsLoadingChanged(isLoading: Boolean) {
+            super.onIsLoadingChanged(isLoading)
+            val isShow = isLoading && !player.isPlaying
+            vb.prgLoading.isVisible = isShow
+            logDebug("onIsLoadingChanged $isShow")
         }
 
-        override fun onPageScrollStateChanged(state: Int) {
-            super.onPageScrollStateChanged(state)
-            //logDebug("super.onPageScrollStateChanged($state)")
+        //End video
+        override fun onPositionDiscontinuity(
+            oldPosition: Player.PositionInfo,
+            newPosition: Player.PositionInfo,
+            reason: Int
+        ) {
+            super.onPositionDiscontinuity(oldPosition, newPosition, reason)
+            if (reason == Player.DISCONTINUITY_REASON_AUTO_TRANSITION) {
+                lifecycleScope.launch {
+                    jobTime?.cancel()
+                    vm.setSeekToProgressBar(100)
+                    delay(1000)
+                    if (player.isPlaying) getCurrentPlayerPosition()
+                }
+            }
         }
+
+        override fun onIsPlayingChanged(isPlaying: Boolean) {
+            super.onIsPlayingChanged(isPlaying)
+            if (isPlaying) {
+                vb.playerView.isInvisible = false
+                getCurrentPlayerPosition()
+            }
+            if (isPlaying) {
+                vb.prgLoading.isVisible = false
+            } else {
+                vb.prgLoading.isVisible = player.isLoading
+            }
+
+            logDebug("$isPlaying -- ${player.isLoading}")
+        }
+    }
+
+    @OptIn(UnstableApi::class)
+    private fun screenshotLatestFrame(index: Int) {
+//        tryCatch {
+//            val bitmap = (vb.playerView.videoSurfaceView as TextureView).bitmap
+//            forYouAdapter.listData[index].thumbnail = bitmap
+//            logDebug("screenshotLatestFrame - $index - ${bitmap != null}")
+//            if (forYouAdapter.listData[index].thumbnail != null) {
+//                forYouAdapter.notifyItemChanged(index)
+//            }
+//        }
     }
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setNavigationBarColor(R.color.black)
         initPlayerView()
         initViewForYou()
+        vb.apply {
+            setClickViews(frameController.imgWhiteHeart, frameController.imgLottieHeart)
+        }
     }
 
+    override fun FragmentTikTokBinding.onClickViewBinding(v: View, id: Int) {
+        when (v) {
+            frameController.imgWhiteHeart -> {
+                with(frameController.imgLottieHeart) {
+                    isVisible = true
+                    scaleX = 1F
+                    scaleY = 1F
+                    playAnimation()
+                }
+            }
+
+            frameController.imgLottieHeart -> {
+                with(frameController.imgLottieHeart) {
+                    animate().scaleX(0F).scaleY(0F).withEndAction {
+                        isInvisible = true
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onMyLiveData(savedInstanceState: Bundle?) {
+        vm.currentPosition.observeNoneNull {
+            vb.frameController.seekBarDuration.setProgress(it.toInt(), true)
+        }
+    }
+
+    @OptIn(UnstableApi::class)
     private fun initPlayerView() = with(vb) {
         playerView.player = player
         playerView.useController = false
+        player.addListener(playerCallback)
 
-        player.addListener(object : Player.Listener {
-            override fun onIsLoadingChanged(isLoading: Boolean) {
-                super.onIsLoadingChanged(isLoading)
-                if (!isLoading) {
-                    playerView.isInvisible = false
+        vb.frameController.seekBarDuration.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(v: SeekBar?, progress: Int, isFromUser: Boolean) {
+                if (isFromUser) {
+                    val duration = player.duration
+                    val time = ((progress / 100F) * duration).toLong()
+                    player.seekTo(time)
                 }
             }
+
+            override fun onStartTrackingTouch(v: SeekBar?) {
+                jobTime?.cancel()
+                player.pause()
+            }
+
+            override fun onStopTrackingTouch(v: SeekBar?) {
+                player.play()
+                getCurrentPlayerPosition()
+            }
+
         })
     }
 
@@ -102,7 +212,10 @@ class TikTokFragment : BaseFragment<FragmentTikTokBinding>() {
         val listTikTokVideos = listVideo.map { TikTokVideoForm(url = it) }.toMutableList()
         listTikTokVideos.first().isPlaying = true
         forYouAdapter.fillData(listTikTokVideos)
-        vb.vp2ForYou.registerOnPageChangeCallback(callback)
+        vb.vp2ForYou.registerOnPageChangeCallback(vpCallback)
+        vb.vp2ForYou.setOnTouchListener(View.OnTouchListener { v, motionEvent ->
+            return@OnTouchListener false
+        })
 
         playVideo(listTikTokVideos)
     }
@@ -113,17 +226,27 @@ class TikTokFragment : BaseFragment<FragmentTikTokBinding>() {
         player.prepare()
     }
 
-    private fun setSizePlayer() = with(vb) {
-        vp2ForYou.post {
-            playerView.layoutParams = playerView.layoutParams.apply {
-                width = vp2ForYou.width
-                height = vp2ForYou.height
-            }
+    private var jobTime: Job? = null
+    private fun getCurrentPlayerPosition() {
+        jobTime?.cancel()
+        jobTime = lifecycleScope.launch {
+            val duration = player.duration
+            val position = player.currentPosition
+            val time = (position * 100) / duration
+            vm.setSeekToProgressBar(time)
+            delay(1000)
+            if (player.isPlaying) getCurrentPlayerPosition()
         }
     }
 
     override fun onDestroyView() {
+        vb.vp2ForYou.unregisterOnPageChangeCallback(vpCallback)
+        player.removeListener(playerCallback)
         super.onDestroyView()
-        vb.vp2ForYou.unregisterOnPageChangeCallback(callback)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        logDebug("onDestroy")
     }
 }

@@ -17,11 +17,29 @@ interface ILiveData<VB : ViewBinding> : IParams<VB>{
         this.observe(lifecycleOwner) { obj -> observer?.invoke(obj) }
     }
 
-
     fun <Obj> LiveData<Obj>.observeAndRemove(observer: ((obj: Obj?) -> Unit)? = null) {
         this.observe(lifecycleOwner, object : Observer<Obj?> {
-            override fun onChanged(obj: Obj?) {
-                observer?.invoke(obj)
+            override fun onChanged(value: Obj?) {
+                observer?.invoke(value)
+                removeObserver(this)
+            }
+        })
+    }
+
+    fun <Obj> LiveData<Obj?>.observeNoneNull(observer: (Observer<Obj?>.(obj: Obj) -> Unit)? = null) {
+        this.observe(lifecycleOwner, object : Observer<Obj?> {
+            override fun onChanged(value: Obj?) {
+                value ?: return
+                observer?.invoke(this, value)
+            }
+        })
+    }
+
+    fun <Obj> LiveData<Obj?>.observeNoneNullRemove(observer: (Observer<Obj?>.(obj: Obj) -> Unit)? = null) {
+        this.observe(lifecycleOwner, object : Observer<Obj?> {
+            override fun onChanged(value: Obj?) {
+                value ?: return
+                observer?.invoke(this, value)
                 removeObserver(this)
             }
         })
@@ -31,9 +49,9 @@ interface ILiveData<VB : ViewBinding> : IParams<VB>{
      * MutableLiveData*/
     fun <Obj> MutableLiveData<Obj>.observeAndClean(observer: ((obj: Obj?) -> Unit)? = null) {
         this.observe(lifecycleOwner, object : Observer<Obj?> {
-            override fun onChanged(obj: Obj?) {
-                obj ?: return
-                observer?.invoke(obj)
+            override fun onChanged(value: Obj?) {
+                value ?: return
+                observer?.invoke(value)
                 clear()
             }
 

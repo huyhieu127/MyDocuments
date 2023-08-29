@@ -3,8 +3,9 @@ package com.huyhieu.mydocuments.utils
 import com.huyhieu.mydocuments.libraries.utils.logError
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 fun tryCatch(onTry: () -> Unit) {
@@ -24,11 +25,13 @@ fun tryCatch(onTry: () -> Unit, onCatch: (Exception) -> Unit) {
     }
 }
 
-val coroutineDelayed = CoroutineScope(Dispatchers.Main)
-fun delayed(duration: Long = 200L, onRunnable: () -> Unit) {
-    coroutineDelayed.cancel()
-    coroutineDelayed.launch {
+var jobDelayed: Job = Job()
+fun delayed(duration: Long = 100L, onRunnable: () -> Unit) {
+    jobDelayed.cancel()
+    jobDelayed = CoroutineScope(Dispatchers.Main).launch {
         delay(duration)
-        onRunnable.invoke()
+        if (isActive) {
+            onRunnable.invoke()
+        }
     }
 }

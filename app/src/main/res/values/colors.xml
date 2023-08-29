@@ -41,4 +41,5 @@
     <color name="colorRedAlert">#FF2E00</color>
     <color name="colorRedAlertMiddle">#FF694D</color>
     <color name="colorRedAlertLight">#FFF5F3</color>
+    <color name="colorShadowTextTikTok">#979797</color>
 </resources>

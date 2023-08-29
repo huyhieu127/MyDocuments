@@ -40,6 +40,7 @@ fun View.toBitmap(): Bitmap? {
         logDebug("Failed to capture screenshot because: ${e.message}")
     }
     // return the bitmap
+    logDebug("screenshot bitmap success")
     return screenshot
 }
 
