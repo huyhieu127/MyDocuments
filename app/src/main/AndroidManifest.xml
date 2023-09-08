@@ -11,12 +11,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" /> <!-- Network -->
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!-- Allows for storing and retrieving screenshots -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Allows for storing and retrieving screenshots -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-    <!-- Allows changing locales -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" /> <!-- Allows changing locales -->
     <uses-permission
         android:name="android.permission.CHANGE_CONFIGURATION"
         tools:ignore="ProtectedPermissions" /> <!-- Camera -->
@@ -35,13 +33,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDocuments">
+        <activity
+            android:name=".ui.activities.media_pipe.MediaPipeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.activities.bubblechat.BubbleChatActivity"
             android:exported="true" />
 
         <service
-            android:name="com.huyhieu.mydocuments.libraries.commons.bubblechat.BubbleChatService"
+            android:name=".libraries.commons.bubblechat.BubbleChatService"
             android:enabled="true" />
 
         <activity
@@ -54,11 +60,11 @@
             android:name=".ui.activities.main.MainActivity"
             android:exported="true"
             android:screenOrientation="fullSensor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity> <!-- Scan barcode -->
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
