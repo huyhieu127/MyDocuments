@@ -33,15 +33,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDocuments">
+
         <activity
-            android:name=".ui.activities.media_pipe.MediaPipeActivity"
-            android:exported="true">
+            android:name=".ui.activities.main.MainActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.activities.media_pipe.MediaPipeActivity"
+            android:exported="true"/>
         <activity
             android:name=".ui.activities.bubblechat.BubbleChatActivity"
             android:exported="true" />
@@ -56,16 +62,7 @@
         <activity
             android:name=".ui.activities.bluetooth.BluetoothActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.activities.main.MainActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity> <!-- Scan barcode -->
+        <!-- Scan barcode -->
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="barcode" /> <!-- Map SDKs -->

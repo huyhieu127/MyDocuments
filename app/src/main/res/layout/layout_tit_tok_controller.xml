@@ -200,10 +200,4 @@
             android:textColor="#FFF"
             android:textStyle="bold" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <com.huyhieu.mydocuments.libraries.commons.MySeekBar
-        android:id="@+id/seekBarDuration"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
-        android:background="#99000000" />
 </androidx.appcompat.widget.LinearLayoutCompat>
