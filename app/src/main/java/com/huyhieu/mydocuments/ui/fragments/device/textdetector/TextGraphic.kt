@@ -21,9 +21,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.Log
-import com.google.mlkit.vision.demo.GraphicOverlay
-import com.google.mlkit.vision.demo.GraphicOverlay.Graphic
 import com.google.mlkit.vision.text.Text
+import com.huyhieu.mydocuments.ui.fragments.device.ml_kit_utils.GraphicOverlay
 import java.util.Arrays
 import kotlin.math.max
 import kotlin.math.min
@@ -34,12 +33,12 @@ import kotlin.math.min
  */
 class TextGraphic
 constructor(
-  overlay: GraphicOverlay?,
-  private val text: Text,
-  private val shouldGroupTextInBlocks: Boolean,
-  private val showLanguageTag: Boolean,
-  private val showConfidence: Boolean
-) : Graphic(overlay) {
+    overlay: GraphicOverlay?,
+    private val text: Text,
+    private val shouldGroupTextInBlocks: Boolean,
+    private val showLanguageTag: Boolean,
+    private val showConfidence: Boolean
+) : GraphicOverlay.Graphic(overlay) {
 
   private val rectPaint: Paint = Paint()
   private val textPaint: Paint

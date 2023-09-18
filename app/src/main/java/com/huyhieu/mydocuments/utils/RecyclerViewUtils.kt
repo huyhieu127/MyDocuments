@@ -5,14 +5,15 @@ import androidx.recyclerview.widget.RecyclerView
 
 fun RecyclerView.init(
     adapter: RecyclerView.Adapter<*>,
-    layoutManager: RecyclerView.LayoutManager =
-        LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false),
+    layoutManager: RecyclerView.LayoutManager? = null,
     hasFixedSize: Boolean = true,
     onSetupLayoutManager: (RecyclerView.LayoutManager.() -> Unit)? = null
 ) {
     this.adapter = adapter
     this.setHasFixedSize(hasFixedSize)
 
-    onSetupLayoutManager?.invoke(layoutManager)
-    this.layoutManager = layoutManager
+
+    val lm = layoutManager?: this.layoutManager ?:  LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    onSetupLayoutManager?.invoke(lm)
+    this.layoutManager = lm
 }

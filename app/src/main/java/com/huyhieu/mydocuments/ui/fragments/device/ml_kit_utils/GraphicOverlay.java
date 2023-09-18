@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.huyhieu.mydocuments.ui.fragments.device;
+package com.huyhieu.mydocuments.ui.fragments.device.ml_kit_utils;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;

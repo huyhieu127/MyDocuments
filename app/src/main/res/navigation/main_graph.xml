@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/tikTokFragment">
+    app:startDestination="@id/loggerIMEFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -230,5 +230,10 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.tiktok.TikTokFragment"
         android:label="fragment_tik_tok"
         tools:layout="@layout/fragment_tik_tok" />
+    <fragment
+        android:id="@+id/loggerIMEFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.device.LoggerIMEFragment"
+        android:label="fragment_logger_ime"
+        tools:layout="@layout/fragment_logger_ime" />
 
 </navigation>

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.huyhieu.mydocuments.ui.fragments.device
+package com.huyhieu.mydocuments.ui.fragments.device.ml_kit_utils
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

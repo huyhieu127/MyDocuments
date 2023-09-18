@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.huyhieu.mydocuments.ui.fragments.device;
+package com.huyhieu.mydocuments.ui.fragments.device.ml_kit_utils;
 
 import android.content.ContentResolver;
 import android.graphics.Bitmap;

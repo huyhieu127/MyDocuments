@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.huyhieu.mydocuments.ui.fragments.device;
+package com.huyhieu.mydocuments.ui.fragments.device.ml_kit_utils;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
