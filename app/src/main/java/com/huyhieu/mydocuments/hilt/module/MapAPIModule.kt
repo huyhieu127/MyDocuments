@@ -2,6 +2,8 @@ package com.huyhieu.mydocuments.hilt.module
 
 import com.google.gson.GsonBuilder
 import com.huyhieu.mydocuments.hilt.BooleanTypeAdapter
+import com.huyhieu.mydocuments.repository.remote.retrofit.GitHubAPIService
+import com.huyhieu.mydocuments.repository.remote.retrofit.MapAPIService
 import com.huyhieu.mydocuments.repository.remote.retrofit.PokeAPIService
 import dagger.Module
 import dagger.Provides
@@ -15,25 +17,23 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object PokeAPIModule {
+object MapAPIModule {
     @Singleton
     @Provides
-    @Named("PokeAPI")
+    @Named("MapAPI")
     fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
         val builder = GsonBuilder()
-        builder.registerTypeAdapter(Boolean::class.java, BooleanTypeAdapter())
+        //builder.registerTypeAdapter(Boolean::class.java, BooleanTypeAdapter())
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(PokeAPIService.url)
+            .baseUrl(MapAPIService.url)
             .addConverterFactory(GsonConverterFactory.create(builder.create()))
     }
 
     @Singleton
     @Provides
-    @Named("PokeAPI")
-    fun provideAPIService(@Named("PokeAPI") retrofit: Retrofit.Builder): PokeAPIService {
-        return retrofit
-            .build()
-            .create(PokeAPIService::class.java)
+    @Named("MapAPI")
+    fun provideAPIService(@Named("MapAPI") retrofit: Retrofit.Builder): MapAPIService {
+        return retrofit.build().create(MapAPIService::class.java)
     }
 }

@@ -20,7 +20,7 @@ object GitHubAPIModule {
     @Singleton
     @Provides
     @Named("GitHubAPI")
-    fun provideGitHubAPI(okHttpClient: OkHttpClient): Retrofit.Builder {
+    fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
         val builder = GsonBuilder()
         //builder.registerTypeAdapter(Boolean::class.java, BooleanTypeAdapter())
         return Retrofit.Builder()
@@ -32,7 +32,7 @@ object GitHubAPIModule {
     @Singleton
     @Provides
     @Named("GitHubAPI")
-    fun provideGitHubAPIService(@Named("GitHubAPI") retrofit: Retrofit.Builder): GitHubAPIService {
+    fun provideAPIService(@Named("GitHubAPI") retrofit: Retrofit.Builder): GitHubAPIService {
         return retrofit.build().create(GitHubAPIService::class.java)
     }
 }

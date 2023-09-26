@@ -19,7 +19,7 @@ object ResAPIModule {
     @Singleton
     @Provides
     @Named("ReqResAPI")
-    fun provideRetrofitResAPI(okHttpClient: OkHttpClient): Retrofit.Builder {
+    fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
         val builder = GsonBuilder()
         builder.registerTypeAdapter(Boolean::class.java, BooleanTypeAdapter())
         return Retrofit.Builder()
@@ -31,7 +31,7 @@ object ResAPIModule {
     @Singleton
     @Provides
     @Named("ReqResAPI")
-    fun provideResAPIService(@Named("ReqResAPI") retrofit: Retrofit.Builder): ReqResAPIService {
+    fun provideAPIService(@Named("ReqResAPI") retrofit: Retrofit.Builder): ReqResAPIService {
         return retrofit
             .build()
             .create(ReqResAPIService::class.java)

@@ -25,6 +25,10 @@ open class BaseVM : ViewModel() {
     lateinit var mapperFlow: FlowMapper
 
     @Inject
+    @Named("MapAPI")
+    lateinit var mapAPIService: MapAPIService
+
+    @Inject
     @Named("GitHubAPI")
     lateinit var gitHubAPIService: GitHubAPIService
 
