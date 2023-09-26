@@ -19,7 +19,7 @@ object PokeAPIModule {
     @Singleton
     @Provides
     @Named("PokeAPI")
-    fun provideRetrofitPokeAPI(okHttpClient: OkHttpClient): Retrofit.Builder {
+    fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
         val builder = GsonBuilder()
         builder.registerTypeAdapter(Boolean::class.java, BooleanTypeAdapter())
         return Retrofit.Builder()
@@ -31,7 +31,7 @@ object PokeAPIModule {
     @Singleton
     @Provides
     @Named("PokeAPI")
-    fun providePokeAPIService(@Named("PokeAPI") retrofit: Retrofit.Builder): PokeAPIService {
+    fun provideAPIService(@Named("PokeAPI") retrofit: Retrofit.Builder): PokeAPIService {
         return retrofit
             .build()
             .create(PokeAPIService::class.java)

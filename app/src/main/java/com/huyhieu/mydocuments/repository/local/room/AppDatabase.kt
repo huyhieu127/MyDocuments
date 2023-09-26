@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.huyhieu.mydocuments.repository.local.room.data.Ball
 
-@Database(entities = [], version = 9, exportSchema = false)
+@Database(entities = [Ball::class], version = 9, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

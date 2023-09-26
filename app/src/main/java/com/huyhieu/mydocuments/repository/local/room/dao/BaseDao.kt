@@ -1,11 +1,14 @@
-package com.appromobile.partnerapp.repository.local.dao
+package com.huyhieu.mydocuments.repository.local.room.dao
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Update
 
+@Dao
 interface BaseDao<T> {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg obj: T)
 
     @Update

@@ -8,9 +8,23 @@ import com.huyhieu.mydocuments.libraries.utils.logError
 import com.huyhieu.mydocuments.repository.FlowMapper
 import com.huyhieu.mydocuments.repository.LiveDataMapper
 import com.huyhieu.mydocuments.repository.remote.NetworkUtils
-import com.huyhieu.mydocuments.repository.remote.retrofit.*
+import com.huyhieu.mydocuments.repository.remote.retrofit.GitHubAPIService
+import com.huyhieu.mydocuments.repository.remote.retrofit.MapAPIService
+import com.huyhieu.mydocuments.repository.remote.retrofit.PokeAPIService
+import com.huyhieu.mydocuments.repository.remote.retrofit.ReqResAPIService
+import com.huyhieu.mydocuments.repository.remote.retrofit.ResponseData
+import com.huyhieu.mydocuments.repository.remote.retrofit.ResponsePokeAPI
+import com.huyhieu.mydocuments.repository.remote.retrofit.ResultAPI
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
@@ -23,6 +37,10 @@ open class BaseVM : ViewModel() {
 
     @Inject
     lateinit var mapperFlow: FlowMapper
+
+    @Inject
+    @Named("MapAPI")
+    lateinit var mapAPIService: MapAPIService
 
     @Inject
     @Named("GitHubAPI")
