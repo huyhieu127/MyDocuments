@@ -12,7 +12,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
 import com.huyhieu.mydocuments.R
-import com.huyhieu.mydocuments.base.BaseFragment
+import com.huyhieu.mydocuments.base.BaseFragmentVM
 import com.huyhieu.mydocuments.databinding.FragmentMapBinding
 import com.huyhieu.mydocuments.libraries.extensions.color
 import com.huyhieu.mydocuments.libraries.extensions.isGooglePlayServicesAvailable
@@ -21,14 +21,11 @@ import com.huyhieu.mydocuments.libraries.utils.map.MapCameraUtils
 import com.huyhieu.mydocuments.libraries.utils.map.PolylineUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback, MapManagerCallback {
-
-    @Inject
-    lateinit var vm: MapVM
+class MapFragment : BaseFragmentVM<FragmentMapBinding, MapVM>(), OnMapReadyCallback,
+    MapManagerCallback {
 
     private var mapManager: MapManager? = null
 

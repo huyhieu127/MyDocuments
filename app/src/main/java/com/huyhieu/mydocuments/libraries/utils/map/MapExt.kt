@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments.libraries.utils.map
 
 import android.location.Location
 import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import com.huyhieu.mydocuments.ui.fragments.map.MapManager
 
 
@@ -28,4 +29,8 @@ fun Location?.calculateDistanceValid(
 fun CameraPosition.createLocation() = Location("locationCameraPosition").apply {
     latitude = target.latitude
     longitude = target.longitude
+}
+
+fun LatLng.toText(): String {
+    return "${latitude},${longitude}"
 }
