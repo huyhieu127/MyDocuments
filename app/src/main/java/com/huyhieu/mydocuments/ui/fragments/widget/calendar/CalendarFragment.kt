@@ -12,7 +12,9 @@ import com.huyhieu.mydocuments.libraries.extensions.getDisplayDayOfWeek
 import com.huyhieu.mydocuments.libraries.extensions.getYear
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.libraries.extensions.setSpannable
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import java.util.Calendar
+import kotlin.math.abs
 
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
     private val monthAdapter = MonthOfCalendarAdapter()
