@@ -22,7 +22,11 @@ object PolylineUtils {
     }
 
     fun drawPolyline(
-        googleMap: GoogleMap?, listLatLng: MutableList<LatLng>?, @ColorInt color: Int
+        googleMap: GoogleMap?,
+        listLatLng: MutableList<LatLng>?,
+        @ColorInt color: Int,
+        onEachLatLng: ((LatLng) -> Unit)? = null,
+        onComeToEnd: ((PolylineOptions) -> Unit)? = null
     ): Polyline? {
         googleMap ?: return null
         listLatLng ?: return null
@@ -35,7 +39,9 @@ object PolylineUtils {
             .addSpan(styleGradient)
         listLatLng.forEach {
             options.add(it)
+            onEachLatLng?.invoke(it)
         }
+        onComeToEnd?.invoke(options)
         return googleMap.addPolyline(options)
     }
 

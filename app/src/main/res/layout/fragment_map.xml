@@ -41,9 +41,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <FrameLayout
-        android:id="@+id/flOverlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnLetsBegin"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/colorRedAlertMiddle"
+            android:foregroundTint="@color/white"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_play" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btnUserLocation"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="@color/colorPrimary"
+            android:foregroundTint="@color/white"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_user_location"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Polyline
 
 object MapCameraUtils {
     const val CAMERA_ZOOM = 16F
@@ -35,6 +36,10 @@ object MapCameraUtils {
         } else {
             googleMap?.moveCamera(CameraUpdateFactory.newLatLng(latLng))
         }
+    }
+
+    fun cameraToPolyline(googleMap: GoogleMap?, polyline: Polyline) {
+        //googleMap?.animateCamera(CameraUpdateFactory.)
     }
 
 }

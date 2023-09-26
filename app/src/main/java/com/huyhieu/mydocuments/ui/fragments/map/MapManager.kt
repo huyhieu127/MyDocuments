@@ -216,10 +216,7 @@ class MapManager(private val fragment: Fragment) {
         title: String? = null
     ): Marker? {
         val markerIcon = simpleMarker(icon)
-        val markerOptions = MarkerOptions()
-            .position(latLng)
-            .icon(markerIcon)
-            .title(title)
+        val markerOptions = MarkerOptions().position(latLng).icon(markerIcon).title(title)
         val marker = googleMap?.addMarker(markerOptions)
         marker?.tag = tag
         return marker
@@ -248,50 +245,69 @@ class MapManager(private val fragment: Fragment) {
      * Types marker
      * */
     private fun setUserMarker(location: Location) {
-        if (userLocation == null) {
-            userLocation = location
-            val latLng = LatLng(location.latitude, location.longitude)
+        userLocation = location
+        val latLng = LatLng(location.latitude, location.longitude)
+        if (markerUser == null) {
             markerUser = setMarker(latLng, icon = R.drawable.ic_user_location)
             MapCameraUtils.cameraToLatLngZoom(googleMap, latLng)
+        } else {
+            markerUser?.position = latLng
         }
+        mapManagerCallback?.onUserLocationAvailable(location)
     }
 
-    fun setCustomerMarker(latLng: LatLng) {
-        markerCustomer?.remove()
-        destPosition = latLng
-        markerCustomer = setMarker(latLng, icon = R.drawable.ic_customer_location)
-        markerCustomer?.isDraggable = true
-        moveCameraToPolyline()
-    }
-
-    fun moveCameraToPolyline() {
-        latLngBounds = LatLngBounds.Builder()
-        originPosition?.also { latLngBounds.include(it) }
-        destPosition?.also { latLngBounds.include(it) }
-        MapCameraUtils.cameraLatLngBoundsAnimate(googleMap, latLngBounds)
-    }
-
-    private fun setVehicleMarker(
-        location: Location?,
+    fun setVehicleMarker(
+        latLng: LatLng,
         @DrawableRes icon: Int = R.drawable.ic_car_red,
         tag: String? = null,
         title: String? = null
     ) {
-        location ?: return
         fragment.lifecycleScope.launch {
-            val latLng = LatLng(location.latitude, location.longitude)
             // val markerIcon = getMarkerIcon(icon)
-            val bitmap = BitmapDescriptorFactory.fromResource(icon)
-            val markerOptions = async(Dispatchers.IO) {
-                MarkerOptions().position(latLng).icon(bitmap).title(title).anchor(0.5F, 0.5F)
-                    .rotation(location.bearing)
+            if (markerVehicleMarker == null) {
+                val bitmap = BitmapDescriptorFactory.fromResource(icon)
+                val markerOptions = async(Dispatchers.IO) {
+                    MarkerOptions().apply {
+                        position(latLng)
+                        icon(bitmap)
+                        title(title)
+                        anchor(0.5F, 0.5F)
+                        if (latestLocation != null) {
+                            rotation(latestLocation!!.bearing)
+                        }
+                    }
+                }
+                markerVehicleMarker = googleMap?.addMarker(markerOptions.await())
+                markerVehicleMarker?.tag = tag
+            } else {
+                markerVehicleMarker?.position = latLng
+                if (latestLocation != null) {
+                    markerVehicleMarker?.rotation = latestLocation!!.bearing
+                }
             }
-            markerVehicleMarker?.remove()
-            markerVehicleMarker = googleMap?.addMarker(markerOptions.await())
-            markerVehicleMarker?.tag = tag
-            //latLngBounds.include(latLng)
-            MapCameraUtils.cameraToLatLng(googleMap, latLng = latLng, isAnimate = true)
+            //MapCameraUtils.cameraToLatLng(googleMap, latLng = latLng, isAnimate = true)
         }
+    }
+
+    fun setCustomerMarker(latLng: LatLng) {
+        destPosition = latLng
+        if (markerCustomer == null) {
+            markerCustomer = setMarker(latLng, icon = R.drawable.ic_customer_location)
+            markerCustomer?.isDraggable = true
+        } else {
+            markerCustomer?.position = latLng
+        }
+        moveCameraToPolyline()
+    }
+
+    fun latLngBoundsBetweenTwoPoints() {
+        latLngBounds = LatLngBounds.Builder()
+        originPosition?.also { latLngBounds.include(it) }
+        destPosition?.also { latLngBounds.include(it) }
+    }
+
+    fun moveCameraToPolyline() {
+        MapCameraUtils.cameraLatLngBoundsAnimate(googleMap, latLngBounds)
     }
 
     /**
@@ -333,7 +349,9 @@ class MapManager(private val fragment: Fragment) {
             override fun onLocationResult(locationResult: LocationResult) {
                 for (location in locationResult.locations) {
                     latestLocation = location
-                    setVehicleMarker(latestLocation)
+                    val latLng = LatLng(location.latitude, location.longitude)
+                    setVehicleMarker(latLng)
+                    mapManagerCallback?.onLocationUpdate(location)
                 }
             }
         }
@@ -402,7 +420,8 @@ class MapManager(private val fragment: Fragment) {
                     logDebug("lastLocation not found!")
                 }
             }
-            fusedLocationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY,
+            fusedLocationClient.getCurrentLocation(
+                Priority.PRIORITY_HIGH_ACCURACY,
                 object : CancellationToken() {
                     override fun onCanceledRequested(p0: OnTokenCanceledListener) =
                         CancellationTokenSource().token
