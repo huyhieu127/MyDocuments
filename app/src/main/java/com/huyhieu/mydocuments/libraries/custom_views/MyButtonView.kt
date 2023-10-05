@@ -57,7 +57,7 @@ class MyButtonView @JvmOverloads constructor(
             val isEnable = getBoolean(R.styleable.UButtonView_uEnabled, true)
             this@MyButtonView.isEnabled = isEnable
 
-            val isEnableLoading = getBoolean(R.styleable.UButtonView_uEnableLoading, true)
+            val isEnableLoading = getBoolean(R.styleable.UButtonView_uEnableLoading, false)
             this@MyButtonView.isEnableLoading = isEnableLoading
 
             val bgColor =
@@ -89,7 +89,7 @@ class MyButtonView @JvmOverloads constructor(
 
     }
 
-    private fun setText(name: String?) {
+    fun setText(name: String?) {
         with(binding) {
             if (!name.isNullOrEmpty()) {
                 contentType = CONTENT_TYPE_TEXT
