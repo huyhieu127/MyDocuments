@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/mapFragment">
+    app:startDestination="@id/inAppUpdateFragment">
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -235,5 +235,10 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.device.LoggerIMEFragment"
         android:label="fragment_logger_ime"
         tools:layout="@layout/fragment_logger_ime" />
+    <fragment
+        android:id="@+id/inAppUpdateFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.google_play.in_app_update.InAppUpdateFragment"
+        android:label="fragment_in_app_update"
+        tools:layout="@layout/fragment_in_app_update" />
 
 </navigation>

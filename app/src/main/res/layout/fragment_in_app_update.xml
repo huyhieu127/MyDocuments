@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.google_play.in_app_update.InAppUpdateFragment"
+    tools:ignore="HardcodedText">
+
+    <com.huyhieu.mydocuments.libraries.custom_views.MyToolBarBaseView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tb_base_title="In-app update" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLabelCurrentVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Current version:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrentVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="-"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvLabelCurrentVersion"
+            app:layout_constraintTop_toTopOf="@id/tvLabelCurrentVersion" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLabelCurrentVersionCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Current version code:"
+            app:layout_constraintStart_toStartOf="@id/tvLabelCurrentVersion"
+            app:layout_constraintTop_toTopOf="@id/tvLabelCurrentVersion" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCurrentVersionCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="-"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvLabelCurrentVersionCode"
+            app:layout_constraintTop_toTopOf="@id/tvLabelCurrentVersionCode" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLabelLatestVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Latest version:"
+            app:layout_constraintStart_toStartOf="@id/tvLabelCurrentVersionCode"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelCurrentVersionCode" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLatestVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="-"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvLabelLatestVersion"
+            app:layout_constraintTop_toTopOf="@id/tvLabelLatestVersion" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLabelLatestVersionCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Latest version code:"
+            app:layout_constraintStart_toStartOf="@id/tvLabelLatestVersion"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelLatestVersion" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLatestVersionCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:text="-"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvLabelLatestVersionCode"
+            app:layout_constraintTop_toTopOf="@id/tvLabelLatestVersionCode" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.huyhieu.mydocuments.libraries.custom_views.MyButtonView
+        android:id="@+id/btnCheckVersion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        app:uButtonName="Check new version" />
+</androidx.appcompat.widget.LinearLayoutCompat>
