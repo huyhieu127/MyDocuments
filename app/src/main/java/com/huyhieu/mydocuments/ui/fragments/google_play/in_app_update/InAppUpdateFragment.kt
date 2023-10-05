@@ -78,9 +78,14 @@ class InAppUpdateFragment : BaseFragment<FragmentInAppUpdateBinding>() {
         appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
             when {
                 //Check update status is Downloaded
-                appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED || appUpdateInfo.installStatus() == InstallStatus.DOWNLOADING -> {
+                appUpdateInfo.installStatus() == InstallStatus.DOWNLOADING -> {
                     vb.tvLatestVersionCode.text = appUpdateInfo.availableVersionCode().toString()
                     registerListenerUpdateFlexible()
+                }
+
+                appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED -> {
+                    vb.tvLatestVersionCode.text = appUpdateInfo.availableVersionCode().toString()
+                    stateDownloaded()
                 }
             }
         }
@@ -107,12 +112,14 @@ class InAppUpdateFragment : BaseFragment<FragmentInAppUpdateBinding>() {
                 if (vb.btnCheckVersion.isEnabled) vb.btnCheckVersion.isEnabled = false
             }
 
-            state.installStatus() == InstallStatus.DOWNLOADED -> {
-                isInstallNow = true
-                vb.btnCheckVersion.setText("Install now!")
-                vb.btnCheckVersion.isEnabled = true
-            }
+            state.installStatus() == InstallStatus.DOWNLOADED -> stateDownloaded()
         }
+    }
+
+    private fun stateDownloaded() {
+        isInstallNow = true
+        vb.btnCheckVersion.setText("Install now!")
+        vb.btnCheckVersion.isEnabled = true
     }
 
     private fun Long.toMb() = String.format("%.2f", (this / (1000000.0)))
