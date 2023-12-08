@@ -21,7 +21,7 @@ interface IBaseView<VB : ViewBinding> : INavigationController<VB>, IViewClickLis
      * */
     fun VB.setupCreateView() {
         mActivity.hideKeyboard()
-        root.handleBackDevice()
+        //root.handleBackDevice()
     }
 
     fun getViewBinding(

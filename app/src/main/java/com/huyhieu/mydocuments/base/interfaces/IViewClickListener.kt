@@ -1,9 +1,7 @@
 package com.huyhieu.mydocuments.base.interfaces
 
-import android.annotation.SuppressLint
 import android.view.KeyEvent
 import android.view.View
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.viewbinding.ViewBinding
 
 interface IViewClickListener<VB : ViewBinding> : View.OnClickListener, IParams<VB> {

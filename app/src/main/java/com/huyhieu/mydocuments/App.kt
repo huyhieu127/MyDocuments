@@ -1,13 +1,13 @@
 package com.huyhieu.mydocuments
 
-import androidx.multidex.MultiDexApplication
+import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.google.firebase.storage.FirebaseStorage
 import com.huyhieu.mydocuments.repository.remote.NetworkUtils
 import com.huyhieu.mydocuments.shared.SharedPreferencesManager
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class App : MultiDexApplication() {
+class App : SplitCompatApplication() {
 
     companion object {
 

@@ -3,6 +3,9 @@ package com.huyhieu.mydocuments.navigation.directions
 import com.huyhieu.mydocuments.ui.fragments.navigation.NavigationFragmentDirections
 
 object MainDirections {
+    val toInAppUpdate
+        get() =
+            NavigationFragmentDirections.actionGlobalInAppUpdateFragment()
 
     val toMultipleAPI
         get() =
@@ -61,4 +64,11 @@ object MainDirections {
 
     val toRecallAPI
         get() = NavigationFragmentDirections.actionGlobalRecallAPIFragment()
+
+    //Dynamic features Fragment
+    val toHelpCenter
+        get() = NavigationFragmentDirections.actionGlobalHelpCenterFragment()
+    val toHelpCenterGraph
+        get() = NavigationFragmentDirections.actionGlobalHelpCenterGraph()
+
 }

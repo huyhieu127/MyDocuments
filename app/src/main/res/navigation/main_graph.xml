@@ -3,7 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/inAppUpdateFragment">
+    app:startDestination="@id/navigationFragment">
+
+    <!--BEGIN: Dynamic features-->
+    <fragment
+        android:id="@+id/helpCenterFragment"
+        android:name="com.huyhieu.mydocuments.ondemand.help_center.HelpCenterFragment"
+        app:moduleName="help_center"></fragment>
+
+    <action
+        android:id="@+id/action_global_helpCenterFragment"
+        app:destination="@+id/helpCenterFragment" />
+
+    <include-dynamic
+        android:id="@+id/helpCenterGraph"
+        app:graphPackage="com.huyhieu.mydocuments.help_center"
+        app:graphResName="help_center_graph"
+        app:moduleName="help_center" />
+
+    <action
+        android:id="@+id/action_global_helpCenterGraph"
+        app:destination="@id/helpCenterGraph" />
+
+    <!--END: Dynamic features-->
 
     <fragment
         android:id="@+id/navigationFragment"
@@ -235,10 +257,14 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.device.LoggerIMEFragment"
         android:label="fragment_logger_ime"
         tools:layout="@layout/fragment_logger_ime" />
+
     <fragment
         android:id="@+id/inAppUpdateFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.google_play.in_app_update.InAppUpdateFragment"
         android:label="fragment_in_app_update"
         tools:layout="@layout/fragment_in_app_update" />
+    <action
+        android:id="@+id/action_global_inAppUpdateFragment"
+        app:destination="@id/inAppUpdateFragment" />
 
 </navigation>

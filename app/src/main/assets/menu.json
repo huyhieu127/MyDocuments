@@ -1,5 +1,26 @@
 [
   {
+    "type": "MENU_DYNAMIC_FEATURES_FRAGMENT",
+    "name": "Dynamic features with fragment",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_DYNAMIC_FEATURES_INCLUDE_GRAPH",
+    "name": "Dynamic features with include graph",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_UPDATE_IN_APP",
+    "name": "In-app update",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
     "type": "MENU_ABOUT",
     "name": "Abouts",
     "note": "",

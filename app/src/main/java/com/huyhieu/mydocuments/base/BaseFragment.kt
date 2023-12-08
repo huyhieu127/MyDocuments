@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -96,4 +98,11 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
             vb.onClickViewBinding(v, v.id)
         }
     }
+
+    fun setOnBackPressed(block: OnBackPressedCallback.() -> Unit) =
+        mActivity.onBackPressedDispatcher.addCallback(lifecycleOwner) {
+            block(this)
+        }
+
 }
+

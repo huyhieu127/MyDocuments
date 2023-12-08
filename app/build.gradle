@@ -5,41 +5,42 @@ plugins {
 
     id 'kotlin-parcelize'
 
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
-
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 
     id 'com.google.gms.google-services'
+
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
 
-    compileSdk 34
-
+    namespace 'com.huyhieu.mydocuments'
+    compileSdkVersion versions.compileSdk
     defaultConfig {
         applicationId "com.huyhieu.mydocuments"
-        minSdk 24
-        targetSdk 34
-        versionCode 4 //Current code: 4
-        versionName "1.0.3" //Current code: 1.0.3
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode 7 //Current code: 7
+        versionName "1.0.7" //Current code: 1.0.7
 
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        debug{
+        debug {
             buildConfigField "String", "MAP_API_URL", '"https://maps.googleapis.com/maps/api/"'
             buildConfigField "String", "GITHUB_API_URL", '"https://api.github.com/"'
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
 
-            //debuggable false
+            debuggable true
 
             //Need fix proguard
-            //minifyEnabled true
-            //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             buildConfigField "String", "MAP_API_URL", '"https://maps.googleapis.com/maps/api/"'
@@ -64,7 +65,10 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
+
+    dynamicFeatures = [':news', ':help_center']
 
 //    packagingOptions {
 //        jniLibs {
@@ -76,7 +80,6 @@ android {
 //        excludes += ['xsd/catalog.xml']
 //    }
 
-    namespace 'com.huyhieu.mydocuments'
 //    sourceSets {
 //        main {
 //            jniLibs.srcDirs = ["libs"]
@@ -88,11 +91,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-
+    //implementation project(":help_center")
     apply from: 'dependencies.gradle'
+
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     //Unit test
     testImplementation 'junit:junit:4.13.2'
@@ -104,6 +108,7 @@ dependencies {
 kapt {
     correctErrorTypes true
 }
+
 //configurations.configureEach {
 //    resolutionStrategy {
 //        //force 'jakarta.activation:jakarta.activation-api:1.2.1'

@@ -14,6 +14,10 @@ data class MenuForm(
 ) : Parcelable
 
 object HomeMenu {
+    const val MENU_DYNAMIC_FEATURES_FRAGMENT = "MENU_DYNAMIC_FEATURES_FRAGMENT"
+    const val MENU_DYNAMIC_FEATURES_INCLUDE_GRAPH = "MENU_DYNAMIC_FEATURES_INCLUDE_GRAPH"
+    const val MENU_UPDATE_IN_APP = "MENU_UPDATE_IN_APP"
+
     //Home menu
     const val MENU_ABOUT = "MENU_ABOUT"
     const val MENU_THEME = "MENU_THEME"

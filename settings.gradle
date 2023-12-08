@@ -14,4 +14,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "MyDocuments"
+
 include ':app'
+include ':news'
+include ':help_center'
