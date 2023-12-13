@@ -7,6 +7,7 @@ import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import com.huyhieu.documentssdk.DocSdkInstance
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
@@ -50,13 +51,24 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun onMyLiveData(savedInstanceState: Bundle?) {
-        homeVM.menuLiveData.observe {
+        homeVM.dataAssetLiveData.observe {
             it ?: return@observe
             lstMenus = it
             adapterMenu.fillData(lstMenus)
         }
         homeVM.githubCommittedLiveData.observe {
             it ?: return@observe
+        }
+        homeVM.title.observe {
+            it ?: return@observe
+            vb.toolbar.title = it
+        }
+
+        DocSdkInstance.onData = {
+            logDebug("onData: $it")
+        }
+        DocSdkInstance.subscribeData(requireActivity()) {
+            logDebug("subscribeData: $it")
         }
     }
 
@@ -69,6 +81,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             when (it.type) {
                 HomeMenu.MENU_ABOUT -> {
                     PopupNotifyFragment.newInstance().showBottomSheet(parentFragmentManager)
+                }
+
+                HomeMenu.MENU_SDK -> {
+                    DocSdkInstance.openSdk(mActivity)
+                }
+
+                HomeMenu.MENU_MAP -> {
+                    navigate(MyNavHost.Main, MainDirections.toMap)
+                }
+
+                HomeMenu.MENU_STATIC_MAP -> {
+                    navigate(MyNavHost.Main, MainDirections.toStaticMap)
                 }
 
                 HomeMenu.MENU_THEME -> {
@@ -108,12 +132,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     val direction = MainDirections.toHelpCenter
                     direction.arguments.also { bundle ->
                         bundle.putString(
-                            Constants.DYNAMIC_FEATURES,
-                            "Navigate to fragment of dynamic features"
+                            Constants.DYNAMIC_FEATURES, "Navigate to fragment of dynamic features"
                         )
                         bundle.putBoolean(
-                            "isFrg",
-                            true
+                            "isFrg", true
                         )
                     }
                     navigate(MyNavHost.Main, direction)
@@ -128,7 +150,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
 
                 HomeMenu.MENU_OTHERS -> {
-                    navigate(MyNavHost.Main, MainDirections.toMap)
                     showToastShort("${it.name} coming soon!")
                 }
             }
@@ -150,8 +171,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 logDebug(msg)
             }
 
-            SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
-                /*
+            SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {/*
                   This may occur when attempting to download a sufficiently large module.
 
                   In order to see this, the application has to be uploaded to the Play Store.
@@ -191,8 +211,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         val direction = MainDirections.toHelpCenterGraph
         direction.arguments.also { bundle ->
             bundle.putString(
-                Constants.DYNAMIC_FEATURES,
-                "Navigate to fragment of include graph"
+                Constants.DYNAMIC_FEATURES, "Navigate to fragment of include graph"
             )
         }
         navigate(MyNavHost.Main, direction)
@@ -206,18 +225,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             return
         }
         // Create request to install a feature module by name.
-        val request = SplitInstallRequest.newBuilder()
-            .addModule(name)
-            .build()
+        val request = SplitInstallRequest.newBuilder().addModule(name).build()
         // Load and install the requested feature module.
         manager.startInstall(request)
         logDebug("loadAndLaunchModule - Starting install for $name")
     }
 
     private fun launchActivity(className: String) {
-        Intent().setClassName(mActivity.packageName, className)
-            .also {
-                startActivity(it)
-            }
+        Intent().setClassName(mActivity.packageName, className).also {
+            startActivity(it)
+        }
     }
 }

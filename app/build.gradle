@@ -22,11 +22,13 @@ android {
         applicationId "com.huyhieu.mydocuments"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
-        versionCode 7 //Current code: 7
-        versionName "1.0.7" //Current code: 1.0.7
+        versionCode 10
+        versionName "1.0.10"
 
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        consumerProguardFiles(getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro')
     }
 
     buildTypes {
@@ -36,11 +38,11 @@ android {
             buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
             buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
 
-            debuggable true
+            //debuggable true
 
             //Need fix proguard
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //minifyEnabled true
+            //proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
             buildConfigField "String", "MAP_API_URL", '"https://maps.googleapis.com/maps/api/"'
@@ -91,7 +93,7 @@ android {
 }
 
 dependencies {
-    //implementation project(":help_center")
+    implementation files('../libs/document_sdk-debug.aar')
     apply from: 'dependencies.gradle'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'

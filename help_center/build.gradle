@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.dynamic-feature'
+    id 'dagger.hilt.android.plugin'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 android {
     namespace 'com.huyhieu.mydocuments.ondemand.help_center'
@@ -27,12 +29,8 @@ android {
     }
     buildTypes {
         debug {
-            debuggable false
-            minifyEnabled false
         }
         release {
-            debuggable false
-            minifyEnabled false
 //            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -47,4 +45,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    api 'com.google.dagger:hilt-android:2.49'
+    kapt 'com.google.dagger:hilt-android-compiler:2.49'
 }

@@ -35,8 +35,14 @@
 -keepclassmembers class androidx** {*;}
 
 -keep class ** { @kotlin.internal.InlineOnly *; }
+
 -keep class com.huyhieu.mydocuments.** { *; }
 -keepclassmembers class com.huyhieu.mydocuments** { *; }
+
+-keep class androidx.viewbinding.** { *; }
+-keepclassmembers class * extends androidx.viewbinding.ViewBinding {
+    public static ** inflate(...);
+}
 
 #Missing_rules R8
 -dontwarn javax.lang.model.SourceVersion

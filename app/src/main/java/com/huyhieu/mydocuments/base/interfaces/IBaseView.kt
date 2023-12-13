@@ -24,6 +24,22 @@ interface IBaseView<VB : ViewBinding> : INavigationController<VB>, IViewClickLis
         //root.handleBackDevice()
     }
 
+    private fun inflateBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        attachToRoot: Boolean
+    ): VB {
+        val vbClass =
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<VB>
+        val method = vbClass.getMethod(
+            "inflate",
+            LayoutInflater::class.java,
+            ViewGroup::class.java,
+            Boolean::class.java
+        )
+        return method.invoke(null, inflater, container, attachToRoot) as VB
+    }
+
     fun getViewBinding(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): VB {

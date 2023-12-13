@@ -1,15 +1,17 @@
 package com.huyhieu.mydocuments.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.google.android.play.core.splitcompat.SplitCompat
+import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.libraries.custom_views.UTab
 import com.huyhieu.mydocuments.libraries.extensions.color
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.libraries.extensions.setNavigationBarColor
-import com.huyhieu.mydocuments.R
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), View.OnClickListener {
 
@@ -23,6 +25,11 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), View.OnClic
     abstract fun binding(): VB
     abstract fun addControls(savedInstanceState1: Bundle?)
     abstract fun addEvents(savedInstanceState1: Bundle?)
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.installActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

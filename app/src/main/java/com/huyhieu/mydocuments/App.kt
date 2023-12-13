@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments
 
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.google.firebase.storage.FirebaseStorage
+import com.huyhieu.documentssdk.DocSdkInstance
 import com.huyhieu.mydocuments.repository.remote.NetworkUtils
 import com.huyhieu.mydocuments.shared.SharedPreferencesManager
 import dagger.hilt.android.HiltAndroidApp
@@ -25,6 +26,7 @@ class App : SplitCompatApplication() {
         super.onCreate()
         instance = this
         NetworkUtils.requestNetwork()
+        DocSdkInstance.init("KEY FOR DOCUMENTS SDK!")
     }
 
     /**
