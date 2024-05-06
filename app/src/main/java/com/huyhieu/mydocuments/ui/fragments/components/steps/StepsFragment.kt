@@ -2,12 +2,12 @@ package com.huyhieu.mydocuments.ui.fragments.components.steps
 
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.huyhieu.mydocuments.libraries.extensions.handleBackPressedFragment
-import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.libraries.extensions.setTransitionTo
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentStepsBinding
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setOnBackPressed
+import com.huyhieu.mydocuments.libraries.extensions.setTransitionTo
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.directions.StepDirections
 import com.huyhieu.mydocuments.navigation.navigate
@@ -23,7 +23,7 @@ class StepsFragment : BaseFragment<FragmentStepsBinding>() {
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) {
         mActivity.setDarkColorStatusBar(false)
-        handleBackPressedFragment {
+        setOnBackPressed {
             mActivity.finish()
         }
     }

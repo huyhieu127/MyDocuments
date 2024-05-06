@@ -19,6 +19,7 @@ import com.huyhieu.mydocuments.libraries.extensions.isGooglePlayServicesAvailabl
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.libraries.utils.map.MapCameraUtils
 import com.huyhieu.mydocuments.libraries.utils.map.PolylineUtils
+import com.huyhieu.mydocuments.utils.tryCatch
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -62,21 +63,23 @@ class MapFragment : BaseFragmentVM<FragmentMapBinding, MapVM>(), OnMapReadyCallb
     override fun onMyLiveData(savedInstanceState: Bundle?) {
         vm.directions.observe {
             it ?: return@observe
-            val listPoints = PolylineUtils.decodePoints(it)
-            mapManager?.apply {
-                latLngBounds = LatLngBounds.Builder()
-                userPosition?.let { latLng -> latLngBounds.include(latLng) }
-                polyline = PolylineUtils.drawPolyline(
-                    googleMap = mapManager?.googleMap,
-                    listLatLng = listPoints,
-                    color = context.color(R.color.colorPrimary),
-                    onEachLatLng = { latLng ->
-                        latLngBounds.include(latLng)
-                    },
-                    onComeToEnd = {
-                        mapManager?.polyline?.remove()
-                    }
-                )
+            tryCatch {
+                val listPoints = PolylineUtils.decodePoints(it)
+                mapManager?.apply {
+                    latLngBounds = LatLngBounds.Builder()
+                    userPosition?.let { latLng -> latLngBounds.include(latLng) }
+                    polyline = PolylineUtils.drawPolyline(
+                        googleMap = mapManager?.googleMap,
+                        listLatLng = listPoints,
+                        color = context.color(R.color.colorPrimary),
+                        onEachLatLng = { latLng ->
+                            latLngBounds.include(latLng)
+                        },
+                        onComeToEnd = {
+                            mapManager?.polyline?.remove()
+                        }
+                    )
+                }
             }
         }
     }

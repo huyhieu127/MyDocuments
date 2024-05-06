@@ -1,6 +1,6 @@
 package com.huyhieu.mydocuments.hilt.module
 
-import androidx.multidex.BuildConfig
+import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.repository.remote.RemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -38,9 +38,11 @@ object RetrofitRetrofitModule {
                 is SocketTimeoutException -> {
                     //FirebaseUtils.logCrashlytics(Exception("TimeOut: ${chain.request().url}"))
                 }
+
                 is UnknownHostException -> {
                     //FirebaseUtils.logCrashlytics(Exception("UnknownHostException: ${chain.request().url}"))
                 }
+
                 else -> {
                     //FirebaseUtils.logCrashlytics(e)
                 }

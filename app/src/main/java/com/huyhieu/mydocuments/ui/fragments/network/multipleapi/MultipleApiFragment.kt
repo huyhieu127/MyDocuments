@@ -3,9 +3,9 @@ package com.huyhieu.mydocuments.ui.fragments.network.multipleapi
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMultipleApiBinding
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
     @Inject
     lateinit var viewModel: MultipleApiVM
 
-    override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
+    override fun onMyViewCreated(savedInstanceState: Bundle?): Unit = with(vb) {
         //callAPI("")
         setClickViews(
             btnSync,
@@ -29,6 +29,7 @@ class MultipleApiFragment : BaseFragment<FragmentMultipleApiBinding>() {
                 tvResult.text = "STATUS\n"
                 viewModel.fetchSyncPokemonDetail()
             }
+
             btnAsync -> {
                 tvResult.text = "STATUS"
                 viewModel.fetchAsyncPokemonDetail()

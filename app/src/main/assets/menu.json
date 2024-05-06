@@ -7,6 +7,27 @@
     "elements": []
   },
   {
+    "type": "MENU_SDK",
+    "name": "Include Doc SDK",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_MAP",
+    "name": "Maps",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_STATIC_MAP",
+    "name": "Static maps",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
     "type": "MENU_THEME",
     "name": "Theme",
     "note": "Coming soon",
@@ -75,6 +96,27 @@
     "type": "MENU_OTHERS",
     "name": "Other components",
     "note": "Coming soon",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_UPDATE_IN_APP",
+    "name": "In-app update",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_DYNAMIC_FEATURES_FRAGMENT",
+    "name": "Dynamic features with fragment",
+    "note": "",
+    "isAvailable": true,
+    "elements": []
+  },
+  {
+    "type": "MENU_DYNAMIC_FEATURES_INCLUDE_GRAPH",
+    "name": "Dynamic features with include graph",
+    "note": "",
     "isAvailable": true,
     "elements": []
   }

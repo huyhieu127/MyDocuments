@@ -102,19 +102,19 @@ class InAppUpdateFragment : BaseFragment<FragmentInAppUpdateBinding>() {
     // Create a listener to track request state updates.
     private val listenerFlexible
         get() = InstallStateUpdatedListener { state ->
-        // (Optional) Provide a download progress bar.
-        when {
-            state.installStatus() == InstallStatus.DOWNLOADING -> {
-                val bytesDownloaded = state.bytesDownloaded()
-                val totalBytesToDownload = state.totalBytesToDownload()
-                // Show update progress bar.
-                vb.btnCheckVersion.setText("${(bytesDownloaded.toMb())}/${totalBytesToDownload.toMb()} MB")
-                if (vb.btnCheckVersion.isEnabled) vb.btnCheckVersion.isEnabled = false
-            }
+            // (Optional) Provide a download progress bar.
+            when {
+                state.installStatus() == InstallStatus.DOWNLOADING -> {
+                    val bytesDownloaded = state.bytesDownloaded()
+                    val totalBytesToDownload = state.totalBytesToDownload()
+                    // Show update progress bar.
+                    vb.btnCheckVersion.setText("${(bytesDownloaded.toMb())}/${totalBytesToDownload.toMb()} MB")
+                    if (vb.btnCheckVersion.isEnabled) vb.btnCheckVersion.isEnabled = false
+                }
 
-            state.installStatus() == InstallStatus.DOWNLOADED -> stateDownloaded()
+                state.installStatus() == InstallStatus.DOWNLOADED -> stateDownloaded()
+            }
         }
-    }
 
     private fun stateDownloaded() {
         isInstallNow = true

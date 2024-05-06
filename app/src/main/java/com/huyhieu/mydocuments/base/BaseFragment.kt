@@ -96,4 +96,6 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment(), IBaseView<VB> {
             vb.onClickViewBinding(v, v.id)
         }
     }
+
 }
+

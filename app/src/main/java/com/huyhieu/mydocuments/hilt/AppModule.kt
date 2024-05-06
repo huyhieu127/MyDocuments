@@ -1,6 +1,5 @@
 package com.huyhieu.mydocuments.hilt
 
-import com.huyhieu.mydocuments.hilt.CoroutineScopeIO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

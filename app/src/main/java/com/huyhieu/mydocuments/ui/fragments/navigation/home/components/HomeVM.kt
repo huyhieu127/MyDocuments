@@ -2,27 +2,26 @@ package com.huyhieu.mydocuments.ui.fragments.navigation.home.components
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.huyhieu.mydocuments.libraries.utils.logDebug
-import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.base.BaseVM
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.models.MenuForm
 import com.huyhieu.mydocuments.models.github.CommitForm
 import com.huyhieu.mydocuments.utils.readAssets
 import com.huyhieu.mydocuments.utils.toJson
 import com.huyhieu.mydocuments.utils.toMutableListData
-import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@ActivityRetainedScoped
 class HomeVM @Inject constructor() : BaseVM() {
-    val menuLiveData = MutableLiveData<MutableList<MenuForm>?>()
+    val dataAssetLiveData = MutableLiveData<MutableList<MenuForm>?>()
+    val title = MutableLiveData<String?>()
+
 
     fun loadMenuFromAsset() {
         val menuJson = readAssets("menu.json")
         val lstMenu = menuJson.toMutableListData<MenuForm>() ?: mutableListOf()
-        menuLiveData.postValue(lstMenu)
+        dataAssetLiveData.postValue(lstMenu)
     }
 
     val githubCommittedLiveData = MutableLiveData<List<CommitForm>>()
