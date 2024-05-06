@@ -9,12 +9,10 @@ import com.huyhieu.mydocuments.models.github.CommitForm
 import com.huyhieu.mydocuments.utils.readAssets
 import com.huyhieu.mydocuments.utils.toJson
 import com.huyhieu.mydocuments.utils.toMutableListData
-import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@ActivityRetainedScoped
 class HomeVM @Inject constructor() : BaseVM() {
     val dataAssetLiveData = MutableLiveData<MutableList<MenuForm>?>()
     val title = MutableLiveData<String?>()

@@ -2,10 +2,10 @@ package com.huyhieu.mydocuments.ui.fragments.components.steps.components
 
 import android.os.Bundle
 import android.view.View
-import com.huyhieu.mydocuments.libraries.extensions.handleBackPressedFragment
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentSteps4Binding
+import com.huyhieu.mydocuments.libraries.extensions.setOnBackPressed
 import com.huyhieu.mydocuments.navigation.MyNavHost
 import com.huyhieu.mydocuments.navigation.popBackStackTo
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +31,7 @@ class Steps4Fragment : BaseFragment<FragmentSteps4Binding>() {
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) = with(vb) {
         setClickViews(btnFinish)
-        handleBackPressedFragment {
+        setOnBackPressed {
             popBackStackTo(MyNavHost.Home, R.id.navigationFragment)
         }
     }

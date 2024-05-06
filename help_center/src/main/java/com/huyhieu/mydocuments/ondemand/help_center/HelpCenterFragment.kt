@@ -8,7 +8,9 @@ import androidx.navigation.fragment.findNavController
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.ondemand.help_center.databinding.FragmentHelpCenterBinding
 import com.huyhieu.mydocuments.utils.Constants
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HelpCenterFragment : BaseFragment<FragmentHelpCenterBinding>() {
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) {
