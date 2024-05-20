@@ -3,6 +3,10 @@ package com.huyhieu.mydocuments.navigation.directions
 import com.huyhieu.mydocuments.ui.fragments.navigation.NavigationFragmentDirections
 
 object MainDirections {
+    val toContentProvider
+        get() =
+            NavigationFragmentDirections.actionGlobalContentProviderFragment()
+
     val toInAppUpdate
         get() =
             NavigationFragmentDirections.actionGlobalInAppUpdateFragment()

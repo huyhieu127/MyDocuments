@@ -83,6 +83,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     PopupNotifyFragment.newInstance().showBottomSheet(parentFragmentManager)
                 }
 
+                HomeMenu.MENU_CONTENT_PROVIDER -> {
+                    navigate(MyNavHost.Main, MainDirections.toContentProvider)
+                }
                 HomeMenu.MENU_SDK -> {
                     DocSdkInstance.openSdk(mActivity)
                 }

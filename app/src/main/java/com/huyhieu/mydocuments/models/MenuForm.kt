@@ -20,6 +20,7 @@ object HomeMenu {
 
     //Home menu
     const val MENU_ABOUT = "MENU_ABOUT"
+    const val MENU_CONTENT_PROVIDER = "MENU_CONTENT_PROVIDER"
     const val MENU_SDK = "MENU_SDK"
     const val MENU_MAP = "MENU_MAP"
     const val MENU_STATIC_MAP = "MENU_STATIC_MAP"

@@ -266,5 +266,13 @@
     <action
         android:id="@+id/action_global_inAppUpdateFragment"
         app:destination="@id/inAppUpdateFragment" />
+    <fragment
+        android:id="@+id/contentProviderFragment"
+        android:name="com.huyhieu.mydocuments.ContentProviderFragment"
+        android:label="fragment_content_provider"
+        tools:layout="@layout/fragment_content_provider" />
+    <action
+        android:id="@+id/action_global_contentProviderFragment"
+        app:destination="@id/contentProviderFragment" />
 
 </navigation>
