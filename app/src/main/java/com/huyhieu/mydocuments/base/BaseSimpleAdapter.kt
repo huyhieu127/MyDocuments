@@ -15,6 +15,7 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
 
     var onClickItem: ((item: DATA) -> Unit)? = null
     var onClickItemWithPosition: ((position: Int, item: DATA) -> Unit)? = null
+    var posOld: Int = -1
     /**
      * Configs
      * */
@@ -38,11 +39,12 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
         fun bindViewHolder() {
             tryCatch {
                 val item = listData[layoutPosition]
-                vb.onBindMyViewHolder(holder = this, item = item, position = layoutPosition)
                 vb.root.setOnClickListener {
                     onClickItem?.invoke(item)
                     onClickItemWithPosition?.invoke(layoutPosition, item)
+                    posOld = layoutPosition
                 }
+                vb.onBindMyViewHolder(holder = this, item = item, position = layoutPosition)
             }
         }
     }
@@ -54,12 +56,21 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
     abstract fun VB.onBindMyViewHolder(holder: RecyclerView.ViewHolder, item: DATA, position: Int)
 
     @SuppressLint("NotifyDataSetChanged")
+    fun notifyDataSet() {
+        posOld = -1
+        notifyDataSetChanged()
+    }
+
     fun fillData(listData: MutableList<DATA>) {
         this.listData = listData
         tryCatch {
-            notifyDataSetChanged()
+            notifyDataSet()
             //notifyItemRangeInserted(0, listData.size - 1)
         }
+    }
+
+    fun passData(listData: MutableList<DATA>) {
+        this.listData = listData
     }
 
     fun addNewField(listData: MutableList<DATA>, index: Int = -1) {
@@ -93,6 +104,8 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
         tryCatch {
             this.listData.removeAt(position)
             notifyItemRemoved(position)
+            posOld = -1
+            if (position == 0) notifyDataSet()
         }
     }
 
