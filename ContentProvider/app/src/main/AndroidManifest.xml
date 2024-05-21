@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="com.huyhieu.contentprovider.provider.READ_DATA" />
+    <uses-permission android:name="com.huyhieu.contentprovider.provider.WRITE_DATA" />
+
+    <permission
+        android:name="com.huyhieu.contentprovider.provider.READ_DATA"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.huyhieu.contentprovider.provider.WRITE_DATA"
+        android:protectionLevel="signature" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -27,6 +37,8 @@
         <provider
             android:name=".content_provider.UserContentProvider"
             android:authorities="com.huyhieu.contentprovider.provider"
+            android:readPermission="com.huyhieu.contentprovider.provider.READ_DATA"
+            android:writePermission="com.huyhieu.contentprovider.provider.WRITE_DATA"
             android:exported="true" />
     </application>
 

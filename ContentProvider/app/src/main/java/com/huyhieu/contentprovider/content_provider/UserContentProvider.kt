@@ -4,6 +4,7 @@ import android.content.ContentProvider
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.UriMatcher
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.database.MatrixCursor
 import android.net.Uri
@@ -28,7 +29,13 @@ class UserContentProvider : ContentProvider() {
         addURI(AUTHORITY, "users/#", USER_ID)  // URI cho một hàng cụ thể trong bảng users
     }
 
+    private val isReadDataPermissionGranted get() = context?.checkCallingOrSelfPermission("$AUTHORITY.READ_DATA") == PackageManager.PERMISSION_GRANTED
+    private val isWriteDataPermissionGranted get() = context?.checkCallingOrSelfPermission("$AUTHORITY.WRITE_DATA") == PackageManager.PERMISSION_GRANTED
+
     override fun onCreate(): Boolean {
+        if (!isReadDataPermissionGranted) {
+            throw SecurityException("Permission denied")
+        }
         return true
     }
 
@@ -39,6 +46,9 @@ class UserContentProvider : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor {
+        if (!isReadDataPermissionGranted) {
+            throw SecurityException("Permission denied")
+        }
         val cursor = when (uriMatcher.match(uri)) {
             USERS -> {
                 val users = userDao.getAllUsersCP()
@@ -72,6 +82,9 @@ class UserContentProvider : ContentProvider() {
     }
 
     override fun insert(uri: Uri, values: ContentValues?): Uri {
+        if (!isWriteDataPermissionGranted) {
+            throw SecurityException("Permission denied")
+        }
         if (uriMatcher.match(uri) == USERS) {
             val name = values?.getAsString("name").orEmpty()
             val age = values?.getAsInteger("age") ?: 0
@@ -84,6 +97,9 @@ class UserContentProvider : ContentProvider() {
     }
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
+        if (!isWriteDataPermissionGranted) {
+            throw SecurityException("Permission denied")
+        }
         return when (uriMatcher.match(uri)) {
             USER_ID -> {
                 val userId = ContentUris.parseId(uri)
@@ -99,6 +115,9 @@ class UserContentProvider : ContentProvider() {
     override fun update(
         uri: Uri, values: ContentValues?, selection: String?, selectionArgs: Array<out String>?
     ): Int {
+        if (!isWriteDataPermissionGranted) {
+            throw SecurityException("Permission denied")
+        }
         return when (uriMatcher.match(uri)) {
             USER_ID -> {
                 val userId = ContentUris.parseId(uri)
