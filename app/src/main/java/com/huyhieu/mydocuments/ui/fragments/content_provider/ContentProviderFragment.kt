@@ -6,9 +6,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentContentProviderBinding
 import com.huyhieu.mydocuments.models.User
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 const val TAG = "ContentProviderFragment"
 
@@ -47,15 +52,40 @@ class ContentProviderFragment : BaseFragment<FragmentContentProviderBinding>() {
             btnDelete -> {
                 if (posSelected == -1) return
                 val uri = ContentUris.withAppendedId(CONTENT_URI, this@ContentProviderFragment.id)
-                val count = requireContext().contentResolver.delete(uri, null, null)
-                Log.d(TAG, "Count: $count")
+                val rowDeleted = requireContext().contentResolver.delete(uri, null, null)
+                Log.d(TAG, "Rows delete: $rowDeleted")
                 adapter.removeField(posSelected)
                 posSelected = -1
             }
         }
     }
 
+    private var jobLoadUsers: Job? = null
     private fun loadUsers() {
+        vb.progressBar.isVisible = true
+        jobLoadUsers?.cancel()
+        jobLoadUsers = null
+        val durationAwaitTotal = 5000L
+        val durationAwait = 500L
+        val currentTime = System.currentTimeMillis()
+        jobLoadUsers = lifecycleScope.launch {
+            try {
+                queryUsers()
+            } catch (e: Exception) {
+                if (System.currentTimeMillis() - currentTime <= durationAwaitTotal) {
+                    delay(durationAwait)
+                    queryUsers()
+                }
+            }
+        }
+        lifecycleScope.launch {
+            jobLoadUsers?.join()
+            vb.progressBar.isVisible = false
+            jobLoadUsers = null
+        }
+    }
+
+    private fun queryUsers() {
         requireContext().contentResolver?.query(CONTENT_URI, null, null, null, null)?.use {
             val users = mutableListOf<User>()
             while (it.moveToNext()) {
@@ -66,7 +96,8 @@ class ContentProviderFragment : BaseFragment<FragmentContentProviderBinding>() {
             }
             it.close()
             adapter.fillData(users)
-            adapter.notifyItemInserted(adapter.listData.lastIndex)
         }
     }
 }
+
+

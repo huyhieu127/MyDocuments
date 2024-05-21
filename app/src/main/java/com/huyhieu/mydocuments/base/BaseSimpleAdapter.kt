@@ -37,15 +37,13 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
 
     private inner class MyViewHolder(val vb: VB) : RecyclerView.ViewHolder(vb.root) {
         fun bindViewHolder() {
-            tryCatch {
-                val item = listData[layoutPosition]
-                vb.root.setOnClickListener {
-                    onClickItem?.invoke(item)
-                    onClickItemWithPosition?.invoke(layoutPosition, item)
-                    posOld = layoutPosition
-                }
-                vb.onBindMyViewHolder(holder = this, item = item, position = layoutPosition)
+            val item = listData[layoutPosition]
+            vb.root.setOnClickListener {
+                onClickItem?.invoke(item)
+                onClickItemWithPosition?.invoke(layoutPosition, item)
+                posOld = layoutPosition
             }
+            vb.onBindMyViewHolder(holder = this, item = item, position = layoutPosition)
         }
     }
 
@@ -61,54 +59,55 @@ abstract class BaseSimpleAdapter<VB : ViewBinding, DATA> :
         notifyDataSetChanged()
     }
 
-    fun fillData(listData: MutableList<DATA>) {
-        this.listData = listData
-        tryCatch {
-            notifyDataSet()
-            //notifyItemRangeInserted(0, listData.size - 1)
-        }
-    }
-
     fun passData(listData: MutableList<DATA>) {
         this.listData = listData
     }
 
-    fun addNewField(listData: MutableList<DATA>, index: Int = -1) {
+    fun fillData(listData: MutableList<DATA>) {
+        this.listData = listData
+        notifyDataSet()
+    }
+
+    fun addNewFields(listData: MutableList<DATA>, position: Int = -1) {
         tryCatch {
-            if (index != -1)
-                this.listData.addAll(index, listData)
-            else
+            if (position != -1) {
+                this.listData.addAll(position, listData)
+                notifyItemRangeInserted(position, listData.size - 1)
+            } else {
                 this.listData.addAll(listData)
-            notifyItemInserted(this.listData.size - 1)
+                notifyItemRangeInserted(this.listData.size - 1, listData.size - 1)
+            }
         }
     }
 
-    fun addNewField(data: DATA, index: Int = -1) {
+    fun addNewField(data: DATA, position: Int = -1) {
         tryCatch {
-            if (index != -1)
-                this.listData.add(index, data)
-            else
+            if (position != -1) {
+                this.listData.add(position, data)
+                notifyItemInserted(position)
+            } else {
                 this.listData.add(data)
-            notifyItemInserted(this.listData.size - 1)
+                notifyItemInserted(this.listData.size - 1)
+            }
         }
     }
 
     fun updateField(position: Int, data: DATA) {
-        tryCatch {
+        if (position.isPositionValid) {
             this.listData[position] = data
             notifyItemChanged(position)
         }
     }
 
     fun removeField(position: Int) {
-        tryCatch {
+        if (position.isPositionValid) {
             this.listData.removeAt(position)
             notifyItemRemoved(position)
             posOld = -1
-            if (position == 0) notifyDataSet()
         }
     }
 
+    val Int.isPositionValid: Boolean get() = this >= 0 && this < listData.size
     /**
      * Methods
      * */
