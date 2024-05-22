@@ -36,7 +36,7 @@
         android:id="@+id/layoutContentFront"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#BA000000"
+        android:background="#FFF"
         android:gravity="center"
         android:padding="@dimen/_8sdp">
 
@@ -63,10 +63,11 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ôi bạn ơi! Trúng số rồi bạn ơi!"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
@@ -75,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:text="Cơ hội đổi đời của bạn đến rồi, còn chần chờ gì nữa! Khám phá ngay!"
-                android:textColor="#E1E1E1"
+                android:textColor="@color/colorGrayscaleBlack"
                 android:textSize="@dimen/_12ssp" />
         </LinearLayout>
 

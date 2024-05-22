@@ -1,6 +1,9 @@
 package com.huyhieu.mydocuments.libraries.extensions
 
+import android.animation.ValueAnimator
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.updateLayoutParams
 
 internal var time = 0L
 fun View.setOnClickMyListener(delay: Long = 500L, onClick: () -> Unit) {
@@ -20,4 +23,18 @@ fun View.getNameById(id: Int): String {
     } catch (ex: Exception) {
         ""
     }
+}
+
+
+fun View.animateHeight(toHeight: Int, fromHeight: Int = height, duration: Long = 0L) {
+    val valueAnimator = ValueAnimator.ofInt(fromHeight, toHeight)
+    if (duration != 0L) valueAnimator.duration = duration
+    valueAnimator.addUpdateListener { animator ->
+        val value = animator.animatedValue as Int
+        updateLayoutParams<ViewGroup.LayoutParams> {
+            height = value
+        }
+    }
+
+    valueAnimator.start()
 }
