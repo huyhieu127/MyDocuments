@@ -38,15 +38,6 @@
         app:destination="@id/navigationFragment" />
 
     <fragment
-        android:id="@+id/stepsFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.steps.StepsFragment"
-        android:label="fragment_steps"
-        tools:layout="@layout/fragment_steps" />
-    <action
-        android:id="@+id/action_global_stepsFragment"
-        app:destination="@id/stepsFragment" />
-
-    <fragment
         android:id="@+id/multipleAPIFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.network.multipleapi.MultipleApiFragment"
         android:label="fragment_multiple_api"
@@ -65,15 +56,6 @@
         app:destination="@id/motionCardFragment" />
 
     <fragment
-        android:id="@+id/guideFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.GuideFragment"
-        android:label="fragment_guide"
-        tools:layout="@layout/fragment_guide" />
-    <action
-        android:id="@+id/action_global_guideFragment"
-        app:destination="@id/guideFragment" />
-
-    <fragment
         android:id="@+id/splashFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.motion.SplashFragment"
         android:label="fragment_splash"
@@ -85,19 +67,6 @@
     <action
         android:id="@+id/action_global_splashFragment"
         app:destination="@id/splashFragment" />
-
-    <fragment
-        android:id="@+id/introduceFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.introduce.IntroduceFragment"
-        android:label="fragment_introduce"
-        tools:layout="@layout/fragment_introduce">
-        <action
-            android:id="@+id/action_introduceFragment_to_navigationFragment"
-            app:destination="@id/navigationFragment" />
-    </fragment>
-    <action
-        android:id="@+id/action_global_introduceFragment"
-        app:destination="@id/introduceFragment" />
 
     <fragment
         android:id="@+id/intentSystemFragment"
@@ -154,15 +123,6 @@
         app:destination="@id/calendarFragment" />
 
     <fragment
-        android:id="@+id/bannerInfiniteFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.banner.BannerInfiniteFragment"
-        android:label="BannerInfiniteFragment"
-        tools:layout="@layout/fragment_banner_infinite" />
-    <action
-        android:id="@+id/action_global_bannerInfiniteFragment"
-        app:destination="@id/bannerInfiniteFragment" />
-
-    <fragment
         android:id="@+id/fingerprintFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.system.fingerprint.FingerprintFragment"
         android:label="fragment_fingerprint"
@@ -181,22 +141,31 @@
         app:destination="@id/countdownFragment" />
 
     <fragment
+        android:id="@+id/radarChartFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.chart.radar_chart.RadarChartFragment"
+        android:label="fragment_radar_chart"
+        tools:layout="@layout/fragment_radar_chart" />
+    <action
+        android:id="@+id/action_global_radarChartFragment"
+        app:destination="@id/radarChartFragment" />
+
+    <fragment
+        android:id="@+id/cubicChartFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.chart.cubic_chart.CubicChartFragment"
+        android:label="CubicChartFragment"
+        tools:layout="@layout/fragment_cubic_chart" />
+    <action
+        android:id="@+id/action_global_cubicChartFragment"
+        app:destination="@id/cubicChartFragment" />
+
+    <fragment
         android:id="@+id/lineChartFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.chart.line_chart.LineChartFragment"
-        android:label="fragment_canvas"
+        android:label="lineChartFragment"
         tools:layout="@layout/fragment_line_chart" />
     <action
         android:id="@+id/action_global_lineChartFragment"
         app:destination="@id/lineChartFragment" />
-
-    <fragment
-        android:id="@+id/pinCodeFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.pin_code.PinCodeFragment"
-        android:label="fragment_pin"
-        tools:layout="@layout/fragment_pin_code" />
-    <action
-        android:id="@+id/action_global_pinCodeFragment"
-        app:destination="@id/pinCodeFragment" />
 
     <fragment
         android:id="@+id/recallAPIFragment"
@@ -206,16 +175,6 @@
     <action
         android:id="@+id/action_global_recallAPIFragment"
         app:destination="@id/recallAPIFragment" />
-    <fragment
-        android:id="@+id/notificationSwipeFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.components.rcv_swipe.NotificationSwipeFragment"
-        android:label="fragment_notification_swipe"
-        tools:layout="@layout/fragment_notification_swipe" />
-    <fragment
-        android:id="@+id/radarChartFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.chart.radar_chart.RadarChartFragment"
-        android:label="fragment_radar_chart"
-        tools:layout="@layout/fragment_radar_chart" />
     <fragment
         android:id="@+id/remoteAPIFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.network.NetworkAPIFragment"
@@ -231,11 +190,6 @@
         android:name="com.huyhieu.mydocuments.ui.fragments.animation.HeaderAnimationFragment"
         android:label="fragment_header_animation"
         tools:layout="@layout/fragment_header_animation" />
-    <fragment
-        android:id="@+id/cubicChartFragment"
-        android:name="com.huyhieu.mydocuments.ui.fragments.chart.cubic_chart.CubicChartFragment"
-        android:label="CubicChartFragment"
-        tools:layout="@layout/fragment_cubic_chart" />
     <fragment
         android:id="@+id/exoPlayerFragment"
         android:name="com.huyhieu.mydocuments.ui.fragments.you_tube.exo_player.ExoPlayerFragment"
@@ -274,5 +228,67 @@
     <action
         android:id="@+id/action_global_contentProviderFragment"
         app:destination="@id/contentProviderFragment" />
+
+    <!--UI/UX-->
+    <fragment
+        android:id="@+id/swipeToRefreshFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.SwipeToRefreshFragment"
+        android:label="fragment_swipe_to_refresh"
+        tools:layout="@layout/fragment_swipe_to_refresh" />
+    <action
+        android:id="@+id/action_global_swipeToRefreshFragment"
+        app:destination="@id/swipeToRefreshFragment" />
+    <fragment
+        android:id="@+id/pinCodeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.pin_code.PinCodeFragment"
+        android:label="fragment_pin"
+        tools:layout="@layout/fragment_pin_code" />
+    <action
+        android:id="@+id/action_global_pinCodeFragment"
+        app:destination="@id/pinCodeFragment" />
+    <fragment
+        android:id="@+id/guideFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.GuideFragment"
+        android:label="fragment_guide"
+        tools:layout="@layout/fragment_guide" />
+    <action
+        android:id="@+id/action_global_guideFragment"
+        app:destination="@id/guideFragment" />
+    <fragment
+        android:id="@+id/notificationSwipeFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.rcv_swipe.NotificationSwipeFragment"
+        android:label="fragment_notification_swipe"
+        tools:layout="@layout/fragment_notification_swipe" />
+    <action
+        android:id="@+id/action_global_notificationSwipeFragment"
+        app:destination="@id/notificationSwipeFragment" />
+    <fragment
+        android:id="@+id/stepsFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.steps.StepsFragment"
+        android:label="fragment_steps"
+        tools:layout="@layout/fragment_steps" />
+    <action
+        android:id="@+id/action_global_stepsFragment"
+        app:destination="@id/stepsFragment" />
+    <fragment
+        android:id="@+id/bannerInfiniteFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.banner.BannerInfiniteFragment"
+        android:label="BannerInfiniteFragment"
+        tools:layout="@layout/fragment_banner_infinite" />
+    <action
+        android:id="@+id/action_global_bannerInfiniteFragment"
+        app:destination="@id/bannerInfiniteFragment" />
+    <fragment
+        android:id="@+id/introduceFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.components.introduce.IntroduceFragment"
+        android:label="fragment_introduce"
+        tools:layout="@layout/fragment_introduce">
+        <action
+            android:id="@+id/action_introduceFragment_to_navigationFragment"
+            app:destination="@id/navigationFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_introduceFragment"
+        app:destination="@id/introduceFragment" />
 
 </navigation>

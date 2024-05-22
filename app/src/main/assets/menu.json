@@ -7,57 +7,95 @@
     "elements": []
   },
   {
-    "type": "MENU_CONTENT_PROVIDER",
-    "name": "Content Provider",
+    "type": "MENU_CHART",
+    "name": "Charts",
     "note": "",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_SDK",
-    "name": "Include Doc SDK",
-    "note": "",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_MAP",
-    "name": "Maps",
-    "note": "",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_STATIC_MAP",
-    "name": "Static maps",
-    "note": "",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_THEME",
-    "name": "Theme",
-    "note": "Coming soon",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_LANGUAGE",
-    "name": "Language",
-    "note": "Coming soon",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_NETWORK_API",
-    "name": "Network API",
-    "note": "Coming soon",
     "isAvailable": true,
     "elements": [
       {
-        "type": "300001",
-        "name": "Recall API",
-        "note": "Multiple API",
+        "type": "MENU_RADAR_CHART",
+        "name": "Radar",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_CUBIC_CHART",
+        "name": "Cubic",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_LINE_CHART",
+        "name": "Line",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      }
+    ]
+  },
+  {
+    "type": "MENU_UI_UX",
+    "name": "UI/UX",
+    "note": "",
+    "isAvailable": true,
+    "elements": [
+      {
+        "type": "MENU_PULL_TO_REFRESH",
+        "name": "Pull To Refresh",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_PIN_CODE",
+        "name": "Pin Code",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_GUIDE",
+        "name": "Guide",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_SWIPE_RCV",
+        "name": "Swipe RecyclerView",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_STEP_PAGE",
+        "name": "Step Page",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_BANNER_INFINITE",
+        "name": "Banner Infinite",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      },
+      {
+        "type": "MENU_INTRODUCE",
+        "name": "Introduce",
+        "note": "",
         "isAvailable": true,
         "elements": [
         ]
@@ -66,31 +104,137 @@
   },
   {
     "type": "MENU_WIDGET",
-    "name": "Widget",
-    "note": "Coming soon",
+    "name": "Widgets",
+    "note": "",
     "isAvailable": true,
-    "elements": []
+    "elements": [
+      {
+        "type": "MENU_WIDGET",
+        "name": "Widgets",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+        ]
+      }
+    ]
   },
   {
-    "type": "MENU_CHART",
-    "name": "Chart",
-    "note": "Updating...",
+    "type": "MENU_API",
+    "name": "API",
+    "note": "",
     "isAvailable": true,
-    "elements": []
+    "elements": [
+      {
+        "type": "MENU_SDK",
+        "name": "Include Doc SDK",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_MULTIPLE_NETWORK_API",
+        "name": "Multiple Network API",
+        "note": "",
+        "isAvailable": true,
+        "elements": [
+          {
+            "type": "300001",
+            "name": "Recall API",
+            "note": "Multiple API",
+            "isAvailable": true,
+            "elements": [
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
-    "type": "MENU_NOTIFICATION",
-    "name": "Notification",
-    "note": "Coming soon",
+    "type": "MENU_FEATURE",
+    "name": "Features",
+    "note": "",
     "isAvailable": true,
-    "elements": []
+    "elements": [
+      {
+        "type": "MENU_NOTIFICATION",
+        "name": "Notification",
+        "note": "Coming soon",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_MAP",
+        "name": "Maps",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_STATIC_MAP",
+        "name": "Static maps",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_CONTENT_PROVIDER",
+        "name": "Content Provider",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      }
+    ]
   },
   {
     "type": "MENU_SYSTEM",
     "name": "System",
     "note": "Coming soon",
     "isAvailable": true,
-    "elements": []
+    "elements": [
+      {
+        "type": "MENU_THEME",
+        "name": "Theme",
+        "note": "Coming soon",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_LANGUAGE",
+        "name": "Language",
+        "note": "Coming soon",
+        "isAvailable": true,
+        "elements": []
+      }
+    ]
+  },
+  {
+    "type": "MENU_GOOGLE_FEATURES",
+    "name": "Google Features",
+    "note": "",
+    "isAvailable": true,
+    "elements": [
+      {
+        "type": "MENU_UPDATE_IN_APP",
+        "name": "In-app update",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_DYNAMIC_FEATURES_FRAGMENT",
+        "name": "Dynamic features with fragment",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_DYNAMIC_FEATURES_INCLUDE_GRAPH",
+        "name": "Dynamic features with include graph",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      }
+    ]
   },
   {
     "type": "MENU_DIALOG",
@@ -103,27 +247,6 @@
     "type": "MENU_OTHERS",
     "name": "Other components",
     "note": "Coming soon",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_UPDATE_IN_APP",
-    "name": "In-app update",
-    "note": "",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_DYNAMIC_FEATURES_FRAGMENT",
-    "name": "Dynamic features with fragment",
-    "note": "",
-    "isAvailable": true,
-    "elements": []
-  },
-  {
-    "type": "MENU_DYNAMIC_FEATURES_INCLUDE_GRAPH",
-    "name": "Dynamic features with include graph",
-    "note": "",
     "isAvailable": true,
     "elements": []
   }

@@ -12,6 +12,7 @@
     tools:targetApi="p">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -21,7 +22,7 @@
             android:layout_width="@dimen/_24sdp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/_12sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
             app:layout_constraintDimensionRatio="h, 1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +40,6 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgArrowRight"
             app:layout_constraintStart_toEndOf="@+id/imgThumbnail"
             app:layout_constraintTop_toTopOf="parent"
@@ -60,24 +60,46 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Updating..." />
 
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgArrowRight"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/_12sdp"
             android:tint="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
             app:layout_constraintDimensionRatio="h, 1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_arrow_right" />
-
         <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             app:dividerColor="@color/colorGrayscaleDisable"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvElements"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvTitle"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:spanCount="2"
+            tools:listitem="@layout/layout_item_menu" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/dividerElements"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:dividerColor="@color/colorGrayscaleDisable"
+            app:layout_constraintBottom_toBottomOf="@id/rcvElements"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

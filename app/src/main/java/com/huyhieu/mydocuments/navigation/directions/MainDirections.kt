@@ -23,18 +23,33 @@ object MainDirections {
         get() =
             NavigationFragmentDirections.actionGlobalCalendarFragment()
 
-    val toBannerInfinite
-        get() =
-            NavigationFragmentDirections.actionGlobalBannerInfiniteFragment()
-
     val toFingerprint
         get() =
             NavigationFragmentDirections.actionGlobalFingerprintFragment()
 
-    val toPinCode
-        get() =
-            NavigationFragmentDirections.actionGlobalPinCodeFragment()
 
+    //UI/UX
+    val toSwipeToRefresh
+        get() = NavigationFragmentDirections.actionGlobalSwipeToRefreshFragment()
+    val toPinCode
+        get() = NavigationFragmentDirections.actionGlobalPinCodeFragment()
+    val toSwipeRcv
+        get() = NavigationFragmentDirections.actionGlobalNotificationSwipeFragment()
+    val toGuide
+        get() = NavigationFragmentDirections.actionGlobalGuideFragment()
+    val toSteps
+        get() = NavigationFragmentDirections.actionGlobalStepsFragment()
+    val toBannerInfinite
+        get() =
+            NavigationFragmentDirections.actionGlobalBannerInfiniteFragment()
+    val toIntroduce
+        get() = NavigationFragmentDirections.actionGlobalIntroduceFragment()
+
+    //Charts
+    val toRadarChart
+        get() = NavigationFragmentDirections.actionGlobalRadarChartFragment()
+    val toCubicChart
+        get() = NavigationFragmentDirections.actionGlobalCubicChartFragment()
     val toLineChart
         get() =
             NavigationFragmentDirections.actionGlobalLineChartFragment()
@@ -53,15 +68,6 @@ object MainDirections {
 
     val toNavigation
         get() = NavigationFragmentDirections.actionGlobalNavigationFragment()
-
-    val toIntroduce
-        get() = NavigationFragmentDirections.actionGlobalIntroduceFragment()
-
-    val toSteps
-        get() = NavigationFragmentDirections.actionGlobalStepsFragment()
-
-    val toGuide
-        get() = NavigationFragmentDirections.actionGlobalGuideFragment()
 
     val toMotionCard
         get() = NavigationFragmentDirections.actionGlobalMotionCardFragment()
