@@ -7,9 +7,9 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
+import android.media.AudioAttributes
 import android.net.Uri
 import android.os.Build
-import android.provider.Settings
 import androidx.core.app.NotificationCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
@@ -29,7 +29,10 @@ class NotificationHelper(private val context: Context) {
         val imageUrl = data["image_url"].orEmpty()
         val promotionId = data["promotionId"].orEmpty() // Others data
 
-        val soundUri = Settings.System.DEFAULT_NOTIFICATION_URI
+        //val soundUri = Settings.System.DEFAULT_NOTIFICATION_URI
+        val soundUri =
+            Uri.parse(("android.resource://" + context.packageName + "/" + R.raw.sound_notification))
+
         logDebug("showNotification: defaultSoundUri: $soundUri")
         val pendingIntent = PendingIntentFactory.direction(context, type, promotionId)
         if (imageUrl.isNotEmpty()) {
@@ -54,7 +57,7 @@ class NotificationHelper(private val context: Context) {
         context: Context,
         title: String,
         content: String,
-        defaultSoundUri: Uri,
+        soundUri: Uri,
         largeIcon: Bitmap,
         pendingIntent: PendingIntent
     ) {
@@ -62,10 +65,9 @@ class NotificationHelper(private val context: Context) {
             .setSmallIcon(R.drawable.ic_notification) // Biểu tượng đơn sắc
             .setLargeIcon(largeIcon) // Biểu tượng lớn đầy đủ màu sắc
             .setContentTitle(title).setContentText(content).setContentIntent(pendingIntent)
-            //.setSound(defaultSoundUri)
-            .setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setDefaults(NotificationCompat.DEFAULT_LIGHTS or NotificationCompat.DEFAULT_SOUND)
-        //.setDefaults(NotificationCompat.DEFAULT_ALL)
+            .setSound(soundUri)
+            .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
 
         //Set progress
 //            .setOngoing(true)
@@ -74,20 +76,29 @@ class NotificationHelper(private val context: Context) {
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         notificationManager.apply {
-            createChannelForSinceApi26()// Available since API 26
+            createChannelForSinceApi26(soundUri)// Available since API 26
             notify(0, builder.build())
         }
     }
 
-    private fun NotificationManager.createChannelForSinceApi26() {
+    private fun NotificationManager.createChannelForSinceApi26(soundUri: Uri) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance).apply {
                 description = CHANNEL_DESCRIPTION
+                enableLights(true)
+                enableVibration(true)
+                setSound(soundUri, myAudioAttributes)
             }
             this.createNotificationChannel(channel)
         }
     }
+
+    private val myAudioAttributes
+        get() = AudioAttributes.Builder()
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setUsage(AudioAttributes.USAGE_ALARM)
+            .build()
 
     companion object {
         private const val CHANNEL_ID = "promotion_channel_id"
