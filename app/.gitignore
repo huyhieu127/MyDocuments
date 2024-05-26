@@ -1,1 +1,22 @@
 /build
+
+#Igrone Source Extension
+#DocumentsSDK
+../DocumentsSDK/app/build
+../DocumentsSDK/.gradle/
+../DocumentsSDK/.idea/workspace.xml
+../DocumentsSDK/.idea/tasks.xml
+../DocumentsSDK/.idea/gradle.xml
+../DocumentsSDK/.idea/assetWizardSettings.xml
+../DocumentsSDK/.idea/dictionaries
+../DocumentsSDK/.idea/libraries
+#ContentProvider
+../ContentProvider/app/build
+../ContentProvider/.gradle/
+../ContentProvider/.idea/workspace.xml
+../ContentProvider/.idea/tasks.xml
+../ContentProvider/.idea/gradle.xml
+../ContentProvider/.idea/assetWizardSettings.xml
+../ContentProvider/.idea/dictionaries
+../ContentProvider/.idea/libraries
+
