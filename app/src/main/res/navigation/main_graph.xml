@@ -291,4 +291,14 @@
         android:id="@+id/action_global_introduceFragment"
         app:destination="@id/introduceFragment" />
 
+    <!--Firebase-->
+    <fragment
+        android:id="@+id/cloudMessagingFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.firebase.CloudMessagingFragment"
+        android:label="fragment_cloud_messaging"
+        tools:layout="@layout/fragment_cloud_messaging" />
+    <action
+        android:id="@+id/action_global_cloudMessagingFragment"
+        app:destination="@id/cloudMessagingFragment" />
+
 </navigation>

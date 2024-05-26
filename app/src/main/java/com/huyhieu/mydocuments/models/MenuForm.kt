@@ -9,6 +9,7 @@ data class MenuForm(
     var name: String,
     var note: String = "", var elements: List<MenuForm> = listOf(),
     var isAvailable: Boolean = true,
+    var isExpanded: Boolean = false,
 ) : Parcelable
 
 object HomeMenu {
@@ -35,6 +36,11 @@ object UIUXMenu {
     const val MENU_BANNER_INFINITE = "MENU_BANNER_INFINITE"
     const val MENU_INTRODUCE = "MENU_INTRODUCE"
 }
+
+object FirebaseMenu {
+    const val MENU_CLOUD_MESSAGING = "MENU_CLOUD_MESSAGING"
+}
+
 
 object ApiMenu {
     const val MENU_SDK = "MENU_SDK"

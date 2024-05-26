@@ -103,6 +103,22 @@
     ]
   },
   {
+    "type": "MENU_FIREBASE",
+    "name": "Firebase",
+    "note": "",
+    "isAvailable": true,
+    "isExpanded": true,
+    "elements": [
+      {
+        "type": "MENU_CLOUD_MESSAGING",
+        "name": "Cloud Messaging",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      }
+    ]
+  },
+  {
     "type": "MENU_WIDGET",
     "name": "Widgets",
     "note": "",

@@ -64,6 +64,9 @@ class MenuAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                         elementAdapter.itemClick = { element ->
                             itemClick?.invoke(element)
                         }
+                        if (item.isExpanded) {
+                            rcvElements.isVisible = true
+                        }
                     }
 
                     root.setOnClickMyListener {

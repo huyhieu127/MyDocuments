@@ -47,6 +47,7 @@ class MenuElementAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     root.setOnClickMyListener {
                         itemClick?.invoke(item)
                     }
+                    tvTitle.setTextColor(context.color(R.color.colorPrimary))
                     tvTitle.text = item.name
                     tvNote.text = item.note
                 }

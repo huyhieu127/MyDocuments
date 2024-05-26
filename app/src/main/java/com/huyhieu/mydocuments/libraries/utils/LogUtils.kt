@@ -15,28 +15,28 @@ private fun checkBlockLogger(str: String?): Boolean? {
     return true
 }
 
-fun logError(str: String? = "") {
+fun logError(str: String? = "", tag: String? = TAG_LOG) {
     checkBlockLogger(str) ?: return
     try {
-        Log.e(TAG_LOG, "ERROR: $str")
+        Log.e(tag, "ERROR: $str")
     } catch (_: Exception) {
 
     }
 }
 
-fun logDebug(str: String? = "") {
+fun logDebug(str: String? = "", tag: String? = TAG_LOG) {
     checkBlockLogger(str) ?: return
     try {
-        Log.d(TAG_LOG, "DEBUG: $str")
+        Log.d(tag, "DEBUG: $str")
     } catch (_: Exception) {
 
     }
 }
 
-fun logInfo(str: String? = "") {
+fun logInfo(str: String? = "", tag: String? = TAG_LOG) {
     checkBlockLogger(str) ?: return
     try {
-        Log.i(TAG_LOG, "INFO: $str")
+        Log.i(tag, "INFO: $str")
     } catch (_: Exception) {
 
     }

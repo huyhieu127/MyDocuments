@@ -2,11 +2,13 @@ package com.huyhieu.mydocuments.ui.activities.main
 
 import android.os.Bundle
 import android.view.View
-import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.libraries.extensions.setTransparentStatusBar
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
+import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
+import com.huyhieu.mydocuments.libraries.extensions.setTransparentStatusBar
+import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.shared.appFireStore
+import com.huyhieu.mydocuments.utils.helper.PendingIntentFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,6 +19,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     @Inject
     lateinit var mainVM: MainVM
     var storageRef = appFireStore.reference
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        backupNotification()
+    }
 
     override fun binding() = ActivityMainBinding.inflate(layoutInflater)
 
@@ -44,9 +51,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 logDebug(i.message)
             }
         }*/
-
     }
 
+    private fun backupNotification() {
+        intent.extras?.let { extras ->
+            val type = extras.getString("type").orEmpty()
+            val data = extras.getString("promotionId").orEmpty()
+            if (type.isNotEmpty() && type != "0") {
+                logDebug("backupNotification: $type, data: $data")
+                PendingIntentFactory.direction(this, type, data).send()
+            }
+        }
+    }
 
     override fun onMyLiveData() {
         mainVM.pushNotify.observe(this) {

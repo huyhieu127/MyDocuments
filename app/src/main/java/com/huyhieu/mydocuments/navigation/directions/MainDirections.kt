@@ -45,6 +45,11 @@ object MainDirections {
     val toIntroduce
         get() = NavigationFragmentDirections.actionGlobalIntroduceFragment()
 
+    //Firebase
+    val toCloudMessaging
+        get() =
+            NavigationFragmentDirections.actionGlobalCloudMessagingFragment()
+
     //Charts
     val toRadarChart
         get() = NavigationFragmentDirections.actionGlobalRadarChartFragment()

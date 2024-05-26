@@ -33,6 +33,9 @@
     <uses-permission android:name="com.huyhieu.contentprovider.provider.READ_DATA" />
     <uses-permission android:name="com.huyhieu.contentprovider.provider.WRITE_DATA" />
 
+    <!--For Notification Android 13 and later-->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -40,13 +43,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        tools:replace="android:theme"
-        android:theme="@style/Theme.MyDocuments">
+        android:theme="@style/Theme.MyDocuments"
+        tools:replace="android:theme">
 
         <activity
             android:name=".ui.activities.main.MainActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,7 +58,7 @@
 
         <activity
             android:name=".ui.activities.media_pipe.MediaPipeActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ui.activities.bubblechat.BubbleChatActivity"
             android:exported="true" />
@@ -81,6 +83,28 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <!--FirebaseMessagingService-->
+        <service
+            android:name=".services.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+        See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorRedAlert" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
     </application>
 
 </manifest>

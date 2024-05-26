@@ -16,6 +16,7 @@ import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.models.ApiMenu
 import com.huyhieu.mydocuments.models.ChartMenu
 import com.huyhieu.mydocuments.models.FeatureMenu
+import com.huyhieu.mydocuments.models.FirebaseMenu
 import com.huyhieu.mydocuments.models.GoogleFeatureMenu
 import com.huyhieu.mydocuments.models.HomeMenu
 import com.huyhieu.mydocuments.models.MenuForm
@@ -184,7 +185,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 MyNavHost.Main,
                 MainDirections.toSwipeToRefresh
             )
-
             UIUXMenu.MENU_PIN_CODE -> navigate(MyNavHost.Main, MainDirections.toPinCode)
             UIUXMenu.MENU_GUIDE -> navigate(MyNavHost.Main, MainDirections.toGuide)
             UIUXMenu.MENU_SWIPE_RCV -> navigate(MyNavHost.Main, MainDirections.toSwipeRcv)
@@ -193,8 +193,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 MyNavHost.Main,
                 MainDirections.toBannerInfinite
             )
-
             UIUXMenu.MENU_INTRODUCE -> navigate(MyNavHost.Main, MainDirections.toIntroduce)
+            //FIREBASE
+            FirebaseMenu.MENU_CLOUD_MESSAGING -> navigate(
+                MyNavHost.Main,
+                MainDirections.toCloudMessaging
+            )
             //API
             ApiMenu.MENU_SDK -> DocSdkInstance.openSdk(mActivity)
             ApiMenu.MENU_MULTIPLE_NETWORK_API -> navigate(
