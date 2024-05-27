@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationManagerCompat
@@ -14,6 +15,7 @@ import androidx.core.content.ContextCompat
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCloudMessagingBinding
 import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.mydocuments.utils.helper.NotificationHelper
 
 
 class CloudMessagingFragment : BaseFragment<FragmentCloudMessagingBinding>() {
@@ -39,6 +41,19 @@ class CloudMessagingFragment : BaseFragment<FragmentCloudMessagingBinding>() {
         val result = arguments?.getString("data")
         vb.tvResult.text = "Cloud Messaging: $result"
         askNotificationPermission()
+        setClickViews(vb.btnPushNotification)
+    }
+
+    override fun FragmentCloudMessagingBinding.onClickViewBinding(v: View, id: Int) {
+        when (id) {
+            vb.btnPushNotification.id -> {
+                val data = mutableMapOf(
+                    "title" to "Title",
+                    "content" to "Content",
+                )
+                NotificationHelper(requireContext()).showNotification(data)
+            }
+        }
     }
 
     private fun doSomething() {

@@ -64,14 +64,12 @@ class NotificationHelper(private val context: Context) {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification) // Biểu tượng đơn sắc
             .setLargeIcon(largeIcon) // Biểu tượng lớn đầy đủ màu sắc
-            .setContentTitle(title).setContentText(content).setContentIntent(pendingIntent)
+            .setContentTitle(title)
+            .setContentText(content)
+            .setContentIntent(pendingIntent)
             .setSound(soundUri)
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
-
-        //Set progress
-//            .setOngoing(true)
-//            .setProgress(100, 50, false)
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
