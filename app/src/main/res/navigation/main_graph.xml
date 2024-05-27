@@ -301,4 +301,14 @@
         android:id="@+id/action_global_cloudMessagingFragment"
         app:destination="@id/cloudMessagingFragment" />
 
+    <!--Broadcast Receiver-->
+    <fragment
+        android:id="@+id/powerConnectionReceiverFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.broadcast_receiver.PowerConnectionReceiverFragment"
+        android:label="fragment_power_connection_receiver"
+        tools:layout="@layout/fragment_power_connection_receiver" />
+    <action
+        android:id="@+id/action_global_powerConnectionReceiverFragment"
+        app:destination="@id/powerConnectionReceiverFragment" />
+
 </navigation>

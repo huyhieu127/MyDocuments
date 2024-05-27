@@ -107,7 +107,7 @@
     "name": "Firebase",
     "note": "",
     "isAvailable": true,
-    "isExpanded": true,
+    "isExpanded": false,
     "elements": [
       {
         "type": "MENU_CLOUD_MESSAGING",
@@ -170,11 +170,19 @@
     "name": "Features",
     "note": "",
     "isAvailable": true,
+    "isExpanded": true,
     "elements": [
       {
-        "type": "MENU_NOTIFICATION",
-        "name": "Notification",
-        "note": "Coming soon",
+        "type": "MENU_BROADCAST_POWER",
+        "name": "Power Connection Broadcast Receiver",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
+        "type": "MENU_CONTENT_PROVIDER",
+        "name": "Content Provider",
+        "note": "",
         "isAvailable": true,
         "elements": []
       },
@@ -188,13 +196,6 @@
       {
         "type": "MENU_STATIC_MAP",
         "name": "Static maps",
-        "note": "",
-        "isAvailable": true,
-        "elements": []
-      },
-      {
-        "type": "MENU_CONTENT_PROVIDER",
-        "name": "Content Provider",
         "note": "",
         "isAvailable": true,
         "elements": []

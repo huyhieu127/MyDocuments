@@ -3,9 +3,6 @@ package com.huyhieu.mydocuments.navigation.directions
 import com.huyhieu.mydocuments.ui.fragments.navigation.NavigationFragmentDirections
 
 object MainDirections {
-    val toContentProvider
-        get() =
-            NavigationFragmentDirections.actionGlobalContentProviderFragment()
 
     val toInAppUpdate
         get() =
@@ -58,6 +55,15 @@ object MainDirections {
     val toLineChart
         get() =
             NavigationFragmentDirections.actionGlobalLineChartFragment()
+
+    //Features
+    val toPowerConnection
+        get() =
+            NavigationFragmentDirections.actionGlobalPowerConnectionReceiverFragment()
+
+    val toContentProvider
+        get() =
+            NavigationFragmentDirections.actionGlobalContentProviderFragment()
 
     val toMap
         get() =
