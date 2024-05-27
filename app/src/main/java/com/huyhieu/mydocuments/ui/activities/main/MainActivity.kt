@@ -18,6 +18,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     @Inject
     lateinit var mainVM: MainVM
+
+//    @Inject
+//    lateinit var testVM: TesVM
+
     var storageRef = appFireStore.reference
 
     override fun onAttachedToWindow() {
@@ -51,6 +55,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 logDebug(i.message)
             }
         }*/
+
+        //testVM.insertUser(User(1, "Hieu", "Mail"))
+        //testVM.getUser(1)
     }
 
     private fun backupNotification() {
@@ -67,6 +74,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onMyLiveData() {
         mainVM.pushNotify.observe(this) {
         }
+
+//        testVM.user.observe(this) {
+//            logDebug("user: $it")
+//        }
     }
 
     override fun onClick(p0: View?) {

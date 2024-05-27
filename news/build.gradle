@@ -31,7 +31,9 @@ android {
 }
 
 dependencies {
-    implementation project(":app")
+    implementation(project(':app')) {
+        exclude group: 'com.intellij', module: 'annotations'
+    }
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'

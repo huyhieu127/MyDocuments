@@ -12,14 +12,24 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Size
 import androidx.annotation.RequiresPermission
+import com.huyhieu.mydocuments.App.Companion.ins
 import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.libraries.utils.logError
-import com.huyhieu.mydocuments.App.Companion.ins
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.io.*
+import java.io.BufferedInputStream
+import java.io.BufferedReader
+import java.io.Closeable
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.FileReader
+import java.io.IOException
+import java.io.InputStream
+import java.io.InputStreamReader
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
@@ -218,7 +228,9 @@ fun CoroutineScope.unzip(
                             )
                         }
                     }
+                    zipInputStream.safeClose()
                 } catch (e: Exception) {
+                    zipInputStream.safeClose()
                     e.printStackTrace()
                 }
             }

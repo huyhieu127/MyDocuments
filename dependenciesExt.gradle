@@ -1,0 +1,37 @@
+ext {
+    // Versions
+    kotlinVersion = "1.5.21"
+    coroutinesVersion = "1.5.1"
+
+    coreKtx = "1.13.1"
+    appCompat = "1.6.1"
+    material = "1.12.0"
+
+    room = "2.6.1"
+    hilt = "2.50"
+
+    retrofitVersion = "2.9.0"
+    okHttp = "5.0.0-alpha.11"
+
+    // Libraries
+    libs = [
+            kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            coroutinesCore          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            coreKtx                 : "androidx.core:core-ktx:$coreKtx",
+            appCompat               : "androidx.appcompat:appcompat:$appCompat",
+            material                : "com.google.android.material:material:$material",
+
+            roomRuntime             : "androidx.room:room-runtime:$room",
+            roomCompiler            : "androidx.room:room-compiler:$room",
+
+            hiltAndroid             : "com.google.dagger:hilt-android:$hilt",
+            hiltAndroidCompiler     : "com.google.dagger:hilt-android-compiler:$hilt",
+
+            retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitGson            : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+
+            okHttp                  : "com.squareup.okhttp3:okhttp:$okHttp",
+            okHttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okHttp",
+    ]
+
+}
