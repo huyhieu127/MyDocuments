@@ -210,6 +210,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 MyNavHost.Main,
                 MainDirections.toPowerConnection
             )
+            FeatureMenu.MENU_BROADCAST_VOLUME -> navigate(
+                MyNavHost.Main,
+                MainDirections.toVolume
+            )
             FeatureMenu.MENU_MAP -> navigate(MyNavHost.Main, MainDirections.toMap)
             FeatureMenu.MENU_STATIC_MAP -> navigate(MyNavHost.Main, MainDirections.toStaticMap)
             FeatureMenu.MENU_CONTENT_PROVIDER -> navigate(

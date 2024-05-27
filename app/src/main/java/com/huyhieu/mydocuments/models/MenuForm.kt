@@ -49,6 +49,7 @@ object ApiMenu {
 
 object FeatureMenu {
     const val MENU_BROADCAST_POWER = "MENU_BROADCAST_POWER"
+    const val MENU_BROADCAST_VOLUME = "MENU_BROADCAST_VOLUME"
     const val MENU_MAP = "MENU_MAP"
     const val MENU_STATIC_MAP = "MENU_STATIC_MAP"
     const val MENU_CONTENT_PROVIDER = "MENU_CONTENT_PROVIDER"

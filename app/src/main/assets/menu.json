@@ -180,6 +180,13 @@
         "elements": []
       },
       {
+        "type": "MENU_BROADCAST_VOLUME",
+        "name": "Volume Broadcast Receiver",
+        "note": "",
+        "isAvailable": true,
+        "elements": []
+      },
+      {
         "type": "MENU_CONTENT_PROVIDER",
         "name": "Content Provider",
         "note": "",

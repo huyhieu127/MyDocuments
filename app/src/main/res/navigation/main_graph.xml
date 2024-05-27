@@ -311,4 +311,14 @@
         android:id="@+id/action_global_powerConnectionReceiverFragment"
         app:destination="@id/powerConnectionReceiverFragment" />
 
+    <fragment
+        android:id="@+id/volumeBroadcastReceiverFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.broadcast_receiver.VolumeBroadcastReceiverFragment"
+        android:label="fragment_volume_broadcast_receiver"
+        tools:layout="@layout/fragment_volume_broadcast_receiver" />
+
+    <action
+        android:id="@+id/action_global_volumeBroadcastReceiverFragment"
+        app:destination="@id/volumeBroadcastReceiverFragment" />
+
 </navigation>

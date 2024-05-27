@@ -61,6 +61,10 @@ object MainDirections {
         get() =
             NavigationFragmentDirections.actionGlobalPowerConnectionReceiverFragment()
 
+    val toVolume
+        get() =
+            NavigationFragmentDirections.actionGlobalVolumeBroadcastReceiverFragment()
+
     val toContentProvider
         get() =
             NavigationFragmentDirections.actionGlobalContentProviderFragment()
