@@ -12,8 +12,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCloudMessagingBinding
+import com.huyhieu.mydocuments.libraries.extensions.colorAttr
 import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.utils.helper.NotificationHelper
 
@@ -39,11 +41,11 @@ class CloudMessagingFragment : BaseFragment<FragmentCloudMessagingBinding>() {
 
     override fun onMyViewCreated(savedInstanceState: Bundle?) {
         val result = arguments?.getString("data")
+        vb.tvResult.setTextColor(context.colorAttr(R.attr.colorTitle))
         vb.tvResult.text = "Cloud Messaging: $result"
         askNotificationPermission()
         setClickViews(vb.btnPushNotification)
     }
-
     override fun FragmentCloudMessagingBinding.onClickViewBinding(v: View, id: Int) {
         when (id) {
             vb.btnPushNotification.id -> {

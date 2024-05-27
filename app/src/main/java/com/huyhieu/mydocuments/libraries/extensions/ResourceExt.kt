@@ -14,6 +14,18 @@ import androidx.core.content.res.ResourcesCompat
 /**
  *  @param colorRes [ID resource]
  * */
+fun Context?.colorAttr(
+    @AttrRes attrColor: Int,
+    typedValue: TypedValue = TypedValue(),
+    resolveRefs: Boolean = true
+): Int {
+    this ?: return 0
+    theme.resolveAttribute(attrColor, typedValue, resolveRefs)
+    return typedValue.data
+}
+/**
+ *  @param colorRes [ID resource]
+ * */
 fun Context?.color(@ColorRes colorRes: Int): Int {
     this ?: return 0
     return ContextCompat.getColor(this, colorRes)

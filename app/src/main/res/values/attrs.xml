@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="colorContent" format="color" />
+    <attr name="colorTitle" format="color" />
+    <!--<attr name="colorContainer" format="color" tools:override="true" />-->
     <declare-styleable name="ToolBarBaseView">
         <attr name="tb_base_title" format="string" />
     </declare-styleable>
