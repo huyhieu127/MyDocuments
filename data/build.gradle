@@ -15,6 +15,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
 
+        buildConfigField "String", "MAP_API_URL", '"https://maps.googleapis.com/maps/api/"'
+        buildConfigField "String", "GITHUB_API_URL", '"https://api.github.com/"'
+        buildConfigField "String", "POKE_API_URL", '"https://pokeapi.co/api/v2/"'
         buildConfigField "String", "REQRES_URL", '"https://reqres.in/api/"'
     }
 
@@ -45,16 +48,24 @@ dependencies {
     implementation libs.appCompat
     implementation libs.material
 
+    //Hilt
     implementation libs.hiltAndroid
     kapt libs.hiltAndroidCompiler
 
+    //Room
     implementation libs.roomRuntime
     implementation libs.roomKtx
     kapt libs.roomCompiler
 
+    //Lifecycle
+    implementation libs.lifecycleViewModel
+    implementation libs.lifecycleLiveData
+
+    //Retrofit
     implementation libs.retrofit
     implementation libs.retrofitGson
 
+    //okHttp
     implementation libs.okHttp
     implementation libs.okHttpLoggingInterceptor
 

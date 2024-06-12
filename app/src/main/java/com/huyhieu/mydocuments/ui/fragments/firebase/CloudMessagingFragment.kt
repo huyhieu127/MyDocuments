@@ -12,11 +12,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCloudMessagingBinding
 import com.huyhieu.mydocuments.libraries.extensions.colorAttr
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.utils.helper.NotificationHelper
 
 

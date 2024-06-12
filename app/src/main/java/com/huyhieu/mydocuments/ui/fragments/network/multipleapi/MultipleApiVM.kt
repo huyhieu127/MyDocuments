@@ -1,10 +1,10 @@
 package com.huyhieu.mydocuments.ui.fragments.network.multipleapi
 
 import androidx.lifecycle.MutableLiveData
+import com.huyhieu.domain.enitities.pokemon.PokemonUrlForm
+import com.huyhieu.domain.enitities.responses.ResponsePokeAPI
 import com.huyhieu.mydocuments.base.BaseVM
-import com.huyhieu.mydocuments.models.pokemon.PokemonUrlForm
 import com.huyhieu.mydocuments.others.APIKey
-import com.huyhieu.mydocuments.repository.remote.retrofit.ResponsePokeAPI
 import javax.inject.Inject
 
 class MultipleApiVM @Inject constructor() : BaseVM() {
@@ -14,7 +14,7 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
 
     /**Call multiple API*/
     fun getPokemons() =
-        mapper.mapToLiveDataPokeAPI(
+        liveDataMapper.executePokeAPI(
             Pair(APIKey.API_1) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 1000),
@@ -40,7 +40,7 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
     /**
      * Call API with Flow*/
     fun fetchAsyncPokemonDetail() {
-        mapperAsyncFlows(
+        flowMapper.executeAsyncAPI(
             Pair(APIKey.API_1) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 1000),
@@ -62,14 +62,20 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
                 )
                 pokeApiService.getPokemons(params)
             },
-            tag = "async"
+            tag = "async",
+            onLoading = {
+                showLoading()
+            },
+            onCompletion = { _, _ ->
+                hideLoading()
+            },
         ) {
             fetchAsyncPokemonDetailLD.value = it
         }
     }
 
     fun fetchSyncPokemonDetail() {
-        mapperSyncFlows(
+        flowMapper.executeSyncAPI(
             Pair(APIKey.API_1) {
                 val params = mutableMapOf<String, Any>(
                     Pair("limit", 1000),
@@ -91,7 +97,13 @@ class MultipleApiVM @Inject constructor() : BaseVM() {
                 )
                 pokeApiService.getPokemons(params)
             },
-            tag = "sync"
+            tag = "sync",
+            onLoading = {
+                showLoading()
+            },
+            onCompletion = { _, _ ->
+                hideLoading()
+            },
         ) {
             fetchSyncPokemonDetailLD.value = it
         }

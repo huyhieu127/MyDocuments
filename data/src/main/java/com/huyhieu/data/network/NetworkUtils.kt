@@ -1,51 +1,33 @@
 package com.huyhieu.data.network
 
+import android.content.Context
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkCapabilities
-import android.net.NetworkRequest
 
 object NetworkUtils {
 
-    var isAvailable = false
-
-    private val networkRequest = NetworkRequest.Builder()
-        .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-        .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-        .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-        .build()
-
-    private val networkCallback = object : ConnectivityManager.NetworkCallback() {
-        // network is available for use
-        override fun onAvailable(network: Network) {
-            super.onAvailable(network)
-            isAvailable = true
-        }
-
-        // Network capabilities have changed for the network
-        override fun onCapabilitiesChanged(
-            network: Network,
-            networkCapabilities: NetworkCapabilities
-        ) {
-            super.onCapabilitiesChanged(network, networkCapabilities)
-            val isUnmetered =
-                networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)
-        }
-
-        // lost network connection
-        override fun onLost(network: Network) {
-            super.onLost(network)
-            isAvailable = false
-        }
+    /**
+     * Listen for network changes
+     */
+    private var networkCallback: NetworkCallback? = null
+    fun requestNetworkCallback(context: Context) {
+        networkCallback = NetworkCallback()
+        networkCallback?.requestNetwork(context)
     }
 
-//    val connectivityManager by lazy { App.ins.getSystemService(ConnectivityManager::class.java) as ConnectivityManager }
-//
-//    fun requestNetwork() {
-//        connectivityManager.requestNetwork(networkRequest, networkCallback)
-//    }
-//
-//    fun getState() {
-//        logDebug("${connectivityManager.isDefaultNetworkActive} - ${connectivityManager.isActiveNetworkMetered}")
-//    }
+    fun unregisterNetworkCallback() {
+        networkCallback?.unregisterNetworkCallback()
+    }
+
+    val isNetworkAvailable get() = networkCallback?.isAvailable() ?: false
+
+    /**Check for available networks without listening for network changes*/
+    fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val networkCapabilities =
+            connectivityManager.getNetworkCapabilities(network) ?: return false
+        return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    }
 }

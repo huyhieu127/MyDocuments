@@ -4,9 +4,9 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
+import com.huyhieu.data.logger.logDebug
+import com.huyhieu.data.network.NetworkUtils
 import com.huyhieu.documentssdk.DocSdkInstance
-import com.huyhieu.mydocuments.libraries.utils.logDebug
-import com.huyhieu.mydocuments.repository.remote.NetworkUtils
 import com.huyhieu.mydocuments.shared.SharedPreferencesManager
 import dagger.hilt.android.HiltAndroidApp
 
@@ -34,7 +34,7 @@ class App : SplitCompatApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        NetworkUtils.requestNetwork()
+        NetworkUtils.requestNetworkCallback(this)
         DocSdkInstance.init("KEY FOR DOCUMENTS SDK!")
 
         // Get FCM registration token

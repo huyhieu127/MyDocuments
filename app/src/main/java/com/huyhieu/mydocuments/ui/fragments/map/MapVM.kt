@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.base.BaseVM
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.utils.toJson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -9,7 +9,7 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import com.arthenica.ffmpegkit.FFmpegKit
 import com.arthenica.ffmpegkit.Level
-import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityFfmpegKitBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -101,7 +101,7 @@ class FFmpegKitActivity : BaseActivity<ActivityFfmpegKitBinding>() {
                 }
             }
         }, { statistics ->
-            logDebug("statistics: ${statistics.size.toString()}")
+            logDebug("statistics: ${statistics.size}")
         })
     }
 

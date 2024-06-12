@@ -13,10 +13,10 @@ import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.BuildConfig
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentInAppUpdateBinding
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.utils.toJson
 
 class InAppUpdateFragment : BaseFragment<FragmentInAppUpdateBinding>() {

@@ -2,7 +2,7 @@ package com.huyhieu.mydocuments.services
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.utils.helper.NotificationHelper
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {

@@ -2,7 +2,6 @@ package com.huyhieu.mydocuments.ondemand.help_center
 
 import android.os.Bundle
 import com.huyhieu.mydocuments.base.BaseFragment
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.ondemand.help_center.databinding.FragmentQABinding
 import com.huyhieu.mydocuments.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +14,5 @@ class QAFragment : BaseFragment<FragmentQABinding>() {
             vb.tvResult.text = "QA: ".plus(it)
         }
         homeVM.title.value = "AAAA"
-        logDebug()
     }
 }

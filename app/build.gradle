@@ -154,12 +154,12 @@ dependencies {
     //Text recognition
     implementation libs.textRecognition
 
-    //Deprecated
     implementation libs.retrofit
     implementation libs.retrofitGson
 
-    implementation libs.okHttp
-    implementation libs.okHttpLoggingInterceptor
+    //Deprecated
+//    implementation libs.okHttp
+//    implementation libs.okHttpLoggingInterceptor
 
 }
 

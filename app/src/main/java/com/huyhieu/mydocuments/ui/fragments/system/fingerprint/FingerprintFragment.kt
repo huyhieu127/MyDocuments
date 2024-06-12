@@ -2,10 +2,10 @@ package com.huyhieu.mydocuments.ui.fragments.system.fingerprint
 
 import android.graphics.Color
 import android.os.Bundle
-import com.huyhieu.mydocuments.libraries.extensions.setOnClickMyListener
-import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentFingerprintBinding
+import com.huyhieu.mydocuments.libraries.extensions.setOnClickMyListener
 
 class FingerprintFragment : BaseFragment<FragmentFingerprintBinding>() {
     private val biometricPrompt by lazy {

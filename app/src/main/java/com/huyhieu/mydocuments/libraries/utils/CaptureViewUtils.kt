@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
+import com.huyhieu.data.logger.logDebug
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -34,7 +35,7 @@ fun View.toBitmap(): Bitmap? {
         screenshot =
             Bitmap.createBitmap(this.measuredWidth, this.measuredHeight, Bitmap.Config.ARGB_8888)
         // Now draw this bitmap on a canvas
-        val canvas = Canvas(screenshot!!)
+        val canvas = Canvas(screenshot)
         this.draw(canvas)
     } catch (e: Exception) {
         logDebug("Failed to capture screenshot because: ${e.message}")

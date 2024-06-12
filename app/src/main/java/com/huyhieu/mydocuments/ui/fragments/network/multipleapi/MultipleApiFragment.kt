@@ -3,9 +3,9 @@ package com.huyhieu.mydocuments.ui.fragments.network.multipleapi
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentMultipleApiBinding
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

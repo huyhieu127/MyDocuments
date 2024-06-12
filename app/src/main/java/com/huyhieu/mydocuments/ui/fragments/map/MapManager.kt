@@ -35,13 +35,13 @@ import com.google.android.gms.tasks.CancellationToken
 import com.google.android.gms.tasks.CancellationTokenSource
 import com.google.android.gms.tasks.OnTokenCanceledListener
 import com.google.maps.android.ui.IconGenerator
+import com.huyhieu.data.logger.logDebug
+import com.huyhieu.data.logger.logError
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.libraries.custom_views.MyMarkerSimpleView
 import com.huyhieu.mydocuments.libraries.custom_views.MyMarkerView
 import com.huyhieu.mydocuments.libraries.extensions.drawable
 import com.huyhieu.mydocuments.libraries.extensions.isGps
-import com.huyhieu.mydocuments.libraries.utils.logDebug
-import com.huyhieu.mydocuments.libraries.utils.logError
 import com.huyhieu.mydocuments.libraries.utils.map.MapCameraUtils
 import com.huyhieu.mydocuments.libraries.utils.map.calculateDistanceValid
 import com.huyhieu.mydocuments.libraries.utils.map.createLocation

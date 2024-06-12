@@ -8,7 +8,17 @@ import javax.inject.Inject
 class RecallAPIVM @Inject constructor() : BaseVM() {
     val userLD: MutableLiveData<JsonObject?> = MutableLiveData()
     fun fetchUser() {
-        mapperFlowSimple({ reqResApiService.getUser() }) {
+        flowMapper.executeAPI(
+            apiService = {
+                reqResApiService.getUser()
+            },
+            onLoading = {
+                showLoading()
+            },
+            onCompletion = {
+                hideLoading()
+            },
+        ) {
             val data = it?.getAsJsonObject("data")
             userLD.postValue(data)
         }

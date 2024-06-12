@@ -2,12 +2,12 @@ package com.huyhieu.mydocuments.ui.activities.main
 
 import android.os.Bundle
 import android.view.View
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.domain.enitities.User
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.libraries.extensions.setTransparentStatusBar
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.shared.appFireStore
 import com.huyhieu.mydocuments.utils.helper.PendingIntentFactory
 import dagger.hilt.android.AndroidEntryPoint

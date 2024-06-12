@@ -16,10 +16,9 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.DecelerateInterpolator
-import android.widget.Toast
-import com.huyhieu.mydocuments.libraries.extensions.color
-import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.R
+import com.huyhieu.mydocuments.libraries.extensions.color
 import kotlin.math.abs
 
 

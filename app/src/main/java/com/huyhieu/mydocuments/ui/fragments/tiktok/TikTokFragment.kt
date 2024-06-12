@@ -1,23 +1,18 @@
 package com.huyhieu.mydocuments.ui.fragments.tiktok
 
 import android.os.Bundle
-import android.view.View
 import android.widget.SeekBar
 import androidx.annotation.OptIn
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
-import androidx.media3.exoplayer.ExoPlayer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.gson.JsonObject
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragmentVM
 import com.huyhieu.mydocuments.databinding.FragmentTikTokBinding
 import com.huyhieu.mydocuments.libraries.extensions.setNavigationBarColor
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.models.TikTokVideoForm
 import com.huyhieu.mydocuments.utils.readAssets
 import com.huyhieu.mydocuments.utils.toData

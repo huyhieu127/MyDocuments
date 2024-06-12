@@ -10,13 +10,13 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.huyhieu.mydocuments.libraries.custom_views.MyButtonView
-import com.huyhieu.mydocuments.libraries.extensions.dimenPx
-import com.huyhieu.mydocuments.libraries.extensions.drawable
-import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.base.interfaces.IBaseView
+import com.huyhieu.mydocuments.libraries.custom_views.MyButtonView
+import com.huyhieu.mydocuments.libraries.extensions.dimenPx
+import com.huyhieu.mydocuments.libraries.extensions.drawable
 import com.huyhieu.mydocuments.ui.activities.main.MainVM
 import com.huyhieu.mydocuments.ui.fragments.navigation.home.components.HomeVM
 import javax.inject.Inject

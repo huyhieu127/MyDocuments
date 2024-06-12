@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.huyhieu.mydocuments.libraries.utils.logDebug
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.databinding.ItemNotificationSwipeBinding
 
 class NotificationSwipeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

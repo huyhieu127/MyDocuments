@@ -15,9 +15,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import com.google.mlkit.vision.demo.kotlin.textdetector.TextRecognitionProcessor
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentLoggerImeBinding
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.ui.fragments.device.ml_kit_utils.BitmapUtils
 import com.huyhieu.mydocuments.ui.fragments.device.ml_kit_utils.VisionImageProcessor
 import com.huyhieu.mydocuments.utils.init
@@ -75,7 +75,7 @@ class LoggerIMEFragment : BaseFragment<FragmentLoggerImeBinding>() {
     }
 
 
-    public override fun onResume() {
+    override fun onResume() {
         super.onResume()
         Log.d(TAG, "onResume")
         createImageProcessor()
@@ -87,12 +87,12 @@ class LoggerIMEFragment : BaseFragment<FragmentLoggerImeBinding>() {
             TextRecognitionProcessor(requireContext(), TextRecognizerOptions.Builder().build())
     }
 
-    public override fun onPause() {
+    override fun onPause() {
         super.onPause()
         imageProcessor?.run { this.stop() }
     }
 
-    public override fun onDestroy() {
+    override fun onDestroy() {
         super.onDestroy()
         imageProcessor?.run { this.stop() }
     }

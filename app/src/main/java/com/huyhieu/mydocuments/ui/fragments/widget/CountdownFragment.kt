@@ -4,12 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.mydocuments.R
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentCountdownBinding
 import com.huyhieu.mydocuments.libraries.extensions.color
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.roundToInt

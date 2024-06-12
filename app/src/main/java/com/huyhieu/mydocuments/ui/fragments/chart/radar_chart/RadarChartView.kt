@@ -9,10 +9,10 @@ import android.graphics.Path.FillType
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
-import com.huyhieu.mydocuments.libraries.extensions.color
-import com.huyhieu.mydocuments.libraries.utils.logDebug
-import com.huyhieu.mydocuments.libraries.utils.logError
+import com.huyhieu.data.logger.logDebug
+import com.huyhieu.data.logger.logError
 import com.huyhieu.mydocuments.R
+import com.huyhieu.mydocuments.libraries.extensions.color
 import kotlin.math.cos
 import kotlin.math.sin
 

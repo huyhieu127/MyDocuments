@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 
 class MyRecyclerViewLoadMore(context: Context, attrs: AttributeSet?) : RecyclerView(context, attrs) {
     var onLoadMore: (() -> Unit)? = null

@@ -7,12 +7,12 @@ import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import com.huyhieu.data.logger.logDebug
 import com.huyhieu.documentssdk.DocSdkInstance
 import com.huyhieu.mydocuments.base.BaseFragment
 import com.huyhieu.mydocuments.databinding.FragmentHomeBinding
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.libraries.extensions.showToastShort
-import com.huyhieu.mydocuments.libraries.utils.logDebug
 import com.huyhieu.mydocuments.models.ApiMenu
 import com.huyhieu.mydocuments.models.ChartMenu
 import com.huyhieu.mydocuments.models.FeatureMenu

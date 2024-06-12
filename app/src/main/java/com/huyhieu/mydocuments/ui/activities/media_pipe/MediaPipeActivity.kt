@@ -10,10 +10,10 @@ import com.google.mediapipe.solutioncore.SolutionGlSurfaceView
 import com.google.mediapipe.solutions.facemesh.FaceMesh
 import com.google.mediapipe.solutions.facemesh.FaceMeshOptions
 import com.google.mediapipe.solutions.facemesh.FaceMeshResult
+import com.huyhieu.data.logger.logDebug
+import com.huyhieu.data.logger.logError
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMediaPipeBinding
-import com.huyhieu.mydocuments.libraries.utils.logDebug
-import com.huyhieu.mydocuments.libraries.utils.logError
 import com.huyhieu.mydocuments.utils.tryCatch
 
 

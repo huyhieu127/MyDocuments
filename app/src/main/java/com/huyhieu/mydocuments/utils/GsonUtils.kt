@@ -2,7 +2,7 @@ package com.huyhieu.mydocuments.utils
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.huyhieu.mydocuments.libraries.utils.logError
+import com.huyhieu.data.logger.logError
 
 inline fun <reified T> String?.toData(): T? {
     this ?: return null
