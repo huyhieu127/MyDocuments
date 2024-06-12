@@ -1,11 +1,11 @@
 ext {
     // Versions
-    kotlinVersion = "1.5.21"
-    coroutinesVersion = "1.5.1"
-
     coreKtx = "1.13.1"
-    appCompat = "1.6.1"
+    appCompat = "1.7.0"
     material = "1.12.0"
+    constraintLayout = "2.1.4"
+    legacySupportV4 = "1.0.0"
+    coreSplashScreen = "1.0.1"
 
     room = "2.6.1"
     hilt = "2.50"
@@ -13,25 +13,136 @@ ext {
     retrofitVersion = "2.9.0"
     okHttp = "5.0.0-alpha.11"
 
+    firebaseBoom = "33.0.0"
+
+    sdp = "1.1.0"
+    ssp = "1.1.0"
+
+    navigationVersion = "2.7.7"
+    coroutineVersion = "1.7.3"
+    lifecycleVersion = "2.8.1"
+
+    glide = "4.16.0"
+    lottie = "6.4.0"
+
+    cameraXVersion = "1.3.3"
+    barcodeScanning = "17.2.0"
+
+    playServicesMaps = "18.2.0"
+    playServicesLocation = "21.2.0"
+    mapUtils = "2.4.0"
+    googlePlayVersion = "2.1.0"
+
+    paging = "3.2.1"
+    biometric = "1.2.0-alpha05"
+    media3Version = "1.2.0"
+    ffmpegKit = "4.5.1-1.LTS"
+    dotsIndicator = "5.0"
+    blurView = "version-2.0.3"
+
+    exifInterface = "1.3.7"
+    mediaPipeVersion = "latest.release"
+    textRecognition = "16.0.0"
     // Libraries
     libs = [
-            kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
-            coroutinesCore          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-            coreKtx                 : "androidx.core:core-ktx:$coreKtx",
-            appCompat               : "androidx.appcompat:appcompat:$appCompat",
-            material                : "com.google.android.material:material:$material",
+            coreKtx                          : "androidx.core:core-ktx:$coreKtx",
+            appCompat                        : "androidx.appcompat:appcompat:$appCompat",
+            material                         : "com.google.android.material:material:$material",
+            constraintLayout                 : "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            legacySupportV4                  : "androidx.legacy:legacy-support-v4:$legacySupportV4",
+            coreSplashScreen                 : "androidx.core:core-splashscreen:$coreSplashScreen",
 
-            roomRuntime             : "androidx.room:room-runtime:$room",
-            roomCompiler            : "androidx.room:room-compiler:$room",
+            //Room
+            roomRuntime                      : "androidx.room:room-runtime:$room",
+            roomKtx                          : "androidx.room:room-ktx:$room",
+            roomCompiler                     : "androidx.room:room-compiler:$room",
 
-            hiltAndroid             : "com.google.dagger:hilt-android:$hilt",
-            hiltAndroidCompiler     : "com.google.dagger:hilt-android-compiler:$hilt",
+            //Hilt
+            hiltAndroid                      : "com.google.dagger:hilt-android:$hilt",
+            hiltAndroidCompiler              : "com.google.dagger:hilt-android-compiler:$hilt",
 
-            retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-            retrofitGson            : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            //Retrofit
+            retrofit                         : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitGson                     : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
 
-            okHttp                  : "com.squareup.okhttp3:okhttp:$okHttp",
-            okHttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okHttp",
+            //okHttp
+            okHttp                           : "com.squareup.okhttp3:okhttp:$okHttp",
+            okHttpLoggingInterceptor         : "com.squareup.okhttp3:logging-interceptor:$okHttp",
+
+            //Firebase
+            firebaseBoom                     : "com.google.firebase:firebase-bom:$firebaseBoom",
+            firebaseAnalyticsKtx             : "com.google.firebase:firebase-analytics-ktx",
+            firebaseStorage                  : "com.google.firebase:firebase-storage",
+            firebaseMessaging                : "com.google.firebase:firebase-messaging",
+
+            //Auto scale DPI
+            sdp                              : "com.intuit.sdp:sdp-android:$sdp",
+            ssp                              : "com.intuit.ssp:ssp-android:$ssp",
+
+            //Navigation
+            navigationFragmentKtx            : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            navigationUiKtx                  : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
+            navigationDynamicFeaturesFragment: "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion",
+
+            //Coroutine
+            coroutinesAndroid                : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion",
+            coroutinesCore                   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion",
+
+            //Lifecycle
+            lifecycleViewModel               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            lifecycleLiveData                : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+
+            //Glide
+            glide                            : "com.github.bumptech.glide:glide:$glide",
+            glideCompiler                    : "com.github.bumptech.glide:compiler:$glide",
+
+            //Lottie
+            lottie                           : "com.airbnb.android:lottie:$lottie",
+
+            //CameraX
+            camera2                          : "androidx.camera:camera-camera2:$cameraXVersion",
+            cameraLifecycle                  : "androidx.camera:camera-lifecycle:$cameraXVersion",
+            cameraView                       : "androidx.camera:camera-view:$cameraXVersion",
+
+            //Barcode Scanning
+            barcodeScanning                  : "com.google.mlkit:barcode-scanning:$barcodeScanning",
+
+            //Map
+            playServicesMaps                 : "com.google.android.gms:play-services-maps:$playServicesMaps",
+            playServicesLocation             : "com.google.android.gms:play-services-location:$playServicesLocation",
+            mapUtils                         : "com.google.maps.android:android-maps-utils:$mapUtils",
+
+            //Paging
+            pagingRuntime                    : "androidx.paging:paging-runtime-ktx:$paging",
+
+            //Biometric
+            biometric                        : "androidx.biometric:biometric:$biometric",
+
+            //Media3 ExoPlayer
+            media3ExoPlayer                  : "androidx.media3:media3-exoplayer:$media3Version",
+            media3ExoPlayerDash              : "androidx.media3:media3-exoplayer-dash:$media3Version",
+            media3UI                         : "androidx.media3:media3-ui:$media3Version",
+
+            //FFmpeg Kit
+            ffmpegKit                        : "com.arthenica:ffmpeg-kit-full-gpl:$ffmpegKit",
+
+            //Indicator ViewPager
+            dotsIndicator                    : "com.tbuonomo:dotsindicator:$dotsIndicator",
+
+            //Blur View
+            blurView                         : "com.github.Dimezis:BlurView:$blurView",
+
+            //Google Play
+            inappUpdate                      : "com.google.android.play:app-update-ktx:$googlePlayVersion",
+            featureDelivery                  : "com.google.android.play:feature-delivery-ktx:$googlePlayVersion",
+
+            //MediaPipe Face Mesh Solution.
+            exifInterface                    : "androidx.exifinterface:exifinterface:$exifInterface",
+            mediaPipeSolutionCore            : "com.google.mediapipe:solution-core:$mediaPipeVersion",
+            mediaPipeFaceMesh                : "com.google.mediapipe:facemesh:$mediaPipeVersion",
+
+            //Text recognition
+            textRecognition                  : "com.google.mlkit:text-recognition:$textRecognition"
     ]
 
 }

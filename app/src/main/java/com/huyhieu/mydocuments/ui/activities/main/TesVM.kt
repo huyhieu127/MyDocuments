@@ -17,14 +17,13 @@ class TesVM @Inject constructor(
     private val insertUserUseCase: InsertUserUseCase
 ) : ViewModel() {
 
-
     var pushNotify: MutableLiveData<String> = MutableLiveData("")
     fun pushMessage(msg: String) {
         pushNotify.postValue(msg)
     }
 
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
+    private val _user = MutableLiveData<User?>()
+    val user: LiveData<User?> = _user
 
     fun getUser(userId: Long) {
         viewModelScope.launch {

@@ -2,6 +2,7 @@ package com.huyhieu.mydocuments.ui.activities.main
 
 import android.os.Bundle
 import android.view.View
+import com.huyhieu.domain.enitities.User
 import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
@@ -19,8 +20,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     @Inject
     lateinit var mainVM: MainVM
 
-//    @Inject
-//    lateinit var testVM: TesVM
+    @Inject
+    lateinit var testVM: TesVM
 
     var storageRef = appFireStore.reference
 
@@ -56,8 +57,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }*/
 
-        //testVM.insertUser(User(1, "Hieu", "Mail"))
-        //testVM.getUser(1)
+        testVM.insertUser(User(1, "Hieu", "Mail"))
+        testVM.getUser(1)
     }
 
     private fun backupNotification() {
@@ -75,9 +76,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         mainVM.pushNotify.observe(this) {
         }
 
-//        testVM.user.observe(this) {
-//            logDebug("user: $it")
-//        }
+        testVM.user.observe(this) {
+            logDebug("user: $it")
+        }
     }
 
     override fun onClick(p0: View?) {
