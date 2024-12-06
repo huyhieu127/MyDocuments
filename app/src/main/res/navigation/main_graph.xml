@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/navigationFragment">
+    app:startDestination="@id/mapFragment">
+    <!--app:startDestination="@id/textAnimationFragment">-->
 
     <!--BEGIN: Dynamic features-->
     <fragment
@@ -320,5 +321,11 @@
     <action
         android:id="@+id/action_global_volumeBroadcastReceiverFragment"
         app:destination="@id/volumeBroadcastReceiverFragment" />
+
+    <fragment
+        android:id="@+id/textAnimationFragment"
+        android:name="com.huyhieu.mydocuments.ui.fragments.text_animation.TextAnimationFragment"
+        android:label="fragment_text_animation"
+        tools:layout="@layout/fragment_text_animation" />
 
 </navigation>

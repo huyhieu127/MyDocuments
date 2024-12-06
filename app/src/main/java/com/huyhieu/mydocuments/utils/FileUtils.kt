@@ -155,13 +155,13 @@ fun copyFiles(sourceFile: File, destinationFile: File) {
         val folderFiles = sourceFile.list() ?: return
         sourceFile.mkdirs()
         for (file in folderFiles) {
-            val childSourceFile = File(sourceFile.path, file)
-            val childDestinationFile = File(destinationFile.path, file)
+            val nodeSourceFile = File(sourceFile.path, file)
+            val nodeDestinationFile = File(destinationFile.path, file)
             if (file.contains(".")) {
                 logDebug("copying '$file''")
-                copyFile(childSourceFile, childDestinationFile)
+                copyFile(nodeSourceFile, nodeDestinationFile)
             } else {
-                copyFiles(childSourceFile, childDestinationFile)
+                copyFiles(nodeSourceFile, nodeDestinationFile)
             }
         }
     } catch (e: Exception) {

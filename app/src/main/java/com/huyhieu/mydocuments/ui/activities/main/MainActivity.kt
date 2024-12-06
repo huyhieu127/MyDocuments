@@ -8,9 +8,11 @@ import com.huyhieu.mydocuments.base.BaseActivity
 import com.huyhieu.mydocuments.databinding.ActivityMainBinding
 import com.huyhieu.mydocuments.libraries.extensions.setDarkColorStatusBar
 import com.huyhieu.mydocuments.libraries.extensions.setTransparentStatusBar
+import com.huyhieu.mydocuments.pending_intent.PendingIntentFactory
 import com.huyhieu.mydocuments.shared.appFireStore
-import com.huyhieu.mydocuments.utils.helper.PendingIntentFactory
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.transform
 import javax.inject.Inject
 
 
@@ -36,26 +38,33 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         //setFullScreen()
         setDarkColorStatusBar(false)
         setTransparentStatusBar(true)
+        val flow = flowOf(1, 2, 3)
+        val transformedFlow = flow.transform { value ->
+            if (value % 2 == 0) {
+                emit(value * 2)
+            }
+        }
     }
 
+
     override fun addEvents(savedInstanceState1: Bundle?) {
-       /* val jsonRef = storageRef.child("jsons/profile.json")
-        val str: String = ("{\"name\":\"Hieu\", \"bod\": 1997 }")
-        val uploadTask = jsonRef.putBytes(str.toByteArray())
-        uploadTask.addOnFailureListener {
-            // Handle unsuccessful uploads
-            logDebug(it.message)
-        }.addOnProgressListener {
-            logDebug("Progress: ${it.bytesTransferred}/${it.totalByteCount}")
-        }.addOnSuccessListener {
-            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.\
-            jsonRef.getBytes(Long.MAX_VALUE).addOnSuccessListener { i ->
-                val json = JSONObject(String(i))
-                logDebug(json.toString())
-            }.addOnFailureListener { i ->
-                logDebug(i.message)
-            }
-        }*/
+        /* val jsonRef = storageRef.child("jsons/profile.json")
+         val str: String = ("{\"name\":\"Hieu\", \"bod\": 1997 }")
+         val uploadTask = jsonRef.putBytes(str.toByteArray())
+         uploadTask.addOnFailureListener {
+             // Handle unsuccessful uploads
+             logDebug(it.message)
+         }.addOnProgressListener {
+             logDebug("Progress: ${it.bytesTransferred}/${it.totalByteCount}")
+         }.addOnSuccessListener {
+             // taskSnapshot.metadata contains file metadata such as size, content-type, etc.\
+             jsonRef.getBytes(Long.MAX_VALUE).addOnSuccessListener { i ->
+                 val json = JSONObject(String(i))
+                 logDebug(json.toString())
+             }.addOnFailureListener { i ->
+                 logDebug(i.message)
+             }
+         }*/
 
         testVM.insertUser(User(1, "Hieu", "Mail"))
         testVM.getUser(1)

@@ -290,7 +290,8 @@ class MapManager(private val fragment: Fragment) {
     }
 
     fun setCustomerMarker(latLng: LatLng) {
-        destPosition = latLng
+        //destPosition = latLng
+        destPosition = latLngList.last()
         if (markerCustomer == null) {
             markerCustomer = setMarker(latLng, icon = R.drawable.ic_customer_location)
             markerCustomer?.isDraggable = true

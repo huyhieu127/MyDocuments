@@ -2,12 +2,27 @@ package com.huyhieu.mydocuments.libraries.commons
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Point
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
+import android.graphics.Rect
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import com.huyhieu.mydocuments.R
+
+class HoleText(
+    var text: String,
+    var textSize: Float,
+    var view: View?,
+    var padding: Float = view?.context?.resources?.getDimension(R.dimen.hole_padding) ?: 0F
+)
 
 class HoleCircle(
     var view: View?,
@@ -32,6 +47,12 @@ class HoleView @JvmOverloads constructor(
     private var layer: Canvas? = null
 
     //position of hole
+    var holeText: HoleText? = null
+        set(value) {
+            field = value
+            //redraw
+            this.invalidate()
+        }
     var holeCircle: HoleCircle? = null
         set(value) {
             field = value
@@ -82,6 +103,19 @@ class HoleView @JvmOverloads constructor(
         layer?.drawRect(0.0f, 0.0f, width.toFloat(), height.toFloat(), paint)
 
         //draw hole
+        holeText?.let { holeText ->
+            holeText.view?.let { view ->
+                val holeTextPaint = Paint(holePaint).apply {
+                    textSize = holeText.textSize
+                }
+                layer?.drawText(
+                    holeText.text,
+                    view.left.toFloat(),
+                    view.bottom.toFloat(),
+                    holeTextPaint
+                )
+            }
+        }
         holeCircle?.let { holeCircle ->
             holeCircle.view?.let { view ->
                 val radius = if (view.height > view.width) {
@@ -209,7 +243,9 @@ class HoleView @JvmOverloads constructor(
         )
 
         //configure hole color & mode
-        holePaint.color = ContextCompat.getColor(this.context, android.R.color.transparent)
-        holePaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+        holePaint.apply {
+            color = ContextCompat.getColor(this@HoleView.context, android.R.color.transparent)
+            xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+        }
     }
 }
