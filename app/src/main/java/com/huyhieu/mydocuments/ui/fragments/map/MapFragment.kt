@@ -67,7 +67,7 @@ class MapFragment : BaseFragmentVM<FragmentMapBinding, MapVM>(), OnMapReadyCallb
             it ?: return@observe
             tryCatch {
                 val sys = System.currentTimeMillis()
-                //val listPoints = PolylineHelpers.decodePoints(it)
+                //v\al listPoints = PolylineHelpers.decodePoints(it)
                 val listPoints = latLngList
                 // Độ chính xác (meter), giảm số lượng điểm
                 val tolerance = 50.0
